@@ -1,3 +1,4 @@
+require 'awestruct/ibeams/asciidoc_sections'
 require 'awestruct/ibeams/debuggable_partial'
 require 'awestruct/ibeams/datadir'
 
@@ -34,6 +35,8 @@ Awestruct::Extensions::Pipeline.new do
   helper Legacy
 
   helper Awestruct::Extensions::GoogleAnalytics
+
+  helper Awestruct::IBeams::AsciidocSections
   helper Awestruct::IBeams::DebuggablePartial
 end
 
