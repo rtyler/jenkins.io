@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Advanced Topics
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="/assets/bower/jquery/jquery.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="/" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.19.4
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.34
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Participate
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item" href="/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item" href="https://twitter.com/jenkinsci" title="Check out @jenkinsci on Twitter">
+Twitter
+</a>
+<a class="dropdown-item" href="/content/event-calendar" title="Calendar for Jenkins events">
+Events
+</a>
+<a class="dropdown-item" href="https://wiki.jenkins-ci.org/display/JENKINS/Office+Hours" title="Hangouts-based online meeting">
+Office Hours
+</a>
+<a class="dropdown-item" href="https://reddit.com/r/jenkinsci" title="Latest Jenkins related news on /r/jenkinsci">
+/r/jenkinsci
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../shared-libraries">
+⇐ Shared Libraries
+</a>
+<a class="up page-link" href="../">
+⇑ "Pipeline
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+<div class="section">
+<h1>
+Advanced Topics
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel2">
+<li><a href="#types-of-executors">Types of Executors</a></li>
+<li><a href="#pipeline-plugin-context">Pipeline Plugin Context</a></li>
+<li><a href="#more-information">More Information</a></li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="types-of-executors"><a class="anchor" href="#types-of-executors"></a>Types of Executors</h3>
+<div class="paragraph">
+<p>Every Pipeline build runs on a Jenkins master using a <strong>flyweight executor</strong>,
+which is an uncounted (because it&#8217;s a temporary rather than configured) slot.
+Flyweight executors require very little computing power. A flyweight executor
+(sometimes also called a flyweight task) represents Groovy script, which is
+idle as it waits for a step to complete.</p>
+</div>
+<div class="paragraph">
+<p>To highlight the contrast between executor types, some Jenkins documentation
+calls any regular executor a <strong>heavyweight executor</strong>.</p>
+</div>
+<div class="paragraph">
+<p>When you run a <code>node</code> step, an executor is allocated on a node, which is
+usually an agent, as soon as an appropriate node is available.</p>
+</div>
+<div class="paragraph">
+<p>It is a best practice to avoid placing <code>input</code> within a node. The input element
+pauses pipeline execution to wait for either automatic or manual approval.
+By design and by nature, approval can take some time, so placing <code>input</code> within
+a node wastes resources by tying up both the flyweight executor used for input
+and the regular executor used by the node block, which will not be free for
+other tasks until input is complete.</p>
+</div>
+<div class="paragraph">
+<p>Although any flyweight executor running a pipeline is hidden when the pipeline
+script is idle (between tasks), the <strong>Build Executor Status</strong> widget on the
+Jenkins page displays status for both types of executors. If the one available
+executor on an agent has been pressed into service by a pipeline build that is
+paused and you start a second build of the same pipeline, both builds are shown
+running on the master, but the second build displays in the Build Queue until
+the initial build completes and executors are free to help with further
+processing.</p>
+</div>
+<div class="paragraph">
+<p>When you use inputs, it is a best practice to wrap them in timeouts. Wrapping
+inputs in timeouts allows them to be cleaned up if approvals do not occur
+within a given window. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">timeout(<span style="color:#606">time</span>:<span style="color:#00D">5</span>, <span style="color:#606">unit</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DAYS</span><span style="color:#710">'</span></span>) {
+    input <span style="color:#606">message</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Approve deployment?</span><span style="color:#710">'</span></span>, <span style="color:#606">submitter</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">it-ops</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pipeline-plugin-context"><a class="anchor" href="#pipeline-plugin-context"></a>Pipeline Plugin Context</h3>
+<div class="paragraph">
+<p>The Pipeline plugin works with a suite of related plugins that enhance the
+pipeline functionality of your Jenkins setup. The related plugins typically
+introduce additional pipeline syntax or visualizations.</p>
+</div>
+<div class="paragraph">
+<p>For example, the table below, while not comprehensive, describes a few
+pipeline-related plugins in terms of their importance to pipeline functionality
+(required, recommended, or optional).</p>
+</div>
+<div class="paragraph">
+<p>To get the basic pipeline functionality, you only need to install the main
+Pipeline plugin, but recommended plugins add additional capabilities that you
+will probably want. For example, it is a best practice to develop pipelines as code by storing a <code>Jenkinsfile</code> with pipeline script in your SCM,
+so that you can apply the same version control and testing to pipelines as you do to your other software, and that is why the
+Multibranch Pipeline plugin is recommended.</p>
+</div>
+<div class="paragraph">
+<p>Optional plugins are mainly useful if you are creating pipelines that are
+related to the technologies that they support.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plugin Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pipeline (workflow-aggregator)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Installs the core pipeline engine and its dependent plugins:
+Pipeline: API,
+Pipeline: Basic Steps,
+Pipeline: Durable Task Step,
+Pipeline: Execution Support,
+Pipeline: Global Shared Library for CPS pipeline,
+Pipeline: Groovy CPS Execution,
+Pipeline: Job,
+Pipeline: SCM Step,
+Pipeline: Step API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pipeline: Stage View</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides a graphical swimlane view of pipeline stage execution, as well as a build history of the stages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multibranch Pipeline</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds "Multibranch Pipeline" item type which enables Jenkins to automatically
+build branches that contain a <code>Jenkinsfile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitHub Branch Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds GitHub Organization Folder item type and adds "GitHub" as a branch source on Multibranch pipelines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended for teams hosting repositories in GitHub</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bitbucket Branch Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds Bitbucket Team item type and adds "Bitbucket" as a branch source on Multibranch pipelines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended for teams hosting repositories in Bitbucket; best with Bitbucket Server 4.0 or later.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker Pipeline</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables pipeline to build and use Docker containers inside pipeline scripts.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="more-information"><a class="anchor" href="#more-information"></a>More Information</h3>
+<div class="paragraph">
+<p>As with any Jenkins plugin, you can install the Pipeline plugin using the Plugin
+Manager in a running Jenkins instance.</p>
+</div>
+<div class="paragraph">
+<p>To explore Pipeline without installing
+Jenkins separately or accessing your production system, you can run a
+<a href="https://github.com/jenkinsci/workflow-aggregator-plugin/blob/master/demo/README.md">Docker
+demo</a> of Pipeline functionality.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline-related plugins are regularly "whitelisted" as compatible with or
+designed for Pipeline usage. For more information, see the
+<a href="https://github.com/jenkinsci/pipeline-plugin/blob/master/COMPATIBILITY.md">Plugin
+Compatibility With Pipeline</a> web page.</p>
+</div>
+<div class="paragraph">
+<p>When you get flows from source control through <code>Jenkinsfile</code> or a <a href="https://github.com/jenkinsci/workflow-cps-global-lib-plugin/blob/master/README.md">Pipeline Global Library</a>,
+you may also have to whitelist method calls in the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin">Script Security Plugin</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Several plugins available in the Jenkins ecosystem but not actually
+related to the Pipeline feature set described in this guide also use the terms
+"pipeline," "DSL," and "Job DSL" in their names. For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Build Pipeline plugin - provides a way to execute Jenkins jobs sequentially</p>
+</li>
+<li>
+<p>Build Flow Plugin - introduces a job type that lets you define an orchestration process as a script.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This guide describes the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin">Pipeline Plugin</a> that supports the current Pipeline feature set.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../shared-libraries">
+⇐ Shared Libraries
+</a>
+<a class="up page-link" href="../">
+⇑ "Pipeline
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/pipeline/advanced.adoc" title="Edit /doc/book/pipeline/advanced.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/pipeline/advanced.adoc" title="View /doc/book/pipeline/advanced.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

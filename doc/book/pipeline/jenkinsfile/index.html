@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+The Jenkinsfile
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="/assets/bower/jquery/jquery.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="/" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.19.4
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.34
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Participate
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item" href="/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item" href="https://twitter.com/jenkinsci" title="Check out @jenkinsci on Twitter">
+Twitter
+</a>
+<a class="dropdown-item" href="/content/event-calendar" title="Calendar for Jenkins events">
+Events
+</a>
+<a class="dropdown-item" href="https://wiki.jenkins-ci.org/display/JENKINS/Office+Hours" title="Hangouts-based online meeting">
+Office Hours
+</a>
+<a class="dropdown-item" href="https://reddit.com/r/jenkinsci" title="Latest Jenkins related news on /r/jenkinsci">
+/r/jenkinsci
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../getting-started">
+⇐ Getting Started
+</a>
+<a class="up page-link" href="../">
+⇑ "Pipeline
+</a>
+<a class="next page-link" href="../multibranch">
+Multibranch Pipelines ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+<div class="section">
+<h1>
+The Jenkinsfile
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#audience-and-purpose">Audience and Purpose</a></li>
+<li><a href="#creating-a-jenkinsfile">Creating a Jenkinsfile</a></li>
+<li><a href="#basic-syntax-for-pipeline-script">Basic Syntax for Pipeline Script</a></li>
+<li><a href="#advanced-syntax-for-pipeline-script">Advanced Syntax for Pipeline Script</a>
+<ul class="sectlevel2">
+<li><a href="#working-with-the-environment">Working with the Environment</a></li>
+<li><a href="#build-parameters">Build Parameters</a></li>
+<li><a href="#recording-test-results-and-artifacts">Recording Test Results and Artifacts</a></li>
+</ul>
+</li>
+<li><a href="#making-pull-requests">Making Pull Requests</a></li>
+<li><a href="#using-organization-folders">Using Organization Folders</a></li>
+<li><a href="#basic-checkout-and-build">Basic Checkout and Build</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="audience-and-purpose"><a class="anchor" href="#audience-and-purpose"></a>Audience and Purpose</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document is intended for Jenkins users who want to leverage the power of
+pipeline functionality. Extending the reach of what was learned from a "Hello
+World" example in <a href="/doc/pipeline/">Getting Started with Pipeline</a>, this
+document explains how to use a <code>Jenkinsfile</code> to perform a simple checkout and
+build for the contents of a repository.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-jenkinsfile"><a class="anchor" href="#creating-a-jenkinsfile"></a>Creating a Jenkinsfile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>Jenkinsfile</code> is a container for your pipeline (or other) script, which details
+what specific steps are needed to perform a job for which you want to use
+Jenkins. You create a <code>Jenkinsfile</code> with your preferred Groovy editor, or through
+the configuration page on the web interface of your Jenkins instance.</p>
+</div>
+<div class="paragraph">
+<p>Using a Groovy editor to code a <code>Jenkinsfile</code> gives you more flexibility for
+building complex single or multibranch pipelines, but whether you use an editor
+or the Jenkins interface does not matter if what you want to do is get familiar
+with basic <code>Jenkinsfile</code> content.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open your Jenkins instance or Groovy editor.</p>
+</li>
+<li>
+<p>Navigate to the directory you want (it should be the root directory for your project).</p>
+</li>
+<li>
+<p>Use standard Jenkins syntax.</p>
+</li>
+<li>
+<p>Save your file.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following example shows a basic <code>Jenkinsfile</code> made to build and test code for
+a Maven project. <code>node</code> is the step that schedules tasks in the following block
+to run on the machine (usually an agent) that matches the label specified in the
+step argument (in this case, a node called "linux"). Code between the braces (
+<code>{</code> and <code>}</code> ) is the body of the <code>node</code> step. The <code>checkout scm</code> command
+indicates that this <code>Jenkinsfile</code> was created with an eye toward multibranch
+support:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"> node (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">linux</span><span style="color:#710">'</span></span>){
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build and Test</span><span style="color:#710">'</span></span>
+  env.PATH = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Maven 3</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.PATH<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  checkout scm
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn clean package</span><span style="color:#710">'</span></span>
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In single-branch contexts, you could replace .checkout scm. with a source code
+checkout step that calls a particular repository, such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/my-organization/simple-maven-project-with-tests.git</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basic-syntax-for-pipeline-script"><a class="anchor" href="#basic-syntax-for-pipeline-script"></a>Basic Syntax for Pipeline Script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You typically add functionality to a new pipeline by performing the following tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adding nodes</p>
+</li>
+<li>
+<p>Adding more complex logic (usually expressed as stages and steps)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To configure a pipeline you have created through the Jenkins UI, select the
+pipeline and click <strong>Configure</strong>.</p>
+</div>
+<div class="paragraph">
+<p>If you run Jenkins on Linux or another Unix-like operating system with a Git
+repository that you want to test, for example, you can do that with syntax like
+the following, substituting your own name for <code>jglick</code>:</p>
+</div>
+<div class="pipeline-block"><div class="listingblock pipeline-script"
+      style="display: true">
+  <div class="title">Jenkinsfile (Pipeline Script)</div>
+  <div class="content">
+<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
+    git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/jglick/simple-maven-project-with-tests.git</span><span style="color:#710">'</span></span>
+    <span style="color:#080;font-weight:bold">def</span> mvnHome = tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">M3</span><span style="color:#710">'</span></span>
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>mvnHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -B verify</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>In Windows environments, you would use <code>bat</code> in place of <code>sh</code>, for example,
+rather than:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>mvnHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -B verify</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>you would use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>mvnHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -B verify</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your Groovy pipeline script can include functions, conditional tests, loops,
+try/catch/finally blocks, and so on.</p>
+</div>
+<div class="paragraph">
+<p>Sample syntax for one node in a Java environment that is using the open source
+Maven build automation tool (note the definition for <code>mvnHome</code>) is shown below:</p>
+</div>
+<div class="pipeline-block"><div class="listingblock pipeline-script"
+      style="display: true">
+  <div class="title">Jenkinsfile (Pipeline Script)</div>
+  <div class="content">
+<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">remote</span><span style="color:#710">'</span></span>) {
+    git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/jglick/simple-maven-project-with-tests.git</span><span style="color:#710">'</span></span>
+
+    <span style="color:#080;font-weight:bold">def</span> mvnHome = tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">M3</span><span style="color:#710">'</span></span> <span style="color:#777">// &lt;1&gt;</span>
+    <span style="color:#080;font-weight:bold">def</span> v = version()
+
+    <span style="color:#080;font-weight:bold">if</span> (v) {
+      echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Building version </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>v<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    }
+
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>mvnHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -B -Dmaven.test.failure.ignore verify</span><span style="color:#710">&quot;</span></span>
+
+    archiveArtifacts <span style="color:#606">artifacts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">**/target/*.jar</span><span style="color:#710">'</span></span>, <span style="color:#606">fingerprint</span>: <span style="color:#069">true</span>
+    junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">**/target/surefire-reports/TEST-*.xml</span><span style="color:#710">'</span></span>
+}
+
+<span style="color:#777">/** Parse the pom.xml for the version number */</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">version</span>() {
+  <span style="color:#080;font-weight:bold">def</span> matcher = readFile(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">pom.xml</span><span style="color:#710">'</span></span>) =~ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&lt;version&gt;(.+)&lt;/version&gt;</span><span style="color:#710">'</span></span>
+  <span style="color:#080;font-weight:bold">if</span> (matcher) {
+    <span style="color:#080;font-weight:bold">return</span> matcher[<span style="color:#00D">0</span>][<span style="color:#00D">1</span>]
+  }
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">null</span>
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>Pipeline Sample (graphic) key:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>def</code> is a keyword to define a function (you can also give a Java type in
+place of <code>def</code> to make it look more like a Java method)</p>
+</li>
+<li>
+<p><code>=~</code> is Groovy syntax to match text against a regular expression</p>
+</li>
+<li>
+<p>[0] looks up the first match</p>
+</li>
+<li>
+<p>[1] looks up the first (…) group within that match</p>
+</li>
+<li>
+<p><code>readFile</code> step loads a text file from the workspace and returns its content
+(Note: Do not use <code>java.io.File</code> methods, these refer to files on the master
+where Jenkins is running, not files in the current workspace).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The tool step makes sure a tool with the given name is installed on the current
+node. The script needs to know where it was installed, so the tool can be run
+later. For this, you need a variable.</p>
+</div>
+<div class="paragraph">
+<p>The <code>def</code> keyword in Groovy is the quickest way to define a new variable (with no specific type).</p>
+</div>
+<div class="paragraph">
+<p>In the sample syntax discussed above, a variable is defined by the following expression:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> mvnHome = tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">M3</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This ensures that <em>M3</em> is installed somewhere accessible to Jenkins and assigns
+the return value of the step (an installation path) to the <code>mvnHome</code> variable.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="advanced-syntax-for-pipeline-script"><a class="anchor" href="#advanced-syntax-for-pipeline-script"></a>Advanced Syntax for Pipeline Script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Groovy lets you omit parentheses around function arguments. The named-parameter
+syntax is also a shorthand for creating a map, which in Groovy uses the syntax
+<code>[key1: value1, key2: value2]</code>, so you could write:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">git([<span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/joe_user/simple-maven-project-with-tests.git</span><span style="color:#710">'</span></span>, <span style="color:#606">branch</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">master</span><span style="color:#710">'</span></span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For convenience, when calling steps taking only one parameter (or only one
+mandatory parameter), you can omit the parameter name. For example, the
+following two lines are functionally equivalent:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo hello</span><span style="color:#710">'</span></span> <span style="color:#777">/* short form  */</span>
+sh([<span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo hello</span><span style="color:#710">'</span></span>])  <span style="color:#777">/* long form */</span></code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="working-with-the-environment"><a class="anchor" href="#working-with-the-environment"></a>Working with the Environment</h3>
+<div class="paragraph">
+<p>Jenkins Pipeline exposes environment variables via the global variable <code>env</code>,
+which is available from anywhere within a <code>Jenkinsfile</code>. The full list of
+environment variables accessible from within Jenkins Pipeline is documented at
+<a href="http://localhost:8080/pipeline-syntax/globals#env">localhost:8080/pipeline-syntax/globals#env</a>,
+assuming a Jenkins master is running on <code>localhost:8080</code>, and includes:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">BUILD_ID</dt>
+<dd>
+<p>The current build ID, identical to BUILD_NUMBER for builds created in Jenkins versions 1.597+</p>
+</dd>
+<dt class="hdlist1">JOB_NAME</dt>
+<dd>
+<p>Name of the project of this build, such as "foo" or "foo/bar".</p>
+</dd>
+<dt class="hdlist1">JENKINS_URL</dt>
+<dd>
+<p>Full URL of Jenkins, such as <a href="http://example.com:port/jenkins/" class="bare">http://example.com:port/jenkins/</a> (NOTE: only available if Jenkins URL set in "System Configuration")</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Referencing or using these environment variables can be accomplished like
+accessing any key in a Groovy
+<a href="http://groovy-lang.org/syntax.html#_maps">Map</a>,
+for example:</p>
+</div>
+<div class="pipeline-block"><div class="listingblock pipeline-script"
+      style="display: true">
+  <div class="title">Jenkinsfile (Pipeline Script)</div>
+  <div class="content">
+<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Running </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.BUILD_ID<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> on </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.JENKINS_URL<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div></div></div>
+<div class="sect3">
+<h4 id="setting-environment-variables"><a class="anchor" href="#setting-environment-variables"></a>Setting environment variables</h4>
+<div class="paragraph">
+<p>Setting an environment variable within a Jenkins Pipeline can be done with the
+<code>withEnv</code> step, which allows overriding specified environment variables for a
+given block of Pipeline Script, for example:</p>
+</div>
+<div class="pipeline-block"><div class="listingblock pipeline-script"
+      style="display: true">
+  <div class="title">Jenkinsfile (Pipeline Script)</div>
+  <div class="content">
+<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
+    <span style="color:#777">/* .. snip .. */</span>
+    withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PATH+MAVEN=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">M3</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin</span><span style="color:#710">&quot;</span></span>]) {
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn -B verify</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-parameters"><a class="anchor" href="#build-parameters"></a>Build Parameters</h3>
+<div class="paragraph">
+<p>If you configured your pipeline to accept parameters using the <strong>Build with
+Parameters</strong> option, those parameters are accessible as Groovy variables of the
+same name.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recording-test-results-and-artifacts"><a class="anchor" href="#recording-test-results-and-artifacts"></a>Recording Test Results and Artifacts</h3>
+<div class="paragraph">
+<p>If there are any test failures in a given build, you want Jenkins to record
+them and then proceed, rather than stopping. If you want it saved, you must
+capture the <code>.jar</code> that you built. The following sample code for a node shows how
+(As previously seen in examples from this guide, Maven is being used as
+a build tool):</p>
+</div>
+<div class="pipeline-block"><div class="listingblock pipeline-script"
+      style="display: true">
+  <div class="title">Jenkinsfile (Pipeline Script)</div>
+  <div class="content">
+<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
+    <span style="color:#777">/* .. snip .. */</span>
+    archiveArtifacts <span style="color:#606">artifacts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">**/target/*.jar</span><span style="color:#710">'</span></span>, <span style="color:#606">fingerprint</span>: <span style="color:#069">true</span>
+    junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">**/target/surefire-reports/TEST-*.xml</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>(Older versions of Pipeline require a slightly more verbose syntax.
+The “snippet generator” can be used to see the exact format.)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If tests fail, the Pipeline is marked unstable (as denoted by a yellow ball in
+the Jenkins Web UI), and you can browse "Test Result Trend" to see the relevant history.</p>
+</li>
+<li>
+<p>You should see Last Successful Artifacts on the Pipeline&#8217;s main page.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="making-pull-requests"><a class="anchor" href="#making-pull-requests"></a>Making Pull Requests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A pull request notifies the person responsible for maintaining a Jenkins
+repository that you have a change or change set that you want to see merged into
+the main branch associated with that repository. Each individual change is
+called a "commit."</p>
+</div>
+<div class="paragraph">
+<p>You make pull requests from a command line, or by selecting the appropriately
+labeled button (typically "Pull" or "Create Pull Request") in the interface for
+your source code management system.</p>
+</div>
+<div class="paragraph">
+<p>A pull request to a repository included in or monitored by an Organization
+Folder can be used to automatically execute a multibranch pipeline build.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-organization-folders"><a class="anchor" href="#using-organization-folders"></a>Using Organization Folders</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Organization folders enable Jenkins to automatically detect and include any new
+repositories within them as resources.</p>
+</div>
+<div class="paragraph">
+<p>When you create a new repository (as might be the case for a new project), that
+repository has a <code>Jenkinsfile</code>. If you also configure one or more organization
+folders, Jenkins automatically detects any repository in an organization folder,
+scans the contents of that repository at either default or configurable
+intervals, and creates a Multibranch Pipeline project for what it finds in the
+scan. An organization folder functions as a "parent," and any item within it is
+treated as a "child" of that parent.</p>
+</div>
+<div class="paragraph">
+<p>Organization folders alleviate the need to manually create projects for new
+repositories. When you use organization folders, Jenkins views your repositories
+as a hierarchy, and each repository (organization folder) may optionally have
+child elements such as branches or pull requests.</p>
+</div>
+<div class="paragraph">
+<p>To create Organization folders:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Jenkins in your web browser.</p>
+</li>
+<li>
+<p>Go to: New Item → GitHub Organization or New Item → Bitbucket Team.</p>
+</li>
+<li>
+<p>Follow the configuration steps, making sure to specify appropriate scan
+credentials and a specific owner for the GitHub Organization or Bitbucket Team
+name.</p>
+</li>
+<li>
+<p>Set build triggers by selecting the checkbox associated with the trigger type
+you want. Folder scans and the pipeline builds associated with those scans can
+be initiated by command scripts or performed at defined intervals. They can also
+triggered by project promotion or changes to the images in a monitored Docker
+hub.</p>
+</li>
+<li>
+<p>Decide whether to automatically remove or retain unused items. "Orphaned Item
+Strategy" fields in the configuration interface let you specify how many days to
+keep old items, and how many old items to keep. If you enter no values in these
+fields, unused items are removed by default.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>While configuring organization folders, you can set the following options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Repository name pattern - a regular expression to specify which repositories are included in scans</p>
+</li>
+<li>
+<p>API endpoint - an alternate API endpoint to use a self-hosted GitHub Enterprise</p>
+</li>
+<li>
+<p>Checkout credentials - alternate credentials to use when checking out (cloning) code</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Multibranch Pipeline projects and Organization Folders are examples of
+"computed folder" functionality. In Multibranch Pipeline projects, computation
+creates child items for eligible branches. In Organization folders, computation
+populates child items as individual Multibranch Pipelines for scanned
+repositories.</p>
+</div>
+<div class="paragraph">
+<p>Select the "Folder Computation" section of your Jenkins interface to see the
+duration (in seconds) and result (success or failure) of computation operations,
+or to access a Folder Computation Log that provides more detail about this
+activity.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basic-checkout-and-build"><a class="anchor" href="#basic-checkout-and-build"></a>Basic Checkout and Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Checkout and build command examples are shown in the code example used by the
+introduction above. Examples shown assume that Jenkins is running on Linux or
+another Unix-like operating system.</p>
+</div>
+<div class="paragraph">
+<p>If your Jenkins server or agent is running on Windows, you are less likely to be
+using the Bourne shell (<code>sh</code>) or
+<a href="http://www.computerhope.com/unix/ubash.htm">Bourne-Again shell</a> (<code>bash</code>) as
+a command language interpreter for starting software builds. In Windows
+environments, use <code>bat</code> in place of <code>sh</code>, and backslashes (<code>\</code>) rather than
+slashes as file separators in pathnames.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../getting-started">
+⇐ Getting Started
+</a>
+<a class="up page-link" href="../">
+⇑ "Pipeline
+</a>
+<a class="next page-link" href="../multibranch">
+Multibranch Pipelines ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/pipeline/jenkinsfile.adoc" title="Edit /doc/book/pipeline/jenkinsfile.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/pipeline/jenkinsfile.adoc" title="View /doc/book/pipeline/jenkinsfile.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

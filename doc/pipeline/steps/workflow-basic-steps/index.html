@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+workflow-basic-steps
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="/assets/bower/jquery/jquery.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="/" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.19.4
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.34
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Participate
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item" href="/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item" href="https://twitter.com/jenkinsci" title="Check out @jenkinsci on Twitter">
+Twitter
+</a>
+<a class="dropdown-item" href="/content/event-calendar" title="Calendar for Jenkins events">
+Events
+</a>
+<a class="dropdown-item" href="https://wiki.jenkins-ci.org/display/JENKINS/Office+Hours" title="Hangouts-based online meeting">
+Office Hours
+</a>
+<a class="dropdown-item" href="https://reddit.com/r/jenkinsci" title="Latest Jenkins related news on /r/jenkinsci">
+/r/jenkinsci
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .row {
+    margin-right: 5em;
+    margin-left: 5em;
+  }
+  .toc {
+      float: right;
+  }
+</style>
+<div class="container">
+<div class="row body">
+<h1>
+workflow-basic-steps
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#workflow-basic-steps">workflow-basic-steps</a>
+<ul class="sectlevel2">
+<li><a href="#code-archive-code-archive-artifacts"><code>archive</code>: Archive artifacts</a></li>
+<li><a href="#code-deletedir-code-recursively-delete-the-current-directory-from-the-workspace"><code>deleteDir</code>: Recursively delete the current directory from the workspace</a></li>
+<li><a href="#code-dir-code-change-current-directory"><code>dir</code>: Change current directory</a></li>
+<li><a href="#code-echo-code-print-message"><code>echo</code>: Print Message</a></li>
+<li><a href="#code-error-code-error-signal"><code>error</code>: Error signal</a></li>
+<li><a href="#code-fileexists-code-verify-if-file-exists-in-workspace"><code>fileExists</code>: Verify if file exists in workspace</a></li>
+<li><a href="#code-isunix-code-checks-if-running-on-a-unix-like-node"><code>isUnix</code>: Checks if running on a Unix-like node</a></li>
+<li><a href="#code-mail-code-mail"><code>mail</code>: Mail</a></li>
+<li><a href="#code-pwd-code-determine-current-directory"><code>pwd</code>: Determine current directory</a></li>
+<li><a href="#code-readfile-code-read-file-from-workspace"><code>readFile</code>: Read file from workspace</a></li>
+<li><a href="#code-retry-code-retry-the-body-up-to-n-times"><code>retry</code>: Retry the body up to N times</a></li>
+<li><a href="#code-sleep-code-sleep"><code>sleep</code>: Sleep</a></li>
+<li><a href="#code-stash-code-stash-some-files-to-be-used-later-in-the-build"><code>stash</code>: Stash some files to be used later in the build</a></li>
+<li><a href="#code-step-code-general-build-step"><code>step</code>: General Build Step</a></li>
+<li><a href="#code-timeout-code-enforce-time-limit"><code>timeout</code>: Enforce time limit</a></li>
+<li><a href="#code-tool-code-use-a-tool-from-a-predefined-tool-installation"><code>tool</code>: Use a tool from a predefined Tool Installation</a></li>
+<li><a href="#code-unstash-code-restore-files-previously-stashed"><code>unstash</code>: Restore files previously stashed</a></li>
+<li><a href="#code-waituntil-code-wait-for-condition"><code>waitUntil</code>: Wait for condition</a></li>
+<li><a href="#code-withenv-code-set-environment-variables"><code>withEnv</code>: Set environment variables</a></li>
+<li><a href="#code-wrap-code-general-build-wrapper"><code>wrap</code>: General Build Wrapper</a></li>
+<li><a href="#code-writefile-code-write-file-to-workspace"><code>writeFile</code>: Write file to workspace</a></li>
+<li><a href="#code-catcherror-code-catch-error-and-set-build-result"><code>catchError</code>: Catch error and set build result</a></li>
+<li><a href="#code-getcontext-code-get-contextual-object-from-internal-apis"><code>getContext</code>: Get contextual object from internal APIs</a></li>
+<li><a href="#code-unarchive-code-copy-archived-artifacts-into-the-workspace"><code>unarchive</code>: Copy archived artifacts into the workspace</a></li>
+<li><a href="#code-withcontext-code-use-contextual-object-from-internal-apis-within-a-block"><code>withContext</code>: Use contextual object from internal APIs within a block</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="workflow-basic-steps"><a class="anchor" href="#workflow-basic-steps"></a>workflow-basic-steps</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="code-archive-code-archive-artifacts"><a class="anchor" href="#code-archive-code-archive-artifacts"></a><code>archive</code>: Archive artifacts</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Archives build output artifacts for later use.
+As of Jenkins 2.x, you may use the more configurable <code>archiveArtifacts</code>.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>includes</code></dt>
+<dd>
+<div class="paragraph">
+<p>Include artifacts matching this Ant style pattern.
+Use a comma separated list to add more than one expression.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>excludes</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Exclude artifacts matching this Ant-style pattern.
+Use a comma-separated list to add more than one expression.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-deletedir-code-recursively-delete-the-current-directory-from-the-workspace"><a class="anchor" href="#code-deletedir-code-recursively-delete-the-current-directory-from-the-workspace"></a><code>deleteDir</code>: Recursively delete the current directory from the workspace</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Recursively deletes the current directory and its contents.
+    Symbolic links and junctions will not be followed but will be removed.
+    To delete a specific directory of a workspace wrap the <code>deleteDir</code>
+    step in a <code>dir</code> step.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-dir-code-change-current-directory"><a class="anchor" href="#code-dir-code-change-current-directory"></a><code>dir</code>: Change current directory</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Change current directory. Any step inside the <code>dir</code> block will
+    use this directory as current and any relative path will use it as base path.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>path</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-echo-code-print-message"><a class="anchor" href="#code-echo-code-print-message"></a><code>echo</code>: Print Message</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>message</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-error-code-error-signal"><a class="anchor" href="#code-error-code-error-signal"></a><code>error</code>: Error signal</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Signals an error.
+    Useful if you want to conditionally abort some part of your program.
+    You can also just <code>throw new Exception()</code>,
+    but this step will avoid printing a stack trace.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>message</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-fileexists-code-verify-if-file-exists-in-workspace"><a class="anchor" href="#code-fileexists-code-verify-if-file-exists-in-workspace"></a><code>fileExists</code>: Verify if file exists in workspace</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Checks if the given file (as relative path to current directory) exists.
+    Returns <code>true | false</code>.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>file</code></dt>
+<dd>
+<div class="paragraph">
+<p>Relative (<code>/</code>-separated) path to file within a workspace to verify its existence.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-isunix-code-checks-if-running-on-a-unix-like-node"><a class="anchor" href="#code-isunix-code-checks-if-running-on-a-unix-like-node"></a><code>isUnix</code>: Checks if running on a Unix-like node</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Returns true if enclosing <code>node</code> is running on a Unix-like system (such as Linux or Mac OS X), false if Windows.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-mail-code-mail"><a class="anchor" href="#code-mail-code-mail"></a><code>mail</code>: Mail</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Simple step for sending email.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>subject</code></dt>
+<dd>
+<div class="paragraph">
+<p>Email subject line.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>body</code></dt>
+<dd>
+<div class="paragraph">
+<p>Email body.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>bcc</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>BCC email address list. Comma separated list of email addresses.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>cc</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>CC email address list. Comma separated list of email addresses.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>charset</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Email body character encoding. Defaults to <code>UTF-8</code>
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>from</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>From email address. Defaults to the admin address globally configured for the Jenkins instance.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>mimeType</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Email body MIME type. Defaults to <code>text/plain</code>.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>replyTo</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Reploy-To email address. Defaults to the admin address globally configured for the Jenkins instance.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>to</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>To email address list. Comma separated list of email addresses.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-pwd-code-determine-current-directory"><a class="anchor" href="#code-pwd-code-determine-current-directory"></a><code>pwd</code>: Determine current directory</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Returns the current directory path as a string.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>tmp</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>If selected, return a temporary directory associated with the workspace rather than the workspace itself.
+    This is an appropriate place to put temporary files which should not clutter a source checkout;
+    local repositories or caches; etc.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-readfile-code-read-file-from-workspace"><a class="anchor" href="#code-readfile-code-read-file-from-workspace"></a><code>readFile</code>: Read file from workspace</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Reads a file from a relative path (with root in current directory, usually workspace) and returns its content as a plain string.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>file</code></dt>
+<dd>
+<div class="paragraph">
+<p>Relative (<code>/</code>-separated) path to file within a workspace to read.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>encoding</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-retry-code-retry-the-body-up-to-n-times"><a class="anchor" href="#code-retry-code-retry-the-body-up-to-n-times"></a><code>retry</code>: Retry the body up to N times</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Retry the block (up to N times) if any exception happens during its body execution.
+    If an exception happens on the final attempt then it will lead to aborting the build (unless it is caught and processed somehow).</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>count</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> int</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-sleep-code-sleep"><a class="anchor" href="#code-sleep-code-sleep"></a><code>sleep</code>: Sleep</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Simply pauses the Pipeline build until the given amount of time has expired.
+    Equivalent to (on Unix) <code>sh 'sleep …'</code>.
+    May be used to pause one branch of <code>parallel</code> while another proceeds.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> int</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>unit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Values:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NANOSECONDS</code></p>
+</li>
+<li>
+<p><code>MICROSECONDS</code></p>
+</li>
+<li>
+<p><code>MILLISECONDS</code></p>
+</li>
+<li>
+<p><code>SECONDS</code></p>
+</li>
+<li>
+<p><code>MINUTES</code></p>
+</li>
+<li>
+<p><code>HOURS</code></p>
+</li>
+<li>
+<p><code>DAYS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-stash-code-stash-some-files-to-be-used-later-in-the-build"><a class="anchor" href="#code-stash-code-stash-some-files-to-be-used-later-in-the-build"></a><code>stash</code>: Stash some files to be used later in the build</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Saves a set of files for use later in the same build, generally on another node/workspace.
+    Stashed files are not otherwise available and are generally discarded at the end of the build.
+    Note that the <code>stash</code> and <code>unstash</code> steps are designed for use with small files.
+    For large data transfers, use the External Workspace Manager plugin,
+    or use an external repository manager such as Nexus or Artifactory.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of a stash.
+    Should be a simple identifier akin to a job name.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>excludes</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Optional set of "Ant-style exclude patterns.
+    Use a comma separated list to add more than one expression.
+    If blank, no file will be excluded.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>includes</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Optional set of "Ant-style include patterns.
+    Use a comma separated list to add more than one expression.
+    If blank, treated like <code>**</code>: all files.
+    The current working directory is the base directory for the saved files,
+    which will later be restored in the same relative locations,
+    so if you want to use a subdirectory wrap this in <code>dir</code>.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>useDefaultExcludes</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>If selected, use the default excludes from Ant - see
+    here for the list.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-step-code-general-build-step"><a class="anchor" href="#code-step-code-general-build-step"></a><code>step</code>: General Build Step</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>This is a special step that allows to call builders or post-build actions (as in freestyle or similar projects), in general "build steps".
+Just select the build step to call from the dropdown list and configure it as needed.</p>
+</div>
+<div class="paragraph">
+<p>Note that only Pipeline-compatible steps will be shown in the list.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>delegate</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Choice of Objects</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-timeout-code-enforce-time-limit"><a class="anchor" href="#code-timeout-code-enforce-time-limit"></a><code>timeout</code>: Enforce time limit</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Executes the code inside the block with a determined time out limit.
+    If the time limit is reached, an exception is thrown, which leads in aborting
+    the build (unless it is caught and processed somehow).</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> int</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>unit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Values:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NANOSECONDS</code></p>
+</li>
+<li>
+<p><code>MICROSECONDS</code></p>
+</li>
+<li>
+<p><code>MILLISECONDS</code></p>
+</li>
+<li>
+<p><code>SECONDS</code></p>
+</li>
+<li>
+<p><code>MINUTES</code></p>
+</li>
+<li>
+<p><code>HOURS</code></p>
+</li>
+<li>
+<p><code>DAYS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-tool-code-use-a-tool-from-a-predefined-tool-installation"><a class="anchor" href="#code-tool-code-use-a-tool-from-a-predefined-tool-installation"></a><code>tool</code>: Use a tool from a predefined Tool Installation</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Binds a tool installation to a variable (the tool home directory is returned).
+    Only tools already configured in <code>Configure System</code> are available here. If the original tool installer
+    has the auto-provision feature, then the tool will be installed as required.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>type</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-unstash-code-restore-files-previously-stashed"><a class="anchor" href="#code-unstash-code-restore-files-previously-stashed"></a><code>unstash</code>: Restore files previously stashed</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Restores a set of files previously `stash`ed into the current workspace.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of a previously saved stash.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-waituntil-code-wait-for-condition"><a class="anchor" href="#code-waituntil-code-wait-for-condition"></a><code>waitUntil</code>: Wait for condition</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Runs its body repeatedly until it returns <code>true</code>.
+    If it returns <code>false</code>, waits a while and tries again.
+    (Subsequent failures will slow down the delay between attempts.)
+    There is no limit to the number of retries,
+    but if the body throws an error that is thrown up immediately.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-withenv-code-set-environment-variables"><a class="anchor" href="#code-withenv-code-set-environment-variables"></a><code>withEnv</code>: Set environment variables</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sets one or more environment variables within a block.
+These are available to any external processes spawned within that scope.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">node {
+  withEnv(['MYTOOL_HOME=/usr/local/mytool']) {
+    sh '$MYTOOL_HOME/bin/start'
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(Note that here we are using single quotes in Groovy, so the variable expansion is being done by the Bourne shell, not Jenkins.)</p>
+</div>
+<div class="paragraph">
+<p>See the documentation for the <code>env</code> singleton for more information on environment variables.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>overrides</code></dt>
+<dd>
+<div class="paragraph">
+<p>A list of environment variables to set, each in the form <code>VARIABLE=value</code>
+    or <code>VARIABLE=</code> to unset variables otherwise defined.
+    You may also use the syntax <code>PATH+WHATEVER=/something</code>
+    to prepend <code>/something</code> to <code>$PATH</code>.
+<strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-wrap-code-general-build-wrapper"><a class="anchor" href="#code-wrap-code-general-build-wrapper"></a><code>wrap</code>: General Build Wrapper</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>This is a special step that allows to call build wrappers (also called "Environment Configuration" in freestyle or similar projects).
+Just select the wrapper to use from the dropdown list and configure it as needed. Everything inside the wrapper block is under its effect.</p>
+</div>
+<div class="paragraph">
+<p>Note that only Pipeline-compatible wrappers will be shown in the list.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>delegate</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Choice of Objects</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-writefile-code-write-file-to-workspace"><a class="anchor" href="#code-writefile-code-write-file-to-workspace"></a><code>writeFile</code>: Write file to workspace</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Write the given content to a named file in the current directory.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>file</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>text</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>encoding</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-catcherror-code-catch-error-and-set-build-result"><a class="anchor" href="#code-catcherror-code-catch-error-and-set-build-result"></a><code>catchError</code>: Catch error and set build result</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>If the body throws an exception, mark the build as a failure, but nonetheless
+    continue to execute the Pipeline from the statement following the <code>catchError</code> step.
+    This is only necessary when using certain post-build actions (notifiers)
+    originally defined for freestyle projects which pay attention to the result of the ongoing build.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">node {
+    catchError {
+        sh 'might fail'
+    }
+    step([$class: 'Mailer', recipients: 'admin@somewhere'])
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the shell step fails, the Pipeline build’s status will be set to failed, so that the subsequent mail step will see that this build is failed.
+    In the case of the mail sender, this means that it will send mail.
+    (It may also send mail if this build succeeded but previous ones failed, and so on.)
+    Even in that case, this step can be replaced by the following idiom:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">node {
+    try {
+        sh 'might fail'
+    } catch (err) {
+        echo "Caught: ${err}"
+        currentBuild.result = 'FAILURE'
+    }
+    step([$class: 'Mailer', recipients: 'admin@somewhere'])
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For all other cases, use plain <code>try</code>-<code>catch</code>(-<code>finally</code>) blocks:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">node {
+    sh './set-up.sh'
+    try {
+        sh 'might fail'
+        echo 'Succeeded!'
+    } catch (err) {
+        echo "Failed: ${err}"
+    } finally {
+        sh './tear-down.sh'
+    }
+    echo 'Printed whether above succeeded or failed.'
+}
+// …and the pipeline as a whole succeeds</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See this document for background.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-getcontext-code-get-contextual-object-from-internal-apis"><a class="anchor" href="#code-getcontext-code-get-contextual-object-from-internal-apis"></a><code>getContext</code>: Get contextual object from internal APIs</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Obtains a contextual object as in <code>StepContext.get</code>; cf. <code>withContext</code>.
+Takes a single <code>type</code> argument. Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">getContext hudson.FilePath&lt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For use from trusted code, such as global libraries, which can manipulate internal Jenkins APIs.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>type</code></dt>
+<dd>
+<div class="paragraph">
+<p><code>java.lang.UnsupportedOperationException: do not know how to categorize attributes of type java.lang.Class&lt;?&gt;</code></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-unarchive-code-copy-archived-artifacts-into-the-workspace"><a class="anchor" href="#code-unarchive-code-copy-archived-artifacts-into-the-workspace"></a><code>unarchive</code>: Copy archived artifacts into the workspace</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>mapping</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><code>java.lang.UnsupportedOperationException: do not know how to categorize attributes of type java.util.Map&lt;java.lang.String, java.lang.String&gt;</code></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-withcontext-code-use-contextual-object-from-internal-apis-within-a-block"><a class="anchor" href="#code-withcontext-code-use-contextual-object-from-internal-apis-within-a-block"></a><code>withContext</code>: Use contextual object from internal APIs within a block</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Wraps a block in a contextual object as in <code>BodyInvoker.withContext</code>; cf. <code>getContext</code>.
+Takes a single <code>context</code> argument plus a block. Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">withContext(new MyConsoleLogFilter()) {
+    sh 'process'
+}&lt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Automatically merges its argument with contextual objects in the case of <code>ConsoleLogFilter</code>, <code>LauncherDecorator</code>, and <code>EnvironmentExpander</code>.</p>
+</div>
+<div class="paragraph">
+<p>For use from trusted code, such as global libraries, which can manipulate internal Jenkins APIs.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>context</code></dt>
+<dd>
+<div class="paragraph">
+<p>+ java.lang.Object+</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/pipeline/steps/workflow-basic-steps.adoc" title="Edit /doc/pipeline/steps/workflow-basic-steps.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/pipeline/steps/workflow-basic-steps.adoc" title="View /doc/pipeline/steps/workflow-basic-steps.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

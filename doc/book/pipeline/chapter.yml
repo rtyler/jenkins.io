@@ -1,0 +1,7 @@
+---
+sections:
+  - getting-started
+  - jenkinsfile
+  - multibranch
+  - shared-libraries
+  - advanced
