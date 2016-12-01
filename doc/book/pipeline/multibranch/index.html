@@ -378,207 +378,177 @@ Multibranch Pipelines
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#making-pull-requests">Making Pull Requests</a></li>
-<li><a href="#using-organization-folders">Using Organization Folders</a></li>
+<li><a href="#creating-a-multibranch-pipeline">Creating a Multibranch Pipeline</a>
+<ul class="sectlevel2">
+<li><a href="#additional-environment-variables">Additional Environment Variables</a></li>
+<li><a href="#supporting-pull-requests">Supporting Pull Requests</a></li>
+</ul>
+</li>
+<li><a href="#organization-folders">Using Organization Folders</a></li>
 </ul>
 </div>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <strong>Multibranch Pipeline</strong> project type enables you to configure different jobs
-for different branches of the same project. In a multibranch pipeline
-configuration, Jenkins automatically discovers, manages, and executes jobs
-for multiple source repositories and branches. This eliminates the need for
-manual job creation and management, as would otherwise be necessary
-when, for example, a developer adds a new feature to an existing
-product.</p>
+<p>In the <a href="../jenkinsfile/">previous section</a> a <code>Jenkinsfile</code> which could be
+checked into source control was implemented. This section covers the concept of
+<strong>Multibranch</strong> Pipelines which build on the <code>Jenkinsfile</code> foundation to provide
+more dynamic and automatic functionality in Jenkins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-multibranch-pipeline"><a class="anchor" href="#creating-a-multibranch-pipeline"></a>Creating a Multibranch Pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Multibranch Pipeline</strong> project type enables you to implement different
+Jenkinsfiles for different branches of the same project.
+In a Multibranch Pipeline project, Jenkins automatically discovers, manages and
+executes Pipelines for branches which contain a <code>Jenkinsfile</code> in source control</p>
 </div>
 <div class="paragraph">
-<p>A multibranch pipeline project always includes a <em>Jenkinsfile</em> in its
-repository root. Jenkins automatically creates a sub-project for each branch
-that it finds in a repository with a <code>Jenkinsfile</code>.</p>
-</div>
-<div class="paragraph">
-<p>Multibranch pipelines use the same version control as the rest of your software
-development process. This "pipeline as code" approach has the following
-advantages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>You can modify pipeline code without special editing permissions.</p>
-</li>
-<li>
-<p>Finding out who changed what and why no longer depends on whether developers remember to comment their code changes in configuration files.</p>
-</li>
-<li>
-<p>Version control makes the history of changes to code readily apparent.</p>
-</li>
-</ul>
+<p>This eliminates the need for manual Pipeline creation and management, as would
+be necessary when, for example, a developer adds a new feature branch.</p>
 </div>
 <div class="paragraph">
 <p>To create a Multibranch Pipeline:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Click New Item on your Jenkins home page, enter a name for your job, select Multibranch Pipeline, and click OK.</p>
-</li>
-<li>
-<p>Configure your SCM source (options include Git, GitHub, Mercurial, Subversion, and Bitbucket), supplying information about the owner, scan credentials, and repository in appropriate fields.
-For example, if you select Git as the branch source, you are prompted for the usual connection information, but then rather than enter a fixed refspec (Git&#8217;s name for a source/destination pair), you would enter a branch name pattern (Use default settings to look for any branch).</p>
-</li>
-<li>
-<p>Configure the other multibranch pipeline options:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>API endpoint - an alternate API endpoint to use a self-hosted GitHub Enterprise</p>
-</li>
-<li>
-<p>Checkout credentials - alternate credentials to use when checking out the code (cloning)</p>
-</li>
-<li>
-<p>Include branches - a regular expression to specify branches to include</p>
-</li>
-<li>
-<p>Exclude branches - a regular expression to specify branches to exclude; note that this will takes precedence over the contents of include expressions</p>
+<p>Click <strong>New Item</strong> on Jenkins home page.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Save your configuration.</p>
-</li>
-</ol>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/new-item-selection.png" alt="Click *New Item* on the Jenkins home page">
 </div>
-<div class="paragraph">
-<p>Jenkins automatically scans the designated repository and creates appropriate branches.</p>
-</div>
-<div class="paragraph">
-<p>For example (again in Git), if you started with a master branch, and then wanted
-to experiment with some changes, and so did <code>git checkout -b newfeature</code> and
-pushed some commits, Jenkins would automatically detect the new branch in your
-repository and create a new sub-project for it. That sub-project would have its
-own build history unrelated to the trunk (main line).</p>
-</div>
-<div class="paragraph">
-<p>If you choose, you can ask for the sub-project to be automatically removed after
-its branch is merged with the main line and deleted. To change your Pipeline
-script—for example, to add a new Jenkins publisher step corresponding to new
-reports that your <code>Makefile</code>/<code>pom.xml</code>/etc. is creating—you edit the appropriate
-<code>Jenkinsfile</code>. Your Pipeline script is always synchronized with
-the rest of the source code you are working on.</p>
-</div>
-<div class="paragraph">
-<p><strong>Multibranch Pipeline</strong> projects expose the name of the branch being built with
-the <code>BRANCH_NAME</code> environment variable. In multibranch pipelines, the <code>checkout
-scm</code> step checks out the specific commit that the <code>Jenkinsfile</code> originated, so
-as to maintain branch integrity.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="making-pull-requests"><a class="anchor" href="#making-pull-requests"></a>Making Pull Requests</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A pull request notifies the person responsible for maintaining a Jenkins
-repository that you have a change or change set that you want to see merged into
-the main branch associated with that repository. Each individual change is
-called a "commit."</p>
-</div>
-<div class="paragraph">
-<p>You make pull requests from a command line, or by selecting the appropriately
-labeled button (typically "Pull" or "Create Pull Request") in the interface for
-your source code management system.</p>
-</div>
-<div class="paragraph">
-<p>A pull request to a repository included in or monitored by an Organization
-Folder can be used to automatically execute a multibranch pipeline build.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="using-organization-folders"><a class="anchor" href="#using-organization-folders"></a>Using Organization Folders</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Organization folders enable Jenkins to automatically detect and include any new
-repositories within them as resources.</p>
-</div>
-<div class="paragraph">
-<p>When you create a new repository (as might be the case for a new project), that
-repository has a <code>Jenkinsfile</code>. If you also configure one or more organization
-folders, Jenkins automatically detects any repository in an organization folder,
-scans the contents of that repository at either default or configurable
-intervals, and creates a Multibranch Pipeline project for what it finds in the
-scan. An organization folder functions as a "parent," and any item within it is
-treated as a "child" of that parent.</p>
-</div>
-<div class="paragraph">
-<p>Organization folders alleviate the need to manually create projects for new
-repositories. When you use organization folders, Jenkins views your repositories
-as a hierarchy, and each repository (organization folder) may optionally have
-child elements such as branches or pull requests.</p>
-</div>
-<div class="paragraph">
-<p>To create Organization folders:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Open Jenkins in your web browser.</p>
-</li>
-<li>
-<p>Go to: New Item → GitHub Organization or New Item → Bitbucket Team.</p>
-</li>
-<li>
-<p>Follow the configuration steps, making sure to specify appropriate scan
-credentials and a specific owner for the GitHub Organization or Bitbucket Team
-name.</p>
-</li>
-<li>
-<p>Set build triggers by selecting the checkbox associated with the trigger type
-you want. Folder scans and the pipeline builds associated with those scans can
-be initiated by command scripts or performed at defined intervals. They can also
-triggered by project promotion or changes to the images in a monitored Docker
-hub.</p>
-</li>
-<li>
-<p>Decide whether to automatically remove or retain unused items. "Orphaned Item
-Strategy" fields in the configuration interface let you specify how many days to
-keep old items, and how many old items to keep. If you enter no values in these
-fields, unused items are removed by default.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>While configuring organization folders, you can set the following options:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Repository name pattern - a regular expression to specify which repositories are included in scans</p>
+<p>Enter a name for your Pipeline, select <strong>Multibranch Pipeline</strong> and click <strong>OK</strong>.</p>
 </li>
+</ul>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Jenkins uses the name of the Pipeline to create directories on disk. Pipeline
+names which include spaces may uncover bugs in scripts which do not expect
+paths to contain spaces.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/new-item-multibranch-creation.png" alt="Enter a name, select *Multibranch Pipeline*, and click *OK*">
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>API endpoint - an alternate API endpoint to use a self-hosted GitHub Enterprise</p>
+<p>Add a <strong>Branch Source</strong> (for example, Git) and enter the location of the
+repository.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/multibranch-branch-source.png" alt="Add a Branch Source">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/multibranch-branch-source-configuration.png" alt="Add the URL to the project repository">
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>Checkout credentials - alternate credentials to use when checking out (cloning) code</p>
+<p><strong>Save</strong> the Multibranch Pipeline project.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Multibranch Pipeline projects and Organization Folders are examples of
-"computed folder" functionality. In Multibranch Pipeline projects, computation
-creates child items for eligible branches. In Organization folders, computation
-populates child items as individual Multibranch Pipelines for scanned
-repositories.</p>
+<p>Upon <strong>Save</strong>, Jenkins automatically scans the designated repository and creates
+appropriate items for each branch in the repository which contains a
+<code>Jenkinsfile</code>.</p>
 </div>
 <div class="paragraph">
-<p>Select the "Folder Computation" section of your Jenkins interface to see the
-duration (in seconds) and result (success or failure) of computation operations,
-or to access a Folder Computation Log that provides more detail about this
-activity.</p>
+<p>By default, Jenkins will not automatically reindex the repository for branch
+additions or deletions (unless using an <a href="#organization-folders">Organization Folder</a>),
+so it is often useful to configure a Multibranch Pipeline to periodically
+reindex in the configuration:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/multibranch-branch-indexing.png" alt="Setting up branch reindexing">
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-environment-variables"><a class="anchor" href="#additional-environment-variables"></a>Additional Environment Variables</h3>
+<div class="paragraph">
+<p>Multibranch Pipelines expose additional information about the branch being
+built through the <code>env</code> global variable, such as:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">BRANCH_NAME</dt>
+<dd>
+<p>Name of the branch for which this Pipeline is executing, for
+example <code>master</code>.</p>
+</dd>
+<dt class="hdlist1">CHANGE_ID</dt>
+<dd>
+<p>An identifier corresponding to some kind of change request, such as a pull request number</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Additional environment variables are listed in the
+<a href="../getting-started/#global-variable-reference">Global Variable Reference</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="supporting-pull-requests"><a class="anchor" href="#supporting-pull-requests"></a>Supporting Pull Requests</h3>
+<div class="paragraph">
+<p>With the "GitHub" or "Bitbucket" Branch Sources, Multibranch Pipelines can be
+used for validating pull/change requests. This functionality is provided,
+respectively, by the
+<a href="https://plugins.jenkins.io/github-branch-source">GitHub Branch Source</a>
+and
+<a href="https://plugins.jenkins.io/cloudbees-bitbucket-branch-source">Bitbucket Branch Source</a>
+plugins. Please consult their documentation for further information on how to
+use those plugins.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="organization-folders"><a class="anchor" href="#organization-folders"></a>Using Organization Folders</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Organization Folders enable Jenkins to monitor an entire GitHub
+Organization, or Bitbucket Team/Project and automatically create new
+Multibranch Pipelines for repositories which contain branches and pull requests
+containing a <code>Jenkinsfile</code>.</p>
+</div>
+<div class="paragraph">
+<p>Currently, this functionality exists only for GitHub and Bitbucket, with
+functionality provided by the
+<a href="https://plugins.jenkins.io/github-organization-folder">GitHub OrganizationFolder</a>
+and
+<a href="https://plugins.jenkins.io/cloudbees-bitbucket-branch-source">Bitbucket Branch Source</a>
+plugins.</p>
 </div>
 </div>
 </div>
