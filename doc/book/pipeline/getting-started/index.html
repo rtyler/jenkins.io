@@ -415,12 +415,12 @@ running Jenkins instance.</p>
 <h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To use Jenkins Pipeline, a relatively recent version of Jenkins must be used with the  appropriate plugins installed:</p>
+<p>To use Jenkins Pipeline, you will need:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Jenkins 2.x or later (older versions back to 1.642.3 will work but are not
+<p>Jenkins 2.x or later (older versions back to 1.642.3 may work but are not
 recommended)</p>
 </li>
 <li>
@@ -438,7 +438,7 @@ recommended)</p>
 <h2 id="defining-a-pipeline"><a class="anchor" href="#defining-a-pipeline"></a>Defining a Pipeline</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pipeline Script is written with
+<p>Pipeline Script is written in
 <a href="http://groovy-lang.org/">Groovy</a>.
 The relevant bits of
 <a href="http://groovy-lang.org/semantics.html">Groovy syntax</a>
@@ -489,6 +489,22 @@ which Jenkins can then load directly from source control.
 <p>Enter a name for your Pipeline, select <strong>Pipeline</strong> and click <strong>OK</strong>.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Jenkins uses the name of the Pipeline to create directories on disk. Pipeline
+names which include spaces may uncover bugs in scripts which do not expect
+paths to contain spaces.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="imageblock center">
 <div class="content">
@@ -548,27 +564,11 @@ web UI, using two valuable steps.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><code>node</code> to allocate an executor and workspace on the Jenkins cluster.</td>
+<td><code>node</code> allocates an executor and workspace on the Jenkins cluster.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>echo</code> to echo a simple string in the Console Output.</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Jenkins uses the name of the Pipeline to create directories on disk. Pipeline
-names which include spaces may uncover bugs in scripts which do not expect
-paths to contain spaces.</p>
-</div>
-</td>
+<td><code>echo</code> writes simple string in the Console Output.</td>
 </tr>
 </table>
 </div>
