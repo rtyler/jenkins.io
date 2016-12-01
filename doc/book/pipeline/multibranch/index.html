@@ -375,6 +375,15 @@ Index
 <h1>
 Multibranch Pipelines
 </h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#making-pull-requests">Making Pull Requests</a></li>
+<li><a href="#using-organization-folders">Using Organization Folders</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p>The <strong>Multibranch Pipeline</strong> project type enables you to configure different jobs
 for different branches of the same project. In a multibranch pipeline
@@ -466,6 +475,112 @@ the rest of the source code you are working on.</p>
 the <code>BRANCH_NAME</code> environment variable. In multibranch pipelines, the <code>checkout
 scm</code> step checks out the specific commit that the <code>Jenkinsfile</code> originated, so
 as to maintain branch integrity.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="making-pull-requests"><a class="anchor" href="#making-pull-requests"></a>Making Pull Requests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A pull request notifies the person responsible for maintaining a Jenkins
+repository that you have a change or change set that you want to see merged into
+the main branch associated with that repository. Each individual change is
+called a "commit."</p>
+</div>
+<div class="paragraph">
+<p>You make pull requests from a command line, or by selecting the appropriately
+labeled button (typically "Pull" or "Create Pull Request") in the interface for
+your source code management system.</p>
+</div>
+<div class="paragraph">
+<p>A pull request to a repository included in or monitored by an Organization
+Folder can be used to automatically execute a multibranch pipeline build.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-organization-folders"><a class="anchor" href="#using-organization-folders"></a>Using Organization Folders</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Organization folders enable Jenkins to automatically detect and include any new
+repositories within them as resources.</p>
+</div>
+<div class="paragraph">
+<p>When you create a new repository (as might be the case for a new project), that
+repository has a <code>Jenkinsfile</code>. If you also configure one or more organization
+folders, Jenkins automatically detects any repository in an organization folder,
+scans the contents of that repository at either default or configurable
+intervals, and creates a Multibranch Pipeline project for what it finds in the
+scan. An organization folder functions as a "parent," and any item within it is
+treated as a "child" of that parent.</p>
+</div>
+<div class="paragraph">
+<p>Organization folders alleviate the need to manually create projects for new
+repositories. When you use organization folders, Jenkins views your repositories
+as a hierarchy, and each repository (organization folder) may optionally have
+child elements such as branches or pull requests.</p>
+</div>
+<div class="paragraph">
+<p>To create Organization folders:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Jenkins in your web browser.</p>
+</li>
+<li>
+<p>Go to: New Item → GitHub Organization or New Item → Bitbucket Team.</p>
+</li>
+<li>
+<p>Follow the configuration steps, making sure to specify appropriate scan
+credentials and a specific owner for the GitHub Organization or Bitbucket Team
+name.</p>
+</li>
+<li>
+<p>Set build triggers by selecting the checkbox associated with the trigger type
+you want. Folder scans and the pipeline builds associated with those scans can
+be initiated by command scripts or performed at defined intervals. They can also
+triggered by project promotion or changes to the images in a monitored Docker
+hub.</p>
+</li>
+<li>
+<p>Decide whether to automatically remove or retain unused items. "Orphaned Item
+Strategy" fields in the configuration interface let you specify how many days to
+keep old items, and how many old items to keep. If you enter no values in these
+fields, unused items are removed by default.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>While configuring organization folders, you can set the following options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Repository name pattern - a regular expression to specify which repositories are included in scans</p>
+</li>
+<li>
+<p>API endpoint - an alternate API endpoint to use a self-hosted GitHub Enterprise</p>
+</li>
+<li>
+<p>Checkout credentials - alternate credentials to use when checking out (cloning) code</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Multibranch Pipeline projects and Organization Folders are examples of
+"computed folder" functionality. In Multibranch Pipeline projects, computation
+creates child items for eligible branches. In Organization folders, computation
+populates child items as individual Multibranch Pipelines for scanned
+repositories.</p>
+</div>
+<div class="paragraph">
+<p>Select the "Folder Computation" section of your Jenkins interface to see the
+duration (in seconds) and result (success or failure) of computation operations,
+or to access a Folder Computation Log that provides more detail about this
+activity.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="section_nav pagination-links">
