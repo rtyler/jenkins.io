@@ -5191,12 +5191,6 @@
 <changefreq>never</changefreq>
 </url>
 <url>
-<loc>https://rtyler.github.io/jenkins.io/doc/book/pipeline/advanced/</loc>
-<lastmod>2016-12-01</lastmod>
-<priority>0.1</priority>
-<changefreq>never</changefreq>
-</url>
-<url>
 <loc>https://rtyler.github.io/jenkins.io/doc/book/pipeline/chapter.yml</loc>
 <lastmod>2016-12-01</lastmod>
 <priority>0.1</priority>
