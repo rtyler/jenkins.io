@@ -375,17 +375,567 @@ Index
 <h1>
 Shared Libraries
 </h1>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This section is still under construction
-</td>
-</tr>
-</table>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#directory-structure">Directory structure</a></li>
+<li><a href="#defining-shared-libraries">Defining Shared Libraries</a>
+<ul class="sectlevel2">
+<li><a href="#global-shared-libraries">Global Shared Libraries</a></li>
+<li><a href="#folder-level-shared-libraries">Folder-level Shared Libraries</a></li>
+<li><a href="#automatic-shared-libraries">Automatic Shared Libraries</a></li>
+</ul>
+</li>
+<li><a href="#using-libraries">Using libraries</a>
+<ul class="sectlevel2">
+<li><a href="#overriding-versions">Overriding versions</a></li>
+</ul>
+</li>
+<li><a href="#writing-libraries">Writing libraries</a>
+<ul class="sectlevel2">
+<li><a href="#writing-shared-code">Writing shared code</a></li>
+<li><a href="#accessing-steps">Accessing steps</a></li>
+<li><a href="#defining-global-functions">Defining global functions</a></li>
+<li><a href="#defining-global-variables">Defining global variables</a></li>
+<li><a href="#define-more-structured-dsl">Define more structured DSL</a></li>
+<li><a href="#using-third-party-libraries">Using third-party libraries</a></li>
+<li><a href="#loading-resources">Loading resources</a></li>
+<li><a href="#pretesting-library-changes">Pretesting library changes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As Pipeline is adopted for more and more projects in an organization, common
+patterns are likely to emerge. Oftentimes it is useful to share parts of
+Pipeline scripts between various projects to reduce redundancies and keep code
+"DRY"
+<sup class="footnote" id="_footnote_dry">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline has support for creating "Shared Libraries" which can be defined in
+external source control repositories and loaded into existing Pipelines.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="directory-structure"><a class="anchor" href="#directory-structure"></a>Directory structure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The directory structure of a Shared Library repository is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>(root)
++- src                     # Groovy source files
+|   +- org
+|       +- foo
+|           +- Bar.groovy  # for org.foo.Bar class
++- vars
+|   +- foo.groovy          # for global 'foo' variable/function
+|   +- foo.txt             # help for 'foo' variable/function
++- resources               # resource files (external libraries only)
+|   +- org
+|       +- foo
+|           +- bar.json    # static helper data for org.foo.Bar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>src</code> directory should look like standard Java source directory structure.
+This directory is added to the classpath when executing Pipelines.</p>
+</div>
+<div class="paragraph">
+<p>The <code>vars</code> directory hosts scripts that define global variables accessible from
+Pipeline scripts.
+The basename of each <code>*.groovy</code> file should be a Groovy (~ Java) identifier, conventionally <code>camelCased</code>.
+The matching <code>*.txt</code>, if present, can contain documentation, processed through the system’s configured markup formatter
+(so may really be HTML, Markdown, etc., though the <code>txt</code> extension is required).</p>
+</div>
+<div class="paragraph">
+<p>The Groovy source files in these directories get the same “CPS transformation” as your Pipeline scripts.</p>
+</div>
+<div class="paragraph">
+<p>A <code>resources</code> directory allows the <code>libraryResource</code> step to be used from an external library to load associated non-Groovy files.
+Currently this feature is not supported for internal libraries.</p>
+</div>
+<div class="paragraph">
+<p>Other directories under the root are reserved for future enhancements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="defining-shared-libraries"><a class="anchor" href="#defining-shared-libraries"></a>Defining Shared Libraries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An Shared Library is defined with a name, a source code retrieval method such
+as by SCM, and optionally a default version.  The name should be a short
+identifier as it will be used in scripts.</p>
+</div>
+<div class="paragraph">
+<p>The version could be anything understood by that SCM; for example, branches,
+tags, and commit hashes all work for Git.  You may also declare whether scripts
+need to explicitly request that library (detailed below), or if it is present
+by default.  Furthermore, if you specify a version in Jenkins configuration,
+you can block scripts from selecting a <em>different</em> version.</p>
+</div>
+<div class="paragraph">
+<p>The best way to specify the SCM is using an SCM plugin which has been
+specifically updated to support a new API for checking out an arbitrary named
+version (<em>Modern SCM</em> option).  As of this writing, the latest versions of the
+Git and Subversion plugins support this mode; others should follow.</p>
+</div>
+<div class="paragraph">
+<p>If your SCM plugin has not been integrated, you may select <em>Legacy SCM</em> and
+pick anything offered.  In this case, you need to include
+<code>${library.yourLibName.version}</code> somewhere in the configuration of the SCM, so
+that during checkout the plugin will expand this variable to select the desired
+version.  For example, for Subversion, you can set the <em>Repository URL</em> to
+<code>https://svnserver/project/${library.yourLibName.version}</code> and then use
+versions such as <code>trunk</code> or <code>branches/dev</code> or <code>tags/1.0</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="global-shared-libraries"><a class="anchor" href="#global-shared-libraries"></a>Global Shared Libraries</h3>
+<div class="paragraph">
+<p>There are several places where Shared Libraries can be defined, depending on
+the use-case. <em>Manage Jenkins » Configure System » Global Pipeline Libraries</em>
+as many libraries as necessary can be configured.</p>
+</div>
+<div class="paragraph">
+<p>SInce these libraries will be globally usable, any Pipeline in the system can
+utilize functionality implemented in these libraries.</p>
+</div>
+<div class="paragraph">
+<p>These libraries are considered "trusted:" they can run any methods in Java,
+Groovy, Jenkins internal APIs, Jenkins plugins, or third-party libraries.  This
+allows you to define libraries which encapsulate individually unsafe APIs in a
+higher-level wrapper safe for use from any job.  Beware that <strong>anyone able to
+push commits to this SCM repository could obtain unlimited access to Jenkins</strong>.
+You need the <em>Overall/RunScripts</em> permission to configure these libraries
+(normally this will be granted to Jenkins administrators).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="folder-level-shared-libraries"><a class="anchor" href="#folder-level-shared-libraries"></a>Folder-level Shared Libraries</h3>
+<div class="paragraph">
+<p>Any Folder created can have Shared Libraries associated with it. This mechanism
+allows scoping of specific libraries to all the Pipelines inside of the folder
+or subfolder.</p>
+</div>
+<div class="paragraph">
+<p>Folder-based libraries are not considered "trusted:" they run in the Groovy
+sandbox just like typical Pipeline scripts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="automatic-shared-libraries"><a class="anchor" href="#automatic-shared-libraries"></a>Automatic Shared Libraries</h3>
+<div class="paragraph">
+<p>Other plugins may add ways of defining libraries on the fly.
+For example, the
+<a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folder</a>
+plugin allows a scripty to use an untrusted library such as
+<code>github.com/someorg/somerepo</code> without any additional configuration.  In this
+case, the specified GitHub repository would be loaded, from the <code>master</code>
+branch, using an anonymous checkout.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-libraries"><a class="anchor" href="#using-libraries"></a>Using libraries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipeline scripts need do nothing special to access external libraries marked <em>Load implicitly</em>,
+or the legacy internal library.
+They may immediately use classes or global variables defined by any such libraries (details below).</p>
+</div>
+<div class="paragraph">
+<p>To access other external libraries, a script needs to use the <code>@Library</code> annotation.
+It can take a library name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or a library with a version specifier (branch, tag, etc.):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib@1.0</span><span style="color:#710">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or several libraries:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">otherlib@abc1234</span><span style="color:#710">'</span></span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The annotation can be anywhere in the script where an annotation is permitted by Java/Groovy.
+When referring to class libraries (with <code>src/</code> directories), conventionally the annotation goes on an <code>import</code> statement:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">com.mycorp.pipeline.somelib.UsefulClass</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is legal, though unnecessary, to <code>import</code> a global variable (or function) defined in a <code>vars/</code> directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">usefulFunction</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you have nowhere better to put it, the simplest legal syntax is an unused, untyped field named <code>_</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>) _</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that libraries are resolved and loaded during compilation of the script, before it starts running.
+This allows the Groovy compiler to understand the meaning of symbols you use in static type checking,
+and permits them to be used in type declarations in your script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">com.mycorp.pipeline.somelib.Helper</span>
+
+<span style="color:#339;font-weight:bold">int</span> useSomeLib(Helper helper) {
+    helper.prepare()
+    <span style="color:#080;font-weight:bold">return</span> helper.count()
+}
+
+echo useSomeLib(<span style="color:#080;font-weight:bold">new</span> Helper(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">some text</span><span style="color:#710">'</span></span>))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This matters less for global variables/functions, which are resolved at runtime.</p>
+</div>
+<div class="sect2">
+<h3 id="overriding-versions"><a class="anchor" href="#overriding-versions"></a>Overriding versions</h3>
+<div class="paragraph">
+<p>A <code>@Library</code> annotation may override a default version given in the library’s definition, if the definition permits this.
+In particular, an external library marked for implicit use can still be loaded in a different version using the annotation
+(unless the definition specifically forbids this).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="writing-libraries"><a class="anchor" href="#writing-libraries"></a>Writing libraries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Whether external or internal, shared libraries offer several mechanisms for code reuse.</p>
+</div>
+<div class="sect2">
+<h3 id="writing-shared-code"><a class="anchor" href="#writing-shared-code"></a>Writing shared code</h3>
+<div class="paragraph">
+<p>At the base level, any valid Groovy code is OK. So you can define data
+structures, utility functions, and etc., like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// src/org/foo/Point.groovy</span>
+<span style="color:#080;font-weight:bold">package</span> org.foo;
+
+<span style="color:#777">// point in 3D space</span>
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span> {
+  <span style="color:#339;font-weight:bold">float</span> x,y,z;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="accessing-steps"><a class="anchor" href="#accessing-steps"></a>Accessing steps</h3>
+<div class="paragraph">
+<p>Library classes cannot directly call step functions like <code>sh</code> or <code>git</code>.
+You might want to define a series of functions that in turn invoke other Pipeline step functions.
+You can do this by not explicitly defining the enclosing class,
+just like your main Pipeline script itself:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// src/org/foo/Zot.groovy</span>
+<span style="color:#080;font-weight:bold">package</span> org.foo;
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">checkOutFrom</span>(repo) {
+  git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">git@github.com:jenkinsci/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>repo<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can then call such function from your main Pipeline script like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> z = <span style="color:#080;font-weight:bold">new</span> org.foo.Zot()
+z.checkOutFrom(repo)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However this style has its own limitations; for example, you cannot declare a superclass.</p>
+</div>
+<div class="paragraph">
+<p>Alternately, you can explicitly pass the set of <code>steps</code> to a library class, in a constructor or just one method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">package</span> org.foo
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Utilities</span> {
+  <span style="color:#080;font-weight:bold">def</span> steps
+  <span style="color:#0a8;font-weight:bold">Utilities</span>(steps) {<span style="color:#950">this</span>.steps = steps}
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">mvn</span>(args) {
+    steps.sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>steps.tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Maven</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -o </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>args<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which might be accessed like this from a script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.foo.Utilities</span>
+<span style="color:#080;font-weight:bold">def</span> utils = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">Utilities</span>(steps)
+node {
+  utils.mvn <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean package</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you need to access <code>env</code> or other global variables as well,
+you could pass these in explicitly in the same way,
+or simply pass the entire top-level script rather than just <code>steps</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">package</span> org.foo
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Utilities</span> {
+  <span style="color:#088;font-weight:bold">static</span> <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">mvn</span>(script, args) {
+    script.sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>script.tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Maven</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -s </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>script.env.HOME<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/jenkins.xml -o </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>args<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above example shows the script being passed in to one <code>static</code> method, so it could be accessed like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">static</span> <span style="color:#B44;font-weight:bold">org.foo.Utilities.*</span>
+node {
+  mvn <span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean package</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defining-global-functions"><a class="anchor" href="#defining-global-functions"></a>Defining global functions</h3>
+<div class="paragraph">
+<p>You can define your own functions that looks and feels like built-in step functions like <code>sh</code> or <code>git</code>.
+For example, to define <code>helloWorld</code> step of your own, create a file named <code>vars/helloWorld.groovy</code> and
+define the <code>call</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/helloWorld.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(name) {
+    <span style="color:#777">// you can call any valid step functions from your code, just like you can from Pipeline scripts</span>
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello world, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then your Pipeline can call this function like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">helloWorld <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Joe</span><span style="color:#710">&quot;</span></span>
+helloWorld(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Joe</span><span style="color:#710">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If called with a block, the <code>call</code> method will receive a <code>Closure</code> object. You can define that explicitly
+as the type to clarify your intent, like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/windows.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(Closure body) {
+    node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">windows</span><span style="color:#710">'</span></span>) {
+        body()
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your Pipeline can call this function like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">windows {
+    bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cmd /?</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See [the closure chapter of Groovy language reference](<a href="http://www.groovy-lang.org/closures.html" class="bare">www.groovy-lang.org/closures.html</a>) for more details
+about the block syntax in Groovy.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defining-global-variables"><a class="anchor" href="#defining-global-variables"></a>Defining global variables</h3>
+<div class="paragraph">
+<p>Internally, scripts in the <code>vars</code> directory are instantiated as a singleton on-demand, when used first.
+So it is possible to define more methods, properties on a single file that interact with each other:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/acme.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">setFoo</span>(v) {
+    <span style="color:#950">this</span>.foo = v;
+}
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">getFoo</span>() {
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.foo;
+}
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">say</span>(name) {
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello world, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then your Pipeline can call these functions like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">acme.foo = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">5</span><span style="color:#710">&quot;</span></span>;
+echo acme.foo; <span style="color:#777">// print 5</span>
+acme.say <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Joe</span><span style="color:#710">&quot;</span></span> <span style="color:#777">// print &quot;Hello world, Joe&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that a variable defined in an external library will currently only show up in <em>Global Variables Reference</em> (under <em>Pipeline Syntax</em>)
+after you have first run a successful build using that library, allowing its sources to be checked out by Jenkins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="define-more-structured-dsl"><a class="anchor" href="#define-more-structured-dsl"></a>Define more structured DSL</h3>
+<div class="paragraph">
+<p>If you have a lot of Pipeline jobs that are mostly similar, the global function/variable mechanism gives you
+a handy tool to build a higher-level DSL that captures the similarity. For example, all Jenkins plugins are
+built and tested in the same way, so we might write a global function named <code>jenkinsPlugin</code> like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/jenkinsPlugin.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(body) {
+    <span style="color:#777">// evaluate the body block, and collect configuration into the object</span>
+    <span style="color:#080;font-weight:bold">def</span> config = [:]
+    body.resolveStrategy = Closure.DELEGATE_FIRST
+    body.delegate = config
+    body()
+
+    <span style="color:#777">// now build, based on the configuration provided</span>
+    node {
+        git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/jenkinsci/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>config.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">-plugin.git</span><span style="color:#710">&quot;</span></span>
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">mvn install</span><span style="color:#710">&quot;</span></span>
+        mail <span style="color:#606">to</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">...</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">subject</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>config.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> plugin build</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">...</span><span style="color:#710">&quot;</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With this as an internal or implicit external library,
+the Pipeline script will look a whole lot simpler,
+to the point that people who know nothing about Groovy can write it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">jenkinsPlugin {
+    name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-third-party-libraries"><a class="anchor" href="#using-third-party-libraries"></a>Using third-party libraries</h3>
+<div class="paragraph">
+<p>You may use third-party Java libraries (typically found in Maven Central) within <strong>trusted</strong> library code via <code>@Grab</code>.
+Refer to the [Grape documentation](<a href="http://docs.groovy-lang.org/latest/html/documentation/grape.html#_quick_start" class="bare">docs.groovy-lang.org/latest/html/documentation/grape.html#_quick_start</a>) for details.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Grab</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">org.apache.commons:commons-math3:3.4.1</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.apache.commons.math3.primes.Primes</span>
+<span style="color:#339;font-weight:bold">void</span> parallelize(<span style="color:#339;font-weight:bold">int</span> count) {
+  <span style="color:#080;font-weight:bold">if</span> (!Primes.isPrime(count)) {
+    error <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>count<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> was not prime</span><span style="color:#710">&quot;</span></span>
+  }
+  <span style="color:#777">// …</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Libraries are cached by default in <code>~/.groovy/grapes/</code> on the Jenkins master.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loading-resources"><a class="anchor" href="#loading-resources"></a>Loading resources</h3>
+<div class="paragraph">
+<p>External libraries may load adjunct files from a <code>resources/</code> directory using the <code>libraryResource</code> step.
+The argument is a relative pathname, akin to Java resource loading:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> request = libraryResource <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">com/mycorp/pipeline/somelib/request.json</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The file is loaded as a string, suitable for passing to certain APIs or saving to a workspace using <code>writeFile</code>.</p>
+</div>
+<div class="paragraph">
+<p>It is advisable to use an unique package structure so you do not accidentally conflict with another library.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pretesting-library-changes"><a class="anchor" href="#pretesting-library-changes"></a>Pretesting library changes</h3>
+<div class="paragraph">
+<p>If you notice a mistake in a build using an untrusted library,
+simply click the <em>Replay</em> link to try editing one or more of its source files,
+and see if the resulting build behaves as expected.
+Once you are satisfied with the result, follow the diff link from the build’s status page,
+and apply the diff to the library repository and commit.</p>
+</div>
+<div class="paragraph">
+<p>(Even if the version requested for the library was a branch, rather than a fixed version like a tag,
+replayed builds will use the exact same revision as the original build:
+library sources will not be checked out again.)</p>
+</div>
+<div class="paragraph">
+<p><em>Replay</em> is not currently supported for trusted libraries.
+Modifying resource files is also not currently supported during <em>Replay</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself" class="bare">en.wikipedia.org/wiki/Don't_repeat_yourself</a>
+</div>
 </div>
 </div>
 <div class="section_nav pagination-links">
