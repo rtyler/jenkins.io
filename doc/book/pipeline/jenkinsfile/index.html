@@ -402,7 +402,7 @@ The Jenkinsfile
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section builds on the information covered in <a href="../getting-started/">Getting Started</a>,
-and introduces more useful steps, common patterns and demonstrates some
+and introduces more useful steps, common patterns, and demonstrates some
 non-trivial <code>Jenkinsfile</code> examples.</p>
 </div>
 <div class="paragraph">
@@ -439,7 +439,7 @@ the Pipeline in a <code>Jenkinsfile</code> and check that in to source control.<
 <p>As discussed in the <a href="../getting-started/#defining-a-pipeline-in-scm">Getting Started</a>
 section, a <code>Jenkinsfile</code> is a text file that contains the definition of a
 Jenkins Pipeline and is checked into source control. Consider the following
-Pipeline which implements a basic, three-stage, continuous delivery pipeline.</p>
+Pipeline which implements a basic three-stage continuous delivery pipeline.</p>
 </div>
 <div class="pipeline-block"><div class="listingblock pipeline-script"
       style="display: true">
@@ -461,7 +461,7 @@ Pipeline which implements a basic, three-stage, continuous delivery pipeline.</p
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><code>node</code> allocates an executor and workspace on the Jenkins cluster.</td>
+<td><code>node</code> allocates an executor and workspace in the Jenkins environment.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -472,8 +472,8 @@ Pipeline which implements a basic, three-stage, continuous delivery pipeline.</p
 <div class="paragraph">
 <p>Not all Pipelines will have these same three stages, but this is a good
 continuous delivery starting point to define them for most projects. The
-following can be followed to create and execute a simple Pipeline in a
-local test installation of Jenkins.</p>
+sections below will demonstrate the creation and execution of a simple Pipeline
+in a test installation of Jenkins.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -592,9 +592,9 @@ basic reporting and file archival.</p>
 delivery process. As such, Jenkins has a number of test recording, reporting,
 and visualization facilities provided by a
 <a href="https://plugins.jenkins.io/?labels=report">number of plugins</a>.
-At a fundamental level, when there are test failures,  it is useful to have
-record them reporting and visualization. The example below uses the <code>junit</code>
-step, provided by the
+At a fundamental level, when there are test failures, it is useful to have
+Jenkins record the failures for reporting and visualization in the web UI.  The
+example below uses the <code>junit</code> step, provided by the
 <a href="https://plugins.jenkins.io/junit">JUnit plugin</a>.</p>
 </div>
 <div class="paragraph">
@@ -640,7 +640,7 @@ pattern (<code>**/target/*.xml</code>).</td>
 <div class="paragraph">
 <p>Deployment can imply a variety of steps, depending on the project or
 organization requirements, and may be anything from publishing built artifacts
-to an Artifactory server, or pushing code to a production system.</p>
+to an Artifactory server, to pushing code to a production system.</p>
 </div>
 <div class="paragraph">
 <p>At this stage of the example Pipeline, both the "Build" and "Test" stages have
@@ -691,14 +691,14 @@ more advanced Pipeline Script syntax in more detail.</p>
 <div class="paragraph">
 <p>Pipeline Script is a domain-specific language
 <sup class="footnote" id="_footnote_dsl">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>
-based on Groovy, therefore much of
+based on Groovy, most
 <a href="http://groovy-lang.org/semantics.html">Groovy syntax</a>
-can be used without further consideration in Pipeline Script.</p>
+can be in Pipeline Script without modification.</p>
 </div>
 <div class="sect2">
 <h3 id="string-interpolation"><a class="anchor" href="#string-interpolation"></a>String Interpolation</h3>
 <div class="paragraph">
-<p>Groovy&#8217;s "String" interpolation support can be confusing to many new-comers to
+<p>Groovy&#8217;s "String" interpolation support can be confusing to many newcomers to
 the language. While Groovy supports declaring a string with either single quotes, or
 double quotes, for example:</p>
 </div>
@@ -969,7 +969,7 @@ stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#7
 <div class="paragraph">
 <p>Instead of executing the tests on the "linux" and "windows" labelled nodes in
 series, they will now execute in parallel assuming the requisite capacity
-exists in the Jenkins cluster.</p>
+exists in the Jenkins environment.</p>
 </div>
 </div>
 <div class="sect2">
