@@ -463,7 +463,7 @@ control repository.</p>
 <p>The syntax for defining a Pipeline with either approach is the same, but while
 Jenkins supports entering Pipeline Script directly into the web UI, it&#8217;s
 generally considered best practice to define the Pipeline in a <code>Jenkinsfile</code>
-which Jenkins can then load directly from source control.
+which Jenkins will then load directly from source control.
 <sup class="footnote" id="_footnote_scm">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup></p>
 </div>
 <div class="sect2">
@@ -580,11 +580,9 @@ web UI, using two valuable steps.</p>
 that in the text area provided by the Jenkins job configuration page.</p>
 </div>
 <div class="paragraph">
-<p>Accordingly, you also have the option of writing pipeline scripts (Jenkinsfiles)
-with the editor that you use in your IDE (integrated development environment) or
-SCM system, and then loading those scripts into Jenkins using the <strong>Pipeline
-Script from SCM</strong> option enabled by the workflow-scm-step plugin, which is one of
-the plugins that the Pipeline plugin depends on and automatically installs.</p>
+<p>Accordingly, you also have the option of writing Pipeline scripts
+(Jenkinsfiles) with a text editor and then loading those scripts into Jenkins
+using the <strong>Pipeline Script from SCM</strong> option.</p>
 </div>
 <div class="paragraph">
 <p>Loading pipeline scripts using the <code>checkout scm</code> step leverages the

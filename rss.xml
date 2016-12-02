@@ -3,13 +3,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>https://rtyler.github.io/jenkins.io/</id>
 <title>Jenkins Blog</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <link rel="self" type="application/atom+xml" href="https://rtyler.github.io/jenkins.io/rss.xml" />
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/" />
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/</id>
 <title>What JVM versions are running Jenkins? 2016 Update!</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-11-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" />
 <author>
@@ -131,7 +131,7 @@ All numbers shown below are derived from the new &lt;a href=&quot;stats.jenkins.
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/</id>
 <title>Tuning Jenkins GC For Responsiveness and Stability with Large Instances</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-11-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/" />
 <author>
@@ -948,7 +948,7 @@ another post…​&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/</id>
 <title>Security updates addressing zero day vulnerability</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-11-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/" />
 <author>
@@ -1027,7 +1027,7 @@ mailing list to receive future Jenkins security notifications.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/</id>
 <title>Upcoming November Jenkins Events</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-11-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/" />
 <author>
@@ -1175,7 +1175,7 @@ below please stop by to say &quot;Hi&quot; and talk Jenkins over beer.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/</id>
 <title>Addressing recently disclosed vulnerabilities in the Jenkins CLI</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-11-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/" />
 <author>
@@ -1293,7 +1293,7 @@ to follow. You can learn more about this policy and our processes on our
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/</id>
 <title>Monthly JAM Recap - October 2016</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-11-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/" />
 <author>
@@ -1438,7 +1438,7 @@ last meetups.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/</id>
 <title>xUnit and Pipeline</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-10-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/" />
 <author>
@@ -1945,7 +1945,7 @@ also write your own XSL for result formats not on the known/supported list.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/</id>
 <title>Jenkins World 2016 Session Videos</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-10-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/" />
 <author>
@@ -2027,7 +2027,7 @@ Technical Evangelist at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/</id>
 <title>Controlling the Flow with Stage, Lock, and Milestone</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-10-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/" />
 <author>
@@ -2275,7 +2275,7 @@ stage(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;s
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/</id>
 <title>Jenkins World 2016, That's a Wrap!</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/" />
 <author>
@@ -2421,7 +2421,7 @@ there isn’t, take a look at the
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/</id>
 <title>Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" />
 <author>
@@ -2630,7 +2630,7 @@ on track before, during, and after the conference.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/</id>
 <title>Jenkins World 2016 Wrap-up - Scaling</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-27T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/" />
 <author>
@@ -2852,7 +2852,7 @@ the challenges and opportunities they see ahead.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/</id>
 <title>Jenkins World 2016 Wrap-up - Pipeline</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/" />
 <author>
@@ -3096,7 +3096,7 @@ delivery practices.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/</id>
 <title>Jenkins World 2016 Wrap-up - Introduction</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/" />
 <author>
@@ -3208,7 +3208,7 @@ including slides, videos, and links to other useful resources.  Stay tuned!&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/</id>
 <title>Jenkins Online Meetup report. Plugin Development - WebUI</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/" />
 <author>
@@ -3327,7 +3327,7 @@ or via the &lt;a href=&quot;mailto:events@lists.jenkins-ci.org&quot;&gt;events@l
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/</id>
 <title>Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/" />
 <author>
@@ -3556,7 +3556,7 @@ do this without you.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/</id>
 <title>Take the 2016 Jenkins Survey!</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/" />
 <author>
@@ -3653,7 +3653,7 @@ minutes.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/</id>
 <title>Continuous Delivery of Infrastructure with Jenkins</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/" />
 <author>
@@ -3812,7 +3812,7 @@ pass.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/</id>
 <title>Pipeline at Jenkins World 2016</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/" />
 <author>
@@ -4205,7 +4205,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/</id>
 <title>Introducing a New Way to Define Jenkins Pipelines</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-06T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/" />
 <author>
@@ -4349,7 +4349,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/</id>
 <title>Jenkins World Contributor Summit</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-09-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/" />
 <author>
@@ -4464,7 +4464,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/</id>
 <title>Scaling Jenkins at Jenkins World 2016</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/" />
 <author>
@@ -4738,7 +4738,7 @@ everybody; hope to see you there!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/</id>
 <title>Demos at Jenkins World 2016</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/" />
 <author>
@@ -4955,7 +4955,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/</id>
 <title>Browser-testing with Sauce OnDemand and Pipeline</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/" />
 <author>
@@ -5420,7 +5420,7 @@ repository.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/</id>
 <title>Enforcing Jenkins Best Practices</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/" />
 <author>
@@ -5595,7 +5595,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/</id>
 <title>Ask the Experts at Jenkins World 2016</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/" />
 <author>
@@ -5741,7 +5741,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/</id>
 <title>Jenkins World 2016 Festivities</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/" />
 <author>
@@ -5939,7 +5939,7 @@ Hat and all the other sponsors&lt;/a&gt; who have made this event possible.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/</id>
 <title>GSoC: External Workspace Manager for Pipeline is released</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/" />
 <author>
@@ -6115,7 +6115,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/</id>
 <title>Continuously Delivering Continuous Delivery Pipelines</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/" />
 <author>
@@ -6314,7 +6314,7 @@ enterprise scale.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/</id>
 <title>Using Jenkins for Disparate Feedback on GitHub</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/" />
 <author>
@@ -6409,7 +6409,7 @@ register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off yo
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/</id>
 <title>Continuous Security for Rails apps with Pipeline and Brakeman</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/" />
 <author>
@@ -6940,7 +6940,7 @@ security, pipeline in code is that you can continue to iterate on it!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/</id>
 <title>GSoC: External Workspace Manager for Pipeline. Beta release is available</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/" />
 <author>
@@ -7236,7 +7236,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/</id>
 <title>Don't install software, define your environment with Docker and Pipeline</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/" />
 <author>
@@ -7493,7 +7493,7 @@ change due to a security patch).&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/</id>
 <title>St. Petersburg Jenkins Meetup #3 and #4 Reports</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-08-03T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/" />
 <author>
@@ -7735,7 +7735,7 @@ organizers of the &lt;a href=&quot;http://piter-united.ru/itgm8/itgm.html&quot;&
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/</id>
 <title>Join me for Jenkins World 2016</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-07-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/" />
 <author>
@@ -7868,7 +7868,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/</id>
 <title>Blue Ocean July development update </title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-07-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/" />
 <author>
@@ -8003,7 +8003,7 @@ the experimental update center on this post&lt;/a&gt;.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/</id>
 <title>Sending Notifications in Pipeline</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-07-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/" />
 <author>
@@ -8424,7 +8424,7 @@ my pipeline.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/</id>
 <title>New packages for Jenkins 2.7.1</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-07-14T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/" />
 <author>
@@ -8448,7 +8448,7 @@ These new packages for Jenkins 2.7.1, dated July 14, have the same scripts and p
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/</id>
 <title>Jenkins 2 hits LTS</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-07-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/" />
 <author>
@@ -8480,7 +8480,7 @@ This release also officially marks the end-of-life for Jenkins 1.x. There won’
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/</id>
 <title>Publishing HTML Reports in Pipeline</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-07-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/" />
 <author>
@@ -8719,7 +8719,7 @@ HTML.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/30/ewm-alpha-version/</id>
 <title>GSoC: External Workspace Manager Plugin alpha version</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/30/ewm-alpha-version/" />
 <author>
@@ -8833,7 +8833,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/29/from-freestyle-to-pipeline/</id>
 <title>Migrating from chained Freestyle jobs to Pipelines</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/29/from-freestyle-to-pipeline/" />
 <author>
@@ -9167,7 +9167,7 @@ blue charts&lt;/a&gt;!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/21/gsoc-midterm-presentations-ann/</id>
 <title>GSoC: Mid-term presentations by students on June 23 and 24</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/21/gsoc-midterm-presentations-ann/" />
 <author>
@@ -9301,7 +9301,7 @@ The agenda may change a bit.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/16/parallel-test-executor-plugin/</id>
 <title>Faster Pipelines with the Parallel Test Executor Plugin</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/16/parallel-test-executor-plugin/" />
 <author>
@@ -9575,7 +9575,7 @@ other tools or processes.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/15/jenkins-pipeline-scalability/</id>
 <title>Jenkins Pipeline Scalability in the Enterprise</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-15T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/15/jenkins-pipeline-scalability/" />
 <author>
@@ -9994,7 +9994,7 @@ following links:&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/14/jenkins-world-agenda/</id>
 <title>Jenkins World Agenda is Live!</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-14T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/14/jenkins-world-agenda/" />
 <author>
@@ -10183,7 +10183,7 @@ Early Bird Rate $399&lt;/a&gt;. Price goes up after July 1.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/14/gsoc-jenkins-support-core-plugin-improvements/</id>
 <title>GSoC Project Intro: Support Core Plugin Improvements</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-14T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/14/gsoc-jenkins-support-core-plugin-improvements/" />
 <author>
@@ -10358,7 +10358,7 @@ The objective of this task is to implement a feature which enables the user to r
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/13/june-jenkins-events/</id>
 <title>Upcoming June Jenkins Events</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/13/june-jenkins-events/" />
 <author>
@@ -10497,7 +10497,7 @@ woods:&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/13/gsoc-usage-stats-analysis/</id>
 <title>GSoC Project Intro: Usage Statistics Analysis</title>
-<updated>2016-12-02T12:30:20-08:00</updated>
+<updated>2016-12-02T13:00:10-08:00</updated>
 <published>2016-06-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/13/gsoc-usage-stats-analysis/" />
 <author>
