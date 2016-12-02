@@ -439,11 +439,11 @@ code" via the Pipeline DSL.
 <p>Typically, this "Pipeline as Code" would be written to  a <code>Jenkinsfile</code> and
 checked into a project&#8217;s source control repository, for example:</p>
 </div>
-<div class="pipeline-block"><div class="listingblock pipeline-script"
-      style="display: true">
-  <div class="title">Jenkinsfile (Pipeline Script)</div>
-  <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node { <span style="color:#777">// &lt;1&gt;</span>
+<div class="pipeline-block">  <div class="listingblock pipeline-script"
+        style="display: true">
+    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node { <span style="color:#777">// &lt;1&gt;</span>
     stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { <span style="color:#777">// &lt;2&gt;</span>
         sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make</span><span style="color:#710">'</span></span> <span style="color:#777">// &lt;3&gt;</span>
     }

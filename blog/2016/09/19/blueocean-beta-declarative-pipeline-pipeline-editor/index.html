@@ -428,10 +428,10 @@ you declare how you want your Pipeline to look rather than using Pipeline Script
 <p>Here&#8217;s a small example of a Declarative Pipeline for nodejs that runs the whole
 Pipeline inside a Docker container:</p>
 </div>
-<div class="pipeline-block"><div class="listingblock pipeline-declarative">
-  <div class="title">Jenkinsfile (Declarative Pipeline)</div>
-  <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
   agent <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span>
   stages {
     stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
@@ -443,15 +443,15 @@ Pipeline inside a Docker container:</p>
     }
   }
 }</code></pre>
-</div></div><div class="pipeline-script-expand">
-  <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
-  <em>(Advanced)</em>
-</div>
-<div class="listingblock pipeline-script"
-      style="display: none">
-  <div class="title">Jenkinsfile (Pipeline Script)</div>
-  <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
   docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span>).inside {
     stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
       sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
@@ -474,10 +474,10 @@ all in a single repository. It&#8217;s a crazy powerful combination.</p>
 easy to run things conditionally at the end of your Pipeline without the
 complexity of the <code>try... catch</code> of Pipeline script.</p>
 </div>
-<div class="pipeline-block"><div class="listingblock pipeline-declarative">
-  <div class="title">Jenkinsfile (Declarative Pipeline)</div>
-  <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">postBuild {
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">postBuild {
   always {
     sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will always run&quot;</span><span style="color:#710">'</span></span>
   }
@@ -497,15 +497,15 @@ complexity of the <code>try... catch</code> of Pipeline script.</p>
   }
 }
 </code></pre>
-</div></div><div class="pipeline-script-expand">
-  <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
-  <em>(Advanced)</em>
-</div>
-<div class="listingblock pipeline-script"
-      style="display: none">
-  <div class="title">Jenkinsfile (Pipeline Script)</div>
-  <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
   <span style="color:#080;font-weight:bold">try</span> {
     stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
       <span style="color:#777">/* .. snip .. */</span>
