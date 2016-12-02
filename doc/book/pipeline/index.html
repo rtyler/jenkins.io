@@ -551,10 +551,10 @@ modeled in Jenkins Pipeline:</p>
 <dl>
 <dt class="hdlist1">Step</dt>
 <dd>
-<p>A single task, fundamentally steps tell Jenkins <em>what</em> to do. For example, in
-order to instruct Jenkins to execute the shell command <code>make</code>, the <code>sh</code>
-step would be used: <code>sh 'make'</code>.
-When a plugin extends to Pipeline DSL, that typically means the plugin has
+<p>A single task; fundamentally steps tell Jenkins <em>what</em> to do. In
+order to execute the shell command <code>make</code>, the <code>sh</code>
+step would be used. for example <code>sh 'make'</code>.
+When a plugin extends the Pipeline DSL, that typically means the plugin has
 implemented a new <em>step</em>.</p>
 </dd>
 </dl>
@@ -602,10 +602,10 @@ for more information.
 <dl>
 <dt class="hdlist1">Stage</dt>
 <dd>
-<p>A "stage" is a step for defining a conceptually distinct subset of the
+<p><code>stage</code> is a step for defining a conceptually distinct subset of the
 entire Pipeline, for example: "Build", "Test", and "Deploy". While stages
-no bearing on the execution of the Pipeline, they are used by many plugins
-which visualize or present Jenkins Pipeline status/progress.
+have no bearing on the execution of the Pipeline, they are used by many
+plugins to visualize or present Jenkins Pipeline status/progress.
 <sup class="footnote" id="_footnote_blueocean">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
 </dd>
 </dl>
