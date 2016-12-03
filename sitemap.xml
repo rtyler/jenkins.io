@@ -8251,6 +8251,12 @@
 <changefreq>never</changefreq>
 </url>
 <url>
+<loc>https://rtyler.github.io/jenkins.io/projects/jam/suggest/</loc>
+<lastmod>2016-12-02</lastmod>
+<priority>0.1</priority>
+<changefreq>never</changefreq>
+</url>
+<url>
 <loc>https://rtyler.github.io/jenkins.io/projects/jam/</loc>
 <lastmod>2016-12-02</lastmod>
 <priority>0.1</priority>
