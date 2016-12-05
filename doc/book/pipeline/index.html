@@ -489,19 +489,19 @@ for aggregating test reports.</td>
 <div class="paragraph">
 <p>Jenkins is, fundamentally, an automation engine which supports a number of
 automation patterns. Pipeline adds a powerful set of automation tools onto
-Jenkins, supporting use-cases that span from simple continuous integration to
+Jenkins, supporting use cases that span from simple continuous integration to
 comprehensive continuous delivery pipelines. By modeling a series of related
 tasks, users can take advantage of the many features of Pipeline:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Code</strong>: Pipelines are implemented "as code," and typically checked into
-source control, giving teams the abilit to edit, review, and iterate upon
+<p><strong>Code</strong>: Pipelines are implemented in code and typically checked into
+source control, giving teams the ability to edit, review, and iterate upon
 their delivery pipeline.</p>
 </li>
 <li>
-<p><strong>Durable</strong>: Pipelines can survive both planned, and unplanned, restarts of the
+<p><strong>Durable</strong>: Pipelines can survive both planned and unplanned restarts of the
 Jenkins master.</p>
 </li>
 <li>
@@ -551,9 +551,8 @@ modeled in Jenkins Pipeline:</p>
 <dl>
 <dt class="hdlist1">Step</dt>
 <dd>
-<p>A single task; fundamentally steps tell Jenkins <em>what</em> to do. In
-order to execute the shell command <code>make</code>, the <code>sh</code>
-step would be used. For example <code>sh 'make'</code>.
+<p>A single task; fundamentally steps tell Jenkins <em>what</em> to do. For example,
+to execute the shell command <code>make</code> use the <code>sh</code> step: <code>sh 'make'</code>.
 When a plugin extends the Pipeline DSL, that typically means the plugin has
 implemented a new <em>step</em>.</p>
 </dd>
@@ -563,8 +562,9 @@ implemented a new <em>step</em>.</p>
 <dl>
 <dt class="hdlist1">Node</dt>
 <dd>
-<p>Generally speaking, all <em>work</em> which is done by a Pipeline, will be done in
-the context of a single, or multiple, <code>node</code> step declarations, which does two things:</p>
+<p>Most <em>work</em> a Pipeline performs is done in the context of one or more
+declared <code>node</code> steps. Confining the work inside of a node step does two
+things:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -573,9 +573,8 @@ to the Jenkins queue. As soon as an executor is free on a node, the
 steps will run.</p>
 </li>
 <li>
-<p>Creates a workspace, a directory specific to that particular
-Pipeline, where files can be checked out from source control and work can
-be done.</p>
+<p>Creates a workspace (a directory specific to that particular
+Pipeline) where work can be done on files checked out from source control.</p>
 </li>
 </ol>
 </div>
@@ -603,8 +602,7 @@ for more information.
 <dt class="hdlist1">Stage</dt>
 <dd>
 <p><code>stage</code> is a step for defining a conceptually distinct subset of the
-entire Pipeline, for example: "Build", "Test", and "Deploy". While stages
-have no bearing on the execution of the Pipeline, they are used by many
+entire Pipeline, for example: "Build", "Test", and "Deploy", which is tused by many.
 plugins to visualize or present Jenkins Pipeline status/progress.
 <sup class="footnote" id="_footnote_blueocean">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
 </dd>

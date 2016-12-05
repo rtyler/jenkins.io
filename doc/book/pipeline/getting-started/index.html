@@ -405,7 +405,7 @@ code" via the Pipeline DSL.
 <sup class="footnote" id="_footnote_dsl">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
 </div>
 <div class="paragraph">
-<p>This section will introduce some of the key concepts to Jenkins Pipeline and
+<p>This section introduces some of the key concepts to Jenkins Pipeline and
 help introduce the basics of defining and working with Pipelines inside of a
 running Jenkins instance.</p>
 </div>
@@ -514,13 +514,13 @@ paths to contain spaces.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>In the <strong>Script</strong> text-area, enter a Pipeline script and click <strong>Save</strong>.</p>
+<p>In the <strong>Script</strong> text area, enter a Pipeline script and click <strong>Save</strong>.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock center">
 <div class="content">
-<img src="/doc/book/resources/pipeline/hello-world-script.png" alt="In the *Script* text-area, enter a Pipeline script and click Save">
+<img src="/doc/book/resources/pipeline/hello-world-script.png" alt="In the *Script* text area, enter a Pipeline script and click Save">
 </div>
 </div>
 <div class="ulist">
@@ -550,7 +550,7 @@ full output from the Pipeline.</p>
 </div>
 <div class="paragraph">
 <p>The example above shows a successful run of a basic Pipeline created in the Jenkins
-web UI, using two valuable steps.</p>
+web UI, using two steps.</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
@@ -576,17 +576,14 @@ web UI, using two valuable steps.</p>
 <div class="sect2">
 <h3 id="defining-a-pipeline-in-scm"><a class="anchor" href="#defining-a-pipeline-in-scm"></a>Defining a Pipeline in SCM</h3>
 <div class="paragraph">
-<p>Complex pipelines would be cumbersome to write and maintain if you could only do
-that in the text area provided by the Jenkins job configuration page.</p>
-</div>
-<div class="paragraph">
-<p>Accordingly, you also have the option of writing Pipeline scripts
-(Jenkinsfiles) with a text editor and then loading those scripts into Jenkins
-using the <strong>Pipeline Script from SCM</strong> option.</p>
+<p>Complex pipelines are hard to write and maintain within the text area of the
+Pipeline configuration page. If necessary, you can write Pipeline scripts
+(Jenkinsfiles) in a text editor and access them in Jenkins with the <strong>Pipeline
+Script from SCM</strong> option.</p>
 </div>
 <div class="paragraph">
 <p>Loading pipeline scripts using the <code>checkout scm</code> step leverages the
-idea of "Pipeline as code" and allows easy maintenance of Pipelines with source
+idea of "Pipeline as Code" and allows easy maintenance of Pipelines with source
 control and text-editors.</p>
 </div>
 <div class="paragraph">
@@ -658,7 +655,7 @@ on the plugins installed which explicitly expose steps for use in Pipeline.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Navigate to the Snippet Generator</p>
+<p>Navigate to the <strong>Pipeline Syntax</strong> link (referenced above) from a configured Pipeline, or at <a href="http://localhost:8080/pipeline-syntax">localhost:8080/pipeline-syntax</a>.</p>
 </li>
 <li>
 <p>Select the desired step in the <strong>Sample Step</strong> dropdown menu</p>
@@ -679,7 +676,7 @@ copied and pasted into a Pipeline.</p>
 </div>
 <div class="paragraph">
 <p>To access additional information and/or documentation about the step selected,
-click on the help icon (blue question mark).</p>
+click on the help icon (indicated by the red arrow in the image above).</p>
 </div>
 </div>
 <div class="sect2">
@@ -689,7 +686,7 @@ click on the help icon (blue question mark).</p>
 provides a built-in "<strong>Global Variable Reference</strong>." Like the Snippet Generator,
 it is also dynamically populated by plugins. Unlike the Snippet Generator
 however, the Global Variable Reference only contains documentation for
-<strong>variables</strong>, provided by Pipeline or plugins, which are available for
+<strong>variables</strong> provided by Pipeline or plugins, which are available for
 Pipelines.</p>
 </div>
 <div class="paragraph">
