@@ -144,7 +144,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.34
+2.35
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -266,30 +266,10 @@ Ruby
 </a>
 </div>
 </li>
-<li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<li class="nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/participate">
 Participate
 </a>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
-Mailing Lists
-</a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
-Chat
-</a>
-<a class="dropdown-item" href="https://twitter.com/jenkinsci" title="Check out @jenkinsci on Twitter">
-Twitter
-</a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/event-calendar" title="Calendar for Jenkins events">
-Events
-</a>
-<a class="dropdown-item" href="https://wiki.jenkins-ci.org/display/JENKINS/Office+Hours" title="Hangouts-based online meeting">
-Office Hours
-</a>
-<a class="dropdown-item" href="https://reddit.com/r/jenkinsci" title="Latest Jenkins related news on /r/jenkinsci">
-/r/jenkinsci
-</a>
-</div>
 </li>
 <li class="nav-item dropdown">
 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
@@ -321,8 +301,14 @@ Resources
 <a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
 Account Management
 </a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
 <a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
 Issue Tracker
+</a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
 </a>
 <a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
 Wiki
@@ -373,6 +359,63 @@ Jenkins Upgrade Guide
 <div class="sectionbody">
 <div class="paragraph">
 <p>Each section covers the upgrade from the previous LTS release, the section on 2.19.1 covers the upgrade from 2.7.4.</p>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-19-4"><a class="anchor" href="#upgrading-to-jenkins-lts-2-19-4"></a>Upgrading to Jenkins LTS 2.19.4</h3>
+<div class="sect3">
+<h4 id="jnlp-agent-protocol-options-weren-t-correctly-persisted"><a class="anchor" href="#jnlp-agent-protocol-options-weren-t-correctly-persisted"></a>JNLP agent protocol options weren&#8217;t correctly persisted</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-39465">JENKINS-39465</a></p>
+</div>
+<div class="paragraph">
+<p>The JNLP agent protocol configuration could not be loaded from disk after a Jenkins restart.</p>
+</div>
+<div class="paragraph">
+<p>If you customized these settings since 2.19.1, review that they are configured as expected.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="honor-code-jenkins-model-jenkins-slaveagentport-code-again"><a class="anchor" href="#honor-code-jenkins-model-jenkins-slaveagentport-code-again"></a>Honor <code>jenkins.model.Jenkins.slaveAgentPort</code> again</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-38187">JENKINS-38187</a></p>
+</div>
+<div class="paragraph">
+<p>A regression in Jenkins 2.0 caused Jenkins to ignore the System property <code>jenkins.model.Jenkins.slaveAgentPort</code>.</p>
+</div>
+<div class="paragraph">
+<p>The previous behavior has been restored, and a new System property <code>jenkins.model.Jenkins.slaveAgentPort</code> added that, if set, will enforce the JNLP agent port on every Jenkins startup, and will not allow the value to be changed through the UI.</p>
+</div>
+<div class="paragraph">
+<p>It can still be changed via Groovy scripting for troubleshooting purposes, but any change will be reverted on startup.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="text-boxes-on-configuration-screens-will-no-longer-stretch-to-accomodate-long-lines"><a class="anchor" href="#text-boxes-on-configuration-screens-will-no-longer-stretch-to-accomodate-long-lines"></a>Text boxes on configuration screens will no longer stretch to accomodate long lines</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-27367">JENKINS-27367</a></p>
+</div>
+<div class="paragraph">
+<p>The layout of job configuration screens will no longer break if users don&#8217;t insert extra line breaks to break long lines. Instead, the text box will allow horizontal scrolling.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="don-t-spawn-numerous-threads-on-the-agent-build-history-page"><a class="anchor" href="#don-t-spawn-numerous-threads-on-the-agent-build-history-page"></a>Don&#8217;t spawn numerous threads on the agent build history page</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-23244">JENKINS-23244</a></p>
+</div>
+<div class="paragraph">
+<p>The build history for specific agents has long caused numerous potentially long-running threads to spawn. This has been fixed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="memory-leak-on-dashboard-fixed"><a class="anchor" href="#memory-leak-on-dashboard-fixed"></a>Memory leak on dashboard fixed</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-10912">JENKINS-10912</a></p>
+</div>
+<div class="paragraph">
+<p>A memory leak on the dashboard (view pages) was fixed, so that browser memory use will no longer grow unbounded.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="upgrading-to-jenkins-lts-2-19-3"><a class="anchor" href="#upgrading-to-jenkins-lts-2-19-3"></a>Upgrading to Jenkins LTS 2.19.3</h3>

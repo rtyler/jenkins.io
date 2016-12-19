@@ -144,7 +144,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.34
+2.35
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -266,30 +266,10 @@ Ruby
 </a>
 </div>
 </li>
-<li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<li class="nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/participate">
 Participate
 </a>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
-Mailing Lists
-</a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
-Chat
-</a>
-<a class="dropdown-item" href="https://twitter.com/jenkinsci" title="Check out @jenkinsci on Twitter">
-Twitter
-</a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/event-calendar" title="Calendar for Jenkins events">
-Events
-</a>
-<a class="dropdown-item" href="https://wiki.jenkins-ci.org/display/JENKINS/Office+Hours" title="Hangouts-based online meeting">
-Office Hours
-</a>
-<a class="dropdown-item" href="https://reddit.com/r/jenkinsci" title="Latest Jenkins related news on /r/jenkinsci">
-/r/jenkinsci
-</a>
-</div>
 </li>
 <li class="nav-item dropdown">
 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
@@ -321,8 +301,14 @@ Resources
 <a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
 Account Management
 </a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
 <a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
 Issue Tracker
+</a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
 </a>
 <a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
 Wiki
@@ -379,6 +365,59 @@ follow us on Twitter
 <div class="content blog-posts">
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/blog/2015/09/30/bay-area-jam/">
+<div class="header">
+<div class="date">
+<div class="month">
+Sep
+</div>
+<div class="day">
+30
+</div>
+</div>
+<h5 class="title">
+Bay Area JAM
+</h5>
+</div>
+<p class="teaser">
+Last week, the first Jenkins Area Meetup (JAM) took place in San Jose, CA on Wednesday, Sept 23.  What a way to kick off the first JAM other than to have Docker, John Willis as our guest speaker. John talked about immutable infrastructure and its benefits and role of containers.
+ 
+Kohsuke discussed Jenkins Workflow, the motivation behind the same and latest features of...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/alyssat">Alyssa Tong</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/general">
+general
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/cia">
+cia
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/meetup">
+meetup
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/workflow">
+workflow
+</a>
+</li>
+</ul>
+</div>
+</li>
 <li class="post">
 <a class="body" href="/blog/2015/09/03/jenkins-user-conference-west-day-1/">
 <div class="header">
@@ -880,67 +919,6 @@ workflow
 </ul>
 </div>
 </li>
-<li class="post">
-<a class="body" href="/blog/2014/07/08/workflow-plugin-tutorial-writing-a-step-impl/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jul
-</div>
-<div class="day">
-08
-</div>
-</div>
-<h5 class="title">
-Workflow plugin tutorial: writing a Step impl
-</h5>
-</div>
-<p class="teaser">
-The other day I was explaining how to implement a new workflow primitive to Vivek Pandey, and I captured it as a recording.
-
-
-
-
-The recording goes over how to implement the Step extension point, which is the workflow equivalent of BuildStep extension point. If you are interested in jumping on the workflow plugin hacking, this might be useful (and don't forget to get in touch...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/development">
-development
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/plugins">
-plugins
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/screencast">
-screencast
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/video">
-video
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/pipeline">
-pipeline
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/workflow">
-workflow
-</a>
-</li>
-</ul>
-</div>
-</li>
 </ul>
 </div>
 </div>
@@ -954,100 +932,6 @@ workflow
 <!-- starting partial events.html.haml -->
 <div class="item-list">
 <ul class="ji-date-list ji-item-list">
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Jenkins-online-meetup/events/235898656/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-14
-</div>
-<div class="dow">
-Wed
-</div>
-</div>
-<div class="time">
- 8:00 am
-</div>
-</div>
-<h5 class="title">
-Jenkins Online Meetup
-</h5>
-</div>
-<p class="teaser">
-See Live Demos
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Melbourne-Jenkins-Area-Meetup/events/235872607/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-14
-</div>
-<div class="dow">
-Wed
-</div>
-</div>
-<div class="time">
- 5:00 pm
-</div>
-</div>
-<h5 class="title">
-Melbourne JAM
-</h5>
-</div>
-<p class="teaser">
-Meeting at AWS office
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Guadalajara-Jenkins-Area-Meetup/events/234929920/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-14
-</div>
-<div class="dow">
-Wed
-</div>
-</div>
-<div class="time">
- 7:00 pm
-</div>
-</div>
-<h5 class="title">
-Guadalajara JAM
-</h5>
-</div>
-<p class="teaser">
-
-Jenkins and  Docker
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
 <li class="post event">
 <a class="body" href="https://fosdem.org/2017/" target="_blank">
 <div class="header time">

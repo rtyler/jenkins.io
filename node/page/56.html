@@ -144,7 +144,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.34
+2.35
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -266,30 +266,10 @@ Ruby
 </a>
 </div>
 </li>
-<li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<li class="nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/participate">
 Participate
 </a>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
-Mailing Lists
-</a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
-Chat
-</a>
-<a class="dropdown-item" href="https://twitter.com/jenkinsci" title="Check out @jenkinsci on Twitter">
-Twitter
-</a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/event-calendar" title="Calendar for Jenkins events">
-Events
-</a>
-<a class="dropdown-item" href="https://wiki.jenkins-ci.org/display/JENKINS/Office+Hours" title="Hangouts-based online meeting">
-Office Hours
-</a>
-<a class="dropdown-item" href="https://reddit.com/r/jenkinsci" title="Latest Jenkins related news on /r/jenkinsci">
-/r/jenkinsci
-</a>
-</div>
 </li>
 <li class="nav-item dropdown">
 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
@@ -321,8 +301,14 @@ Resources
 <a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
 Account Management
 </a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
 <a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
 Issue Tracker
+</a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
 </a>
 <a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
 Wiki
@@ -379,6 +365,134 @@ follow us on Twitter
 <div class="content blog-posts">
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/blog/2010/02/17/getting-started-building-android-apps-with-hudson/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+17
+</div>
+</div>
+<h5 class="title">
+Getting started: Building Android apps with Hudson
+</h5>
+</div>
+<p class="teaser">
+In this post I'll show a very basic tips on how to compile an Android project using Hudson. Specifically how  I use Hudson to create release versions of my apps.
+
+Debug vs Release
+I'm assuming that you are using Eclipse with the ADT plugin. During development you can test your app on the emulator or a device and resources like R.java and aidl files are...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/general">
+general
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/guest post">
+guest post
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/jobs">
+jobs
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/tutorial">
+tutorial
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2010/02/16/performance-improvements-in-1-346/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+16
+</div>
+</div>
+<h5 class="title">
+Performance improvements in 1.346
+</h5>
+</div>
+<p class="teaser">
+From time to time, we get a report of out of memory problems in Hudson. It's frequent enough that we have a dedicated Wiki page that talks about how to obtain information to help devs work on the problem.
+
+So the latest thread from David Woon was assumed to be one of those ordinary trouble-shooting sessions, but thanks to Gustaf Lundh, it turned out to...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/development">
+development
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2010/02/15/hudson-1-346-released/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+15
+</div>
+</div>
+<h5 class="title">
+Hudson 1.346 Released
+</h5>
+</div>
+<p class="teaser">
+After some scrambling earlier in the week to get 1.345 out the door, correcting some regressions in 1.344, the Hudson team still rolled out a 1.346 release last Friday, February 12th, 2010. Similar to the past couple releases, 1.346 had a good number of bug fixes, including a a performance fix when dealing with larger build submissions and a substantial revision of the SCM...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/development">
+development
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/feedback">
+feedback
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/just for fun">
+just for fun
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/links">
+links
+</a>
+</li>
+</ul>
+</div>
+</li>
 <li class="post">
 <a class="body" href="/blog/2010/02/14/thanks-for-the-help/">
 <div class="header">
@@ -587,176 +701,6 @@ just for fun
 </ul>
 </div>
 </li>
-<li class="post">
-<a class="body" href="/blog/2010/02/08/incoming-more-translations/">
-<div class="header">
-<div class="date">
-<div class="month">
-Feb
-</div>
-<div class="day">
-08
-</div>
-</div>
-<h5 class="title">
-Incoming! More Translations
-</h5>
-</div>
-<p class="teaser">
-As Kohsuke mentioned on the dev@ mailing
-list on January 29th,
-another series of community translations of Hudson have been committed
-(r26764) and have been released with the
-Hudson 1.344 release.
-
-The locales included in this update are:
-
-
-  Czech
-  Spanish
-  Finnish
-  French
-  Hungarian
-  Japanese
-  Korean
-  Lithuanian
-  Norwegian
-  Dutch
-  Polish
-  Brazilian Portuguese
-  Russian
-  Slovenian
-  Swedish
-...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/development">
-development
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/feedback">
-feedback
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/just for fun">
-just for fun
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2010/02/08/hudson-1-344-released/">
-<div class="header">
-<div class="date">
-<div class="month">
-Feb
-</div>
-<div class="day">
-08
-</div>
-</div>
-<h5 class="title">
-Hudson 1.344 Released
-</h5>
-</div>
-<p class="teaser">
-The latest release of Hudson, 1.344, was released on February 5th, 2010. The
-release contains primarily bug-fixes but has a few enhancements baked into it
-as well. As mentioned in "[Incoming! More
-    Translations",
-1.344 incorporates a number of community-driven translations (see the other
-post for more information). Additionally, 1.344 removes the "easter egg"
-background image I wrote about in a post to my personal blog: Mourning...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/development">
-development
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/feedback">
-feedback
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/just for fun">
-just for fun
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/links">
-links
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2010/02/08/breaking-hudson-1-345-released/">
-<div class="header">
-<div class="date">
-<div class="month">
-Feb
-</div>
-<div class="day">
-08
-</div>
-</div>
-<h5 class="title">
-Breaking! Hudson 1.345 Released!
-</h5>
-</div>
-<p class="teaser">
-As I mentioned in the footer of the post on the Hudson 1.344 release, there were a couple big regressions in the 1.344 release that were causing a number of users issues (such as issue 5536 and issue 5546).
-
-As a result, Kohsuke and the team have quickly pushed out a hot-fix release: 1.345. Here's the break down:
-
-Bugs fixed:
-
-
-  Update center retrieval, "build now"...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/development">
-development
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/feedback">
-feedback
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/just for fun">
-just for fun
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/links">
-links
-</a>
-</li>
-</ul>
-</div>
-</li>
 </ul>
 </div>
 </div>
@@ -770,100 +714,6 @@ links
 <!-- starting partial events.html.haml -->
 <div class="item-list">
 <ul class="ji-date-list ji-item-list">
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Jenkins-online-meetup/events/235898656/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-14
-</div>
-<div class="dow">
-Wed
-</div>
-</div>
-<div class="time">
- 8:00 am
-</div>
-</div>
-<h5 class="title">
-Jenkins Online Meetup
-</h5>
-</div>
-<p class="teaser">
-See Live Demos
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Melbourne-Jenkins-Area-Meetup/events/235872607/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-14
-</div>
-<div class="dow">
-Wed
-</div>
-</div>
-<div class="time">
- 5:00 pm
-</div>
-</div>
-<h5 class="title">
-Melbourne JAM
-</h5>
-</div>
-<p class="teaser">
-Meeting at AWS office
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Guadalajara-Jenkins-Area-Meetup/events/234929920/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-14
-</div>
-<div class="dow">
-Wed
-</div>
-</div>
-<div class="time">
- 7:00 pm
-</div>
-</div>
-<h5 class="title">
-Guadalajara JAM
-</h5>
-</div>
-<p class="teaser">
-
-Jenkins and  Docker
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
 <li class="post event">
 <a class="body" href="https://fosdem.org/2017/" target="_blank">
 <div class="header time">
