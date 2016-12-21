@@ -358,19 +358,127 @@ Index
 <h1>
 Managing Plugins
 </h1>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This is still very much a work in progress</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#installing-a-plugin">Installing a plugin</a>
+<ul class="sectlevel2">
+<li><a href="#from-the-web-ui">From the web UI</a></li>
+<li><a href="#manually">Manually</a></li>
+</ul>
+</li>
+<li><a href="#plugin-releases">Plugin releases</a></li>
+<li><a href="#uninstalling-a-plugin">Uninstalling a plugin</a></li>
+<li><a href="#disabling-a-plugin">Disabling a plugin</a></li>
+<li><a href="#developing-a-plugin">Developing a plugin</a></li>
+</ul>
 </div>
-</td>
-</tr>
-</table>
+<div class="sect1">
+<h2 id="installing-a-plugin"><a class="anchor" href="#installing-a-plugin"></a>Installing a plugin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="from-the-web-ui"><a class="anchor" href="#from-the-web-ui"></a>From the web UI</h3>
+<div class="paragraph">
+<p>The simplest way is by going to your installation&#8217;s management screen and
+clicking Manage Plugins and go to the Available tab. You&#8217;ll find the plugin
+you&#8217;d like to install, select the checkbox, and then either attempt to Install
+without restart or Download now and install after restart. The web interface
+will then download *.hpi files from here. If you Install without restart the
+interface will show you progress and provide the results of the install.</p>
+</div>
+<div class="paragraph">
+<p>Sometimes when you install, you will notice that the list of available plugins
+is empty. If that is the case, from Advanced tab on the Manage Plugins page,
+click on Check now (button available in the bottom right of the page) to
+forcefully check for new updates. Once that is done, you should see the list of
+plugins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="manually"><a class="anchor" href="#manually"></a>Manually</h3>
+<div class="sect3">
+<h4 id="from-the-web-ui-2"><a class="anchor" href="#from-the-web-ui-2"></a>From the web UI</h4>
+<div class="paragraph">
+<p>To download an older release of a plugin, click the archives link on the plugin&#8217;s wiki page linked below. You will see a list of available plugin versions.</p>
+</div>
+<div class="paragraph">
+<p>To install a specific older version of a plugin (or downgrade from a newer version), you can upload it from your computer on the Advanced tab of the Manage Plugins page in Jenkins.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="on-the-master"><a class="anchor" href="#on-the-master"></a>On the master</h4>
+<div class="paragraph">
+<p>Save the downloaded <strong>.hpi/</strong>.jpi file into the $JENKINS_HOME/plugins directory. You will then need to restart Jenkins (many containers let you do this without restarting the container)</p>
+</div>
+<div class="paragraph">
+<p>Caveat: the names of the plugin directories on the download site are not always matching the name given to the plugin; common sense should apply.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="plugin-releases"><a class="anchor" href="#plugin-releases"></a>Plugin releases</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="uninstalling-a-plugin"><a class="anchor" href="#uninstalling-a-plugin"></a>Uninstalling a plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Uninstalling a plugin removes the plugin binary (*.jpi or *.hpi) from the disk.
+The plugin continues to function normally until you restart Jenkins, but once
+you restart, Jenkins will behave as if you didn&#8217;t have the plugin to being
+with. They will not appear anywhere in the UI, all the extensions they
+contributed will disappear.</p>
+</div>
+<div class="paragraph">
+<p>Uninstalling a plugin, however, does not remove the configuration that the
+plugin might have created. If there are existing jobs/slaves/views/builds/etc
+that used some extensions from the plugin, during the boot Jenkins will report
+that there are some fragments in those configurations that it didn&#8217;t
+understand, and pretend as if it didn&#8217;t see such a fragment.</p>
+</div>
+<div class="paragraph">
+<p>Because the configuration is still intact until you overwrite those
+configuration files, at this point if you re-install the uninstalled plugin and
+restart Jenkins, the configuration will come back.</p>
+</div>
+<div class="paragraph">
+<p>If you want to scrab the configuration left by uninstalled plugins, go to
+"Manage Jenkins" and click "Manage Old Data".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="disabling-a-plugin"><a class="anchor" href="#disabling-a-plugin"></a>Disabling a plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Disabling a plugin is a softer way to retire a plugin. Jenkins will continue to
+recognize that the plugin is installed, but it will not start the plugin, and
+no extensions contributed from this plugin will be visible.</p>
+</div>
+<div class="paragraph">
+<p>The fragments contributed from a disabled plugin to configuration files would
+follow the same fate as in the case of uninstalled plugins.</p>
+</div>
+<div class="paragraph">
+<p>Plugins can be disabled from the UI (or by touch
+$JENKINS_HOME/plugins/$PLUGIN_NAME.jpi.disabled (or
+$JENKINS_HOME/plugins/$PLUGIN_NAME.hpi.disabled) file.)</p>
+</div>
+<div class="paragraph">
+<p>Plugins that are disabled can be re-enabled from the UI (or by removing
+*.jpi.disabled (or *.hpi.disabled) file from the disk.)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developing-a-plugin"><a class="anchor" href="#developing-a-plugin"></a>Developing a plugin</h2>
+<div class="sectionbody">
+
+</div>
 </div>
 </div>
 <div class="section_nav pagination-links">

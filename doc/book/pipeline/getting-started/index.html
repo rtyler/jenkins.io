@@ -424,12 +424,12 @@ recommended)</p>
 <h2 id="defining-a-pipeline"><a class="anchor" href="#defining-a-pipeline"></a>Defining a Pipeline</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pipeline Script is written in
+<p>Scripted Pipeline is written in
 <a href="http://groovy-lang.org/">Groovy</a>.
 The relevant bits of
 <a href="http://groovy-lang.org/semantics.html">Groovy syntax</a>
 will be introduced as necessary in this document, so while an understanding of
-Groovy is helpful, it is not required to use Pipeline Script.</p>
+Groovy is helpful, it is not required to work with Pipeline.</p>
 </div>
 <div class="paragraph">
 <p>A basic Pipeline can be created in either of the following ways:</p>
@@ -447,7 +447,7 @@ control repository.</p>
 </div>
 <div class="paragraph">
 <p>The syntax for defining a Pipeline with either approach is the same, but while
-Jenkins supports entering Pipeline Script directly into the web UI, it&#8217;s
+Jenkins supports entering Pipeline directly into the web UI, it&#8217;s
 generally considered best practice to define the Pipeline in a <code>Jenkinsfile</code>
 which Jenkins will then load directly from source control.
 <sup class="footnote" id="_footnote_scm">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup></p>
@@ -500,13 +500,13 @@ paths to contain spaces.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>In the <strong>Script</strong> text area, enter a Pipeline script and click <strong>Save</strong>.</p>
+<p>In the <strong>Script</strong> text area, enter a Pipeline and click <strong>Save</strong>.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock center">
 <div class="content">
-<img src="/doc/book/resources/pipeline/hello-world-script.png" alt="In the *Script* text area, enter a Pipeline script and click Save">
+<img src="/doc/book/resources/pipeline/hello-world-script.png" alt="In the *Script* text area, enter a Pipeline and click Save">
 </div>
 </div>
 <div class="ulist">
@@ -540,7 +540,7 @@ web UI, using two steps.</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node { <span style="color:#777">// &lt;1&gt;</span>
     echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span> <span style="color:#777">// &lt;2&gt;</span>
@@ -562,18 +562,13 @@ web UI, using two steps.</p>
 <div class="sect2">
 <h3 id="defining-a-pipeline-in-scm"><a class="anchor" href="#defining-a-pipeline-in-scm"></a>Defining a Pipeline in SCM</h3>
 <div class="paragraph">
-<p>Complex pipelines are hard to write and maintain within the text area of the
-Pipeline configuration page. If necessary, you can write Pipeline scripts
-(Jenkinsfiles) in a text editor and access them in Jenkins with the <strong>Pipeline
-Script from SCM</strong> option.</p>
+<p>Complex Pipelines are hard to write and maintain within the text area of the
+Pipeline configuration page. To make this easier, Pipeline can also be written
+in a text editor and checked into source control as a <code>Jenkinsfile</code> which
+Jenkins can load via the <strong>Pipeline Script from SCM</strong> option.</p>
 </div>
 <div class="paragraph">
-<p>Loading pipeline scripts using the <code>checkout scm</code> step leverages the
-idea of "Pipeline as Code" and allows easy maintenance of Pipelines with source
-control and text-editors.</p>
-</div>
-<div class="paragraph">
-<p>To do this, select <strong>Pipeline script from SCM</strong> when defining the pipeline.</p>
+<p>To do this, select <strong>Pipeline script from SCM</strong> when defining the Pipeline.</p>
 </div>
 <div class="paragraph">
 <p>With the <strong>Pipeline script from SCM</strong> option selected, you do not enter any Groovy
@@ -682,7 +677,7 @@ Pipelines.</p>
 <dl>
 <dt class="hdlist1">env</dt>
 <dd>
-<p>Environment variables accessible from Pipeline Script, for example:
+<p>Environment variables accessible from Scripted Pipeline, for example:
 <code>env.PATH</code> or <code>env.BUILD_ID</code>. Consult the built-in
 <a href="http://localhost:8080/pipeline-syntax/globals#env">Global Variable Reference</a>
 for a complete, and up to date, list of environment variables

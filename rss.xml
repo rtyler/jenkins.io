@@ -3,13 +3,412 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>https://rtyler.github.io/jenkins.io/</id>
 <title>Jenkins Blog</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:41:40-08:00</updated>
 <link rel="self" type="application/atom+xml" href="https://rtyler.github.io/jenkins.io/rss.xml" />
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/" />
 <entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/</id>
+<title>Continuous Delivery with Jenkins and Puppet Enterprise</title>
+<updated>2016-12-20T07:41:40-08:00</updated>
+<published>2016-12-20T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/" />
+<author>
+<name>ccaum</name>
+</author>
+<category term="continuousdelivery"></category>
+<category term="puppet"></category>
+<category term="pipeline"></category>
+<category term="puppetenterprise"></category>
+<summary>
+This is a guest post by Carl Caum,
+who works at Puppet and created the
+Puppet Enterprise Pipeline plugin.
+
+
+
+
+
+
+During PuppetConf 2016, myself and Brian Dawson from CloudBees announced the
+Puppet Enterprise
+plugin for Jenkins Pipeline.
+Let&#8217;s take a look at how the plugin makes it trivial to use Puppet to perform
+some or all of the deployment tasks in continuous delivery pipelines.
+
+
+Jenkins Pipeline introduced an amazing world where the definition for a
+pipeline is managed from the same version control repository as the code
+delivered by the pipeline. This is a powerful idea, and one I felt complemented
+Puppet&#8217;s automation strengths. I wanted to make it trivial to control...
+</summary>
+<content type="html">
+&lt;div class=&quot;admonitionblock note&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is a guest post by &lt;a href=&quot;https://github.com/ccaum&quot;&gt;Carl Caum&lt;/a&gt;,
+who works at &lt;a href=&quot;http://puppet.com&quot;&gt;Puppet&lt;/a&gt; and created the
+&lt;a href=&quot;https://plugins.jenkins.io/puppet-enterprise-pipeline&quot;&gt;Puppet Enterprise Pipeline plugin&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;During PuppetConf 2016, myself and Brian Dawson from CloudBees announced the
+&lt;a href=&quot;https://plugins.jenkins.io/puppet-enterprise-pipeline&quot;&gt;Puppet Enterprise
+plugin for Jenkins Pipeline&lt;/a&gt;.
+Let’s take a look at how the plugin makes it trivial to use Puppet to perform
+some or all of the deployment tasks in continuous delivery pipelines.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Jenkins Pipeline introduced an amazing world where the definition for a
+pipeline is managed from the same version control repository as the code
+delivered by the pipeline. This is a powerful idea, and one I felt complemented
+Puppet’s automation strengths. I wanted to make it trivial to control Puppet
+Enterprise’s orchestration and infrastructure code management capabilities, as
+well as set hierarchical configuration data and use Puppet’s inventory data
+system as a source of truth – all from a Pipeline script. The result was the
+Puppet Enterprise plugin, which fully buys into the Pipeline ideals by
+providing methods to control the different capabilities in Puppet Enterprise.
+The methods provide ways to query
+&lt;a href=&quot;https://docs.puppet.com/puppetdb/4.3/&quot;&gt;PuppetDB&lt;/a&gt;, set
+&lt;a href=&quot;https://docs.puppet.com/hiera/3.2/&quot;&gt;Hiera&lt;/a&gt; key/value pairs, deploy
+Puppet code environments with
+&lt;a href=&quot;https://docs.puppet.com/pe/latest/code_mgr.html&quot;&gt;Code Management&lt;/a&gt;, and kick off orchestrated Puppet runs with the
+&lt;a href=&quot;https://docs.puppet.com/pe/latest/app_orchestration_overview.html&quot;&gt;Orchestrator&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-puppet-enterprise-for-jenkins-pipeline-plugin&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#the-puppet-enterprise-for-jenkins-pipeline-plugin&quot;&gt;&lt;/a&gt;The Puppet Enterprise for Jenkins Pipeline plugin&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Puppet Enterprise for Jenkins Pipeline plugin itself has zero system
+dependencies. You need only to install the plugin from the update center. The
+plugin uses APIs available in Puppet Enterprise to do its work. Since the
+PuppetDB query, Code Management, and Orchestrator APIs are all
+backed by Puppet Enterprise’s role-based access control (RBAC) system, it’s
+easy to restrict what pipelines are allowed to control in Puppet Enterprise. To
+learn more about RBAC in Puppet Enterprise,
+&lt;a href=&quot;https://docs.puppet.com/pe/latest/rbac_intro.html&quot;&gt;read the docs here.&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;configuring&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#configuring&quot;&gt;&lt;/a&gt;Configuring&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Configuring the plugin is fairly straight forward. It takes three simple steps:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Set the address of the Puppet server&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a Jenkins credential with a Pupppet Enterprise RBAC authentication token&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure the Hiera backend&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;set-the-puppet-enterprise-server-address&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#set-the-puppet-enterprise-server-address&quot;&gt;&lt;/a&gt;Set the Puppet Enterprise Server Address&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Go to Jenkins &amp;gt; Manage Jenkins &amp;gt; Puppet Enterprise page. Put the DNS address of
+the Puppet server in the &lt;strong&gt;Puppet Master Address&lt;/strong&gt; text field. Click the &lt;strong&gt;Test
+Connection&lt;/strong&gt; button to verify the server is reachable, the Puppet CA certificate
+is retrievable, and HTTPS connections are successful. Once the test succeeds,
+Click &lt;strong&gt;Save&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;create-a-jenkins-credentials-entry&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#create-a-jenkins-credentials-entry&quot;&gt;&lt;/a&gt;Create a Jenkins Credentials Entry&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The plugin uses the Jenkins built-in credentials system (the plain-credentials
+plugin) to store and refer RBAC tokens to Puppet Enterprise for authentication
+and authorization. First, generate an RBAC token in Puppet Enterprise by
+following
+&lt;a href=&quot;https://docs.puppet.com/pe/latest/rbac_token_auth.html#generating-a-token-for-use-by-a-service&quot;&gt;the
+instructions on the docs site.&lt;/a&gt; Next, create a new Jenkins Credentials item
+with Kind &lt;strong&gt;Secret text&lt;/strong&gt; and the &lt;strong&gt;Secret&lt;/strong&gt; value the Puppet Enterprise RBAC
+token. It’s highly recommended to give the credential an ID value that’s
+descriptive and identifiable. You’ll use it in your Pipeline scripts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In your Jenkinsfile, use the &lt;code&gt;puppet.credentials&lt;/code&gt; method to set all future Puppet
+methods to use the RBAC token. For example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;puppet.credentials &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;pe-team-token&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;configure-the-hiera-backend&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#configure-the-hiera-backend&quot;&gt;&lt;/a&gt;Configure the Hiera Backend&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The plugin exposes an HTTP API for performing Hiera data lookups for key/value
+pairs managed by Pipeline jobs. To configure Hiera on the Puppet compile
+master(s) to query the Jenkins Hiera data store backend, use the
+&lt;a href=&quot;https://github.com/crayfishx/hiera-http&quot;&gt;hiera-http&lt;/a&gt; backend. On the
+Puppet Enterprise compile master(s), run the following commands:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;/opt/puppetlabs/puppet/bin/gem install hiera-http
+/opt/puppetlabs/bin/puppetserver gem install hiera-http&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now you can configure the /etc/puppetlabs/puppet/hiera.yaml file. The following
+configuration instructs Hiera to first look to the Hiera yaml files in the
+Puppet code’s environment, then fall back to the http backend. The http backend
+will first query the Hiera data store API looking for the key in the scope with
+the same name as the node. If nothing’s found, look for the key in the node’s
+environments. You can use any Facter fact to match scope names.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;:backends:
+  - yaml
+  - http
+
+:http:
+  :host: jenkins.example.com
+  :port: 8080
+  :output: json
+  :use_auth: true
+  :auth_user: &amp;lt;user&amp;gt;
+  :auth_pass: &amp;lt;pass&amp;gt;
+  :cache_timeout: 10
+  :failure: graceful
+  :paths:
+    - /hiera/lookup?path=%{clientcert}&amp;amp;key=%{key}
+    - /hiera/lookup?path=%{environment}&amp;amp;key=%{key}&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Finally, restart the pe-puppetserver process to pick up the new configs:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;/opt/puppetlabs/bin/puppet resource service pe-puppetserver ensure=stopped
+/opt/puppetlabs/bin/puppet resource service pe-puppetserver ensure=running&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;hiera-http-authentication&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#hiera-http-authentication&quot;&gt;&lt;/a&gt;Hiera HTTP Authentication&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If Jenkins' Global Security is configured to allow unauthenticated read-only
+access, the &lt;em&gt;use_auth&lt;/em&gt;, &lt;em&gt;auth_pass&lt;/em&gt;, and &lt;em&gt;auth_user&lt;/em&gt; parameters are
+unnecessary. Otherwise, create a local Jenkins user that has permissions to
+view the Hiera Data Lookup page and use that user’s credentials for the
+hiera.yaml configuration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;querying-the-infrastructure&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#querying-the-infrastructure&quot;&gt;&lt;/a&gt;Querying the infrastructure&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;PuppetDB is an extensive data store that holds every bit of information Puppet
+generates and collects across every system Puppet is installed on. PuppetDB
+provides a sweet query language called
+&lt;a href=&quot;https://docs.puppet.com/puppetdb/4.3/api/query/v4/pql.html&quot;&gt;PQL.&lt;/a&gt; With PQL,
+you can ask complex questions of your infrastructure such as &quot;How many
+production Red Hat systems are there with the openssl package installed?&quot; or
+&quot;What us-west-2c nodes with the MyApp role that were created in the last 24
+hours?&quot;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This can be a powerful tool for parts of your pipeline where you need to
+perform specific operations on subsets of the infrastructure like draining a
+loadbalancer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s an example using the &lt;code&gt;puppet.query&lt;/code&gt; method:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;results = puppet.query &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'''&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;
+  inventory[certname] {
+    facts.os.name = &quot;RedHat&quot; and
+    facts.ec2_metadata.placement.availability-zone = &quot;us-west-2c&quot; and
+    facts.uptime_hours &amp;lt; 24
+  }&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'''&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The query returns an array of matching items. The results can be
+iterated on, and even passed to a series of &lt;code&gt;puppet.job&lt;/code&gt; calls. For example, the
+following code will query all nodes in production that experienced a failure on
+the last Puppet run.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;results = puppet.query &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;nodes { latest_report_status = &quot;failed&quot; and catalog_environment = &quot;production&quot;}&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Note that once you can use closures in Pipeline scripts, doing the above
+example will be much simpler.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;creating-an-orchestrator-job&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#creating-an-orchestrator-job&quot;&gt;&lt;/a&gt;Creating an orchestrator job&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The orchestration service in Puppet Enterprise is a tool to perform
+orchestrated Puppet runs across as broad or as targeted an infrastructure as
+you need at different parts of a pipeline. You can use the orchestrator to
+update applications in an environment, or update a specific list of nodes, or
+update nodes across a set of nodes that match certain criteria. In each
+scenario, Puppet will always push distributed changes in the correct order by
+respecting the cross-node dependencies.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To create a job in the Puppet orchestrator from a Jenkins pipeline, use the
+&lt;code&gt;puppet.job&lt;/code&gt; method. The &lt;code&gt;puppet.job&lt;/code&gt; method will create a new orchestrator job,
+monitor the job for completion, and determine if any Puppet runs failed. If
+there were failures, the pipeline will fail.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The following are just some examples of how to run Puppet orchestration jobs against the infrastructure you need to target.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Target an entire environment:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;puppet.job &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;production&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Target instances of an application in production:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;puppet.job &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;production&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;application&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Myapp&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Target a specific list of nodes:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;puppet.job &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;production&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;nodes&lt;/span&gt;: [&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;db.example.com&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;appserver01.example.com&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;appserver02.example.com&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Target nodes matching a complex set if criteria:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;puppet.job &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;production&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;query&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;inventory[certname] { facts.os.name = &quot;RedHat&quot; and facts.ec2_metadata.placement.availability-zone = &quot;us-west-2c&quot; and uptime_hours &amp;lt; 24 }&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As you can see, the &lt;code&gt;puppet.job&lt;/code&gt; command means you can be as broad or as targeted
+as you need to be for different parts of your pipeline. There are many other
+options you can add to the &lt;code&gt;puppet.job&lt;/code&gt; method call, such as setting the Puppet
+runs to noop, or giving the orchestrator a maximum concurrency limit.
+&lt;a href=&quot;https://puppet.com/product/capabilities/application-orchestration&quot;&gt;Learn
+more about the orchestrator here.&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;updating-puppet-code&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#updating-puppet-code&quot;&gt;&lt;/a&gt;Updating Puppet code&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you’re using Code Management in Puppet Enterprise (and you should), you can
+ensure that all the modules, site manifests, Hiera data, and roles and profiles
+are staged, synced, and ready across all your Puppet masters, direct from your
+Jenkins pipeline.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To update Puppet code across all Puppet masters, use the &lt;code&gt;puppet.codeDeploy&lt;/code&gt; method:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;puppet.codeDeploy &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;staging&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://puppet.com/product/capabilities/code-management&quot;&gt;Learn more Code Management in Puppet Enterprise here.&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;setting-hiera-values&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#setting-hiera-values&quot;&gt;&lt;/a&gt;Setting Hiera values&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The plugin includes an experimental feature to set Hiera key/value pairs. There
+are many cases where you need to promote information through a pipeline, such
+as a build version or artifact location. Doing so is very difficult in Puppet,
+since data promotion almost always involves changing Hiera files and committing
+to version control.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The plugin exposes an HTTP API endpoint that Hiera can query using the
+hiera-http backend. With the backend configured on the Puppet master(s),
+key/value pairs can be set to scopes. A scope is arbitrary and can be anything
+you like, such as a Puppet environment, a node’s certname, or the name of a
+Facter fact like operatingsystem or domain.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To set a Hiera value from a pipeline, use the &lt;code&gt;puppet.hiera&lt;/code&gt; method.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;puppet.hiera &lt;span style=&quot;color:#606&quot;&gt;scope&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;staging&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;key&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;build-version&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;value&lt;/span&gt;: env.BUILD_ID&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now you can set the same key with the same value to the production scope later
+in the pipeline, followed by a call to &lt;code&gt;puppet.job&lt;/code&gt; to push the change out.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;examples&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#examples&quot;&gt;&lt;/a&gt;Examples&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The
+&lt;a href=&quot;https://github.com/jenkinsci/puppet-enterprise-pipeline-plugin/tree/master/examples&quot;&gt;plugin’s
+Github repository&lt;/a&gt; contains a set of example Pipeline scripts. Feel free to
+issue pull requests to add your own scripts!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;what-s-next&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#what-s-next&quot;&gt;&lt;/a&gt;What’s next&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I’m pretty excited to see how this is going to help simplify continuous
+delivery pipelines. I encourage everyone to get started with continuous
+delivery today, even if it’s just a simple pipeline. As your practices evolve,
+you can begin to add automated tests, automate away manual checkpoints, start
+to incorporate InfoSec tests, and include phases for practices like patch
+management that require lots of manual approvals, verifications and rollouts.
+You’ll be glad you did.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/</id>
 <title>Announcing the beta of Declarative Pipeline Syntax</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:33:49-08:00</updated>
 <published>2016-12-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/" />
 <author>
@@ -28,13 +427,31 @@ very close to the final version and should not change much before 1.0. However,
 it is still a Beta so further tweaks are possible.
 
 
+
+
+
+
+
+
+
+A release (0.8.0) is planned for early January 2017 which will finalize the
+syntax with the following changes:
+JENKINS-40524,
+JENKINS-40370,
+JENKINS-40462,
+JENKINS-40337
+
+
+
+
+
+
 What is Declarative Pipeline?
 
 
 All the way back at Jenkins World in September, Andrew Bayer presented a
 sneak peak
-of a new syntax for constructing Pipelines. We are calling this new syntax
-Declarative Pipeline to differentiate it from the existing...
+of a new syntax...
 </summary>
 <content type="html">
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -46,6 +463,25 @@ Pipeline syntax. Although it has been available in the update center
 we continue to solidify the syntax. We feel this release is getting
 very close to the final version and should not change much before 1.0. However,
 it is still a Beta so further tweaks are possible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock caution&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-caution&quot; title=&quot;Caution&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A release (0.8.0) is planned for early January 2017 which will finalize the
+syntax with the following changes:
+&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-40524&quot;&gt;JENKINS-40524&lt;/a&gt;,
+&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-40370&quot;&gt;JENKINS-40370&lt;/a&gt;,
+&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-40462&quot;&gt;JENKINS-40462&lt;/a&gt;,
+&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-40337&quot;&gt;JENKINS-40337&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;what-is-declarative-pipeline&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#what-is-declarative-pipeline&quot;&gt;&lt;/a&gt;What is Declarative Pipeline?&lt;/h2&gt;
@@ -128,7 +564,7 @@ available as &lt;code&gt;steps&lt;/code&gt; in Declarative.&lt;/p&gt;
     &lt;em&gt;(Advanced)&lt;/em&gt;
   &lt;/div&gt;
   &lt;div class=&quot;listingblock pipeline-script&quot; style=&quot;display: none&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Pipeline Script)&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Scripted Pipeline)&lt;/div&gt;
     &lt;div class=&quot;content&quot;&gt;
   &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;withEnv([&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GIT_COMMITTER_NAME = jenkins&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GIT_COMMITTER_EMAIL = jenkins@jenkins.io&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;]) {
   node(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;has-docker&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
@@ -157,25 +593,6 @@ available as &lt;code&gt;steps&lt;/code&gt; in Declarative.&lt;/p&gt;
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;admonitionblock caution&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-caution&quot; title=&quot;Caution&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A release (0.8.0) is planned for early January 2017 which will finalize the
-syntax with the following changes:
-&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-40524&quot;&gt;JENKINS-40524&lt;/a&gt;,
-&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-40370&quot;&gt;JENKINS-40370&lt;/a&gt;,
-&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-40462&quot;&gt;JENKINS-40462&lt;/a&gt;,
-&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-40337&quot;&gt;JENKINS-40337&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
@@ -247,7 +664,7 @@ we expect great things for Jenkins in 2017!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/</id>
 <title>Monthly JAM Recap - November 2016</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-12-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/" />
 <author>
@@ -444,7 +861,7 @@ with very little provisioning time.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/</id>
 <title>Upcoming December Jenkins Events</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-12-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/" />
 <author>
@@ -579,7 +996,7 @@ local activities going in December.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/</id>
 <title>What JVM versions are running Jenkins? 2016 Update!</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-11-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" />
 <author>
@@ -701,7 +1118,7 @@ All numbers shown below are derived from the new &lt;a href=&quot;stats.jenkins.
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/</id>
 <title>Tuning Jenkins GC For Responsiveness and Stability with Large Instances</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-11-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/" />
 <author>
@@ -1518,7 +1935,7 @@ another post…​&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/</id>
 <title>Security updates addressing zero day vulnerability</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-11-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/" />
 <author>
@@ -1597,7 +2014,7 @@ mailing list to receive future Jenkins security notifications.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/</id>
 <title>Upcoming November Jenkins Events</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-11-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/" />
 <author>
@@ -1745,7 +2162,7 @@ below please stop by to say &quot;Hi&quot; and talk Jenkins over beer.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/</id>
 <title>Addressing recently disclosed vulnerabilities in the Jenkins CLI</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-11-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/" />
 <author>
@@ -1863,7 +2280,7 @@ to follow. You can learn more about this policy and our processes on our
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/</id>
 <title>Monthly JAM Recap - October 2016</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-11-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/" />
 <author>
@@ -2008,7 +2425,7 @@ last meetups.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/</id>
 <title>xUnit and Pipeline</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-10-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/" />
 <author>
@@ -2515,7 +2932,7 @@ also write your own XSL for result formats not on the known/supported list.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/</id>
 <title>Jenkins World 2016 Session Videos</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-10-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/" />
 <author>
@@ -2597,7 +3014,7 @@ Technical Evangelist at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/</id>
 <title>Controlling the Flow with Stage, Lock, and Milestone</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-10-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/" />
 <author>
@@ -2845,7 +3262,7 @@ stage(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;s
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/</id>
 <title>Jenkins World 2016, That's a Wrap!</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/" />
 <author>
@@ -2991,7 +3408,7 @@ there isn’t, take a look at the
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/</id>
 <title>Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:33:49-08:00</updated>
 <published>2016-09-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" />
 <author>
@@ -3200,7 +3617,7 @@ on track before, during, and after the conference.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/</id>
 <title>Jenkins World 2016 Wrap-up - Scaling</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-27T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/" />
 <author>
@@ -3422,7 +3839,7 @@ the challenges and opportunities they see ahead.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/</id>
 <title>Jenkins World 2016 Wrap-up - Pipeline</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/" />
 <author>
@@ -3666,7 +4083,7 @@ delivery practices.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/</id>
 <title>Jenkins World 2016 Wrap-up - Introduction</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/" />
 <author>
@@ -3778,7 +4195,7 @@ including slides, videos, and links to other useful resources.  Stay tuned!&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/</id>
 <title>Jenkins Online Meetup report. Plugin Development - WebUI</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/" />
 <author>
@@ -3897,7 +4314,7 @@ or via the &lt;a href=&quot;mailto:events@lists.jenkins-ci.org&quot;&gt;events@l
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/</id>
 <title>Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/" />
 <author>
@@ -3998,7 +4415,7 @@ Pipeline inside a Docker container:&lt;/p&gt;
     &lt;em&gt;(Advanced)&lt;/em&gt;
   &lt;/div&gt;
   &lt;div class=&quot;listingblock pipeline-script&quot; style=&quot;display: none&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Pipeline Script)&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Scripted Pipeline)&lt;/div&gt;
     &lt;div class=&quot;content&quot;&gt;
   &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;node(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;docker&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
   docker.image(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;node:6.3&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).inside {
@@ -4051,7 +4468,7 @@ complexity of the &lt;code&gt;try... catch&lt;/code&gt; of Pipeline script.&lt;/
     &lt;em&gt;(Advanced)&lt;/em&gt;
   &lt;/div&gt;
   &lt;div class=&quot;listingblock pipeline-script&quot; style=&quot;display: none&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Pipeline Script)&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Scripted Pipeline)&lt;/div&gt;
     &lt;div class=&quot;content&quot;&gt;
   &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;node(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;docker&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
   &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;try&lt;/span&gt; {
@@ -4126,7 +4543,7 @@ do this without you.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/</id>
 <title>Take the 2016 Jenkins Survey!</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/" />
 <author>
@@ -4223,7 +4640,7 @@ minutes.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/</id>
 <title>Continuous Delivery of Infrastructure with Jenkins</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/" />
 <author>
@@ -4382,7 +4799,7 @@ pass.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/</id>
 <title>Pipeline at Jenkins World 2016</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/" />
 <author>
@@ -4775,7 +5192,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/</id>
 <title>Introducing a New Way to Define Jenkins Pipelines</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-06T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/" />
 <author>
@@ -4919,7 +5336,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/</id>
 <title>Jenkins World Contributor Summit</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-09-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/" />
 <author>
@@ -5034,7 +5451,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/</id>
 <title>Scaling Jenkins at Jenkins World 2016</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/" />
 <author>
@@ -5308,7 +5725,7 @@ everybody; hope to see you there!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/</id>
 <title>Demos at Jenkins World 2016</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/" />
 <author>
@@ -5525,7 +5942,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/</id>
 <title>Browser-testing with Sauce OnDemand and Pipeline</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/" />
 <author>
@@ -5990,7 +6407,7 @@ repository.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/</id>
 <title>Enforcing Jenkins Best Practices</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/" />
 <author>
@@ -6165,7 +6582,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/</id>
 <title>Ask the Experts at Jenkins World 2016</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/" />
 <author>
@@ -6311,7 +6728,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/</id>
 <title>Jenkins World 2016 Festivities</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/" />
 <author>
@@ -6509,7 +6926,7 @@ Hat and all the other sponsors&lt;/a&gt; who have made this event possible.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/</id>
 <title>GSoC: External Workspace Manager for Pipeline is released</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/" />
 <author>
@@ -6685,7 +7102,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/</id>
 <title>Continuously Delivering Continuous Delivery Pipelines</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/" />
 <author>
@@ -6884,7 +7301,7 @@ enterprise scale.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/</id>
 <title>Using Jenkins for Disparate Feedback on GitHub</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/" />
 <author>
@@ -6979,7 +7396,7 @@ register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off yo
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/</id>
 <title>Continuous Security for Rails apps with Pipeline and Brakeman</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/" />
 <author>
@@ -7510,7 +7927,7 @@ security, pipeline in code is that you can continue to iterate on it!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/</id>
 <title>GSoC: External Workspace Manager for Pipeline. Beta release is available</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/" />
 <author>
@@ -7806,7 +8223,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/</id>
 <title>Don't install software, define your environment with Docker and Pipeline</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/" />
 <author>
@@ -8063,7 +8480,7 @@ change due to a security patch).&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/</id>
 <title>St. Petersburg Jenkins Meetup #3 and #4 Reports</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-08-03T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/" />
 <author>
@@ -8305,7 +8722,7 @@ organizers of the &lt;a href=&quot;http://piter-united.ru/itgm8/itgm.html&quot;&
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/</id>
 <title>Join me for Jenkins World 2016</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-07-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/" />
 <author>
@@ -8438,7 +8855,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/</id>
 <title>Blue Ocean July development update </title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-07-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/" />
 <author>
@@ -8573,7 +8990,7 @@ the experimental update center on this post&lt;/a&gt;.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/</id>
 <title>Sending Notifications in Pipeline</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-07-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/" />
 <author>
@@ -8994,7 +9411,7 @@ my pipeline.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/</id>
 <title>New packages for Jenkins 2.7.1</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-07-14T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/" />
 <author>
@@ -9018,7 +9435,7 @@ These new packages for Jenkins 2.7.1, dated July 14, have the same scripts and p
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/</id>
 <title>Jenkins 2 hits LTS</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-07-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/" />
 <author>
@@ -9050,7 +9467,7 @@ This release also officially marks the end-of-life for Jenkins 1.x. There won’
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/</id>
 <title>Publishing HTML Reports in Pipeline</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-07-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/" />
 <author>
@@ -9289,7 +9706,7 @@ HTML.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/30/ewm-alpha-version/</id>
 <title>GSoC: External Workspace Manager Plugin alpha version</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-06-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/30/ewm-alpha-version/" />
 <author>
@@ -9403,7 +9820,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/29/from-freestyle-to-pipeline/</id>
 <title>Migrating from chained Freestyle jobs to Pipelines</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-06-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/29/from-freestyle-to-pipeline/" />
 <author>
@@ -9737,7 +10154,7 @@ blue charts&lt;/a&gt;!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/21/gsoc-midterm-presentations-ann/</id>
 <title>GSoC: Mid-term presentations by students on June 23 and 24</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-06-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/21/gsoc-midterm-presentations-ann/" />
 <author>
@@ -9871,7 +10288,7 @@ The agenda may change a bit.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/16/parallel-test-executor-plugin/</id>
 <title>Faster Pipelines with the Parallel Test Executor Plugin</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-06-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/16/parallel-test-executor-plugin/" />
 <author>
@@ -10145,7 +10562,7 @@ other tools or processes.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/15/jenkins-pipeline-scalability/</id>
 <title>Jenkins Pipeline Scalability in the Enterprise</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
+<updated>2016-12-20T07:30:50-08:00</updated>
 <published>2016-06-15T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/15/jenkins-pipeline-scalability/" />
 <author>
@@ -10555,195 +10972,6 @@ following links:&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.slideshare.net/DamienCoraboeuf/brujug-jenkins-pipeline-scalability&quot;&gt;BruJUG Brussels, March 2016&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/06/14/jenkins-world-agenda/</id>
-<title>Jenkins World Agenda is Live!</title>
-<updated>2016-12-19T09:48:22-08:00</updated>
-<published>2016-06-14T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/14/jenkins-world-agenda/" />
-<author>
-<name>alyssat</name>
-</author>
-<category term="event"></category>
-<summary>
-Join us in Santa Clara, California on September 13-15, 2016!
-
-
-We are excited to announce the Jenkins
-World agenda is now live. There will be 50+ sessions, keynotes, training,
-certifications and workshops. Here are a few highlights of what you can expect:
-
-
-High level topics
-
-
-
-Continuous delivery
-
-
-DevOps
-
-
-Microservices architectures
-
-
-Testing
-
-
-Automation tools
-
-
-Plugin development
-
-
-Pipeline
-
-
-Best practices
-
-
-And much more
-
-
-
-
-Additionally, Jenkins World offers great opportunities for hands-on learning,
-exploring and networking:
-
-
-
-Plugin Development Workshop
-
-Due to its popularity in previous years, we are bringing back the plugin
-development workshop. This workshop will introduce developers to the Jenkins
-plugin ecosystem and terminology. The goal is to provide a cursory overview of
-the resources available to Jenkins plugin developers. Armed...
-</summary>
-<content type="html">
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;span class=&quot;image right&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/conferences/Jenkins-World_125x125.png&quot; alt=&quot;Jenkins World&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Join us in Santa Clara, California on &lt;strong&gt;September 13-15, 2016&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We are excited to announce the &lt;a href=&quot;https://www.cloudbees.com/juc/agenda&quot;&gt;Jenkins
-World agenda&lt;/a&gt; is now live. There will be 50+ sessions, keynotes, training,
-certifications and workshops. Here are a few highlights of what you can expect:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;high-level-topics&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#high-level-topics&quot;&gt;&lt;/a&gt;High level topics&lt;/h3&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Continuous delivery&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;DevOps&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Microservices architectures&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Testing&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Automation tools&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Plugin development&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Pipeline&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Best practices&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;And much more&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Additionally, Jenkins World offers great opportunities for hands-on learning,
-exploring and networking:&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;plugin-development-workshop&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#plugin-development-workshop&quot;&gt;&lt;/a&gt;Plugin Development Workshop&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Due to its popularity in previous years, we are bringing back the plugin
-development workshop. This workshop will introduce developers to the Jenkins
-plugin ecosystem and terminology. The goal is to provide a cursory overview of
-the resources available to Jenkins plugin developers. Armed with this
-information, Jenkins developers can learn how to navigate the project and
-codebase to find answers to their questions.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;birds-of-a-feather-sessions&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#birds-of-a-feather-sessions&quot;&gt;&lt;/a&gt;Birds of a Feather Sessions&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;BoFs, as they are usually known, will be a new addition to Jenkins World this
-year. Sessions will be curated on various technical topics from DevOps to how
-enterprises are integrating Jenkins in their environment. Discussions will be
-lead by the industry’s brightest minds who have an influence in shaping the
-future of Jenkins.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;ask-the-experts&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#ask-the-experts&quot;&gt;&lt;/a&gt;Ask the Experts&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Got a Jenkins question that’s been keeping you up at night? Need to bounce ideas
-off somebody? Or you just need someone to fix your Jenkins issue? This is your chance
-to get connected with the Jenkins Experts. Experts will be on hand to help with
-all your Jenkins needs on Sept 14th &amp;amp; 15th.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;prepare-for-jenkins-certification&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#prepare-for-jenkins-certification&quot;&gt;&lt;/a&gt;Prepare for Jenkins Certification&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The objective of this session is to help you assess your level of readiness for
-the certification exam - either the Certified Jenkins Engineer (CJE/open source)
-certification or the Certified CloudBees Jenkins Platform Engineer
-(CCJPE/CloudBees-specific) certification. After an overview about the
-certification program, a Jenkins expert from CloudBees will walk you through the
-various sections of the exam, highlighting the important things to master ahead
-of time, not only from a pure knowledge perspective but also in terms of
-practical experience. This will be an interactive session.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;hope-to-see-you-at-a-href-https-www-cloudbees-com-jenkinsworld-home-jenkins-world-2016-a&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#hope-to-see-you-at-a-href-https-www-cloudbees-com-jenkinsworld-home-jenkins-world-2016-a&quot;&gt;&lt;/a&gt;Hope to see you at &lt;a href=&quot;https://www.cloudbees.com/jenkinsworld/home&quot;&gt;Jenkins World 2016&lt;/a&gt;!&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Don’t miss out on
-&lt;a href=&quot;http://www.cvent.com/events/jenkins-world/event-summary-9d5c7937a3c34f048fb9b4045a449f38.aspx&quot;&gt;Super
-Early Bird Rate $399&lt;/a&gt;. Price goes up after July 1.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h3&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/jam&quot;&gt;Start a JAM&lt;/a&gt; in your city if there isn’t one already.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Become a &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+Area+Meetup&quot;&gt;JAM member&lt;/a&gt; .&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Become an &lt;a href=&quot;http://www.meetup.com/Jenkins-online-meetup/&quot;&gt;online JAM member&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Be a JAM speaker or sponsor. Let us know &lt;a href=&quot;mailto:jenkinsci-jam@googlegroups.com&quot;&gt;jenkinsci-jam@googlegroups.com&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Become a &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Beginners+Guide+to+Contributing&quot;&gt;Jenkins project contributor&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;

@@ -371,7 +371,7 @@ The Jenkinsfile
 <li><a href="#deploy">Deploy</a></li>
 </ul>
 </li>
-<li><a href="#advanced-syntax-for-pipeline-scripts">Advanced Syntax for Pipeline Scripts</a>
+<li><a href="#advanced-syntax-for-scripted-pipeline">Advanced Syntax for Scripted Pipeline</a>
 <ul class="sectlevel2">
 <li><a href="#string-interpolation">String Interpolation</a></li>
 <li><a href="#working-with-the-environment">Working with the Environment</a></li>
@@ -429,7 +429,7 @@ Pipeline which implements a basic three-stage continuous delivery pipeline.</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node { <span style="color:#777">// &lt;1&gt;</span>
     stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { <span style="color:#777">// &lt;2&gt;</span>
@@ -493,7 +493,7 @@ access the right revision of the source code</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
     checkout scm <span style="color:#777">// &lt;1&gt;</span>
@@ -528,7 +528,7 @@ Windows-based systems the <code>bat</code> could be used instead.</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
     <span style="color:#777">/* .. snip .. */</span>
@@ -590,7 +590,7 @@ Jenkins can also provide historical trend analysis and visualization.</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
     <span style="color:#777">/* .. snip .. */</span>
@@ -636,7 +636,7 @@ have exited early.</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
     <span style="color:#777">/* .. snip .. */</span>
@@ -652,7 +652,7 @@ have exited early.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Accessing the <code>currentBuild.result</code> variable allows the Pipeline Script to
+<td>Accessing the <code>currentBuild.result</code> variable allows the Pipeline to
 determine if there were any test failures. In which case, the value would be
 <code>UNSTABLE</code>.</td>
 </tr>
@@ -664,22 +664,22 @@ each successful Pipeline run will have associated build artifacts archived,
 test results reported upon and the full console output all in Jenkins.</p>
 </div>
 <div class="paragraph">
-<p>A Pipeline Script can include conditional tests (shown above), loops,
+<p>A Scripted Pipeline can include conditional tests (shown above), loops,
 try/catch/finally blocks and even functions. The next section will cover this
-more advanced Pipeline Script syntax in more detail.</p>
+advanced Scripted Pipeline syntax in more detail.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="advanced-syntax-for-pipeline-scripts"><a class="anchor" href="#advanced-syntax-for-pipeline-scripts"></a>Advanced Syntax for Pipeline Scripts</h2>
+<h2 id="advanced-syntax-for-scripted-pipeline"><a class="anchor" href="#advanced-syntax-for-scripted-pipeline"></a>Advanced Syntax for Scripted Pipeline</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pipeline Script is a domain-specific language
+<p>Scripted Pipeline is a domain-specific language
 <sup class="footnote" id="_footnote_dsl">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>
 based on Groovy, most
 <a href="http://groovy-lang.org/semantics.html">Groovy syntax</a>
-can be in Pipeline Script without modification.</p>
+can be used in Scripted Pipeline without modification.</p>
 </div>
 <div class="sect2">
 <h3 id="string-interpolation"><a class="anchor" href="#string-interpolation"></a>String Interpolation</h3>
@@ -716,7 +716,7 @@ I said, Hello Mr. Jenkins</code></pre>
 </div>
 <div class="paragraph">
 <p>Understanding how to use Groovy&#8217;s string interpolation is vital for using some
-of Pipeline Script&#8217;s more advanced features.</p>
+of Scripted Pipeline 's more advanced features.</p>
 </div>
 </div>
 <div class="sect2">
@@ -752,7 +752,7 @@ for example:</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
     echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Running </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.BUILD_ID<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> on </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.JENKINS_URL<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
@@ -763,11 +763,11 @@ for example:</p>
 <div class="paragraph">
 <p>Setting an environment variable within a Jenkins Pipeline can be done with the
 <code>withEnv</code> step, which allows overriding specified environment variables for a
-given block of Pipeline Script, for example:</p>
+given block of Scripted Pipeline, for example:</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
     <span style="color:#777">/* .. snip .. */</span>
@@ -792,7 +792,7 @@ Pipeline project in the web UI, a <code>Jenkinsfile</code> can access that param
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
     echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>Greeting<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> World!</span><span style="color:#710">&quot;</span></span>
@@ -802,7 +802,7 @@ Pipeline project in the web UI, a <code>Jenkinsfile</code> can access that param
 <div class="sect2">
 <h3 id="handling-failures"><a class="anchor" href="#handling-failures"></a>Handling Failures</h3>
 <div class="paragraph">
-<p>Pipeline Script relies on Groovy&#8217;s built-in <code>try</code>/<code>catch</code>/<code>finally</code> semantics
+<p>Scripted Pipeline relies on Groovy&#8217;s built-in <code>try</code>/<code>catch</code>/<code>finally</code> semantics
 for handling failures during execution of the Pipeline.</p>
 </div>
 <div class="paragraph">
@@ -818,7 +818,7 @@ reports, is to use a series of <code>try</code>/<code>finally</code> blocks:</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
     <span style="color:#777">/* .. snip .. */</span>
@@ -850,7 +850,7 @@ the built results will be reused on two different nodes, labelled "linux" and
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
     node {
@@ -919,14 +919,14 @@ minutes to complete!</p>
 </div>
 <div class="paragraph">
 <p>Fortunately, Pipeline has built-in functionality for executing portions of
-Pipeline Script in parallel, implemented in the aptly named <code>parallel</code> step.</p>
+Scripted Pipeline in parallel, implemented in the aptly named <code>parallel</code> step.</p>
 </div>
 <div class="paragraph">
 <p>Refactoring the example above to use the <code>parallel</code> step:</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
     <span style="color:#777">/* .. snip .. */</span>

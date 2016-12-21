@@ -395,7 +395,7 @@ Shared Libraries
 <div class="paragraph">
 <p>As Pipeline is adopted for more and more projects in an organization, common
 patterns are likely to emerge. Oftentimes it is useful to share parts of
-Pipeline scripts between various projects to reduce redundancies and keep code
+Pipelines between various projects to reduce redundancies and keep code
 "DRY"
 <sup class="footnote" id="_footnote_dry">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
 </div>
@@ -462,13 +462,14 @@ This directory is added to the classpath when executing Pipelines.</p>
 </div>
 <div class="paragraph">
 <p>The <code>vars</code> directory hosts scripts that define global variables accessible from
-Pipeline scripts.
+Pipeline.
 The basename of each <code>*.groovy</code> file should be a Groovy (~ Java) identifier, conventionally <code>camelCased</code>.
 The matching <code>*.txt</code>, if present, can contain documentation, processed through the system’s configured markup formatter
 (so may really be HTML, Markdown, etc., though the <code>txt</code> extension is required).</p>
 </div>
 <div class="paragraph">
-<p>The Groovy source files in these directories get the same “CPS transformation” as your Pipeline scripts.</p>
+<p>The Groovy source files in these directories get the same “CPS transformation”
+as in Scripted Pipeline.</p>
 </div>
 <div class="paragraph">
 <p>A <code>resources</code> directory allows the <code>libraryResource</code> step to be used from an external library to load associated non-Groovy files.
@@ -508,7 +509,7 @@ or subfolder.</p>
 </div>
 <div class="paragraph">
 <p>Folder-based libraries are not considered "trusted:" they run in the Groovy
-sandbox just like typical Pipeline scripts.</p>
+sandbox just like typical Pipelines.</p>
 </div>
 </div>
 <div class="sect2">
@@ -529,7 +530,7 @@ branch, using an anonymous checkout.</p>
 <h2 id="using-libraries"><a class="anchor" href="#using-libraries"></a>Using libraries</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pipeline scripts can access shared libraries marked <em>Load implicitly</em>, They may
+<p>Pipelines can access shared libraries marked <em>Load implicitly</em>, They may
 immediately use classes or global variables defined by any such libraries
 (details below).</p>
 </div>
@@ -642,7 +643,7 @@ class, which in turn invoke Pipeline steps, for example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Which can then be called from a Pipeline Script:</p>
+<p>Which can then be called from a Scripted Pipeline:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -689,7 +690,7 @@ node {
 explicitly passed into the library classes, or methods, in a similar manner.</p>
 </div>
 <div class="paragraph">
-<p>Instead of passing numerous variables from the Pipeline Script into a library,</p>
+<p>Instead of passing numerous variables from the Scripted Pipeline into a library,</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -703,7 +704,7 @@ explicitly passed into the library classes, or methods, in a similar manner.</p>
 </div>
 <div class="paragraph">
 <p>The above example shows the script being passed in to one <code>static</code> method,
-invoked from a Pipeline Script as follows:</p>
+invoked from a Scripted Pipeline as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -736,7 +737,7 @@ single <code>.groovy</code> file which interact with each other, for example:</p
 </div>
 </div>
 <div class="paragraph">
-<p>The Pipeline Script can then invoke these methods which will be defined on the
+<p>The Pipeline can then invoke these methods which will be defined on the
 <code>acme</code> object:</p>
 </div>
 <div class="listingblock">
@@ -782,13 +783,13 @@ allows the global variable to be invoked in a manner similar to a step:</p>
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/sayHello.groovy</span>
 <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(<span style="color:#0a8;font-weight:bold">String</span> name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">human</span><span style="color:#710">'</span></span>) {
     <span style="color:#777">// Any valid steps can be called from this code, just like in other</span>
-    <span style="color:#777">// Pipeline scripts</span>
+    <span style="color:#777">// Scripted Pipeline</span>
     echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The Pipeline Script would then be able to reference and invoke this variable:</p>
+<p>The Pipeline would then be able to reference and invoke this variable:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -813,7 +814,7 @@ example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The Pipeline Script can then use this variable like any built-in step which
+<p>The Pipeline can then use this variable like any built-in step which
 accepts a block:</p>
 </div>
 <div class="listingblock">
@@ -860,7 +861,7 @@ the resulting <code>Jenkinsfile</code> will be dramatically simpler:</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-script"
         style="display: true">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">buildPlugin {
     name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git</span><span style="color:#710">'</span></span>

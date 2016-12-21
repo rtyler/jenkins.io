@@ -374,6 +374,25 @@ we continue to solidify the syntax. We feel this release is getting
 very close to the final version and should not change much before 1.0. However,
 it is still a Beta so further tweaks are possible.</p>
 </div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A release (0.8.0) is planned for early January 2017 which will finalize the
+syntax with the following changes:
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-40524">JENKINS-40524</a>,
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-40370">JENKINS-40370</a>,
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-40462">JENKINS-40462</a>,
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-40337">JENKINS-40337</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sect1">
 <h2 id="what-is-declarative-pipeline"><a class="anchor" href="#what-is-declarative-pipeline"></a>What is Declarative Pipeline?</h2>
 <div class="sectionbody">
@@ -456,7 +475,7 @@ available as <code>steps</code> in Declarative.</p>
   </div>
   <div class="listingblock pipeline-script"
         style="display: none">
-    <div class="title">Jenkinsfile (Pipeline Script)</div>
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GIT_COMMITTER_NAME = jenkins</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GIT_COMMITTER_EMAIL = jenkins@jenkins.io</span><span style="color:#710">&quot;</span></span>]) {
   node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has-docker</span><span style="color:#710">'</span></span>) {
@@ -485,25 +504,6 @@ available as <code>steps</code> in Declarative.</p>
   }
 }</code></pre>
 </div></div></div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>A release (0.8.0) is planned for early January 2017 which will finalize the
-syntax with the following changes:
-<a href="https://issues.jenkins-ci.org/browse/JENKINS-40524">JENKINS-40524</a>,
-<a href="https://issues.jenkins-ci.org/browse/JENKINS-40370">JENKINS-40370</a>,
-<a href="https://issues.jenkins-ci.org/browse/JENKINS-40462">JENKINS-40462</a>,
-<a href="https://issues.jenkins-ci.org/browse/JENKINS-40337">JENKINS-40337</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </div>
 </div>
 <div class="sect1">
