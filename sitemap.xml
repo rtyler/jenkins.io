@@ -5173,12 +5173,6 @@
 <changefreq>never</changefreq>
 </url>
 <url>
-<loc>https://rtyler.github.io/jenkins.io/doc/book/managing/users/</loc>
-<lastmod>2016-12-20</lastmod>
-<priority>0.1</priority>
-<changefreq>never</changefreq>
-</url>
-<url>
 <loc>https://rtyler.github.io/jenkins.io/doc/book/operating/backing-up/</loc>
 <lastmod>2016-12-20</lastmod>
 <priority>0.1</priority>
