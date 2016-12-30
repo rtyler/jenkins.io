@@ -54,6 +54,9 @@ LTS Release
 <p>
 LTS (Long-Term Support) releases are chosen every 12 weeks from the
 stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
 </p>
 </div>
 <div class="col-md-6 text-xs-center">
@@ -71,12 +74,12 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.19.4
+2.32.1
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
 <div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
 <span class="icon"></span>
 <span class="title">
 Docker
@@ -144,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.35
+2.38
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -375,7 +378,7 @@ master and executes tasks when directed by the master.</p>
 <dd>
 <p><a id="artifact"></a>
 An immutable file generated during a <a href="#build">Build</a> or <a href="#pipeline">Pipeline</a>
-run. Artifacts are typically <strong>archived</strong> onto the Jenkins <a href="#master">Master</a> for
+run which is <strong>archived</strong> onto the Jenkins <a href="#master">Master</a> for
 later retrieval by users.</p>
 </dd>
 <dt>Build</dt>
@@ -408,10 +411,10 @@ as part of the execution of a separate Pipeline or Project.</p>
 <dt>Executor</dt>
 <dd>
 <p><a id="executor"></a>
-A thread for execution of <a href="#pipeline">Pipelines</a> or <a href="#project">Projects</a> on a
-<a href="#node">Node</a>. A Node may have zero or more Executors configured which
-corresponds to how many concurrent Projects or Pipelines are able to execute on
-that Node.</p>
+A slot for execution of work defined by a <a href="#pipeline">Pipeline</a> or
+<a href="#project">Project</a> on a <a href="#node">Node</a>. A Node may have zero or more
+Executors configured which corresponds to how many concurrent Projects or
+Pipelines are able to execute on that Node.</p>
 </dd>
 <dt>Fingerprint</dt>
 <dd>
@@ -424,7 +427,7 @@ A hash considered globally unique to track the usage of an
 <dd>
 <p><a id="folder"></a>
 An organizational container for <a href="#pipeline">Pipelines</a> and/or
-<a href="#project">Projects</a> in the web UI, similar to folders on a file system.</p>
+<a href="#project">Projects</a>, similar to folders on a file system.</p>
 </dd>
 <dt>Item</dt>
 <dd>
@@ -453,13 +456,13 @@ of executing <a href="#pipeline">Pipelines</a> or <a href="#project">Projects</a
 <dt>Project</dt>
 <dd>
 <p><a id="project"></a>
-A user configured description of work which Jenkins should perform, such as
+A user-configured description of work which Jenkins should perform, such as
 building a piece of software, etc.</p>
 </dd>
 <dt>Pipeline</dt>
 <dd>
 <p><a id="pipeline"></a>
-A user defined model of a continuous delivery pipeline, for more read the
+A user-defined model of a continuous delivery pipeline, for more read the
 <a href="../pipeline/">Pipeline chapter</a> in this handbook.</p>
 </dd>
 <dt>Plugin</dt>
@@ -472,7 +475,7 @@ from Jenkins <a href="#core">Core</a>.</p>
 <dd>
 <p><a id="publisher"></a>
 Part of a <a href="#build">Build</a> after the completion of all configured
-<a href="#step">Steps</a> which publishs reports, sends notifications, etc.</p>
+<a href="#step">Steps</a> which publishes reports, sends notifications, etc.</p>
 </dd>
 <dt>Step</dt>
 <dd>
@@ -483,8 +486,8 @@ A single task; fundamentally steps tell Jenkins <em>what</em> to do inside of a
 <dt>Trigger</dt>
 <dd>
 <p><a id="trigger"></a>
-A criteria for queueing a new <a href="#pipeline">Pipeline</a> run or <a href="#build">Build</a>
-of a <a href="#project">Project</a>.</p>
+A criteria for triggering a new <a href="#pipeline">Pipeline</a> run or
+<a href="#build">Build</a>.</p>
 </dd>
 <dt>Upstream</dt>
 <dd>

@@ -3,13 +3,287 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>https://rtyler.github.io/jenkins.io/</id>
 <title>Jenkins Blog</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-30T12:07:48-08:00</updated>
 <link rel="self" type="application/atom+xml" href="https://rtyler.github.io/jenkins.io/rss.xml" />
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/" />
 <entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/</id>
+<title>Thank you for an amazing 2016</title>
+<updated>2016-12-30T12:07:48-08:00</updated>
+<published>2016-12-31T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/" />
+<author>
+<name>rtyler</name>
+</author>
+<category term="jam"></category>
+<category term="jenkins2"></category>
+<category term="pipeline"></category>
+<category term="blueocean"></category>
+<category term="azure"></category>
+<category term="gsoc"></category>
+<summary>
+I do not think it is an exaggeration to say: 2016 was the best year yet for the
+Jenkins project. Since the first commit in 2006, the project has reached a
+number of significant milestones in its ten years but we have never experienced
+the breadth of major milestones in such a short amount of time. From
+Jenkins 2
+and
+Blue Ocean
+to the
+Google Summer of Code
+and
+Jenkins World,
+
+
+I wanted to take a moment and celebrate the myriad of accomplishments which
+couldn&#8217;t have happened without the help from everybody who participates in the
+Jenkins project. The 1,300+ contributors to the
+jenkinsci GitHub organization,
+the 4,000+ members of the
+!forum/jenkinsci-dev">developers mailing list,
+the 8,000+ members...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image right&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/jenkins-happy-new-year.png&quot; alt=&quot;Happy New Year from Jenkins&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I do not think it is an exaggeration to say: 2016 was the best year yet for the
+Jenkins project. Since the first commit in 2006, the project has reached a
+number of significant milestones in its ten years but we have never experienced
+the breadth of major milestones in such a short amount of time. From
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/2.0/&quot;&gt;Jenkins 2&lt;/a&gt;
+and
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;Blue Ocean&lt;/a&gt;
+to the
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/gsoc&quot;&gt;Google Summer of Code&lt;/a&gt;
+and
+&lt;a href=&quot;http://jenkinsworld.com&quot;&gt;Jenkins World&lt;/a&gt;,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I wanted to take a moment and celebrate the myriad of accomplishments which
+couldn’t have happened without the help from everybody who participates in the
+Jenkins project. The &lt;strong&gt;1,300+&lt;/strong&gt; contributors to the
+&lt;a href=&quot;https://github.com/jenkinsci&quot;&gt;jenkinsci GitHub organization&lt;/a&gt;,
+the &lt;strong&gt;4,000+&lt;/strong&gt; members of the
+&lt;a href=&quot;https://groups.google.com/forum/&amp;lt;mark&amp;gt;!forum/jenkinsci-dev&quot;&gt;developers mailing list&lt;/a&gt;,
+the &lt;strong&gt;8,000+&lt;/strong&gt; members of the
+&lt;a href=&quot;https://groups.google.com/forum/&amp;lt;/mark&amp;gt;!forum/jenkinsci-users&quot;&gt;users mailing list&lt;/a&gt;,
+and countless others who have reported issues, submitted pull requests, and
+presented at meetups and conferences.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;jenkins-2&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#jenkins-2&quot;&gt;&lt;/a&gt;Jenkins 2&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Through the course of 2016, the Jenkins project published 16
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/changelog-stable&quot;&gt;LTS releases&lt;/a&gt;
+and 54
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/changelog&quot;&gt;Weekly releases&lt;/a&gt;.
+Of those 70 releases, the most notable may have been the
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/04/26/jenkins-20-is-here/&quot;&gt;Jenkins 2.0 release&lt;/a&gt;
+which was published in April.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Jenkins 2 made Pipeline as Code front-and-center in the user experience,
+introduced a new &quot;Getting Started&quot; experience, and included a number of other
+small UI improvements, all while maintaining backwards compatibility with
+existing Jenkins environments.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Since April, we have released a number of LTS
+releases using Jenkins 2 as a baseline, meaning the Jenkins project no longer
+maintains &lt;em&gt;any&lt;/em&gt; 1.x release lines.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/doc/book/pipeline&quot;&gt;Pipeline&lt;/a&gt;
+efforts have continuted to gain steam since April, covered on this blog with a
+number of
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/node/tags/pipeline/&quot;&gt;posts tagged &quot;pipeline&quot;&lt;/a&gt;. Closing out 2016 with the
+announcement of the beta for
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/&quot;&gt;Declarative Pipeline syntax&lt;/a&gt;
+which is expected in early 2017.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;blue-ocean&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#blue-ocean&quot;&gt;&lt;/a&gt;Blue Ocean&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Hot on the heels of Jenkins 2 announcement
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;Blue Ocean, a new user experience for Jenkins&lt;/a&gt;,
+was
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/26/introducing-blue-ocean/&quot;&gt;open sourced in May&lt;/a&gt;.
+Blue Ocean is a new project that rethinks the user experience of Jenkins.
+Designed from the ground up for Jenkins Pipeline and compatible with Freestyle
+jobs, The goal for the project is to reduce clutter and increase clarity for
+every member of the team.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Blue Ocean beta can be installed from the Update Center and can be run in
+production Jenkins environments alongside the existing UI, since it adds the new user experience under
+&lt;a href=&quot;https://ci.jenkins.io/blue/&quot;&gt;/blue&lt;/a&gt;
+in the environment. Blue Ocean is expected to reach &quot;1.0&quot; in the first half of
+2017.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean/pipeline-run.png&quot; alt=&quot;Blue Ocean&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;azure&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#azure&quot;&gt;&lt;/a&gt;Azure&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Also in May of 2016, the Jenkins project announced an exciting
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/18/announcing-azure-partnership/&quot;&gt;Partnership with Microsoft&lt;/a&gt;
+to run our project infrastructure on
+&lt;a href=&quot;https://azure.com&quot;&gt;Azure&lt;/a&gt;. While the migration of Jenkins project
+infrastructure into Azure is still on-going, there have been some notable
+milestones reached already:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;End-to-end TLS encrypted delivery for Debian/openSUSE/Red Hat repositories which are
+configured to use &lt;code&gt;https://pkg.jenkins.io&lt;/code&gt; by the end-user.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Major capacity improvements to
+&lt;a href=&quot;https://ci.jenkins.io&quot;&gt;ci.jenkins.io&lt;/a&gt;
+providing on-demand Ubuntu and Windows build/test infrastructure.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A full continuous delivery Pipeline for all Azure-based infrastructure using
+&lt;a href=&quot;https://twitter.com/agentdero/status/809467253548687360&quot;&gt;Terraform from Jenkins&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The migration to Azure is expected to complete in 2017.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;google-summer-of-code&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#google-summer-of-code&quot;&gt;&lt;/a&gt;Google Summer of Code&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For the first time in the history of the project, Jenkins was accepted into
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/gsoc&quot;&gt;Google Summer of Code&lt;/a&gt;
+2016. Google Summer of Code (GSoC) is an annual, international, program
+which encourages college-aged students to participate with open source projects
+during the summer break between classes. Students accepted into the program
+receive a stipend, paid by Google, to work well-defined projects to improve or
+enhance the Jenkins project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In exchange, numerous Jenkins community members volunteered as &quot;mentors&quot; for
+students to help integrate them into the open source community and succeed in
+completing their summer projects.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A lot was learned during the summer which we look forward to applying to Google
+Summer of Code 2017&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;jenkins-world&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#jenkins-world&quot;&gt;&lt;/a&gt;Jenkins World&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In September, over &lt;strong&gt;one thousand&lt;/strong&gt; people attended
+&lt;a href=&quot;http://jenkinsworld.com&quot;&gt;Jenkins World&lt;/a&gt;,
+in Santa Clara, California.&lt;/p&gt;
+&lt;/div&gt;
+&lt;center&gt;
+    &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/NXjeHeIYRRI&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image right&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-jenkins-world-wrap/demo-crowd.jpg&quot; alt=&quot;Demo Crowd&quot; width=&quot;480&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Following the event,
+&lt;a href=&quot;https://github.com/bitwiseman&quot;&gt;Liam&lt;/a&gt;
+posted a series of blog posts which highlight some of the fantastic content
+shared by Jenkins users and contributors from around the world, such as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/&quot;&gt;The demos from the &quot;Experts&quot;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/&quot;&gt;Sessions on Scaling Jenkins&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/&quot;&gt;Using Jenkins Pipeline&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/&quot;&gt;The Contributor Summit&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Jenkins World was the first global event of its kind for Jenkins, it brought users
+and contributors together to exchange ideas on the current state of the
+project, celebrate accomplishments of the past year, and look ahead at all the
+exiting enhancements coming down the pipe(line).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It was such a smashing success that
+&lt;a href=&quot;http://jenkinsworld.com&quot;&gt;Jenkins World 2017&lt;/a&gt;
+is already scheduled for &lt;strong&gt;August 30-31st&lt;/strong&gt; in San Francisco, California.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;jam&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#jam&quot;&gt;&lt;/a&gt;JAM&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Finally, 2016 saw tremendous growth in the number of
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/jam&quot;&gt;Jenkins Area Meetups&lt;/a&gt;
+(JAMs) hosted around the world. JAMs are local meetups intended to bring
+Jenkins users and contributors together for socializing and learning. JAMs are
+organized by local Jenkins community members who have a passion for sharing new
+Jenkins concepts, patterns and tools.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Driven by current Jenkins Events Officer,
+&lt;a href=&quot;https://github.com/alyssat&quot;&gt;Alyssa Tong&lt;/a&gt;,
+and the dozens of passionate organizers, JAMs have become a great way to meet
+other Jenkins users near you.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-in-review/jam-worldwide-2016.png&quot; alt=&quot;Jenkins Around the World Meetups&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While we don’t yet have JAMs on each of the seven continents, we’re optimistic
+for more groups to be founded in 2017!&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I am personally grateful for the variety and volume of contributions made by
+thousands of people to the Jenkins project this year. I believe I can speak for
+project founder,
+&lt;a href=&quot;https://github.com/kohsuke&quot;&gt;Kohsuke Kawaguchi&lt;/a&gt;,
+in stating that the Jenkins community has grown beyond our anything we could
+have imagined five years ago, let alone ten!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There are number of ways to
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/participate/&quot;&gt;participate&lt;/a&gt;
+in the Jenkins project, so if you didn’t have an opportunity to join in during
+2016, we hope to see you next year!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/</id>
 <title>Continuous Delivery with Jenkins and Puppet Enterprise</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-12-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/" />
 <author>
@@ -408,7 +682,7 @@ You’ll be glad you did.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/</id>
 <title>Announcing the beta of Declarative Pipeline Syntax</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-12-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/" />
 <author>
@@ -664,7 +938,7 @@ we expect great things for Jenkins in 2017!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/</id>
 <title>Monthly JAM Recap - November 2016</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-12-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/" />
 <author>
@@ -861,7 +1135,7 @@ with very little provisioning time.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/</id>
 <title>Upcoming December Jenkins Events</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-12-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/" />
 <author>
@@ -996,7 +1270,7 @@ local activities going in December.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/</id>
 <title>What JVM versions are running Jenkins? 2016 Update!</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-11-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" />
 <author>
@@ -1118,7 +1392,7 @@ All numbers shown below are derived from the new &lt;a href=&quot;stats.jenkins.
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/</id>
 <title>Tuning Jenkins GC For Responsiveness and Stability with Large Instances</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-11-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/" />
 <author>
@@ -1935,7 +2209,7 @@ another post…​&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/</id>
 <title>Security updates addressing zero day vulnerability</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-11-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/" />
 <author>
@@ -2014,7 +2288,7 @@ mailing list to receive future Jenkins security notifications.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/</id>
 <title>Upcoming November Jenkins Events</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-11-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/" />
 <author>
@@ -2162,7 +2436,7 @@ below please stop by to say &quot;Hi&quot; and talk Jenkins over beer.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/</id>
 <title>Addressing recently disclosed vulnerabilities in the Jenkins CLI</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-11-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/" />
 <author>
@@ -2280,7 +2554,7 @@ to follow. You can learn more about this policy and our processes on our
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/</id>
 <title>Monthly JAM Recap - October 2016</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-11-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/" />
 <author>
@@ -2425,7 +2699,7 @@ last meetups.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/</id>
 <title>xUnit and Pipeline</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-10-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/" />
 <author>
@@ -2932,7 +3206,7 @@ also write your own XSL for result formats not on the known/supported list.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/</id>
 <title>Jenkins World 2016 Session Videos</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-10-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/" />
 <author>
@@ -3014,7 +3288,7 @@ Technical Evangelist at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/</id>
 <title>Controlling the Flow with Stage, Lock, and Milestone</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-10-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/" />
 <author>
@@ -3262,7 +3536,7 @@ stage(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;s
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/</id>
 <title>Jenkins World 2016, That's a Wrap!</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/" />
 <author>
@@ -3408,7 +3682,7 @@ there isn’t, take a look at the
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/</id>
 <title>Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" />
 <author>
@@ -3617,7 +3891,7 @@ on track before, during, and after the conference.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/</id>
 <title>Jenkins World 2016 Wrap-up - Scaling</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-27T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/" />
 <author>
@@ -3839,7 +4113,7 @@ the challenges and opportunities they see ahead.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/</id>
 <title>Jenkins World 2016 Wrap-up - Pipeline</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/" />
 <author>
@@ -4083,7 +4357,7 @@ delivery practices.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/</id>
 <title>Jenkins World 2016 Wrap-up - Introduction</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/" />
 <author>
@@ -4195,7 +4469,7 @@ including slides, videos, and links to other useful resources.  Stay tuned!&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/</id>
 <title>Jenkins Online Meetup report. Plugin Development - WebUI</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/" />
 <author>
@@ -4314,7 +4588,7 @@ or via the &lt;a href=&quot;mailto:events@lists.jenkins-ci.org&quot;&gt;events@l
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/</id>
 <title>Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/" />
 <author>
@@ -4543,7 +4817,7 @@ do this without you.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/</id>
 <title>Take the 2016 Jenkins Survey!</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/" />
 <author>
@@ -4640,7 +4914,7 @@ minutes.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/</id>
 <title>Continuous Delivery of Infrastructure with Jenkins</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/" />
 <author>
@@ -4799,7 +5073,7 @@ pass.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/</id>
 <title>Pipeline at Jenkins World 2016</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/" />
 <author>
@@ -5192,7 +5466,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/</id>
 <title>Introducing a New Way to Define Jenkins Pipelines</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-06T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/" />
 <author>
@@ -5336,7 +5610,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/</id>
 <title>Jenkins World Contributor Summit</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-09-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/" />
 <author>
@@ -5451,7 +5725,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/</id>
 <title>Scaling Jenkins at Jenkins World 2016</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/" />
 <author>
@@ -5725,7 +5999,7 @@ everybody; hope to see you there!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/</id>
 <title>Demos at Jenkins World 2016</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/" />
 <author>
@@ -5942,7 +6216,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/</id>
 <title>Browser-testing with Sauce OnDemand and Pipeline</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/" />
 <author>
@@ -6407,7 +6681,7 @@ repository.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/</id>
 <title>Enforcing Jenkins Best Practices</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/" />
 <author>
@@ -6582,7 +6856,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/</id>
 <title>Ask the Experts at Jenkins World 2016</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/" />
 <author>
@@ -6728,7 +7002,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/</id>
 <title>Jenkins World 2016 Festivities</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/" />
 <author>
@@ -6926,7 +7200,7 @@ Hat and all the other sponsors&lt;/a&gt; who have made this event possible.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/</id>
 <title>GSoC: External Workspace Manager for Pipeline is released</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/" />
 <author>
@@ -7102,7 +7376,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/</id>
 <title>Continuously Delivering Continuous Delivery Pipelines</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/" />
 <author>
@@ -7301,7 +7575,7 @@ enterprise scale.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/</id>
 <title>Using Jenkins for Disparate Feedback on GitHub</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/" />
 <author>
@@ -7396,7 +7670,7 @@ register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off yo
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/</id>
 <title>Continuous Security for Rails apps with Pipeline and Brakeman</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/" />
 <author>
@@ -7927,7 +8201,7 @@ security, pipeline in code is that you can continue to iterate on it!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/</id>
 <title>GSoC: External Workspace Manager for Pipeline. Beta release is available</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/" />
 <author>
@@ -8223,7 +8497,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/</id>
 <title>Don't install software, define your environment with Docker and Pipeline</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/" />
 <author>
@@ -8480,7 +8754,7 @@ change due to a security patch).&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/</id>
 <title>St. Petersburg Jenkins Meetup #3 and #4 Reports</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-08-03T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/" />
 <author>
@@ -8722,7 +8996,7 @@ organizers of the &lt;a href=&quot;http://piter-united.ru/itgm8/itgm.html&quot;&
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/</id>
 <title>Join me for Jenkins World 2016</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-07-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/" />
 <author>
@@ -8855,7 +9129,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/</id>
 <title>Blue Ocean July development update </title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-07-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/" />
 <author>
@@ -8990,7 +9264,7 @@ the experimental update center on this post&lt;/a&gt;.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/</id>
 <title>Sending Notifications in Pipeline</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-07-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/" />
 <author>
@@ -9411,7 +9685,7 @@ my pipeline.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/</id>
 <title>New packages for Jenkins 2.7.1</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-07-14T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/" />
 <author>
@@ -9435,7 +9709,7 @@ These new packages for Jenkins 2.7.1, dated July 14, have the same scripts and p
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/</id>
 <title>Jenkins 2 hits LTS</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-07-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/" />
 <author>
@@ -9467,7 +9741,7 @@ This release also officially marks the end-of-life for Jenkins 1.x. There won’
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/</id>
 <title>Publishing HTML Reports in Pipeline</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-07-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/" />
 <author>
@@ -9706,7 +9980,7 @@ HTML.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/30/ewm-alpha-version/</id>
 <title>GSoC: External Workspace Manager Plugin alpha version</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-06-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/30/ewm-alpha-version/" />
 <author>
@@ -9820,7 +10094,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/29/from-freestyle-to-pipeline/</id>
 <title>Migrating from chained Freestyle jobs to Pipelines</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-06-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/29/from-freestyle-to-pipeline/" />
 <author>
@@ -10154,7 +10428,7 @@ blue charts&lt;/a&gt;!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/21/gsoc-midterm-presentations-ann/</id>
 <title>GSoC: Mid-term presentations by students on June 23 and 24</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-06-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/21/gsoc-midterm-presentations-ann/" />
 <author>
@@ -10288,7 +10562,7 @@ The agenda may change a bit.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/06/16/parallel-test-executor-plugin/</id>
 <title>Faster Pipelines with the Parallel Test Executor Plugin</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
+<updated>2016-12-20T16:39:41-08:00</updated>
 <published>2016-06-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/16/parallel-test-executor-plugin/" />
 <author>
@@ -10553,425 +10827,6 @@ other tools or processes.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin&quot; class=&quot;bare&quot;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/06/15/jenkins-pipeline-scalability/</id>
-<title>Jenkins Pipeline Scalability in the Enterprise</title>
-<updated>2016-12-20T16:19:05-08:00</updated>
-<published>2016-06-15T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/15/jenkins-pipeline-scalability/" />
-<author>
-<name>dcoraboeuf</name>
-</author>
-<category term="jenkins"></category>
-<category term="scalability"></category>
-<category term="dsl"></category>
-<summary>
-This is a guest post by Damien
-Coraboeuf, Jenkins project contributor and Continuous Delivery consultant.
-
-
-
-
-
-Implementing a CI/CD solution based on Jenkins has become very easy. Dealing
-with hundreds of jobs? Not so much. Having to scale to thousands of jobs?
-Now this is a real challenge.
-
-
-This is the story of a journey to get out of the jungle of jobs&#8230;&#8203;
-
-
-
-
-
-
-
-Start of the journey
-
-At the beginning of the journey there were several projects using roughly the same
-technologies. Those projects had several
-branches, for maintenance of releases, for new features.
-
-
-In turn, each of those branches had to be carefully built, deployed on different
-platforms and versions, promoted...
-</summary>
-<content type="html">
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-This is a guest post by &lt;a href=&quot;https://github.com/dcoraboeuf&quot;&gt;Damien
-Coraboeuf&lt;/a&gt;, Jenkins project contributor and &lt;a href=&quot;http://nemerosa.com/&quot;&gt;Continuous Delivery consultant&lt;/a&gt;.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Implementing a CI/CD solution based on Jenkins has become very easy. Dealing
-with hundreds of jobs? Not so much. Having to scale to thousands of jobs?
-Now this is a real challenge.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is the story of a journey to get out of the jungle of jobs…​&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/journey.png&quot; alt=&quot;Journey out of the jungle of jobs&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;start-of-the-journey&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#start-of-the-journey&quot;&gt;&lt;/a&gt;Start of the journey&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;At the beginning of the journey there were several projects using roughly the same
-technologies. Those projects had several
-branches, for maintenance of releases, for new features.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In turn, each of those branches had to be carefully built, deployed on different
-platforms and versions, promoted so they could be tested for functionalities,
-performances and security, and then promoted again for actual delivery.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Additionally, we had to offer the test teams the means to deploy any version of
-their choice on any supported platform in order to carry out some manual tests.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This represented, for each branch, around 20 jobs. Multiply this by the number of
-branches and projects, and there you are: more than two years after the start
-of the story, we had more than 3500 jobs.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;3500 jobs. Half a dozen people to manage them all…​&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/thousands.png&quot; alt=&quot;Thousands of jobs for a small team&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;preparing-the-journey&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#preparing-the-journey&quot;&gt;&lt;/a&gt;Preparing the journey&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;How did we deal with this load?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We were lucky enough to have several assets:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;time - we had time to design a solution before the scaling went really out of
-control&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;forecast - we &lt;em&gt;knew&lt;/em&gt; that the scaling would occur and we were not taken by
-surprise&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;tooling - the &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin&quot;&gt;Jenkins Job DSL&lt;/a&gt;
-was available, efficient and well documented&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We also knew that, in order to scale, we’d have to provide a solution with the
-following characteristics:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;self-service - we could not have a team of 6 people become a bottleneck for
-enabling CI/CD in projects&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;security - the solution had to be secure enough in order for it to be used by
-remote developers we never met and didn’t know&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;simplicity - enabling CI/CD had to be simple so that people having
-never heard of it could still use it&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;extensibility - no solution is a one-size-fits-all and must be flexible
-enough to allow for corner cases&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-All the mechanisms described in this article are available through the
-&lt;a href=&quot;https://github.com/jenkinsci/seed-plugin&quot;&gt;Jenkins Seed plugin&lt;/a&gt;.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Creating pipelines using the Job DSL and embedding the scripts in the code was
-simple enough. But what about branching? We needed a mechanism to allow the
-creation of pipelines per branch, by downloading the associated DSL and to
-run it in a dedicated folder.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;But then, all those projects, all those branches, they were mostly using the
-same pipelines, give or take a few configurable items. Going this way would
-have lead to a terrible duplication of code, transforming a job maintenance
-nightmare into a code maintenance nightmare.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;pipeline-as-configuration&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#pipeline-as-configuration&quot;&gt;&lt;/a&gt;Pipeline as configuration&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Our trick was to transform this vision of &quot;pipeline as code&quot; into a &quot;pipeline
-as configuration&quot;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;by maintaining well documented and tested &quot;pipeline libraries&quot;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;by asking projects to describe their pipeline not as code, but as property
-files which would:&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;define the name and version of the DSL pipeline library to use&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;use the rest of the property file to configure the pipeline library, using
-as many sensible default values as possible&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/properties.png&quot; alt=&quot;Property file&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;piloting-the-pipeline-from-the-scm&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#piloting-the-pipeline-from-the-scm&quot;&gt;&lt;/a&gt;Piloting the pipeline from the SCM&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Once this was done, the only remaining trick was to automate the creation,
-update, start and deletion of the pipelines using SCM events. By enabling SCM
-hooks (in GitHub, BitBucket or even in Subversion), we could:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;automatically create a pipeline for a new branch&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;regenerate a pipeline when the branch’s pipeline description was modified&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;start the pipeline on any other commit on the branch&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;remove the pipeline when the branch was deleted&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/hooks.png&quot; alt=&quot;Hooks&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Once a project wants to go in our ecosystem, the Jenkins team &quot;seeds&quot; the
-project into Jenkins, by running a job and giving a few parameters.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It will create a folder for the project and grant proper authorisations, using
-Active Directory group names based on the project name.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The hook for the project must be registered into the SCM and you’re up and
-running.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/jobs.png&quot; alt=&quot;Jobs&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;configuration-em-and-em-code&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#configuration-em-and-em-code&quot;&gt;&lt;/a&gt;Configuration &lt;em&gt;and&lt;/em&gt; code&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Mixing the use of strong pipeline libraries configured by properties and the
-direct use of the Jenkins Job DSL is still possible. The Seed plugin
-supports all kinds of combinations:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;use of pipeline libraries only - this can even be enforced&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;use a DSL script which can in turn use some classes and methods defined in
-a pipeline library&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;use of a Job DSL script only&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Usually, we tried to have a maximum reuse, through only pipeline libraries, for
-most of our projects, but in other circumstances, we were less strict and
-allowed some teams to develop their own pipeline script.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/modes.png&quot; alt=&quot;Mixed modes&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;end-of-the-journey&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#end-of-the-journey&quot;&gt;&lt;/a&gt;End of the journey&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In the end, what did we achieve?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Self service&lt;/strong&gt; ✔︎&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Pipeline automation from SCM - no intervention from the Jenkins team but for
-the initial bootstrapping&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Getting a project on board of this system can be done in a few minutes only&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Security&lt;/strong&gt; ✔︎&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Project level authorisations&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;No code execution on the master&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Simplicity&lt;/strong&gt; ✔︎&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Property files&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Extensibility&lt;/strong&gt; ✔︎&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Pipeline libraries&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Direct job DSL still possible&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/responsibilities.png&quot; alt=&quot;Responsibilities&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;seed-and-pipeline-plugin&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#seed-and-pipeline-plugin&quot;&gt;&lt;/a&gt;Seed and Pipeline plugin&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now, what about the &lt;a href=&quot;https://rtyler.github.io/jenkins.io/doc/pipeline/&quot;&gt;Pipeline plugin&lt;/a&gt;? Both
-this plugin and the Seed plugin have common functionalities:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/seed-now.png&quot; alt=&quot;Seed now&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;What we have found in our journey is that having a &quot;pipeline as configuration&quot;
-was the easiest and most secure way to get a lot of projects on board, with
-developers not knowing Jenkins and even less the DSL.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The outcome of the two plugins is different:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;one pipeline job for the Pipeline plugin&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;a list of orchestrated jobs for the Seed plugin&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;If time allows, it would be probably a good idea to find a way to integrate the
-functionalities of the Seed plugin into the pipeline framework, and to keep
-what makes the strength of the Seed plugin:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;pipeline as configuration&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;reuseable pipeline libraries, versioned and tested&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/jenkins-pipeline-scalability/seed-pipeline.png&quot; alt=&quot;Seed and Pipeline&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You can find additional information about the Seed plugin and its usage at the
-following links:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/jenkinsci/seed-plugin&quot;&gt;the Seed plugin itself&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.cloudbees.com/jenkins/juc-2015/abstracts/europe/02-03-1515-coraboeuf&quot;&gt;JUC London, June 2015&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.slideshare.net/DamienCoraboeuf/brujug-jenkins-pipeline-scalability&quot;&gt;BruJUG Brussels, March 2016&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;

@@ -54,6 +54,9 @@ LTS Release
 <p>
 LTS (Long-Term Support) releases are chosen every 12 weeks from the
 stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
 </p>
 </div>
 <div class="col-md-6 text-xs-center">
@@ -71,12 +74,12 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.19.4
+2.32.1
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
 <div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
 <span class="icon"></span>
 <span class="title">
 Docker
@@ -144,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.35
+2.38
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -365,6 +368,77 @@ follow us on Twitter
 <div class="content blog-posts">
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/blog/2016/08/08/docker-pipeline-environments/">
+<div class="header">
+<div class="date">
+<div class="month">
+Aug
+</div>
+<div class="day">
+08
+</div>
+</div>
+<h5 class="title">
+Don't install software, define your environment with Docker and Pipeline
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Michael Neale, long time open
+source developer and contributor to the Blue Ocean
+project.
+
+
+
+
+
+
+If you are running parts of your pipeline on Linux, possibly the easiest way to
+get a clean reusable environment is to use:
+CloudBees
+Docker Pipeline plugin.
+
+
+In this short post I wanted to show how you can avoid installing stuff on the agents, and have per project, or even per...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/michaelneale">Michael Neale</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/blueocean">
+blueocean
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/ux">
+ux
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/javascript">
+javascript
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/nodejs">
+nodejs
+</a>
+</li>
+</ul>
+</div>
+</li>
 <li class="post">
 <a class="body" href="/blog/2016/07/19/blue-ocean-update/">
 <div class="header">
@@ -844,57 +918,6 @@ pipeline
 <li>
 <a class="tag-link" href="/node/tags/plugins">
 plugins
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/05/23/external-workspace-manager-plugin/">
-<div class="header">
-<div class="date">
-<div class="month">
-May
-</div>
-<div class="day">
-23
-</div>
-</div>
-<h5 class="title">
-GSoC Project Intro: External Workspace Manager Plugin
-</h5>
-</div>
-<p class="teaser">
-About myself
-
-My name is Alexandru Somai.
-I&#8217;m following a major in Software Engineering at the Babes-Bolyai University of Cluj-Napoca, Romania.
-I have more than two years hands-on experience working in Software Development.
-
-
-I enjoy writing code in Java, Groovy and JavaScript.
-The technologies and frameworks that I&#8217;m most familiar with are: Spring Framework, Spring Security, Hibernate,
-JMS, Web Services, JUnit, TestNG, Mockito.
-As build tools and continuous integration, I&#8217;m using...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/alexsomai">Alexandru Somai</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/pipeline">
-pipeline
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/plugins">
-plugins
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/gsoc">
-gsoc
 </a>
 </li>
 </ul>

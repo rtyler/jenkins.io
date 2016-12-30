@@ -54,6 +54,9 @@ LTS Release
 <p>
 LTS (Long-Term Support) releases are chosen every 12 weeks from the
 stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
 </p>
 </div>
 <div class="col-md-6 text-xs-center">
@@ -71,12 +74,12 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.19.4
+2.32.1
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
 <div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
 <span class="icon"></span>
 <span class="title">
 Docker
@@ -144,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.35
+2.38
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -365,6 +368,45 @@ follow us on Twitter
 <div class="content blog-posts">
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/blog/2014/04/01/your-java-web-start-slaves-will-be-always-clean/">
+<div class="header">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+01
+</div>
+</div>
+<h5 class="title">
+Your Java Web Start slaves will be always clean
+</h5>
+</div>
+<p class="teaser">
+If you have slaves that connect through Java Web Start (such as slaves installed as Windows services), we have a good news for you.
+
+
+In case of a connection loss, this type of slaves has been designed to automatically attempt to reconnect to the master. This makes sense because you want these slaves to remain online all the time, even if your janitor trips over...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/development">
+development
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/core">
+core
+</a>
+</li>
+</ul>
+</div>
+</li>
 <li class="post">
 <a class="body" href="/blog/2014/03/21/call-for-sponsors-2014-jenkins-user-conferences/">
 <div class="header">
@@ -683,45 +725,6 @@ feedback
 <li>
 <a class="tag-link" href="/node/tags/juc">
 juc
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2013/11/17/dkim-and-spf-deployed/">
-<div class="header">
-<div class="date">
-<div class="month">
-Nov
-</div>
-<div class="day">
-17
-</div>
-</div>
-<h5 class="title">
-DKIM and SPF deployed
-</h5>
-</div>
-<p class="teaser">
-In the hope of streamlining account creation e-mail delivery and mailing list moderations, I have deployed SPF and DKIM over the weekend for e-mails coming out of @jenkins-ci.org, which includes account appliations, Confluence, and JIRA.
-
-
-I've also used this opportunity to switch back the sender of JIRA notifications to noreply@jenkins-ci.org. It was originally this way, then changed to jenkinsci-no-reply@googlegroups.com when someone complained (on what ground...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/infrastructure">
-infrastructure
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/mailing list">
-mailing list
 </a>
 </li>
 </ul>

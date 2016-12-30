@@ -54,6 +54,9 @@ LTS Release
 <p>
 LTS (Long-Term Support) releases are chosen every 12 weeks from the
 stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
 </p>
 </div>
 <div class="col-md-6 text-xs-center">
@@ -71,12 +74,12 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.19.4
+2.32.1
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
 <div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
 <span class="icon"></span>
 <span class="title">
 Docker
@@ -144,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.35
+2.38
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -755,6 +758,23 @@ jiraSearch: JIRA: Search issues
 </ul>
 </li>
 <li>
+<a href="/doc/pipeline/steps/kubernetes/">
+kubernetes
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/kubernetes/#container-run-build-steps-in-a-container">
+container: Run build steps in a container
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/kubernetes/#podtemplate-define-a-podtemplate-to-use-in-the-kubernetes-plugin">
+podTemplate: Define a podTemplate to use in the kubernetes plugin
+</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="/doc/pipeline/steps/kubernetes-pipeline-devops-steps/">
 kubernetes-pipeline-devops-steps
 </a>
@@ -804,23 +824,6 @@ tagImage: Tags a Docker Image
 <li>
 <a href="/doc/pipeline/steps/kubernetes-pipeline-steps/#withpod-run-build-steps-in-a-pod">
 withPod: Run build steps in a Pod
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/kubernetes/">
-kubernetes
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/kubernetes/#container-run-build-steps-in-a-container">
-container: Run build steps in a container
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/kubernetes/#podtemplate-define-a-podtemplate-to-use-in-the-kubernetes-plugin">
-podTemplate: Define a podTemplate to use in the kubernetes plugin
 </a>
 </li>
 </ul>
@@ -1486,18 +1489,6 @@ withContext: Use contextual object from internal APIs within a block
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/workflow-cps-global-lib/">
-workflow-cps-global-lib
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/workflow-cps-global-lib/#libraryresource-load-a-resource-file-from-a-shared-library">
-libraryResource: Load a resource file from a shared library
-</a>
-</li>
-</ul>
-</li>
-<li>
 <a href="/doc/pipeline/steps/workflow-cps/">
 workflow-cps
 </a>
@@ -1510,6 +1501,18 @@ load: Evaluate a Groovy source file into the Pipeline script
 <li>
 <a href="/doc/pipeline/steps/workflow-cps/#parallel-execute-in-parallel">
 parallel: Execute in parallel
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/workflow-cps-global-lib/">
+workflow-cps-global-lib
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/workflow-cps-global-lib/#libraryresource-load-a-resource-file-from-a-shared-library">
+libraryResource: Load a resource file from a shared library
 </a>
 </li>
 </ul>
