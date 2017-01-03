@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
-Jenkins with GitHub
+Jenkins CLI
 </title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="Jenkins is an open source automation server" name="description">
@@ -235,7 +235,7 @@ Documentation
 Plugins
 </a>
 </li>
-<li class="active dropdown nav-item">
+<li class="nav-item dropdown">
 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
 Use-cases
 </a>
@@ -252,7 +252,7 @@ Docker
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/embedded">
 Embedded
 </a>
-<a class="active dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/github">
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/github">
 GitHub
 </a>
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/java">
@@ -343,172 +343,91 @@ Conduct
 </div>
 
 <!-- ending partial toptoolbar.html.haml -->
-<!-- starting partial jumbotron.html.haml -->
-<div class="featured featured_918 jumbotron jumbotron-fluid">
-<div class="container">
-<div class="rog">
-<div class="col-md-1"></div>
-<div class="col-md-7">
-<a href="/solutions/github">
-<h2>
-Jenkins with GitHub
-</h2>
-<p>
-
-</p>
-</a>
-<div class="col-md-5"></div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- ending partial jumbotron.html.haml -->
 <div class="container">
 <div class="row body">
-<div class="col-md-8">
-<div class="solution_content">
-<div class="paragraph">
-<p>Jenkins, itself <a href="https://github.com/jenkinsci">located on GitHub</a>, has a
-number of plugins for integrating into <a href="https://github.com">GitHub</a>. The two
-primary avenues for integrating your Jenkins instance with GitHub are with
-"build integration," using GitHub to trigger builds, or with "authentication
-integration," using GitHub as the source of authentication information to
-secure a Jenkins instance.</p>
-</div>
-<div class="sect1">
-<h2 id="build-integration"><a class="anchor" href="#build-integration"></a>Build integration</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>With the help of the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin">Git plugin</a>
-Jenkins can easily pull source code from any Git repository that the Jenkins
-build node can access.</p>
-</div>
-<div class="paragraph">
-<p>The <a href="https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Plugin">GitHub
-plugin</a> extends
-upon that integration further by providing improved bi-directional
-integration with GitHub. Allowing you to set up a <a href="https://developer.github.com/webhooks/#service-hooks">Service
-Hook</a> which will hit
-your Jenkins instance every time a change is pushed to GitHub.</p>
-</div>
-<div class="imageblock center">
-<div class="content">
-<img src="/images/solution-images/jenkins-github-services.png" alt="Jenkins in the GitHub WebHooks/Services view">
-</div>
-</div>
-<div class="paragraph">
-<p>Going the other direction, the GitHub plugin can also feed information back
-into GitHub via the <a href="https://github.com/blog/1227-commit-status-api">commit status
-API</a>, more details
-<a href="http://stackoverflow.com/questions/14274293/show-current-state-of-jenkins-build-on-github-repo/26910986#26910986">here</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="authenticating-with-github"><a class="anchor" href="#authenticating-with-github"></a>Authenticating with GitHub</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Using the
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/GitHub+OAuth+Plugin">GitHub
-Authentication plugin</a> it is possible to use GitHub&#8217;s own authentication scheme
-for implementing authentication in your Jenkins instance.</p>
-</div>
-<div class="paragraph">
-<p>The <strong><a href="https://wiki.jenkins-ci.org/display/JENKINS/Github+OAuth+Plugin#GithubOAuthPlugin-Setup">setup guide</a></strong>
-will help walk you through configuring the GitHub OAuth side, and your
-Jenkins instance, to provide easy authentication/authorization for users.</p>
-</div>
-<div class="imageblock center">
-<div class="content">
-<img src="/images/solution-images/jenkins-github-oauth-enable.png" alt="Configuring "Global Security" to use GitHub">
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="solution_blogs">
-<!-- starting partial blogs.html.haml -->
-
-<!-- ending partial blogs.html.haml -->
-</div>
-</div>
-<div class="col-md-4">
-<!-- starting partial news.html.haml -->
-<div>
-<h4>Jenkins ♥ GitHub Articles</h4>
-<div class="content">
-<div class="item-list">
-<ul class="ji-dated-list">
-<li class="post">
-<a class="article" href="https://www.cloudbees.com/blog/better-integration-between-jenkins-and-github-github-jenkins-plugin">
-<h6 class="title">Better Integration Between Jenkins and GitHub (with the GitHub Jenkins Plugin)</h6>
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../plugins">
+⇐ Managing Plugins
 </a>
-<div class="url">www.cloudbees.com</div>
-</li>
-<li class="post">
-<a class="article" href="http://orangejuiceliberationfront.com/setting-up-jenkins-for-github-and-xcode-with-nightlies/">
-<h6 class="title">Setting up Jenkins for Github and Xcode, with Nightlies</h6>
+<a class="up page-link" href="../">
+⇑ "Managing Jenkins
 </a>
-<div class="url">orangejuiceliberationfront.com</div>
+<a class="next page-link" href="../script-console">
+Script Console ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+<div class="section">
+<h1>
+Jenkins CLI
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#downloading-the-client">Downloading the client</a></li>
+<li><a href="#using-the-client">Using the client</a>
+<ul class="sectlevel2">
+<li><a href="#transport">Transport</a></li>
+<li><a href="#authentication">Authentication</a></li>
+</ul>
 </li>
+<li><a href="#common-problems">Common Problems</a></li>
 </ul>
 </div>
+<div class="sect1">
+<h2 id="downloading-the-client"><a class="anchor" href="#downloading-the-client"></a>Downloading the client</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-client"><a class="anchor" href="#using-the-client"></a>Using the client</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="transport"><a class="anchor" href="#transport"></a>Transport</h3>
+<div class="sect3">
+<h4 id="ssh"><a class="anchor" href="#ssh"></a>SSH</h4>
+
+</div>
+<div class="sect3">
+<h4 id="jnlp"><a class="anchor" href="#jnlp"></a>JNLP</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="authentication"><a class="anchor" href="#authentication"></a>Authentication</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="common-problems"><a class="anchor" href="#common-problems"></a>Common Problems</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+</div>
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../plugins">
+⇐ Managing Plugins
+</a>
+<a class="up page-link" href="../">
+⇑ "Managing Jenkins
+</a>
+<a class="next page-link" href="../script-console">
+Script Console ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
 </div>
 </div>
 
-<!-- ending partial news.html.haml -->
-<!-- starting partial plugins.html.haml -->
-<div class="plugins-list">
-<h4>GitHub plugins for Jenkins</h4>
-<div class="content">
-<div class="item-list">
-<ul class="ji-dated-list ji-item-list plugins">
-<li class="post">
-<a class="body article" href="https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Plugin">
-<h6 class="title">GitHub plugin</h6>
-<p class="url">integrates Jenkins jobs with GitHub repositories for triggering builds and reporting commit status</p>
-<div class="icon card date">
-<div class="icon-plug"></div>
-</div>
-</a>
-</li>
-<li class="post">
-<a class="body article" href="https://wiki.jenkins-ci.org/display/JENKINS/GitHub+OAuth+Plugin">
-<h6 class="title">GitHub Authentication plugin</h6>
-<p class="url">use GitHub as the authentication provider for your Jenkins instance</p>
-<div class="icon card date">
-<div class="icon-plug"></div>
-</div>
-</a>
-</li>
-<li class="post">
-<a class="body article" href="https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin">
-<h6 class="title">Git plugin</h6>
-<p class="url">use Git repositories as the source of code for a Jenkins job</p>
-<div class="icon card date">
-<div class="icon-plug"></div>
-</div>
-</a>
-</li>
-<li class="post">
-<a class="body article" href="https://wiki.jenkins-ci.org/display/JENKINS/GitHub+SQS+Plugin">
-<h6 class="title">GitHub SQS plugin</h6>
-<p class="url">trigger builds via the GitHub SQS (AWS) service hook</p>
-<div class="icon card date">
-<div class="icon-plug"></div>
-</div>
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
-<!-- ending partial plugins.html.haml -->
-</div>
-</div>
-</div>
 
 <footer id="footer">
 <div class="container">
@@ -647,11 +566,11 @@ Reddit
 </div>
 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
 <p class="box">
-<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//solutions/github.adoc" title="Edit /solutions/github.adoc on GitHub">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/managing/cli.adoc" title="Edit /doc/book/managing/cli.adoc on GitHub">
 Improve this page
 </a>
 |
-<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//solutions/github.adoc" title="View /solutions/github.adoc history on GitHub">
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/managing/cli.adoc" title="View /doc/book/managing/cli.adoc history on GitHub">
 Page history
 </a>
 </p>
