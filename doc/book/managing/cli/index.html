@@ -374,13 +374,55 @@ Jenkins CLI
 <li><a href="#authentication">Authentication</a></li>
 </ul>
 </li>
-<li><a href="#common-problems">Common Problems</a></li>
+<li><a href="#common-problems">Common Problems</a>
+<ul class="sectlevel2">
+<li><a href="#operation-timed-out">Operation timed out</a></li>
+<li><a href="#no-x-jenkins-cli2-port">No X-Jenkins-CLI2-Port</a></li>
+<li><a href="#sslhandshakeexception">SSLHandshakeException</a></li>
 </ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is still very much a work in progress</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Jenkins has a built-in command line interface that allows you to access Jenkins
+from a script or from your shell. This is convenient for automation of routine
+tasks, bulk updates, trouble diagnosis, and so on.</p>
+</div>
+<div class="paragraph">
+<p>This interface is accessed via the Jenkins CLI client, which is a Java JAR file distributed with Jenkins.</p>
+</div>
+</div>
 </div>
 <div class="sect1">
 <h2 id="downloading-the-client"><a class="anchor" href="#downloading-the-client"></a>Downloading the client</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>You can download the JAR file for the client from the URL
+<code>/jnlpJars/jenkins-cli.jar</code> on your Jenkins server, for example
+<code>https://example.com/jnlpJars/jenkins-cli.jar</code></p>
+</div>
+<div class="paragraph">
+<p>In theory, the CLI JAR is dependent on the version of Jenkins, but in practice,
+we expect to be able to retain compatibility between different versions of
+Jenkins. In case of problems, just re-download the latest JAR from your Jenkins
+server.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -406,7 +448,60 @@ Jenkins CLI
 <div class="sect1">
 <h2 id="common-problems"><a class="anchor" href="#common-problems"></a>Common Problems</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="operation-timed-out"><a class="anchor" href="#operation-timed-out"></a>Operation timed out</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% java -jar jenkins-cli.jar -s JENKINS_URL help
+Exception in thread "main" java.net.ConnectException: Operation timed out
+    at java.net.PlainSocketImpl.socketConnect(Native Method)
+    at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+    at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+    at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+    at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:432)
+    at java.net.Socket.connect(Socket.java:529)
+    at java.net.Socket.connect(Socket.java:478)
+    at java.net.Socket.&lt;init&gt;(Socket.java:375)
+    at java.net.Socket.&lt;init&gt;(Socket.java:189)
+    at hudson.cli.CLI.&lt;init&gt;(CLI.java:97)
+    at hudson.cli.CLI.&lt;init&gt;(CLI.java:82)
+    at hudson.cli.CLI._main(CLI.java:250)
+    at hudson.cli.CLI.main(CLI.java:199)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check that the JNLP port is opened if you are using a firewall on your server.
+You can configure its value in Jenkins configuration. By default it is set to
+use a random port.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-x-jenkins-cli2-port"><a class="anchor" href="#no-x-jenkins-cli2-port"></a>No X-Jenkins-CLI2-Port</h3>
+<div class="paragraph">
+<p>Go to <strong>Manage Jenkins</strong> &gt; <strong>Configure Global Security</strong> and choose "Fixed" or "Random" under <strong>TCP port for JNLP agents</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java.io.IOException: No X-Jenkins-CLI2-Port among [X-Jenkins, null, Server, X-Content-Type-Options, Connection, X-You-Are-In-Group, X-Hudson, X-Permission-Implied-By, Date, X-Jenkins-Session, X-You-Are-Authenticated-As, X-Required-Permission, Set-Cookie, Expires, Content-Length, Content-Type]
+    at hudson.cli.CLI.getCliTcpPort(CLI.java:284)
+    at hudson.cli.CLI.&lt;init&gt;(CLI.java:128)
+    at hudson.cli.CLIConnectionFactory.connect(CLIConnectionFactory.java:72)
+    at hudson.cli.CLI._main(CLI.java:473)
+    at hudson.cli.CLI.main(CLI.java:384)
+    Suppressed: java.io.IOException: Server returned HTTP response code: 403 for URL: http://citest.gce.px/cli
+        at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1840)
+        at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+        at hudson.cli.FullDuplexHttpStream.&lt;init&gt;(FullDuplexHttpStream.java:78)
+        at hudson.cli.CLI.connectViaHttp(CLI.java:152)
+        at hudson.cli.CLI.&lt;init&gt;(CLI.java:132)
+        ... 3 more</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sslhandshakeexception"><a class="anchor" href="#sslhandshakeexception"></a>SSLHandshakeException</h3>
 
+</div>
 </div>
 </div>
 </div>

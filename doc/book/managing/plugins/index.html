@@ -370,44 +370,40 @@ Managing Plugins
 <li><a href="#installing-a-plugin">Installing a plugin</a>
 <ul class="sectlevel2">
 <li><a href="#from-the-web-ui">From the web UI</a></li>
-<li><a href="#using-the-jenkins-cli">Using the Jenkins CLI</a></li>
+<li><a href="#install-with-cli">Using the Jenkins CLI</a></li>
 <li><a href="#advanced-installation">Advanced installation</a></li>
 </ul>
 </li>
-<li><a href="#upgrading-a-plugin">Upgrading a plugin</a></li>
-<li><a href="#update-center">Update Center</a></li>
+<li><a href="#updating-a-plugin">Updating a plugin</a></li>
 <li><a href="#removing-a-plugin">Removing a plugin</a>
 <ul class="sectlevel2">
 <li><a href="#uninstalling-a-plugin">Uninstalling a plugin</a></li>
 <li><a href="#disabling-a-plugin">Disabling a plugin</a></li>
-<li><a href="#pinned-plugins">Pinned plugins</a></li>
 </ul>
 </li>
-<li><a href="#developing-a-plugin">Developing a plugin</a></li>
+<li><a href="#pinned-plugins">Pinned plugins</a></li>
 </ul>
 </div>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Plugins are the primary means of enhancing the base functionality of a Jenkins
-environment to suit organization or user-specific needs. There exists well
+<p>Plugins are the primary means of enhancing the functionality of a Jenkins
+environment to suit organization or user-specific needs. There are well
 <a href="https://plugins.jenkins.io">over a thousand different plugins</a>
-which can be installed to integrate with various build tools, cloud providers,
-reporting tools, and more.</p>
+which can be freely installed on a Jenkins master, which integrate various
+build tools, cloud providers, analysis tools, and many more.</p>
 </div>
 <div class="paragraph">
-<p>Plugins are distributed as <code>.hpi</code> files, which contain all the necessary code,
-images, and other resources for the plugin.</p>
+<p>Plugins can be automaticaly downloaded, with their dependencies, from the
+<a href="../../glossary/#update-center">Update Center</a>. The Update Center is a service
+operated by the Jenkins project and provides an inventory of open source
+plugins which have been developed and maintained by various members of the
+Jenkins community.</p>
 </div>
 <div class="paragraph">
-<p>Plugins can be automaticaly downloaded, with their dependencies, by Jenkins'
-"Update Center." The Update Center is a service operated by the Jenkins project
-and provides an inventory of commonly available, open source, plugins which
-have been developed and maintained by members of the Jenkins community.</p>
-</div>
-<div class="paragraph">
-<p>This section will introduce the basics of working with plugins from within the
-Jenkins web UI, to making changes on the <a href="../../glossary/#master">master&#8217;s</a> file system.</p>
+<p>This section will introduce the basics of managing plugins from within the
+Jenkins web UI, to making changes on the <a href="../../glossary/#master">master&#8217;s</a> file
+system.</p>
 </div>
 </div>
 </div>
@@ -415,7 +411,7 @@ Jenkins web UI, to making changes on the <a href="../../glossary/#master">master
 <h2 id="installing-a-plugin"><a class="anchor" href="#installing-a-plugin"></a>Installing a plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Jenkins provides a couple different means of installing plugins on the master:</p>
+<p>Jenkins provides a few different methods for installing plugins on the master:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -423,7 +419,7 @@ Jenkins web UI, to making changes on the <a href="../../glossary/#master">master
 <p>Using the "Plugin Manager" in the web UI.</p>
 </li>
 <li>
-<p>Using the Jenkins CLI.</p>
+<p>Using the <a href="#install-with-cli">Jenkins CLI</a>.</p>
 </li>
 <li>
 <p>Manually placing files on the file system.</p>
@@ -431,13 +427,20 @@ Jenkins web UI, to making changes on the <a href="../../glossary/#master">master
 </ol>
 </div>
 <div class="paragraph">
-<p>Each approach will result in plugins usable within the Jenkins environment, but
-may be require different levels of access in order to use.</p>
+<p>Each approach will result in the plugin being loaded by Jenkins but may require
+different level of access and trade-offs in order to use.</p>
 </div>
 <div class="paragraph">
-<p>The first two approaches require that the Jeknins master must be able to
-connect to an Update Center, whether the primary Update Center operated by the
-Jenkins project, or a custom Update Center, in order to download meta-data.</p>
+<p>The first two approaches require that the Jeknins master be able to connect to
+an Update Center, whether the primary Update Center operated by the Jenkins
+project
+<sup class="footnote" id="_footnote_uc">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>,
+or a custom Update Center, in order to download meta-data.</p>
+</div>
+<div class="paragraph">
+<p>The plugins are packaged as self-contained <code>.hpi</code> files, which have all the
+necessary code, images, and other resources which the plugin needs to operate
+successfully.</p>
 </div>
 <div class="sect2">
 <h3 id="from-the-web-ui"><a class="anchor" href="#from-the-web-ui"></a>From the web UI</h3>
@@ -459,11 +462,11 @@ Update Center, can be searched and considered:</p>
 <p>Most plugins can be installed and used immediately by checking the box adjacent
 to the plugin and clicking <strong>Install without restart</strong>.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock caution">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -478,7 +481,11 @@ configured Update Center.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-the-jenkins-cli"><a class="anchor" href="#using-the-jenkins-cli"></a>Using the Jenkins CLI</h3>
+<h3 id="install-with-cli"><a class="anchor" href="#install-with-cli"></a>Using the Jenkins CLI</h3>
+<div class="paragraph">
+<p>Administrators may also use the <a href="../cli/">Jenkins CLI</a> which provides a command
+to install plugins.</p>
+</div>
 <div class="paragraph">
 <p>Scripts to manage Jenkins environments, or configuration management code, may
 need to install plugins without direct user interaction in the web UI.</p>
@@ -487,76 +494,167 @@ need to install plugins without direct user interaction in the web UI.</p>
 <p>The Jenkins CLI allows a command line user or automation tool to download a
 plugin and its dependencies.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
+
+Installs a plugin either from a file, an URL, or from update center.
+
+ SOURCE    : If this points to a local file, that file will be installed. If
+             this is an URL, Jenkins downloads the URL and installs that as a
+             plugin.Otherwise the name is assumed to be the short name of the
+             plugin in the existing update center (like "findbugs"),and the
+             plugin will be installed from the update center.
+ -deploy   : Deploy plugins right away without postponing them until the reboot.
+ -name VAL : If specified, the plugin will be installed as this short name
+             (whereas normally the name is inferred from the source name
+             automatically).
+ -restart  : Restart Jenkins upon successful installation.</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="advanced-installation"><a class="anchor" href="#advanced-installation"></a>Advanced installation</h3>
+<div class="paragraph">
+<p>The Update Center only allows the installation of the most recently released
+version of a plugin. In cases where an older release of the plugin is desired,
+a Jenkins administrator can download an older <code>.hpi</code> archive and manually
+install that on the Jenkins master.</p>
+</div>
 <div class="sect3">
 <h4 id="from-the-web-ui-2"><a class="anchor" href="#from-the-web-ui-2"></a>From the web UI</h4>
 <div class="paragraph">
-<p>To download an older release of a plugin, click the archives link on the
-plugin&#8217;s wiki page linked below. You will see a list of available plugin
-versions.</p>
+<p>Assuming a <code>.hpi</code> file has been downloaded from the Update Site <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>, a
+logged-in Jenkins administrator can upload the file from within the web UI:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>Manage Jenkins</strong> &gt; <strong>Manage Plugins</strong> page in the web UI.</p>
+</li>
+<li>
+<p>Click on the <strong>Advanced</strong> tab.</p>
+</li>
+<li>
+<p>Choose the <code>.hpi</code> file under the <strong>Upload Plugin</strong> section.</p>
+</li>
+<li>
+<p><strong>Upload</strong> the plugin file.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/plugin-manager-upload.png" alt="Advanced tab in the Plugin Manager">
+</div>
 </div>
 <div class="paragraph">
-<p>To install a specific older version of a plugin (or downgrade from a newer
-version), you can upload it from your computer on the Advanced tab of the
-Manage Plugins page in Jenkins.</p>
+<p>Once a plugin file has been uploaded, the Jenkins master must be manually
+restarted in order for the changes to take effect.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="on-the-master"><a class="anchor" href="#on-the-master"></a>On the master</h4>
 <div class="paragraph">
-<p>Save the downloaded <strong>.hpi/</strong>.jpi file into the $JENKINS_HOME/plugins directory.
-You will then need to restart Jenkins (many containers let you do this without
-restarting the container)</p>
+<p>Assuming a <code>.hpi</code> file has been downloaded from the Update Site <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>, a systems
+administrator who has access to the file system of the Jenkins master can also
+manually place the <code>.hpi</code> file in a specific location on the file system.</p>
 </div>
 <div class="paragraph">
-<p>Caveat: the names of the plugin directories on the download site are not always
-matching the name given to the plugin; common sense should apply.</p>
+<p>Copy the downloaded <code>.hpi`</code> file into the <code>JENKINS_HOME/plugins</code> directory on
+the Jenkins master (for example, on Debian systems <code>JENKINS_HOME</code> is generally
+<code>/var/lib/jenkins</code>).</p>
+</div>
+<div class="paragraph">
+<p>The master will need to be restarted before the plugin is loaded and
+made available in the Jenkins environment.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The names of the plugin directories in the Update Site <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> are
+not always the same as the plugin&#8217;s display name. Searching
+<a href="https://plugins.jenkins.io/">plugins.jenkins.io</a>
+for the desired plugin will provide the appropriate link to the <code>.hpi</code> files.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="upgrading-a-plugin"><a class="anchor" href="#upgrading-a-plugin"></a>Upgrading a plugin</h2>
+<h2 id="updating-a-plugin"><a class="anchor" href="#updating-a-plugin"></a>Updating a plugin</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Updates are listed in the <strong>Updates</strong> tab of the <strong>Manage Plugins</strong> page and can be
+selected by checking the checkboxes of the desired plugin updates and clicking
+the <strong>Download now and install after restart</strong> button.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/plugin-manager-update.png" alt="Updates tab in the Plugin Manager">
 </div>
 </div>
-<div class="sect1">
-<h2 id="update-center"><a class="anchor" href="#update-center"></a>Update Center</h2>
-<div class="sectionbody">
-
+<div class="paragraph">
+<p>By default, the Jenkins master will check for updates from the Update Center
+once every 24 hours. To manually trigger a check for updates, simply click on
+the <strong>Check now</strong> button in the <strong>Updates</strong> tab.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="removing-a-plugin"><a class="anchor" href="#removing-a-plugin"></a>Removing a plugin</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>When a plugin is no longer used in a Jenkins environment, it is prudent to
+remove the plugin from the Jenkins master. This provides a number of benefits
+such as: reducing memory overhead at boot or runtime, reducing configuration
+options in the web UI, and removing the potential for future conflicts with new
+plugin updates.</p>
+</div>
 <div class="sect2">
 <h3 id="uninstalling-a-plugin"><a class="anchor" href="#uninstalling-a-plugin"></a>Uninstalling a plugin</h3>
 <div class="paragraph">
-<p>Uninstalling a plugin removes the plugin binary (*.jpi or *.hpi) from the disk.
-The plugin continues to function normally until you restart Jenkins, but once
-you restart, Jenkins will behave as if you didn&#8217;t have the plugin to being
-with. They will not appear anywhere in the UI, all the extensions they
-contributed will disappear.</p>
+<p>The simplest way to uninstall a plugin is to navigate to the <strong>Installed</strong> tab on
+the <strong>Manage Plugins</strong> page. From there, Jenkins will automatically determine
+which plugins are safe to uninstall, those which are not dependencies of other
+plugins, and present a button for doing so.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/plugin-manager-uninstall.png" alt="Installed tab in the Plugin Manager">
+</div>
 </div>
 <div class="paragraph">
-<p>Uninstalling a plugin, however, does not remove the configuration that the
-plugin might have created. If there are existing jobs/slaves/views/builds/etc
-that used some extensions from the plugin, during the boot Jenkins will report
-that there are some fragments in those configurations that it didn&#8217;t
-understand, and pretend as if it didn&#8217;t see such a fragment.</p>
+<p>A plugin may also be uninstalled by removing the corresponding <code>.hpi</code>
+file from the <code>JENKINS_HOME/plugins</code> directory on the master. The plugin will
+continue to function until the master has been restarted.</p>
 </div>
 <div class="paragraph">
-<p>Because the configuration is still intact until you overwrite those
-configuration files, at this point if you re-install the uninstalled plugin and
-restart Jenkins, the configuration will come back.</p>
+<p>Uninstalling a plugin does <strong>not</strong> remove the configuration that the plugin may
+have created. If there are existing jobs/nodes/views/builds/etc configurations
+that reference data created by the plugin, during boot Jenkins will warn that
+some configurations could not be fully loaded and ignore the unrecognized data.</p>
 </div>
 <div class="paragraph">
-<p>If you want to scrab the configuration left by uninstalled plugins, go to
-"Manage Jenkins" and click "Manage Old Data".</p>
+<p>Since the configuration(s) will be preserved until they are overwritten,
+re-installing the plugin will result in those configuration values reappearing..</p>
+</div>
+<div class="sect3">
+<h4 id="removing-old-data"><a class="anchor" href="#removing-old-data"></a>Removing old data</h4>
+<div class="paragraph">
+<p>Jenkins provides a facility for purging configuration left behind by
+uninstalled plugins. Navigate to <strong>Manage Jenkins</strong> and then click on <strong>Manage
+Old Data</strong> to review and remove old data.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -567,26 +665,34 @@ recognize that the plugin is installed, but it will not start the plugin, and
 no extensions contributed from this plugin will be visible.</p>
 </div>
 <div class="paragraph">
-<p>The fragments contributed from a disabled plugin to configuration files would
-follow the same fate as in the case of uninstalled plugins.</p>
+<p>A Jenkins administrator may disable a plugin by unchecking the box on the
+<strong>Installed</strong> tab of the <strong>Manage Plugins</strong> page (see below).</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/plugin-manager-disable.png" alt="Installed tab in the Plugin Manager">
+</div>
 </div>
 <div class="paragraph">
-<p>Plugins can be disabled from the UI (or by touch
-$JENKINS_HOME/plugins/$PLUGIN_NAME.jpi.disabled (or
-$JENKINS_HOME/plugins/$PLUGIN_NAME.hpi.disabled) file.)</p>
+<p>A systems administrator may also disable a plugin by creating a file on the
+Jenkins master, such as: <code>JENKINS_HOME/plugins/PLUGIN_NAME.hpi.disabled</code>.</p>
 </div>
 <div class="paragraph">
-<p>Plugins that are disabled can be re-enabled from the UI (or by removing
-*.jpi.disabled (or *.hpi.disabled) file from the disk.)</p>
+<p>The configuration(s) created by the disabled plugin behave as if the plugin
+were uninstalled, insofar that they result in warnings on boot but are
+otherwise ignored.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="pinned-plugins"><a class="anchor" href="#pinned-plugins"></a>Pinned plugins</h3>
-<div class="admonitionblock note">
+</div>
+</div>
+<div class="sect1">
+<h2 id="pinned-plugins"><a class="anchor" href="#pinned-plugins"></a>Pinned plugins</h2>
+<div class="sectionbody">
+<div class="admonitionblock caution">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -604,41 +710,39 @@ Jenkins 1.x, such as the
 <a href="https://plugins.jenkins.io/matrix-auth"><strong>Matrix Authorization plugin</strong></a>.</p>
 </div>
 <div class="paragraph">
-<p>If you do nothing special, whenever Jenkins is upgraded, its bundled plugins
-overwrite whatever versions of the plugins are currently installed in
-$JENKINS_HOME.</p>
+<p>By default, whenever Jenkins is upgraded, its bundled plugins overwrite the
+versions of the plugins are currently installed in <code>JENKINS_HOME</code>.</p>
 </div>
 <div class="paragraph">
 <p>However, when a bundled plugin has been manually updated, Jenkins will mark
 that plugin as pinned to the particular version. On the file system, Jenkins
-creates an empty file called <code>$JENKINS_HOME/plugins/plugin_name.jpi.pinned</code>
-to indicate the pinning. Pinned plugins will never be overwritten by bundled
-plugins during Jenkins startup. (Newer versions of Jenkins do warn you if a
-pinned plugin is <em>older</em> than what is currently bundled.)</p>
+creates an empty file called <code>JENKINS_HOME/plugins/PLUGIN_NAME.hpi.pinned</code>
+to indicate the pinning.</p>
 </div>
 <div class="paragraph">
-<p>It is safe to update a bundled plugin to a version offered by the update
-center. This is often necessary to pick up the newest features and fixes. The
+<p>Pinned plugins will never be overwritten by bundled plugins during Jenkins
+startup. (Newer versions of Jenkins do warn you if a pinned plugin is <em>older</em>
+than what is currently bundled.)</p>
+</div>
+<div class="paragraph">
+<p>It is safe to update a bundled plugin to a version offered by the Update
+Center. This is often necessary to pick up the newest features and fixes. The
 bundled version is occasionally updated, but not consistently.</p>
 </div>
 <div class="paragraph">
-<p>The plugin manager in Jenkins allows plugins to be explicitly unpinned. The
-<code>$JENKINS_HOME/plugins/plugin_name.jpi.pinned</code> file can also be manually
-created/deleted to control the pinning behavior. If it is present, Jenkins will
-use whatever version the user has specified. If it is absent, Jenkins will
+<p>The Plugin Manager allows plugins to be explicitly unpinned. The
+<code>JENKINS_HOME/plugins/PLUGIN_NAME.hpi.pinned</code> file can also be manually
+created/deleted to control the pinning behavior. If the <code>pinned</code> file is
+present, Jenkins will use whatever plugin version the user has specified.  use
+whatever version the user has specified. If the file is absent, Jenkins will
 restore the plugin to the default version on startup.</p>
 </div>
-<div class="paragraph">
-<p>Note that over time, functionality gets split out of Jenkins core into
-(bundled) plugins, for better manageability. These will start out unpinned.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="developing-a-plugin"><a class="anchor" href="#developing-a-plugin"></a>Developing a plugin</h2>
-<div class="sectionbody">
-
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://updates.jenkins.io" class="bare">updates.jenkins.io</a>
 </div>
 </div>
 </div>
