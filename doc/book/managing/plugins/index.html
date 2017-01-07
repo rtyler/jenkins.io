@@ -388,9 +388,9 @@ Managing Plugins
 <div class="sectionbody">
 <div class="paragraph">
 <p>Plugins are the primary means of enhancing the functionality of a Jenkins
-environment to suit organization or user-specific needs. There are well
+environment to suit organization or user-specific needs. There are
 <a href="https://plugins.jenkins.io">over a thousand different plugins</a>
-which can be freely installed on a Jenkins master, which integrate various
+which can be installed on a Jenkins master and integrate various
 build tools, cloud providers, analysis tools, and many more.</p>
 </div>
 <div class="paragraph">
@@ -401,9 +401,9 @@ plugins which have been developed and maintained by various members of the
 Jenkins community.</p>
 </div>
 <div class="paragraph">
-<p>This section will introduce the basics of managing plugins from within the
-Jenkins web UI, to making changes on the <a href="../../glossary/#master">master&#8217;s</a> file
-system.</p>
+<p>This section will cover everything from the basics of managing plugins within
+the Jenkins web UI, to making changes on the <a href="../../glossary/#master">master&#8217;s</a>
+file system.</p>
 </div>
 </div>
 </div>
@@ -411,7 +411,7 @@ system.</p>
 <h2 id="installing-a-plugin"><a class="anchor" href="#installing-a-plugin"></a>Installing a plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Jenkins provides a few different methods for installing plugins on the master:</p>
+<p>Jenkins provides a couple different methods for installing plugins on the master:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -419,10 +419,7 @@ system.</p>
 <p>Using the "Plugin Manager" in the web UI.</p>
 </li>
 <li>
-<p>Using the <a href="#install-with-cli">Jenkins CLI</a>.</p>
-</li>
-<li>
-<p>Manually placing files on the file system.</p>
+<p>Using the <a href="#install-with-cli">Jenkins CLI</a> <code>install-plugin</code> command.</p>
 </li>
 </ol>
 </div>
@@ -431,11 +428,11 @@ system.</p>
 different level of access and trade-offs in order to use.</p>
 </div>
 <div class="paragraph">
-<p>The first two approaches require that the Jeknins master be able to connect to
-an Update Center, whether the primary Update Center operated by the Jenkins
-project
+<p>The two approaches require that the Jenkins master be able to download
+meta-data from an Update Center, whether the primary Update Center operated by
+the Jenkins project
 <sup class="footnote" id="_footnote_uc">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>,
-or a custom Update Center, in order to download meta-data.</p>
+or a custom Update Center.</p>
 </div>
 <div class="paragraph">
 <p>The plugins are packaged as self-contained <code>.hpi</code> files, which have all the
@@ -445,13 +442,13 @@ successfully.</p>
 <div class="sect2">
 <h3 id="from-the-web-ui"><a class="anchor" href="#from-the-web-ui"></a>From the web UI</h3>
 <div class="paragraph">
-<p>The simplest, and most common, way for installing plugins is through the
+<p>The simplest and most common way for installing plugins is through the
 <strong>Configure System</strong> &gt; <strong>Manage Plugins</strong> view, available to administrators of a
 Jenkins environment.</p>
 </div>
 <div class="paragraph">
 <p>Under the <strong>Available</strong> tab, plugins available for download from the configured
-Update Center, can be searched and considered:</p>
+Update Center can be searched and considered:</p>
 </div>
 <div class="imageblock center">
 <div class="content">
@@ -524,8 +521,8 @@ install that on the Jenkins master.</p>
 <div class="sect3">
 <h4 id="from-the-web-ui-2"><a class="anchor" href="#from-the-web-ui-2"></a>From the web UI</h4>
 <div class="paragraph">
-<p>Assuming a <code>.hpi</code> file has been downloaded from the Update Site <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>, a
-logged-in Jenkins administrator can upload the file from within the web UI:</p>
+<p>Assuming a <code>.hpi</code> file has been downloaded, a logged-in Jenkins administrator
+may upload the file from within the web UI:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -556,9 +553,9 @@ restarted in order for the changes to take effect.</p>
 <div class="sect3">
 <h4 id="on-the-master"><a class="anchor" href="#on-the-master"></a>On the master</h4>
 <div class="paragraph">
-<p>Assuming a <code>.hpi</code> file has been downloaded from the Update Site <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>, a systems
-administrator who has access to the file system of the Jenkins master can also
-manually place the <code>.hpi</code> file in a specific location on the file system.</p>
+<p>Assuming a <code>.hpi</code> file has been explicitly downloaded by a systems
+administrator, the administrator can manually place the <code>.hpi</code> file in a
+specific location on the file system.</p>
 </div>
 <div class="paragraph">
 <p>Copy the downloaded <code>.hpi`</code> file into the <code>JENKINS_HOME/plugins</code> directory on
@@ -637,6 +634,21 @@ plugins, and present a button for doing so.</p>
 <p>A plugin may also be uninstalled by removing the corresponding <code>.hpi</code>
 file from the <code>JENKINS_HOME/plugins</code> directory on the master. The plugin will
 continue to function until the master has been restarted.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a plugin <code>.hpi</code> file is removed but required by other plugins, the Jenkins
+master may fail to boot correctly.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Uninstalling a plugin does <strong>not</strong> remove the configuration that the plugin may

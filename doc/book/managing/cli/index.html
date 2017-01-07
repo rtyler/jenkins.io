@@ -367,89 +367,273 @@ Jenkins CLI
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#downloading-the-client">Downloading the client</a></li>
-<li><a href="#using-the-client">Using the client</a>
+<li><a href="#using-the-cli">Using the CLI</a>
 <ul class="sectlevel2">
-<li><a href="#transport">Transport</a></li>
 <li><a href="#authentication">Authentication</a></li>
+<li><a href="#common-commands">Common Commands</a></li>
 </ul>
 </li>
-<li><a href="#common-problems">Common Problems</a>
+<li><a href="#using-the-cli-client">Using the CLI client</a>
 <ul class="sectlevel2">
-<li><a href="#operation-timed-out">Operation timed out</a></li>
-<li><a href="#no-x-jenkins-cli2-port">No X-Jenkins-CLI2-Port</a></li>
-<li><a href="#sslhandshakeexception">SSLHandshakeException</a></li>
+<li><a href="#downloading-the-client">Downloading the client</a></li>
+<li><a href="#using-the-client">Using the client</a></li>
+<li><a href="#common-problems">Common Problems</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div id="preamble">
 <div class="sectionbody">
-<div class="admonitionblock note">
+<div class="paragraph">
+<p>Jenkins has a built-in command line interface that allows users and
+administrators to access Jenkins from a script or shell environment. This can
+be convenient for scripting of routine tasks, bulk updates, troubleshooting,
+and more.</p>
+</div>
+<div class="paragraph">
+<p>The command line interface can be accessed over SSH or with the Jenkins CLI
+client, a <code>.jar</code> file distributed with Jenkins. The SSH approach is preferred
+over the CLI client as it is considered more secure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-cli"><a class="anchor" href="#using-the-cli"></a>Using the CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default Jenkins will boot with a randomly assigned SSH port, which
+administrators may choose to override in the <a href="../system-configuration/#ssh-server">Configure System</a> page. In order to determine the randomly assigned SSH port,
+inspect the headers returned on a Jenkins URL, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% curl -Lv https://JENKINS_URL/login 2&gt;&amp;1 | grep 'X-SSH-Endpoint'
+&lt; X-SSH-Endpoint: localhost:53801
+%</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the random SSH port (<code>53801</code> in this example), and <a href="#authentication">Authentication</a>
+configured, any modern SSH client may securely execute CLI commands.</p>
+</div>
+<div class="paragraph">
+<p>In order to determine the available CLI commands, execute the <code>help</code> command,
+which will provide a list of commands available:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help
+  add-job-to-view
+    Adds jobs to view.
+  build
+    Builds a job, and optionally waits until its completion.
+[...]
+%</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="authentication"><a class="anchor" href="#authentication"></a>Authentication</h3>
+<div class="paragraph">
+<p>Whichever user used for authentication with the Jenkins master must have the
+<code>Overall/Read</code> permission in order to <em>access</em> the CLI. The user may require
+additional permissions depending on the commands executed.</p>
+</div>
+<div class="paragraph">
+<p>Whether using the CLI via SSH, or with the CLI client, both rely primarily on
+SSH-based public/private key authentication. In order to add an SSH public key
+for the appropriate user, navigate to
+<code>https://JENKINS_URL/user/USERNAME/cnofigure</code> and paste an SSH public key
+into the appropriate text area.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/cli-adding-ssh-public-keys.png" alt="Adding public SSH keys for a user">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="common-commands"><a class="anchor" href="#common-commands"></a>Common Commands</h3>
+<div class="paragraph">
+<p>Jenkins has a number of built-in CLI commands which can be found in every
+Jenkins environment, such as <code>build</code> or <code>list-jobs</code>. Plugins may also provide
+CLI commands however; in order to determine the full list of commands available
+in a given Jenkins environment, execute the CLI <code>help</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following list of commands is not comprehensive, but are useful for basic
+Jenkins CLI usage.</p>
+</div>
+<div class="sect3">
+<h4 id="build"><a class="anchor" href="#build"></a>build</h4>
+<div class="paragraph">
+<p>One of the most common, and useful, CLI commands is <code>build</code> which allows the
+user to trigger any job or Pipeline for which they have permission.</p>
+</div>
+<div class="paragraph">
+<p>The most basic invocation will simply trigger the job or Pipeline an exit, but
+with the additional options a user may also pass parameters, poll SCM, or even
+follow the console output of the triggered build or Pipeline run.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help build
+
+java -jar jenkins-cli.jar build JOB [-c] [-f] [-p] [-r N] [-s] [-v] [-w]
+Starts a build, and optionally waits for a completion.  Aside from general
+scripting use, this command can be used to invoke another job from within a
+build of one job.  With the -s option, this command changes the exit code based
+on the outcome of the build (exit code 0 indicates a success) and interrupting
+the command will interrupt the job.  With the -f option, this command changes
+the exit code based on the outcome of the build (exit code 0 indicates a
+success) however, unlike -s, interrupting the command will not interrupt the
+job (exit code 125 indicates the command was interrupted).  With the -c option,
+a build will only run if there has been an SCM change.
+ JOB : Name of the job to build
+ -c  : Check for SCM changes before starting the build, and if there's no
+       change, exit without doing a build
+ -f  : Follow the build progress. Like -s only interrupts are not passed
+       through to the build.
+ -p  : Specify the build parameters in the key=value format.
+ -s  : Wait until the completion/abortion of the command. Interrupts are passed
+       through to the build.
+ -v  : Prints out the console output of the build. Use with -s
+ -w  : Wait until the start of the command
+% ssh -l kohsuke -p 53801 localhost build build-all-software -f -v
+Started build-all-software #1
+Started from command line by admin
+Building in workspace /tmp/jenkins/workspace/build-all-software
+[build-all-software] $ /bin/sh -xe /tmp/hudson1100603797526301795.sh
++ echo hello world
+hello world
+Finished: SUCCESS
+Completed build-all-software #1 : SUCCESS
+%</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="console"><a class="anchor" href="#console"></a>console</h4>
+<div class="paragraph">
+<p>Similarly useful is the <code>console</code> command which retrieves the console output
+for the specified build or Pipeline run. When no build number is provided, the
+<code>console</code> command will output the last completed build&#8217;s console output.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help console
+
+java -jar jenkins-cli.jar console JOB [BUILD] [-f] [-n N]
+Produces the console output of a specific build to stdout, as if you are doing 'cat build.log'
+ JOB   : Name of the job
+ BUILD : Build number or permalink to point to the build. Defaults to the last
+         build
+ -f    : If the build is in progress, stay around and append console output as
+         it comes, like 'tail -f'
+ -n N  : Display the last N lines
+% ssh -l kohsuke -p 53801 localhost console build-all-software
+Started from command line by kohsuke
+Building in workspace /tmp/jenkins/workspace/build-all-software
+[build-all-software] $ /bin/sh -xe /tmp/hudson1100603797526301795.sh
++ echo hello world
+yes
+Finished: SUCCESS
+%</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="who-am-i"><a class="anchor" href="#who-am-i"></a>who-am-i</h4>
+<div class="paragraph">
+<p>The <code>who-am-i</code> command is helpful for listing the current user&#8217;s credentials
+and permissions available to the user. This can be useful when debugging the
+absence of CLI commands based on the lack of certain permissions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help who-am-i
+
+java -jar jenkins-cli.jar who-am-i
+Reports your credential and permissions.
+% ssh -l kohsuke -p 53801 localhost who-am-i
+Authenticated as: kohsuke
+Authorities:
+  authenticated
+%</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-cli-client"><a class="anchor" href="#using-the-cli-client"></a>Using the CLI client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While the SSH-based CLI is preferred, there may be situations where the CLI
+client is a better fit. For example, the default transport for the CLI client
+is HTTP which means no additional ports must be opened in a firewall for its
+use.</p>
+</div>
+<div class="sect2">
+<h3 id="downloading-the-client"><a class="anchor" href="#downloading-the-client"></a>Downloading the client</h3>
+<div class="paragraph">
+<p>The CLI client can be downloaded directly from a Jenkins master at the URL
+<code>/jnlpJars/jenkins-cli.jar</code>, in effect  <code>https://JENKINS_URL/jnlpJars/jenkins-cli.jar</code></p>
+</div>
+<div class="paragraph">
+<p>While a CLI <code>.jar</code> can be used against different versions of Jenkins, should an
+compatibility issues arise during use, please re-download the latest <code>.jar</code>
+file from the Jenkins master.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-the-client"><a class="anchor" href="#using-the-client"></a>Using the client</h3>
+<div class="paragraph">
+<p>The general syntax for invoking the client is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java -jar jenkins-cli.jar [-s JENKINS_URL] command [options...] [arguments...]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>JENKINS_URL</code> can be specified via the environment variable <code>$JENKINS_URL</code>.</p>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This is still very much a work in progress</p>
+<p>The <code>JENKINS_URL</code> environment variable is automatically set when Jenkins forks a process
+during builds or Pipelines, allowing the use of the Jenkins CLI from inside a
+project without explicit configuration of the Jenkins URL.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Jenkins has a built-in command line interface that allows you to access Jenkins
-from a script or from your shell. This is convenient for automation of routine
-tasks, bulk updates, trouble diagnosis, and so on.</p>
 </div>
-<div class="paragraph">
-<p>This interface is accessed via the Jenkins CLI client, which is a Java JAR file distributed with Jenkins.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="downloading-the-client"><a class="anchor" href="#downloading-the-client"></a>Downloading the client</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can download the JAR file for the client from the URL
-<code>/jnlpJars/jenkins-cli.jar</code> on your Jenkins server, for example
-<code>https://example.com/jnlpJars/jenkins-cli.jar</code></p>
-</div>
-<div class="paragraph">
-<p>In theory, the CLI JAR is dependent on the version of Jenkins, but in practice,
-we expect to be able to retain compatibility between different versions of
-Jenkins. In case of problems, just re-download the latest JAR from your Jenkins
-server.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="using-the-client"><a class="anchor" href="#using-the-client"></a>Using the client</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="transport"><a class="anchor" href="#transport"></a>Transport</h3>
-<div class="sect3">
-<h4 id="ssh"><a class="anchor" href="#ssh"></a>SSH</h4>
-
+<h3 id="common-problems"><a class="anchor" href="#common-problems"></a>Common Problems</h3>
+<div class="paragraph">
+<p>There are a number of common problems that may be experienced when running the
+CLI client.</p>
 </div>
 <div class="sect3">
-<h4 id="jnlp"><a class="anchor" href="#jnlp"></a>JNLP</h4>
-
+<h4 id="operation-timed-out"><a class="anchor" href="#operation-timed-out"></a>Operation timed out</h4>
+<div class="paragraph">
+<p>Check that the HTTP or JNLP port is opened if you are using a firewall on your
+server.  You can configure its value in Jenkins configuration. By default it is
+set to use a random port.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="authentication"><a class="anchor" href="#authentication"></a>Authentication</h3>
-
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="common-problems"><a class="anchor" href="#common-problems"></a>Common Problems</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="operation-timed-out"><a class="anchor" href="#operation-timed-out"></a>Operation timed out</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code>% java -jar jenkins-cli.jar -s JENKINS_URL help
@@ -469,16 +653,12 @@ Exception in thread "main" java.net.ConnectException: Operation timed out
     at hudson.cli.CLI.main(CLI.java:199)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Check that the JNLP port is opened if you are using a firewall on your server.
-You can configure its value in Jenkins configuration. By default it is set to
-use a random port.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="no-x-jenkins-cli2-port"><a class="anchor" href="#no-x-jenkins-cli2-port"></a>No X-Jenkins-CLI2-Port</h3>
+<div class="sect3">
+<h4 id="no-x-jenkins-cli2-port"><a class="anchor" href="#no-x-jenkins-cli2-port"></a>No X-Jenkins-CLI2-Port</h4>
 <div class="paragraph">
-<p>Go to <strong>Manage Jenkins</strong> &gt; <strong>Configure Global Security</strong> and choose "Fixed" or "Random" under <strong>TCP port for JNLP agents</strong>.</p>
+<p>Go to <strong>Manage Jenkins</strong> &gt; <strong>Configure Global Security</strong> and choose "Fixed" or
+"Random" under <strong>TCP port for JNLP agents</strong>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -498,9 +678,6 @@ use a random port.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="sslhandshakeexception"><a class="anchor" href="#sslhandshakeexception"></a>SSLHandshakeException</h3>
-
 </div>
 </div>
 </div>
