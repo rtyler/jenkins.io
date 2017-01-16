@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
-Jenkins Documentation
+Installing Jenkins
 </title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="Jenkins is an open source automation server" name="description">
@@ -343,77 +343,72 @@ Conduct
 </div>
 
 <!-- ending partial toptoolbar.html.haml -->
-<style>
-  .row {
-    margin-right: 5em;
-    margin-left: 5em;
-  }
-  .toc {
-      float: right;
-  }
-</style>
 <div class="container">
-<div class="row body">
-<h1>
-Jenkins Documentation
-</h1>
-<p>
-Jenkins is an automation engine with an unparalleled plugin ecosystem to
-support all of your favorite tools in your delivery pipelines, whether your
-goal is continuous integration, automated testing, or continuous delivery.
-</p>
-<div>
-<h3>
-<a href="/doc/book/pipeline" name="pipeline">
-Pipeline
-</a>
-</h3>
+<div class="row">
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+Jenkins
+</h4>
 <ul>
 <li>
-<a href="/doc/book/pipeline/getting-started">
-Getting Started with Pipeline
+<a href="/doc">
+Installing Jenkins
+</a>
+</li>
+</ul>
+<h4>
+Pipelines
+</h4>
+<ul>
+<a href="/doc/pipeline/getting-started">
+Getting Started
+</a>
+<li>
+<a href="/doc/pipeline/running-multiple-steps">
+Running multiple steps
 </a>
 </li>
 <li>
-<a href="/doc/book/pipeline/jenkinsfile">
-Getting Started with the Jenkinsfile
+<a href="/doc/pipeline/controlling-your-build-environment">
+Controlling your build environment
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/environment-variables">
+Environment variables
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/reporting-test-results-and-storing-artifacts">
+Reporting test results and storing artifacts
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/notifications">
+Notifications
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/deployment">
+Deployment
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/parallelism">
+Parallelism
 </a>
 </li>
 <li>
 <a href="/doc/pipeline/steps">
-Pipeline Steps Reference
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/examples">
-Pipeline Examples
+Steps reference
 </a>
 </li>
 </ul>
-</div>
-<hr>
-<div>
-<h3>
-<a href="book">
-Handbook
-</a>
-</h3>
-<p>
-The Jenkins Handbook is a collection of in-depth chapters describing the
-various important aspects of using Jenkins in detail.
-<p>
-<em>
-<a href="../user-handbook.pdf">
-Download as PDF
-</a>
-</em>
-</p>
-</p>
 <h4>
-Chapters
+User Handbook
 </h4>
-<div>
-<ol>
+<ul>
 <li>
 <a href="book/getting-started">
 Getting Started with Jenkins
@@ -464,62 +459,39 @@ Appendix
 Glossary
 </a>
 </li>
-</ol>
-</div>
-</div>
-<hr>
-<div>
-<h3>
-<a href="upgrade-guide">
-LTS Upgrade Guide
-</a>
-</h3>
-<p>
-The LTS upgrade guide describes possible issues and solutions for users upgrading
-between LTS releases.
-</p>
-</div>
-<hr>
-<div>
-<h3>
-<a href="#developer" name="developer">
-Developer docs
-</a>
-</h3>
-<p>
-For developers wishing to hack on, or extend Jenkins we have a number of
-documentation resources available. The
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins">
-<strong>
-Extend Jenkins
-</strong>
-</a>
-page contains a wide variety of developer contributed documentation and can be a good start.
-</p>
-<p>
-Plugin authors may also find the
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points">
-<strong>
-Extension Points
-</strong>
-</a>
-catalogue to be a useful reference document.
-</p>
+</ul>
 <h4>
-Javadocs
+Developers
 </h4>
-<div>
+<h5>
+Writing plugins
+</h5>
+<ul>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins">
+Extend Jenkins
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points">
+Extension points
+</a>
+</li>
+</ul>
+<h5>
+JavaDoc
+</h5>
 <ul>
 <li>
 <a href="http://javadoc.jenkins.io/">
 Latest
 </a>
 </li>
-</ul>
-<strong>
-LTS baselines
-</strong>
-<ul>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.32">
+2.32
+</a>
+</li>
 <li>
 <a href="http://javadoc.jenkins.io/archive/jenkins-2.19">
 2.19
@@ -573,7 +545,30 @@ LTS baselines
 </ul>
 </div>
 </div>
-
+<div class="col-lg-9">
+<h1>
+Installing Jenkins
+</h1>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war">Download Jenkins</a> to your computer.</p>
+</li>
+<li>
+<p>Open up your console and terminal in your download directory and run <code>java -jar jenkins.war</code></p>
+</li>
+<li>
+<p>Browse to <code>http://localhost:8080</code> and follow the instructions to complete the installation.</p>
+</li>
+<li>
+<p>Most examples will require you to have <a href="https://docs.docker.com/engine/installation">installed Docker</a> on the same computer as Jenkins.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When installation is complete you can begin to <a href="/doc/pipeline/getting-started">create your first Pipeline</a>.</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -715,11 +710,11 @@ Reddit
 </div>
 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
 <p class="box">
-<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/index.html.haml" title="Edit /doc/index.html.haml on GitHub">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/index.adoc" title="Edit /doc/index.adoc on GitHub">
 Improve this page
 </a>
 |
-<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/index.html.haml" title="View /doc/index.html.haml history on GitHub">
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/index.adoc" title="View /doc/index.adoc history on GitHub">
 Page history
 </a>
 </p>

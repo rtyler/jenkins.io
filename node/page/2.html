@@ -369,6 +369,298 @@ follow us on Twitter
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
 <li class="post">
+<a class="body" href="/blog/2016/12/10/monthly-jam-recap-november/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+10
+</div>
+</div>
+<h5 class="title">
+Monthly JAM Recap - November 2016
+</h5>
+</div>
+<p class="teaser">
+As we near the end of the year, the number of November JAMs show that the
+Jenkins community isn&#8217;t slowing down for holiday season. We had a number of
+excellent events hosted around the world this November with plenty of great
+stories and presentations shared by the various members of the world-wide
+Jenkins community.
+
+
+Melbourne, Australia JAM
+
+Melbourne JAM leaders,
+Raisa
+and
+Bhuva
+hosted Blue Ocean for the inaugural meeting. Attendees learned the values...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/alyssat">Alyssa Tong</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/event">
+event
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/jam">
+jam
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/meetup">
+meetup
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2016/12/09/december-jenkins-events/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+09
+</div>
+</div>
+<h5 class="title">
+Upcoming December Jenkins Events
+</h5>
+</div>
+<p class="teaser">
+Happy Holidays! A special shout out to all JAM leaders who continue to keep
+local activities going in December.
+
+
+Online JAM
+
+
+
+December 14 | Live Demos: Pipeline, Git, and Blue Ocean
+
+
+
+
+
+North America
+
+
+
+December 7 | Seattle JAM: Jenkins at Microsoft
+
+
+December 14 | Los Angeles JAM: Jenkins Days
+
+
+December 14 | Guadalajara JAM: Jenkins &amp; Docker
+
+
+
+
+
+Australia
+
+
+
+December 14 | Melbourne JAM: Meeting at AWS Office
+
+
+
+
+
+Links
+
+
+
+Start a JAM in your city if...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/alyssat">Alyssa Tong</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/events">
+events
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/jam">
+jam
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+22
+</div>
+</div>
+<h5 class="title">
+What JVM versions are running Jenkins? 2016 Update!
+</h5>
+</div>
+<p class="teaser">
+Like for last year&#8217;s article about the same subject, yet another recent discussion about finally requiring Java 8 to run future versions Jenkins pushed me to gather some more factual data around it.
+
+
+
+
+
+
+
+
+What follows contains some opinions or statements which may not be seen as purely factual or neutral. Note that this represents by no mean the general position of the Jenkins governance board....
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/batmat">Baptiste Mathus</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/statistics">
+statistics
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2016/11/21/gc-tuning/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+21
+</div>
+</div>
+<h5 class="title">
+Tuning Jenkins GC For Responsiveness and Stability with Large Instances
+</h5>
+</div>
+<p class="teaser">
+This is a
+cross
+post by Sam Van Oort, Software Engineer at
+CloudBees and contributor to the Jenkins project.
+
+
+
+
+
+
+Today I&#8217;m going to show you how easy it is to tune Jenkins Java settings to
+make your masters more responsive and stable, especially with large heap sizes.
+
+
+The Magic Settings:
+
+
+
+Basics: -server -XX:+AlwaysPreTouch
+
+
+GC Logging: -Xloggc:$JENKINS_HOME/gc-%t.log -XX:NumberOfGCLogFiles=5 -XX:+UseGCLogFileRotation -XX:GCLogFileSize=20m -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintHeapAtGC -XX:+PrintGCCause -XX:+PrintTenuringDistribution -XX:+PrintReferenceGC -XX:+PrintAdaptiveSizePolicy
+
+
+G1 GC settings: -XX:+UseG1GC -XX:+ExplicitGCInvokesConcurrent -XX:+ParallelRefProcEnabled...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/svanoort">Sam Van Oort</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/performance">
+performance
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/scalability">
+scalability
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/administration">
+administration
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2016/11/16/security-updates-addressing-zero-day/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+16
+</div>
+</div>
+<h5 class="title">
+Security updates addressing zero day vulnerability
+</h5>
+</div>
+<p class="teaser">
+A zero-day vulnerability in Jenkins was published on Friday, November 11.  Last
+week
+we provided an immediate mitigation
+and today we are releasing updates to Jenkins which fix the vulnerability. We
+strongly recommend you update Jenkins to 2.32 (main line) or 2.19.3 (LTS) as
+soon as possible.
+
+
+Today&#8217;s
+security advisory
+contains more information on the exploit, affected versions, and fixed
+versions, but in short:
+
+
+
+
+An unauthenticated remote code execution vulnerability allowed attackers to
+transfer...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/daniel-beck">Daniel Beck</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/core">
+core
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/security">
+security
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
 <a class="body" href="/blog/2016/11/13/november-jenkins-events/">
 <div class="header">
 <div class="date">
@@ -528,291 +820,12 @@ meetup
 </ul>
 </div>
 </li>
-<li class="post">
-<a class="body" href="/blog/2016/10/31/xunit-reporting/">
-<div class="header">
-<div class="date">
-<div class="month">
-Oct
-</div>
-<div class="day">
-31
-</div>
-</div>
-<h5 class="title">
-xUnit and Pipeline
-</h5>
-</div>
-<p class="teaser">
-This is a guest post by Liam Newman,
-Technical Evangelist at CloudBees.
-
-
-
-
-
-The
-JUnit plugin
-is the go-to test result reporter for many Jenkins projects,
-but the it is not the only one available.  The
-xUnit plugin
-is a viable alternative that supports JUnit and many other test result file formats.
-
-
-Introduction
-
-No matter the project, you need to gather and report test results.
-JUnit is one of the most widely supported formats...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/bitwiseman">Liam Newman</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/pipeline">
-pipeline
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/plugins">
-plugins
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/xunit">
-xunit
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/nightwatch">
-nightwatch
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/10/18/jenkins-world-2016-videos/">
-<div class="header">
-<div class="date">
-<div class="month">
-Oct
-</div>
-<div class="day">
-18
-</div>
-</div>
-<h5 class="title">
-Jenkins World 2016 Session Videos
-</h5>
-</div>
-<p class="teaser">
-This is a guest post by Liam Newman,
-Technical Evangelist at CloudBees.
-
-
-
-
-
-The videos of the sessions from
-Jenkins World 2016 are up!
-
-
-I&#8217;ve updated the wrap-up posts with links to each of the sessions mentioned:
-
-
-
-
-Jenkins Pipeline
-
-
-Scaling Jenkins
-
-
-Ask the Experts &amp; Demos
-
-
-
-
-You can also find video from all the sessions
-here.  Enjoy!...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/bitwiseman">Liam Newman</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/event">
-event
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/jenkinsworld">
-jenkinsworld
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/10/16/stage-lock-milestone/">
-<div class="header">
-<div class="date">
-<div class="month">
-Oct
-</div>
-<div class="day">
-16
-</div>
-</div>
-<h5 class="title">
-Controlling the Flow with Stage, Lock, and Milestone
-</h5>
-</div>
-<p class="teaser">
-This is a guest post by Patrick Wolf,
-Director of Product Management at CloudBees.
-
-
-
-
-
-Recently the Pipeline team began making several changes to improve the stage step and increase control of concurrent builds in Pipeline. Until now the stage step has been the catch-all for functionality related to the flow of builds through the Pipeline: grouping build steps into visualized stages, limiting concurrent builds, and discarding...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/HRMPW">Patrick Wolf</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/pipeline">
-pipeline
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/newfeatures">
-newfeatures
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/">
-<div class="header">
-<div class="date">
-<div class="month">
-Sep
-</div>
-<div class="day">
-30
-</div>
-</div>
-<h5 class="title">
-Jenkins World 2016, That's a Wrap!
-</h5>
-</div>
-<p class="teaser">
-This is a guest post by Liam Newman,
-Technical Evangelist at CloudBees.
-
-
-
-
-
-
-
-
-This year&#8217;s Jenkins World conference
-was a huge milestone for the Jenkins project - the first global event for the Jenkins community.
-It brought users and contributors together to exchange ideas on the current state
-of the project, celebrate accomplishments of the past year, and look ahead at all the exiting enhancements
-coming down the pipe(line).
-
-
-Contributor Summit
-
-To kick...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/bitwiseman">Liam Newman</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/event">
-event
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/jenkinsworld">
-jenkinsworld
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/">
-<div class="header">
-<div class="date">
-<div class="month">
-Sep
-</div>
-<div class="day">
-29
-</div>
-</div>
-<h5 class="title">
-Jenkins World 2016 Wrap-up - Ask the Experts & Demos
-</h5>
-</div>
-<p class="teaser">
-This is a guest post by Liam Newman,
-Technical Evangelist at CloudBees.
-
-
-
-
-
-
-
-
-As I mentioned in my
-previous post,
-Jenkins World brought together
-Jenkins users from organizations of all sizes.  It also brought together Jenkins
-users of all skill levels; from beginners to experts (including to JAM
-organizers, board members, and long time contributors).  A number
-of those experts also volunteered to staff the Open Source Hub&#8217;s
-"Ask the Experts" desk...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/bitwiseman">Liam Newman</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/event">
-event
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/jenkinsworld">
-jenkinsworld
-</a>
-</li>
-</ul>
-</div>
-</li>
 </ul>
 </div>
 </div>
 
 <!-- ending partial blogcardlist.html.haml -->
-<div class="pagination-links"><a href="/node/" class="previous-link">Previous</a> <a href="/node/" class="page-link">1</a> <span class="current-page">2</span> <a href="/node/page/3.html" class="page-link">3</a> <span class="skip">...</span><a href="/node/page/56.html" class="page-link">56</a> <a href="/node/page/57.html" class="page-link">57</a> <a href="/node/page/3.html" class="next-link">Next</a> </div>
+<div class="pagination-links"><a href="/node/" class="previous-link">Previous</a> <a href="/node/" class="page-link">1</a> <span class="current-page">2</span> <a href="/node/page/3.html" class="page-link">3</a> <span class="skip">...</span><a href="/node/page/57.html" class="page-link">57</a> <a href="/node/page/58.html" class="page-link">58</a> <a href="/node/page/3.html" class="next-link">Next</a> </div>
 </div>
 <div class="col-md-3 events vertical" id="sidebar">
 <!-- starting partial sidebar.html.haml -->
@@ -820,6 +833,161 @@ jenkinsworld
 <!-- starting partial events.html.haml -->
 <div class="item-list">
 <ul class="ji-date-list ji-item-list">
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Guadalajara-Jenkins-Area-Meetup/events/234929834/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+18
+</div>
+<div class="dow">
+Wed
+</div>
+</div>
+<div class="time">
+ 7:00 pm
+</div>
+</div>
+<h5 class="title">
+Guadalajara JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins Install & Setup
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Austin-Jenkins-Area-Meetup/events/236706375/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+19
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Austin JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins War Stories
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Washington-DC-Jenkins-Area-Meetup/events/236734311/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+24
+</div>
+<div class="dow">
+Tue
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Washington JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins, Pipeline, Docker
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Brno-Jenkins-Area-Meetup/events/236606276/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+28
+</div>
+<div class="dow">
+Sat
+</div>
+</div>
+<div class="time">
+ 3:30 pm
+</div>
+</div>
+<h5 class="title">
+Brno JAM
+</h5>
+</div>
+<p class="teaser">
+JAM @ Devconf
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/jenkinsmeetup/events/236370435/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+3
+</div>
+<div class="dow">
+Fri
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Pre-FOSDEM Happy Hour
+</h5>
+</div>
+<p class="teaser">
+Beer Anyone?
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
 <li class="post event">
 <a class="body" href="https://fosdem.org/2017/" target="_blank">
 <div class="header time">
@@ -845,6 +1013,160 @@ FOSDEM'17
 </div>
 <p class="teaser">
 Visit Jenkins in exhibit hall
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/jenkinsmeetup/events/236370750/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+6
+</div>
+<div class="dow">
+Mon
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+Post FOSDEM Contributor Hackathon
+</h5>
+</div>
+<p class="teaser">
+Hackathon
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/munchen-jenkins-area-meetup/events/236604016/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+6
+</div>
+<div class="dow">
+Mon
+</div>
+</div>
+<div class="time">
+ 6:30 pm
+</div>
+</div>
+<h5 class="title">
+Munchen JAM
+</h5>
+</div>
+<p class="teaser">
+Inaugural Meeting
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Boston-Jenkins-Area-Meetup/events/236766736/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+7
+</div>
+<div class="dow">
+Tue
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Boston JAM
+</h5>
+</div>
+<p class="teaser">
+Terraform, Ansible, Jenkins Integration
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/DFW-Jenkins-Area-Meetup/events/235576632/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+7
+</div>
+<div class="dow">
+Tue
+</div>
+</div>
+<div class="time">
+ 7:00 pm
+</div>
+</div>
+<h5 class="title">
+DFW JAM
+</h5>
+</div>
+<p class="teaser">
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.cloudbees.com/jenkinsworld/home" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Aug
+</div>
+<div class="day">
+28
+</div>
+<div class="dow">
+Mon
+</div>
+</div>
+<div class="time">
+ 8:00 am
+</div>
+</div>
+<h5 class="title">
+Jenkins World 2017
+</h5>
+</div>
+<p class="teaser">
+The Largest Jenkins Event
 
 <div class="more"></div>
 </p>

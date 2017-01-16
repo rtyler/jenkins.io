@@ -388,15 +388,15 @@ Managing Plugins
 <div class="sectionbody">
 <div class="paragraph">
 <p>Plugins are the primary means of enhancing the functionality of a Jenkins
-environment to suit organization or user-specific needs. There are
+environment to suit organization- or user-specific needs. There are
 <a href="https://plugins.jenkins.io">over a thousand different plugins</a>
-which can be installed on a Jenkins master and integrate various
-build tools, cloud providers, analysis tools, and many more.</p>
+which can be installed on a Jenkins master and to integrate various
+build tools, cloud providers, analysis tools, and much more.</p>
 </div>
 <div class="paragraph">
 <p>Plugins can be automaticaly downloaded, with their dependencies, from the
 <a href="../../glossary/#update-center">Update Center</a>. The Update Center is a service
-operated by the Jenkins project and provides an inventory of open source
+operated by the Jenkins project which provides an inventory of open source
 plugins which have been developed and maintained by various members of the
 Jenkins community.</p>
 </div>
@@ -411,7 +411,7 @@ file system.</p>
 <h2 id="installing-a-plugin"><a class="anchor" href="#installing-a-plugin"></a>Installing a plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Jenkins provides a couple different methods for installing plugins on the master:</p>
+<p>Jenkins provides a couple of different methods for installing plugins on the master:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -425,7 +425,7 @@ file system.</p>
 </div>
 <div class="paragraph">
 <p>Each approach will result in the plugin being loaded by Jenkins but may require
-different level of access and trade-offs in order to use.</p>
+different levels of access and trade-offs in order to use.</p>
 </div>
 <div class="paragraph">
 <p>The two approaches require that the Jenkins master be able to download
@@ -442,7 +442,7 @@ successfully.</p>
 <div class="sect2">
 <h3 id="from-the-web-ui"><a class="anchor" href="#from-the-web-ui"></a>From the web UI</h3>
 <div class="paragraph">
-<p>The simplest and most common way for installing plugins is through the
+<p>The simplest and most common way of installing plugins is through the
 <strong>Configure System</strong> &gt; <strong>Manage Plugins</strong> view, available to administrators of a
 Jenkins environment.</p>
 </div>
@@ -481,15 +481,10 @@ configured Update Center.</p>
 <h3 id="install-with-cli"><a class="anchor" href="#install-with-cli"></a>Using the Jenkins CLI</h3>
 <div class="paragraph">
 <p>Administrators may also use the <a href="../cli/">Jenkins CLI</a> which provides a command
-to install plugins.</p>
-</div>
-<div class="paragraph">
-<p>Scripts to manage Jenkins environments, or configuration management code, may
-need to install plugins without direct user interaction in the web UI.</p>
-</div>
-<div class="paragraph">
-<p>The Jenkins CLI allows a command line user or automation tool to download a
-plugin and its dependencies.</p>
+to install plugins. Scripts to manage Jenkins environments, or configuration
+management code, may need to install plugins without direct user interaction in
+the web UI. The Jenkins CLI allows a command line user or automation tool to
+download a plugin and its dependencies.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -592,7 +587,7 @@ for the desired plugin will provide the appropriate link to the <code>.hpi</code
 <div class="sectionbody">
 <div class="paragraph">
 <p>Updates are listed in the <strong>Updates</strong> tab of the <strong>Manage Plugins</strong> page and can be
-selected by checking the checkboxes of the desired plugin updates and clicking
+installed by checking the checkboxes of the desired plugin updates and clicking
 the <strong>Download now and install after restart</strong> button.</p>
 </div>
 <div class="imageblock center">
@@ -613,7 +608,7 @@ the <strong>Check now</strong> button in the <strong>Updates</strong> tab.</p>
 <div class="paragraph">
 <p>When a plugin is no longer used in a Jenkins environment, it is prudent to
 remove the plugin from the Jenkins master. This provides a number of benefits
-such as: reducing memory overhead at boot or runtime, reducing configuration
+such as reducing memory overhead at boot or runtime, reducing configuration
 options in the web UI, and removing the potential for future conflicts with new
 plugin updates.</p>
 </div>
@@ -658,7 +653,7 @@ some configurations could not be fully loaded and ignore the unrecognized data.<
 </div>
 <div class="paragraph">
 <p>Since the configuration(s) will be preserved until they are overwritten,
-re-installing the plugin will result in those configuration values reappearing..</p>
+re-installing the plugin will result in those configuration values reappearing.</p>
 </div>
 <div class="sect3">
 <h4 id="removing-old-data"><a class="anchor" href="#removing-old-data"></a>Removing old data</h4>
@@ -723,7 +718,7 @@ Jenkins 1.x, such as the
 </div>
 <div class="paragraph">
 <p>By default, whenever Jenkins is upgraded, its bundled plugins overwrite the
-versions of the plugins are currently installed in <code>JENKINS_HOME</code>.</p>
+versions of the plugins that are currently installed in <code>JENKINS_HOME</code>.</p>
 </div>
 <div class="paragraph">
 <p>However, when a bundled plugin has been manually updated, Jenkins will mark
@@ -745,9 +740,9 @@ bundled version is occasionally updated, but not consistently.</p>
 <p>The Plugin Manager allows plugins to be explicitly unpinned. The
 <code>JENKINS_HOME/plugins/PLUGIN_NAME.hpi.pinned</code> file can also be manually
 created/deleted to control the pinning behavior. If the <code>pinned</code> file is
-present, Jenkins will use whatever plugin version the user has specified.  use
-whatever version the user has specified. If the file is absent, Jenkins will
-restore the plugin to the default version on startup.</p>
+present, Jenkins will use whatever plugin version the user has specified.
+If the file is absent, Jenkins will restore the plugin to the default version
+on startup.</p>
 </div>
 </div>
 </div>

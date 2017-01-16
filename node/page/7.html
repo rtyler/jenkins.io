@@ -369,6 +369,244 @@ follow us on Twitter
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
 <li class="post">
+<a class="body" href="/blog/2016/07/14/2-7-1-re-release/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jul
+</div>
+<div class="day">
+14
+</div>
+</div>
+<h5 class="title">
+New packages for Jenkins 2.7.1
+</h5>
+</div>
+<p class="teaser">
+We created new native packages for Jenkins 2.7.1 today. These replace the existing packages. Due to a release process issue, the packaging (RPM, etc.) was created the same way as Jenkins 1.x LTS, resulting in problems starting Jenkins on some platforms: While we dropped support for AJP in Jenkins 2.0, some 1.x packages had it enabled by default, resulting in an exception during startup.
+
+These...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/daniel-beck">Daniel Beck</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/jenkins2">
+jenkins2
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/lts">
+lts
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2016/07/07/jenkins-2/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jul
+</div>
+<div class="day">
+07
+</div>
+</div>
+<h5 class="title">
+Jenkins 2 hits LTS
+</h5>
+</div>
+<p class="teaser">
+It’s been almost three months since we’ve released Jenkins 2.0, the first ever major version upgrade for this 10 year old project. The 2.x versions since then has been adopted by more than 20% of the users, but one segment of users who haven’t seen the benefits of Jenkins 2 is those who has been running LTS releases.
+
+
+But that is no more! The new...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/lts">
+lts
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/jenkins2">
+jenkins2
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2016/07/01/html-publisher-plugin/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jul
+</div>
+<div class="day">
+01
+</div>
+</div>
+<h5 class="title">
+Publishing HTML Reports in Pipeline
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Most projects need more that just JUnit result reporting.  Rather than writing a
+custom plugin for each type of report, we can use the
+HTML Publisher Plugin.
+
+
+Let&#8217;s Make This Quick
+
+I&#8217;ve found a Ruby project,
+hermann, I&#8217;d like to build using Jenkins Pipeline. I&#8217;d
+also like to have the code coverage results published with each build job. ...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/bitwiseman">Liam Newman</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/tutorial">
+tutorial
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/ruby">
+ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2016/06/30/ewm-alpha-version/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jun
+</div>
+<div class="day">
+30
+</div>
+</div>
+<h5 class="title">
+GSoC: External Workspace Manager Plugin alpha version
+</h5>
+</div>
+<p class="teaser">
+Currently it&#8217;s quite difficult to share and reuse the same workspace between multiple jobs and across nodes.
+There are some possible workarounds for achieving this, but each of them has its own drawback,
+e.g. stash/unstash pre-made artifacts, Copy Artifacts plugin or advanced job settings.
+A viable solution for this problem is the External Workspace Manager plugin, which facilitates workspace share and
+reuse across multiple Jenkins jobs and nodes.
+It...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/alexsomai">Alexandru Somai</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/external-workspace-manager">
+external-workspace-manager
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/gsoc">
+gsoc
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2016/06/29/from-freestyle-to-pipeline/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jun
+</div>
+<div class="day">
+29
+</div>
+</div>
+<h5 class="title">
+Migrating from chained Freestyle jobs to Pipelines
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by R. Tyler Croy, who is a
+long-time contributor to Jenkins and the primary contact for Jenkins project
+infrastructure. He is also a Jenkins Evangelist at
+CloudBees, Inc.
+
+
+
+
+
+
+For ages I have used the "Build After" feature in Jenkins to cobble together
+what one might refer to as a "pipeline" of sorts. The Jenkins project itself, a
+major consumer of Jenkins, has used these daisy-chained...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/infra">
+infra
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
 <a class="body" href="/blog/2016/06/21/gsoc-midterm-presentations-ann/">
 <div class="header">
 <div class="date">
@@ -543,308 +781,12 @@ dsl
 </ul>
 </div>
 </li>
-<li class="post">
-<a class="body" href="/blog/2016/06/14/jenkins-world-agenda/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jun
-</div>
-<div class="day">
-14
-</div>
-</div>
-<h5 class="title">
-Jenkins World Agenda is Live!
-</h5>
-</div>
-<p class="teaser">
-Join us in Santa Clara, California on September 13-15, 2016!
-
-
-We are excited to announce the Jenkins
-World agenda is now live. There will be 50+ sessions, keynotes, training,
-certifications and workshops. Here are a few highlights of what you can expect:
-
-
-High level topics
-
-
-
-Continuous delivery
-
-
-DevOps
-
-
-Microservices architectures
-
-
-Testing
-
-
-Automation tools
-
-
-Plugin development
-
-
-Pipeline
-
-
-Best practices
-
-
-And much more
-
-
-
-
-Additionally, Jenkins World offers great opportunities for hands-on learning,
-exploring and networking:
-
-
-
-Plugin Development Workshop
-
-Due to its popularity in...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/alyssat">Alyssa Tong</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/event">
-event
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/06/14/gsoc-jenkins-support-core-plugin-improvements/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jun
-</div>
-<div class="day">
-14
-</div>
-</div>
-<h5 class="title">
-GSoC Project Intro: Support Core Plugin Improvements
-</h5>
-</div>
-<p class="teaser">
-About me
-
-I am Minudika Malshan, an undergraduate student in Computer Science and Engineering from University of Moratuwa, Sri Lanka.
-
-
-As a person who is passionate in open source software development and seeking for new knowledge and experience, I am willing to give my contribution for this project.
-
-
-LinkedIn | Twitter
-
-
-
-Abstract
-
-The Support-Core Plugin provides the basic infrastructure for generating "bundles" of support information with Jenkins.
-There are two...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/minudika">Minudika Malshan</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/core">
-core
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/gsoc">
-gsoc
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/plugin">
-plugin
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/support-core">
-support-core
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/06/13/june-jenkins-events/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jun
-</div>
-<div class="day">
-13
-</div>
-</div>
-<h5 class="title">
-Upcoming June Jenkins Events
-</h5>
-</div>
-<p class="teaser">
-It is hard to believe that the first half of 2016 is almost over and summer is
-just around the corner.  As usual, there are plenty of educational Jenkins
-events planned for this month. Below lists what’s happening in your neck of the
-woods:
-
-
-Online JAM
-
-
-
-June 14: Plugin Development - Basics
-
-
-
-
-
-North America JAMs
-
-
-
-June 14: Pipeline in a Windows Environment - Boston, Massachusetts
-
-
-June 15: Open Source Jenkins 2.0,...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/alyssat">Alyssa Tong</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/events">
-events
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/jam">
-jam
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/06/13/gsoc-usage-stats-analysis/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jun
-</div>
-<div class="day">
-13
-</div>
-</div>
-<h5 class="title">
-GSoC Project Intro: Usage Statistics Analysis
-</h5>
-</div>
-<p class="teaser">
-About myself
-
-Hello, my name is Payal Priyadarshini.  I am pursing my major in Computer
-Science &amp; Engineering at the Indian Institute of Technology Kharagpur, India.  I
-am very proficient in writing code in Python, C++, Java and currently getting
-familiar and hopefully good in Groovy too.
-
-
-I have internship experiences in renowned institutions like Google and VMware
-where I worked with some exciting technologies for example Knowledge...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/payal94">Payal Priyadarshini</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/usage-statistics">
-usage-statistics
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/gsoc">
-gsoc
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/06/10/save-costs-with-ec2-spot-fleet/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jun
-</div>
-<div class="day">
-10
-</div>
-</div>
-<h5 class="title">
-Save up to 90% of CI cost on AWS with Jenkins and EC2 Spot Fleet
-</h5>
-</div>
-<p class="teaser">
-This is a guest post by Aleksei Besogonov, Senior Software Developer at
-Amazon Web Services.
-
-
-
-
-
-Earlier this year, we published a case study on how
-Lyft has used Amazon EC2 Spot instances to save 75% on their continuous delivery
-infrastructure costs by simply changing four lines of code. Several other EC2 customers like Mozilla have
-also reduced costs of their
-continuous integration, deployment and testing pipelines by up to 90%...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/Cyberax">Aleksei Besogonov</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/aws">
-aws
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/plugins">
-plugins
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/ec2">
-ec2
-</a>
-</li>
-</ul>
-</div>
-</li>
 </ul>
 </div>
 </div>
 
 <!-- ending partial blogcardlist.html.haml -->
-<div class="pagination-links"><a href="/node/page/6.html" class="previous-link">Previous</a> <a href="/node/" class="page-link">1</a> <a href="/node/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/node/page/6.html" class="page-link">6</a> <span class="current-page">7</span> <a href="/node/page/8.html" class="page-link">8</a> <span class="skip">...</span><a href="/node/page/56.html" class="page-link">56</a> <a href="/node/page/57.html" class="page-link">57</a> <a href="/node/page/8.html" class="next-link">Next</a> </div>
+<div class="pagination-links"><a href="/node/page/6.html" class="previous-link">Previous</a> <a href="/node/" class="page-link">1</a> <a href="/node/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/node/page/6.html" class="page-link">6</a> <span class="current-page">7</span> <a href="/node/page/8.html" class="page-link">8</a> <span class="skip">...</span><a href="/node/page/57.html" class="page-link">57</a> <a href="/node/page/58.html" class="page-link">58</a> <a href="/node/page/8.html" class="next-link">Next</a> </div>
 </div>
 <div class="col-md-3 events vertical" id="sidebar">
 <!-- starting partial sidebar.html.haml -->
@@ -852,6 +794,161 @@ ec2
 <!-- starting partial events.html.haml -->
 <div class="item-list">
 <ul class="ji-date-list ji-item-list">
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Guadalajara-Jenkins-Area-Meetup/events/234929834/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+18
+</div>
+<div class="dow">
+Wed
+</div>
+</div>
+<div class="time">
+ 7:00 pm
+</div>
+</div>
+<h5 class="title">
+Guadalajara JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins Install & Setup
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Austin-Jenkins-Area-Meetup/events/236706375/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+19
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Austin JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins War Stories
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Washington-DC-Jenkins-Area-Meetup/events/236734311/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+24
+</div>
+<div class="dow">
+Tue
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Washington JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins, Pipeline, Docker
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Brno-Jenkins-Area-Meetup/events/236606276/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+28
+</div>
+<div class="dow">
+Sat
+</div>
+</div>
+<div class="time">
+ 3:30 pm
+</div>
+</div>
+<h5 class="title">
+Brno JAM
+</h5>
+</div>
+<p class="teaser">
+JAM @ Devconf
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/jenkinsmeetup/events/236370435/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+3
+</div>
+<div class="dow">
+Fri
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Pre-FOSDEM Happy Hour
+</h5>
+</div>
+<p class="teaser">
+Beer Anyone?
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
 <li class="post event">
 <a class="body" href="https://fosdem.org/2017/" target="_blank">
 <div class="header time">
@@ -877,6 +974,160 @@ FOSDEM'17
 </div>
 <p class="teaser">
 Visit Jenkins in exhibit hall
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/jenkinsmeetup/events/236370750/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+6
+</div>
+<div class="dow">
+Mon
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+Post FOSDEM Contributor Hackathon
+</h5>
+</div>
+<p class="teaser">
+Hackathon
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/munchen-jenkins-area-meetup/events/236604016/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+6
+</div>
+<div class="dow">
+Mon
+</div>
+</div>
+<div class="time">
+ 6:30 pm
+</div>
+</div>
+<h5 class="title">
+Munchen JAM
+</h5>
+</div>
+<p class="teaser">
+Inaugural Meeting
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Boston-Jenkins-Area-Meetup/events/236766736/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+7
+</div>
+<div class="dow">
+Tue
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Boston JAM
+</h5>
+</div>
+<p class="teaser">
+Terraform, Ansible, Jenkins Integration
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/DFW-Jenkins-Area-Meetup/events/235576632/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+7
+</div>
+<div class="dow">
+Tue
+</div>
+</div>
+<div class="time">
+ 7:00 pm
+</div>
+</div>
+<h5 class="title">
+DFW JAM
+</h5>
+</div>
+<p class="teaser">
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.cloudbees.com/jenkinsworld/home" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Aug
+</div>
+<div class="day">
+28
+</div>
+<div class="dow">
+Mon
+</div>
+</div>
+<div class="time">
+ 8:00 am
+</div>
+</div>
+<h5 class="title">
+Jenkins World 2017
+</h5>
+</div>
+<p class="teaser">
+The Largest Jenkins Event
 
 <div class="more"></div>
 </p>

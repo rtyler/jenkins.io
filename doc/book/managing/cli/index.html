@@ -416,21 +416,6 @@ inspect the headers returned on a Jenkins URL, for example:</p>
 <p>With the random SSH port (<code>53801</code> in this example), and <a href="#authentication">Authentication</a>
 configured, any modern SSH client may securely execute CLI commands.</p>
 </div>
-<div class="paragraph">
-<p>In order to determine the available CLI commands, execute the <code>help</code> command,
-which will provide a list of commands available:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help
-  add-job-to-view
-    Adds jobs to view.
-  build
-    Builds a job, and optionally waits until its completion.
-[...]
-%</code></pre>
-</div>
-</div>
 <div class="sect2">
 <h3 id="authentication"><a class="anchor" href="#authentication"></a>Authentication</h3>
 <div class="paragraph">
@@ -442,7 +427,7 @@ additional permissions depending on the commands executed.</p>
 <p>Whether using the CLI via SSH, or with the CLI client, both rely primarily on
 SSH-based public/private key authentication. In order to add an SSH public key
 for the appropriate user, navigate to
-<code>https://JENKINS_URL/user/USERNAME/cnofigure</code> and paste an SSH public key
+<code>https://JENKINS_URL/user/USERNAME/configure</code> and paste an SSH public key
 into the appropriate text area.</p>
 </div>
 <div class="imageblock center">
@@ -456,7 +441,7 @@ into the appropriate text area.</p>
 <div class="paragraph">
 <p>Jenkins has a number of built-in CLI commands which can be found in every
 Jenkins environment, such as <code>build</code> or <code>list-jobs</code>. Plugins may also provide
-CLI commands however; in order to determine the full list of commands available
+CLI commands; in order to determine the full list of commands available
 in a given Jenkins environment, execute the CLI <code>help</code> command:</p>
 </div>
 <div class="listingblock">
@@ -465,17 +450,17 @@ in a given Jenkins environment, execute the CLI <code>help</code> command:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following list of commands is not comprehensive, but are useful for basic
-Jenkins CLI usage.</p>
+<p>The following list of commands is not comprehensive, but it is a useful
+starting point for Jenkins CLI usage.</p>
 </div>
 <div class="sect3">
 <h4 id="build"><a class="anchor" href="#build"></a>build</h4>
 <div class="paragraph">
-<p>One of the most common, and useful, CLI commands is <code>build</code> which allows the
+<p>One of the most common and useful CLI commands is <code>build</code>, which allows the
 user to trigger any job or Pipeline for which they have permission.</p>
 </div>
 <div class="paragraph">
-<p>The most basic invocation will simply trigger the job or Pipeline an exit, but
+<p>The most basic invocation will simply trigger the job or Pipeline and exit, but
 with the additional options a user may also pass parameters, poll SCM, or even
 follow the console output of the triggered build or Pipeline run.</p>
 </div>
@@ -519,7 +504,7 @@ Completed build-all-software #1 : SUCCESS
 <div class="sect3">
 <h4 id="console"><a class="anchor" href="#console"></a>console</h4>
 <div class="paragraph">
-<p>Similarly useful is the <code>console</code> command which retrieves the console output
+<p>Similarly useful is the <code>console</code> command, which retrieves the console output
 for the specified build or Pipeline run. When no build number is provided, the
 <code>console</code> command will output the last completed build&#8217;s console output.</p>
 </div>
@@ -551,7 +536,7 @@ Finished: SUCCESS
 <div class="paragraph">
 <p>The <code>who-am-i</code> command is helpful for listing the current user&#8217;s credentials
 and permissions available to the user. This can be useful when debugging the
-absence of CLI commands based on the lack of certain permissions.</p>
+absence of CLI commands due to the lack of certain permissions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -576,7 +561,7 @@ Authorities:
 <div class="paragraph">
 <p>While the SSH-based CLI is preferred, there may be situations where the CLI
 client is a better fit. For example, the default transport for the CLI client
-is HTTP which means no additional ports must be opened in a firewall for its
+is HTTP which means no additional ports need to be opened in a firewall for its
 use.</p>
 </div>
 <div class="sect2">
@@ -586,8 +571,8 @@ use.</p>
 <code>/jnlpJars/jenkins-cli.jar</code>, in effect  <code>https://JENKINS_URL/jnlpJars/jenkins-cli.jar</code></p>
 </div>
 <div class="paragraph">
-<p>While a CLI <code>.jar</code> can be used against different versions of Jenkins, should an
-compatibility issues arise during use, please re-download the latest <code>.jar</code>
+<p>While a CLI <code>.jar</code> can be used against different versions of Jenkins, should
+any compatibility issues arise during use, please re-download the latest <code>.jar</code>
 file from the Jenkins master.</p>
 </div>
 </div>

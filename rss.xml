@@ -3,13 +3,732 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>https://rtyler.github.io/jenkins.io/</id>
 <title>Jenkins Blog</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <link rel="self" type="application/atom+xml" href="https://rtyler.github.io/jenkins.io/rss.xml" />
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/" />
 <entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/</id>
+<title>Blue Ocean Dev Log: January Week #2</title>
+<updated>2017-01-15T15:59:40-08:00</updated>
+<published>2017-01-13T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/" />
+<author>
+<name>michaelneale</name>
+</author>
+<category term="blueocean"></category>
+<summary>
+As we get closer to
+Blue Ocean
+1.0, which is planned for the end of March, I figured it would be great to
+highlight some of the good stuff that has been going on. It&#8217;s been a
+busy-as-usual week as everyone comes back from vacation.  A couple of new betas
+went out this week. Of note:
+
+
+
+
+input to Pipelines is now supported, a much asked for feature (see below)
+
+
+A new French translation
+
+
+Some optimisations (especially around reducing number of HTTP calls). We
+have started using
+gtmetrix.com
+to measure changes on
+dogfood
+to get some numbers around optimisations on the web tier.
+
+
+And a grab bag of other great bug fixes.
+
+
+
+
+
+
+
+
+
+Also a bunch...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As we get closer to
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;Blue Ocean&lt;/a&gt;
+1.0, which is planned for the end of March, I figured it would be great to
+highlight some of the good stuff that has been going on. It’s been a
+busy-as-usual week as everyone comes back from vacation.  A couple of new betas
+went out this week. Of note:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;input&lt;/code&gt; to Pipelines is now supported, a much asked for feature (see below)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A new French translation&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Some optimisations (especially around reducing number of HTTP calls). We
+have started using
+&lt;a href=&quot;http://gtmetrix.com&quot;&gt;gtmetrix.com&lt;/a&gt;
+to measure changes on
+&lt;a href=&quot;https://ci.blueocean.io&quot;&gt;dogfood&lt;/a&gt;
+to get some numbers around optimisations on the web tier.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;And a grab bag of other great bug fixes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock center&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/blueocean/input-step.png&quot; alt=&quot;Using the input step in Blue Ocean&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Also a bunch of work has been done to support parametrized pipelines, as
+well as creation of new multibranch pipelines (both are much asked for).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There is also now an &quot;official&quot; Docker image being published to
+&lt;a href=&quot;https://hub.docker.com/r/jenkinsci/blueocean/&quot;&gt;Docker Hub&lt;/a&gt;. The Pipeline
+building the container is run weekly and will be picking up newly tagged
+releases of Blue Ocean.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Running the latest can be as simple as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;docker run -p 8888:8080 jenkinsci/blueocean:latest&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock right&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/blueocean/logo-yarrr.png&quot; alt=&quot;Jenkins yarrr&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is built on the incredibly popular
+&lt;a href=&quot;https://hub.docker.com/_/jenkins/&quot;&gt;official &quot;jenkins&quot; image&lt;/a&gt;
+(10M pulls can’t all be wrong!). The container also has tags available (e.g.
+&lt;code&gt;jenkinsci/blueocean:1.0.0-b16&lt;/code&gt;) for grabbing a specific released version.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Up next for Blue Ocean development as we march towards 1.0:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Support for parametrized jobs. For which a bunch of api work has already been
+done.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Creation of the new Pipeline GUI&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Preview release of the Visual Editor for
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/&quot;&gt;Declarative Pipeline&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The new header design will be applied&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you’re interested in helping to make Blue Ocean a great user experience for
+Jenkins, please join the Blue Ocean development team on
+&lt;a href=&quot;https://gitter.im/jenkinsci/blueocean-plugin&quot;&gt;Gitter&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/</id>
+<title>Declarative Pipeline Syntax Beta 2 release</title>
+<updated>2017-01-15T15:59:40-08:00</updated>
+<published>2017-01-12T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/" />
+<author>
+<name>abayer</name>
+</author>
+<category term="plugins"></category>
+<category term="pipeline"></category>
+<summary>
+This week, we released the second beta of the new
+Declarative Pipeline syntax,
+available in the Update Center now as version 0.8.1 of Pipeline: Model Definition.
+You can read more about Declarative Pipeline
+in the blog post introducing the first beta
+from December, but we wanted to update you all on the syntax changes in the
+second beta. These syntax changes are the last compatibility-breaking changes to
+the syntax before the 1.0 release planned for February, so you can safely start
+using the 0.8.1 syntax now without needing to change it when 1.0 is released.
+
+
+A full syntax reference is available on the wiki as well.
+
+
+Syntax Changes
+
+
+Changed "agent" configuration...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This week, we released the second beta of the new
+&lt;a href=&quot;https://plugins.jenkins.io/pipeline-model-definition&quot;&gt;Declarative Pipeline syntax&lt;/a&gt;,
+available in the Update Center now as version 0.8.1 of &lt;em&gt;Pipeline: Model Definition&lt;/em&gt;.
+You can read more about Declarative Pipeline
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/&quot;&gt;in the blog post introducing the first beta&lt;/a&gt;
+from December, but we wanted to update you all on the syntax changes in the
+second beta. These syntax changes are the last compatibility-breaking changes to
+the syntax before the 1.0 release planned for February, so you can safely start
+using the 0.8.1 syntax now without needing to change it when 1.0 is released.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A full syntax reference is &lt;a href=&quot;https://github.com/jenkinsci/pipeline-model-definition-plugin/wiki/Syntax-Reference&quot;&gt;available on the wiki&lt;/a&gt; as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;syntax-changes&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#syntax-changes&quot;&gt;&lt;/a&gt;Syntax Changes&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;changed-agent-configuration-to-block-structure&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#changed-agent-configuration-to-block-structure&quot;&gt;&lt;/a&gt;Changed &quot;agent&quot; configuration to block structure&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In order to support more detailed and clear configuration of agents, as well as
+making agent syntax more consistent with the rest of the Declarative Pipeline
+syntax, we’ve moved the agent configuration into blocks. The &lt;code&gt;agent any&lt;/code&gt; and
+&lt;code&gt;agent none&lt;/code&gt; configurations work the same as previously, but &lt;code&gt;label&lt;/code&gt;, &lt;code&gt;docker&lt;/code&gt;
+and &lt;code&gt;dockerfile&lt;/code&gt; now look like the following:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Just specifying a label is simple.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;agent {
+    label &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;some-label&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you’re just specifying a Docker image, you can use this simple syntax.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;agent {
+    docker &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;ubuntu:16.04&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When you are specifying a label or other arguments, docker looks like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;agent {
+    docker {
+        image &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;ubuntu:16.04&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+        label &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;docker-label&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+        args &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;-v /tmp:/tmp -p 8000:8000&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When you’re building an image from &quot;Dockerfile&quot; in your repository and
+don’t care what node is used or have additional arguments, you can again
+use a simple syntax.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;agent {
+    dockerfile &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When you’re building an image from a different file, or have a label or other
+arguments, use the following syntax:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;agent {
+    dockerfile {
+        filename &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;OtherDockerfile&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+        label &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;docker-label&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+        args &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;-v /tmp:/tmp -p 8000:8000&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;improved-when-conditions&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#improved-when-conditions&quot;&gt;&lt;/a&gt;Improved &quot;when&quot; conditions&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We introduced the &lt;code&gt;when&lt;/code&gt; section a couple releases ago, but have made some
+changes to its syntax here in 0.8.1. We wanted to add some simpler ways to
+specify common conditions, and that required we re-work the syntax accordingly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;branch&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#branch&quot;&gt;&lt;/a&gt;Branch&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;One of the most common conditions is running a stage only if you’re on a
+specific branch. You can also use wildcards like &quot;*/master&quot;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;when {
+    branch &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;master&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;environment&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#environment&quot;&gt;&lt;/a&gt;Environment&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Another built-in condition is the environment condition, which checks to see
+if a given environment variable is set to a given value.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;when {
+    environment &lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;SOME_ENV_VAR&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;value&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;SOME_VALUE&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;expression&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#expression&quot;&gt;&lt;/a&gt;Expression&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Lastly, there’s the expression condition, which resolves an arbitrary
+Pipeline expression. If the return value of that expression isn’t false or
+null, the stage will execute.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;when {
+    expression {
+        echo &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Should I run?&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+        &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;return&lt;/span&gt; &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;foo&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; == &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;bar&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;options-replaces-properties-and-wrappers&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#options-replaces-properties-and-wrappers&quot;&gt;&lt;/a&gt;&quot;options&quot; replaces &quot;properties&quot; and &quot;wrappers&quot;&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We’ve renamed the &lt;code&gt;properties&lt;/code&gt; section to &lt;code&gt;options&lt;/code&gt;, due to needing to add new
+Declarative-specific options and to cut down on confusion. The &lt;code&gt;options&lt;/code&gt; section
+is now where you’ll put general Pipeline options like &lt;code&gt;buildDiscarder&lt;/code&gt;,
+Declarative-specific options like &lt;code&gt;skipDefaultCheckout&lt;/code&gt;, and block-scoped steps
+that should wrap the execution of the entire build, like &lt;code&gt;timeout&lt;/code&gt; or
+&lt;code&gt;timestamps&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;
+options {
+    buildDiscarder(logRotator(&lt;span style=&quot;color:#606&quot;&gt;numToKeepStr&lt;/span&gt;:&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;1&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;))
+    skipDefaultCheckout()
+    timeout(&lt;span style=&quot;color:#606&quot;&gt;time&lt;/span&gt;: &lt;span style=&quot;color:#00D&quot;&gt;5&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;unit&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;MINUTES&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;heading-towards-1-0&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#heading-towards-1-0&quot;&gt;&lt;/a&gt;Heading towards 1.0!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While we may still add more functionality to the Declarative Pipeline syntax,
+we won’t be making any changes to existing syntax for the 1.0 release. This
+means that any pipelines you write against the 0.8.1 syntax will keep working
+for the foreseeable future without any changes. So if you’re already using
+Declarative Pipelines, make sure to update your `Jenkinsfile`s after upgrading
+to 0.8.1, and if you haven’t been using Declarative Pipelines yet, install the
+&lt;a href=&quot;https://plugins.jenkins.io/pipeline-model-definition&quot;&gt;&lt;em&gt;Pipeline: Model Definition&lt;/em&gt;&lt;/a&gt; plugin and
+give them a try!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/11/jenkins-world-2017-cfp/</id>
+<title>Jenkins World 2017 Call for Papers is Open</title>
+<updated>2017-01-15T15:59:40-08:00</updated>
+<published>2017-01-11T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/11/jenkins-world-2017-cfp/" />
+<author>
+<name>alyssat</name>
+</author>
+<category term="event"></category>
+<category term="jenkinsworld"></category>
+<summary>
+The largest Jenkins event, Jenkins
+World is coming to San Francisco, California on August 28 - 31, 2017, at the
+Marriott Marquis.  This conference will feature two days of hands-on training,
+workshops, and certification exams followed by two more days with five tracks
+of technical sessions from Jenkins and DevOps experts from around the world.
+
+
+Inspire your peers and colleagues by sharing your expertise and experience as
+one of the Jenkins World speakers.
+The Call for Papers is open, last
+day for submitted a proposal is March 5th, 2017.
+
+
+Compared to Jenkins World 2016, what&#8217;s new for
+2017?  Two tracks are now dedicated to "show and tell." These...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image&quot; style=&quot;float: right&quot;&gt;&lt;a class=&quot;image&quot; href=&quot;https://www.papercall.io/jenkins-world-2017&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/conferences/125x125.png&quot; alt=&quot;125x125&quot; /&gt;&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The largest Jenkins event, &lt;a href=&quot;https://www.cloudbees.com/jenkinsworld/home&quot;&gt;Jenkins
+World&lt;/a&gt; is coming to San Francisco, California on &lt;strong&gt;August 28 - 31, 2017&lt;/strong&gt;, at the
+Marriott Marquis.  This conference will feature two days of hands-on training,
+workshops, and certification exams followed by two more days with five tracks
+of technical sessions from Jenkins and DevOps experts from around the world.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Inspire your peers and colleagues by sharing your expertise and experience as
+one of the Jenkins World speakers.
+&lt;a href=&quot;https://www.papercall.io/jenkins-world-2017&quot;&gt;The Call for Papers is open&lt;/a&gt;, last
+day for submitted a proposal is &lt;strong&gt;March 5th, 2017.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/node/tags/jenkinsworld/&quot;&gt;Compared to Jenkins World 2016&lt;/a&gt;, what’s new for
+2017?  Two tracks are now dedicated to &quot;show and tell.&quot; These sessions are
+technically advanced with code sharing, heavy on demos, and only a few slides.
+If you are like most of us - driven to learn, share, and collaborate…​we’d
+like to hear from you!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Looking forward to your amazing proposal(s)!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.papercall.io/jenkins-world-2017&quot;&gt;&lt;strong&gt;Submit your proposal here!&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/10/security-warnings/</id>
+<title>Security warnings in Jenkins</title>
+<updated>2017-01-15T15:59:40-08:00</updated>
+<published>2017-01-10T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/10/security-warnings/" />
+<author>
+<name>daniel-beck</name>
+</author>
+<category term="core"></category>
+<category term="security"></category>
+<summary>
+Jenkins 2.40 was released earlier this week, and readers of the
+changelog
+will have noticed that it now includes the ability to show security warnings
+published by the configured update site.  But what does that mean?
+
+
+In the past, we&#8217;ve notified users about security issues in Jenkins and in
+plugins through various means: Emails to the
+jenkinsci-advisories mailing list
+(which I recommend you subscribe to), blog posts, and, recently, emails to the
+oss-security mailing list.  But I still wanted to increase the reach of our
+notifications, to make sure Jenkins admins are informed quickly about possible
+security problems on their instances.  The logical next step was to...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Jenkins 2.40 was released earlier this week, and readers of the
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/changelog&quot;&gt;changelog&lt;/a&gt;
+will have noticed that it now includes the ability to show security warnings
+published by the configured update site.  But what does that mean?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the past, we’ve notified users about security issues in Jenkins and in
+plugins through various means: Emails to the
+&lt;a href=&quot;https://groups.google.com/d/forum/jenkinsci-advisories&quot;&gt;jenkinsci-advisories mailing list&lt;/a&gt;
+(which I recommend you subscribe to), blog posts, and, recently, emails to the
+oss-security mailing list.  But I still wanted to increase the reach of our
+notifications, to make sure Jenkins admins are informed quickly about possible
+security problems on their instances.  The logical next step was to include
+these notifications in Jenkins itself, and that feature has been added in
+Jenkins 2.40.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Today we enabled the publication of warnings on our update sites: Once Jenkins
+2.40 (or newer) refreshes its cache of update site metadata, it may now inform
+you that you’re using a vulnerable plugin that should be updated or removed.
+Right now, these aren’t previously unknown warnings, but reference security
+advisories for plugin vulnerabilies that have been published over the past few
+years.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We will of course continue to publish security advisories using the mailing
+list of the same name, as well other means.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Stay safe!&lt;/p&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/10/jenkins-lifx-notifier-plugin/</id>
+<title>Learning plugin development by improving the LIFX notifier plugin</title>
+<updated>2017-01-15T15:59:40-08:00</updated>
+<published>2017-01-10T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/10/jenkins-lifx-notifier-plugin/" />
+<author>
+<name>vgaidarji</name>
+</author>
+<category term="plugins"></category>
+<category term="lifx"></category>
+<summary>
+This is a
+cross
+post by Veaceslav Gaidarji, open source
+developer and contributor to the Jenkins and Bitrise projects.
+
+
+
+
+
+
+Some time ago I encountered a LIFX smart bulbs.
+These are the bulbs with a chip inside - 50% bulb, 50% chip. There are mobile
+applications for easy configuration and remote control of the bulb. Nothing
+special here, it simply works and is very convenient to have such bulbs in
+dormitory.
+
+
+Brilliant idea time
+
+
+
+99% of ideas which come to our minds either were already implemented by someone
+else or they are useless.
+
+
+
+&#8212; Veaceslav Gaidarji
+
+
+
+And as it always happens, the developer inside me generated an idea which, as
+it always happens, was implemented...
+</summary>
+<content type="html">
+&lt;div class=&quot;admonitionblock note&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is a
+&lt;a href=&quot;http://vgaidarji.me/blog/2017/01/02/jenkins-lifx-notifier-plugin/&quot;&gt;cross
+post&lt;/a&gt; by &lt;a href=&quot;https://github.com/vgaidarji&quot;&gt;Veaceslav Gaidarji&lt;/a&gt;, open source
+developer and contributor to the Jenkins and Bitrise projects.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Some time ago I encountered a &lt;a href=&quot;http://www.lifx.com&quot;&gt;LIFX&lt;/a&gt; smart bulbs.
+These are the bulbs with a chip inside - 50% bulb, 50% chip. There are mobile
+applications for easy configuration and remote control of the bulb. Nothing
+special here, it simply works and is very convenient to have such bulbs in
+dormitory.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;brilliant-idea-time&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#brilliant-idea-time&quot;&gt;&lt;/a&gt;Brilliant idea time&lt;/h3&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;99% of ideas which come to our minds either were already implemented by someone
+else or they are useless.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;attribution&quot;&gt;
+— Veaceslav Gaidarji
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And as it always happens, the developer inside me generated an idea which, as
+it always happens, was implemented by someone else already.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The idea was: to connect a LIFX bulb to Jenkins server and update the color
+according to a job’s state.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Before starting to work on such Jenkins plugin, I searched for similar projects
+on Google and the first links pointed me to existing
+&lt;a href=&quot;https://plugins.jenkins.io/lifx-notifier&quot;&gt;LIFX notifier plugin&lt;/a&gt;
+and a
+&lt;a href=&quot;https://www.cloudbees.com/blog/lifx-smart-lightbulb-build-notifier-plugin&quot;&gt;blog post&lt;/a&gt;
+from
+&lt;a href=&quot;https://github.com/michaelneale&quot;&gt;Michael Neale&lt;/a&gt;
+ who created the plugin. Michael’s post describes exactly what I had in mind.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;At this point I had 2 options:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;forget&lt;/strong&gt; about building something new and just use the plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;improve&lt;/strong&gt; existing plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;First option is always easy and effortless, but second one is more challenging.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;improving-an-existing-plugin&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#improving-an-existing-plugin&quot;&gt;&lt;/a&gt;Improving an existing plugin&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The existing &lt;a href=&quot;https://plugins.jenkins.io/lifx-notifier&quot;&gt;LIFX notifier plugin&lt;/a&gt;
+did its job really well and I was able to connect my bulb to Jenkins and test
+it. But it wasn’t complete and had no configurable at all, therefore no
+possibility to change the colors.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;First, I read Jenkins contribution guidelines, which
+&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Hosting+Plugins#HostingPlugins-Requesthosting&quot;&gt;encourage&lt;/a&gt;
+developers to improve existing plugins (if any) and not create other versions
+of plugins with similar functionality. Then I contacted the plugin author, Michael Neale,
+via email and kindly asked for the contributor access in GitHub
+for the existing plugin version. After a short discussion about my plans on this
+plugin, Michael added me as a contributor to GitHub
+&lt;a href=&quot;https://github.com/jenkinsci/lifx-notifier-plugin&quot;&gt;repo&lt;/a&gt; and wished me
+good luck. Thanks Michael!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I wanted to improve the LIFX notifier plugin to add the ability
+customize the colors (&lt;code&gt;in progress&lt;/code&gt;, &lt;code&gt;build success&lt;/code&gt; and &lt;code&gt;build failure&lt;/code&gt;). This
+is not a hard task actually.
+A &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Plugins&quot;&gt;1000+&lt;/a&gt; plugins were
+developed for Jenkins by the hackers like me, which means that I should have no
+problem to do it as well.
+Fortunately for me, I have used some plugins already which had a UI similar to
+that I had planned to add to the LIFX notifier, such as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jenkinsci/hockeyapp-plugin&quot;&gt;HockeyApp&lt;/a&gt; plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jenkinsci/fabric-beta-publisher-plugin&quot;&gt;Fabric Beta publisher&lt;/a&gt; plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Different &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Plugins#Plugins-Buildnotifiers&quot;&gt;Build notifiers&lt;/a&gt; plugins&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Reviewing the code for these plugins, plus Jenkins
+&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial&quot;&gt;plugin
+development documentation&lt;/a&gt;, and of course looking over
+&lt;a href=&quot;http://commons.apache.org/proper/commons-jelly/&quot;&gt;Jelly components&lt;/a&gt; helped
+me to:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Better understand the Jenkins architecture.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Learn how Jenkins plugins work in general.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Learn how to create the UI components for a plugin.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Leanr how to subscribe to Jenkins job state changes using appropriate
+extension points.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In a few weeks I’ve finished my plugin modifications and added unit tests for
+its major parts.  As a result, the plugin now has a UI configuration section in
+&lt;code&gt;Post-build Actions&lt;/code&gt; which is self descriptive:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock center&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2017-01-02/plugin-configuration.png&quot; alt=&quot;plugin configuration&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The last step was to prepare new plugin version and publish it to the world!
+The Jenkins
+&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Hosting+Plugins&quot;&gt;&quot;Hosting&lt;/a&gt; document describes step by step process of how to publish a plugin.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock caution&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-caution&quot; title=&quot;Caution&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;This includes many steps which should be respected very carefully.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;demo&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#demo&quot;&gt;&lt;/a&gt;Demo&lt;/h3&gt;
+&lt;div class=&quot;videoblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/Zdtf8M5yCgM?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;what-i-ve-learned&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#what-i-ve-learned&quot;&gt;&lt;/a&gt;What I’ve learned&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It was my first experience in Jenkins plugins development. I should say that
+&lt;strong&gt;steep learning curve is high enough&lt;/strong&gt;, and sometimes is really hard to find
+answers on appearing questions. But in general it’s all about &lt;code&gt;Java&lt;/code&gt;, &lt;code&gt;XML&lt;/code&gt;,
+&lt;code&gt;Maven&lt;/code&gt; and &lt;strong&gt;it’s a lot of fun&lt;/strong&gt; developing Jenkins plugins.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://plugins.jenkins.io/lifx-notifier&quot;&gt;LIFX notifier page&lt;/a&gt;
+for more information about the latest releases!&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Bonus&lt;/strong&gt;: &lt;a href=&quot;https://bitrise.io&quot;&gt;bitrise.io&lt;/a&gt; users, I’ve developed &lt;a href=&quot;https://github.com/vgaidarji/steps-lifx-notifier&quot;&gt;step LIFX notifier&lt;/a&gt; for bitrise as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/</id>
 <title>Thank you for an amazing 2016</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-12-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/" />
 <author>
@@ -285,7 +1004,7 @@ in the Jenkins project, so if you didn’t have an opportunity to join in during
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/</id>
 <title>Continuous Delivery with Jenkins and Puppet Enterprise</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-12-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/" />
 <author>
@@ -684,7 +1403,7 @@ You’ll be glad you did.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/</id>
 <title>Announcing the beta of Declarative Pipeline Syntax</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-12-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/" />
 <author>
@@ -940,7 +1659,7 @@ we expect great things for Jenkins in 2017!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/</id>
 <title>Monthly JAM Recap - November 2016</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-12-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/" />
 <author>
@@ -1137,7 +1856,7 @@ with very little provisioning time.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/</id>
 <title>Upcoming December Jenkins Events</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-12-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/" />
 <author>
@@ -1272,7 +1991,7 @@ local activities going in December.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/</id>
 <title>What JVM versions are running Jenkins? 2016 Update!</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-11-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" />
 <author>
@@ -1394,7 +2113,7 @@ All numbers shown below are derived from the new &lt;a href=&quot;stats.jenkins.
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/</id>
 <title>Tuning Jenkins GC For Responsiveness and Stability with Large Instances</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-11-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/" />
 <author>
@@ -2211,7 +2930,7 @@ another post…​&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/</id>
 <title>Security updates addressing zero day vulnerability</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-11-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/" />
 <author>
@@ -2290,7 +3009,7 @@ mailing list to receive future Jenkins security notifications.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/</id>
 <title>Upcoming November Jenkins Events</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-11-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/" />
 <author>
@@ -2438,7 +3157,7 @@ below please stop by to say &quot;Hi&quot; and talk Jenkins over beer.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/</id>
 <title>Addressing recently disclosed vulnerabilities in the Jenkins CLI</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-11-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/" />
 <author>
@@ -2556,7 +3275,7 @@ to follow. You can learn more about this policy and our processes on our
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/</id>
 <title>Monthly JAM Recap - October 2016</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-11-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/" />
 <author>
@@ -2701,7 +3420,7 @@ last meetups.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/</id>
 <title>xUnit and Pipeline</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-10-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/" />
 <author>
@@ -3208,7 +3927,7 @@ also write your own XSL for result formats not on the known/supported list.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/</id>
 <title>Jenkins World 2016 Session Videos</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-10-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/" />
 <author>
@@ -3290,7 +4009,7 @@ Technical Evangelist at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/</id>
 <title>Controlling the Flow with Stage, Lock, and Milestone</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-10-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/" />
 <author>
@@ -3538,7 +4257,7 @@ stage(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;s
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/</id>
 <title>Jenkins World 2016, That's a Wrap!</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/" />
 <author>
@@ -3684,7 +4403,7 @@ there isn’t, take a look at the
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/</id>
 <title>Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" />
 <author>
@@ -3893,7 +4612,7 @@ on track before, during, and after the conference.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/</id>
 <title>Jenkins World 2016 Wrap-up - Scaling</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-27T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/" />
 <author>
@@ -4115,7 +4834,7 @@ the challenges and opportunities they see ahead.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/</id>
 <title>Jenkins World 2016 Wrap-up - Pipeline</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/" />
 <author>
@@ -4359,7 +5078,7 @@ delivery practices.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/</id>
 <title>Jenkins World 2016 Wrap-up - Introduction</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/" />
 <author>
@@ -4471,7 +5190,7 @@ including slides, videos, and links to other useful resources.  Stay tuned!&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/</id>
 <title>Jenkins Online Meetup report. Plugin Development - WebUI</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/" />
 <author>
@@ -4590,7 +5309,7 @@ or via the &lt;a href=&quot;mailto:events@lists.jenkins-ci.org&quot;&gt;events@l
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/</id>
 <title>Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/" />
 <author>
@@ -4819,7 +5538,7 @@ do this without you.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/</id>
 <title>Take the 2016 Jenkins Survey!</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/" />
 <author>
@@ -4916,7 +5635,7 @@ minutes.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/</id>
 <title>Continuous Delivery of Infrastructure with Jenkins</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/" />
 <author>
@@ -5075,7 +5794,7 @@ pass.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/</id>
 <title>Pipeline at Jenkins World 2016</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/" />
 <author>
@@ -5468,7 +6187,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/</id>
 <title>Introducing a New Way to Define Jenkins Pipelines</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-06T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/" />
 <author>
@@ -5612,7 +6331,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/</id>
 <title>Jenkins World Contributor Summit</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-09-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/" />
 <author>
@@ -5727,7 +6446,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/</id>
 <title>Scaling Jenkins at Jenkins World 2016</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/" />
 <author>
@@ -6001,7 +6720,7 @@ everybody; hope to see you there!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/</id>
 <title>Demos at Jenkins World 2016</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/" />
 <author>
@@ -6218,7 +6937,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/</id>
 <title>Browser-testing with Sauce OnDemand and Pipeline</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/" />
 <author>
@@ -6683,7 +7402,7 @@ repository.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/</id>
 <title>Enforcing Jenkins Best Practices</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/" />
 <author>
@@ -6858,7 +7577,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/</id>
 <title>Ask the Experts at Jenkins World 2016</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/" />
 <author>
@@ -7004,7 +7723,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/</id>
 <title>Jenkins World 2016 Festivities</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/" />
 <author>
@@ -7202,7 +7921,7 @@ Hat and all the other sponsors&lt;/a&gt; who have made this event possible.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/</id>
 <title>GSoC: External Workspace Manager for Pipeline is released</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/" />
 <author>
@@ -7378,7 +8097,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/</id>
 <title>Continuously Delivering Continuous Delivery Pipelines</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/" />
 <author>
@@ -7577,7 +8296,7 @@ enterprise scale.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/</id>
 <title>Using Jenkins for Disparate Feedback on GitHub</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/" />
 <author>
@@ -7672,7 +8391,7 @@ register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off yo
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/</id>
 <title>Continuous Security for Rails apps with Pipeline and Brakeman</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/" />
 <author>
@@ -8203,7 +8922,7 @@ security, pipeline in code is that you can continue to iterate on it!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/</id>
 <title>GSoC: External Workspace Manager for Pipeline. Beta release is available</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/" />
 <author>
@@ -8499,7 +9218,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/</id>
 <title>Don't install software, define your environment with Docker and Pipeline</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/" />
 <author>
@@ -8756,7 +9475,7 @@ change due to a security patch).&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/</id>
 <title>St. Petersburg Jenkins Meetup #3 and #4 Reports</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-08-03T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/" />
 <author>
@@ -8998,7 +9717,7 @@ organizers of the &lt;a href=&quot;http://piter-united.ru/itgm8/itgm.html&quot;&
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/</id>
 <title>Join me for Jenkins World 2016</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-07-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/" />
 <author>
@@ -9131,7 +9850,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/</id>
 <title>Blue Ocean July development update </title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-07-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/" />
 <author>
@@ -9266,7 +9985,7 @@ the experimental update center on this post&lt;/a&gt;.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/</id>
 <title>Sending Notifications in Pipeline</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-07-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/" />
 <author>
@@ -9687,7 +10406,7 @@ my pipeline.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/</id>
 <title>New packages for Jenkins 2.7.1</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-07-14T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/" />
 <author>
@@ -9711,7 +10430,7 @@ These new packages for Jenkins 2.7.1, dated July 14, have the same scripts and p
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/</id>
 <title>Jenkins 2 hits LTS</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
+<updated>2017-01-15T15:59:40-08:00</updated>
 <published>2016-07-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/" />
 <author>
@@ -9737,1101 +10456,6 @@ This release also officially marks the end-of-life for Jenkins 1.x. There won’
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;This release also officially marks the end-of-life for Jenkins 1.x. There won’t be any future release of Jenkins 1.x beyond this point. If you are worried about the upgrade, don’t be! The core of Jenkins is still the same, and all the plugins &amp;amp; existing configuration will just work.&lt;/p&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/</id>
-<title>Publishing HTML Reports in Pipeline</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
-<published>2016-07-01T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/" />
-<author>
-<name>lnewman</name>
-</author>
-<category term="tutorial"></category>
-<category term="pipeline"></category>
-<category term="plugins"></category>
-<category term="ruby"></category>
-<summary>
-This is a guest post by Liam Newman,
-Technical Evangelist at CloudBees.
-
-
-
-
-
-Most projects need more that just JUnit result reporting.  Rather than writing a
-custom plugin for each type of report, we can use the
-HTML Publisher Plugin.
-
-
-Let&#8217;s Make This Quick
-
-I&#8217;ve found a Ruby project,
-hermann, I&#8217;d like to build using Jenkins Pipeline. I&#8217;d
-also like to have the code coverage results published with each build job.  I could
-write a plugin to publish this data, but I&#8217;m in a bit of hurry and
-the build already creates an HTML report file using SimpleCov
-when the unit tests run.
-
-
-
-Simple Build
-
-I&#8217;m going to use the
-HTML Publisher Plugin
-to...
-</summary>
-<content type="html">
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-This is a guest post by &lt;a href=&quot;https://github.com/bitwiseman&quot;&gt;Liam Newman&lt;/a&gt;,
-Technical Evangelist at &lt;a href=&quot;https://cloudbees.com&quot;&gt;CloudBees&lt;/a&gt;.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Most projects need more that just JUnit result reporting.  Rather than writing a
-custom plugin for each type of report, we can use the
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin&quot;&gt;HTML Publisher Plugin&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;let-s-make-this-quick&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#let-s-make-this-quick&quot;&gt;&lt;/a&gt;Let’s Make This Quick&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I’ve found a Ruby project,
-&lt;a href=&quot;https://github.com/reiseburo/hermann&quot;&gt;hermann&lt;/a&gt;, I’d like to build using Jenkins Pipeline. I’d
-also like to have the code coverage results published with each build job.  I could
-write a plugin to publish this data, but I’m in a bit of hurry and
-the build already creates an HTML report file using &lt;a href=&quot;https://github.com/colszowka/simplecov&quot;&gt;SimpleCov&lt;/a&gt;
-when the unit tests run.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;simple-build&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#simple-build&quot;&gt;&lt;/a&gt;Simple Build&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I’m going to use the
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin&quot;&gt;HTML Publisher Plugin&lt;/a&gt;
-to add the HTML-formatted code coverage report to my builds.  Here’s a simple
-pipeline for building the &lt;a href=&quot;https://github.com/reiseburo/hermann&quot;&gt;hermann&lt;/a&gt;
-project.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Build&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-node {
-  &lt;span style=&quot;color:#777&quot;&gt;// Checkout&lt;/span&gt;
-  checkout scm
-
-  &lt;span style=&quot;color:#777&quot;&gt;// install required bundles&lt;/span&gt;
-  sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;bundle install&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;// build and run tests with coverage&lt;/span&gt;
-  sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;bundle exec rake build spec&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;// Archive the built artifacts&lt;/span&gt;
-  archive (&lt;span style=&quot;color:#606&quot;&gt;includes&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;pkg/*.gem&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This pipeline expects to be run from a &lt;code&gt;Jenkinsfile&lt;/code&gt; in SCM.
-To copy and paste it directly into a Jenkins Pipeline job, replace the &lt;code&gt;checkout scm&lt;/code&gt; step with
-&lt;code&gt;git 'https://github.com/reiseburo/hermann.git'&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Simple enough, it builds, runs tests, and archives the package.&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-06-30/run-1.png&quot; alt=&quot;Job Run Without Report Link&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now I just need to add the step to publish the code coverage report.
-I know that &lt;code&gt;rake spec&lt;/code&gt; creates an &lt;code&gt;index.html&lt;/code&gt; file in the &lt;code&gt;coverage&lt;/code&gt; directory.
-I’ve already installed the
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin&quot;&gt;HTML Publisher Plugin&lt;/a&gt;.
-How do I add the HTML publishing step to the pipeline?  The plugin page doesn’t
-say anything about it.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;snippet-generator-to-the-rescue&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#snippet-generator-to-the-rescue&quot;&gt;&lt;/a&gt;Snippet Generator to the Rescue&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Documentation is hard to maintain and easy to miss, even more so in a system
-like Jenkins with hundreds of plugins the each potential have one or more
-groovy fixtures to add to the Pipeline.  The Pipeline Syntax
-&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/31/pipeline-snippetizer/&quot;&gt;Snippet Generator&lt;/a&gt; helps users
-navigate this jungle by providing a way to generate a code snippet for any step using
-provided inputs.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It offers a dynamically generated list of steps, based on the installed plugins.
-From that list I select the &lt;code&gt;publishHTML&lt;/code&gt; step:&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-06-30/snippet-generator-1.png&quot; alt=&quot;Snippet Generator Menu&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Then it shows me a UI similar to the one used in job configuration.  I fill in
-the fields, click &quot;generate&quot;, and it shows me snippet of groovy generated from
-that input.&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-06-30/snippet-generator-2.png&quot; alt=&quot;Snippet Generator Output&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;html-published&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#html-published&quot;&gt;&lt;/a&gt;HTML Published&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I can use that snippet directly or as a template for further customization.
-In this case, I’ll just reformat and copy it in at the end of my
-pipeline.  (I ran into a &lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-29711&quot;&gt;minor bug&lt;/a&gt;
-in the snippet generated for this plugin step. Typing
-error string in my search bar immediately found the bug and a workaround.)&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;  &lt;span style=&quot;color:#777&quot;&gt;/* ...unchanged... */&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;// Archive the built artifacts&lt;/span&gt;
-  archive (&lt;span style=&quot;color:#606&quot;&gt;includes&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;pkg/*.gem&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
-
-  &lt;span style=&quot;color:#777&quot;&gt;// publish html&lt;/span&gt;
-  &lt;span style=&quot;color:#777&quot;&gt;// snippet generator doesn't include &quot;target:&quot;&lt;/span&gt;
-  &lt;span style=&quot;color:#777&quot;&gt;// https://issues.jenkins-ci.org/browse/JENKINS-29711.&lt;/span&gt;
-  publishHTML (&lt;span style=&quot;color:#606&quot;&gt;target&lt;/span&gt;: [
-      &lt;span style=&quot;color:#606&quot;&gt;allowMissing&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;alwaysLinkToLastBuild&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;keepAll&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;reportDir&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;coverage&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;reportFiles&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;index.html&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;reportName&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;RCov Report&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-    ])
-
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When I run this new pipeline I am rewarded with an &lt;code&gt;RCov Report&lt;/code&gt; link on left side,
-which I can follow to show the HTML report.&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-06-30/run-2.png&quot; alt=&quot;Job Run With Report Link&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-06-30/rcov.png&quot; alt=&quot;RCov Report&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I even added the &lt;code&gt;keepAll&lt;/code&gt; setting to let I can also go back an look at reports on old jobs as
-more come in.  As I said to to begin with, this is not as slick as what I
-could do with a custom plugin, but it is much easier and works with any static
-HTML.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h3&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin&quot;&gt;HTML Publisher Plugin&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/31/pipeline-snippetizer/&quot;&gt;Jenkins Pipeline Snippet Generator&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/06/30/ewm-alpha-version/</id>
-<title>GSoC: External Workspace Manager Plugin alpha version</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
-<published>2016-06-30T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/30/ewm-alpha-version/" />
-<author>
-<name>alexsomai</name>
-</author>
-<category term="pipeline"></category>
-<category term="plugins"></category>
-<category term="external-workspace-manager"></category>
-<category term="gsoc"></category>
-<summary>
-Currently it&#8217;s quite difficult to share and reuse the same workspace between multiple jobs and across nodes.
-There are some possible workarounds for achieving this, but each of them has its own drawback,
-e.g. stash/unstash pre-made artifacts, Copy Artifacts plugin or advanced job settings.
-A viable solution for this problem is the External Workspace Manager plugin, which facilitates workspace share and
-reuse across multiple Jenkins jobs and nodes.
-It also eliminates the need to copy, archive or move files.
-You can learn more about the design and goals of the External Workspace Manager project in
-this introductory blog post.
-
-
-I&#8217;d like to announce that an alpha version of...
-</summary>
-<content type="html">
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Currently it’s quite difficult to share and reuse the same workspace between multiple jobs and across nodes.
-There are some possible workarounds for achieving this, but each of them has its own drawback,
-e.g. stash/unstash pre-made artifacts, Copy Artifacts plugin or advanced job settings.
-A viable solution for this problem is the External Workspace Manager plugin, which facilitates workspace share and
-reuse across multiple Jenkins jobs and nodes.
-It also eliminates the need to copy, archive or move files.
-You can learn more about the design and goals of the External Workspace Manager project in
-&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/23/external-workspace-manager-plugin/&quot;&gt;this introductory blog post&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I’d like to announce that an alpha version of the External Manager Plugin has been released!
-It’s now public available for testing.
-To be able to install this plugin, you must follow the steps from the Experimental Plugins Update Center
-&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2013/09/23/experimental-plugins-update-center/&quot;&gt;blog post&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-Please be aware that it’s not recommended to use the Experimental Update Center in production installations of
-Jenkins, since it may break it.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The plugin’s wiki page may be accessed
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/External+Workspace+Manager+Plugin&quot;&gt;here&lt;/a&gt;.
-The documentation that helps you get started with this plugin may be found on the
-&lt;a href=&quot;https://github.com/jenkinsci/external-workspace-manager-plugin/blob/master/README.md&quot;&gt;README&lt;/a&gt; page.
-To get an idea of what this plugin does, which are the features implemented so far and to see a working demo of it,
-you can watch my mid-term presentation that is available &lt;a href=&quot;https://youtu.be/u4zhxfUT8P4?t=22m7s&quot;&gt;here&lt;/a&gt;.
-The slides for the presentation are shared on
-&lt;a href=&quot;https://docs.google.com/presentation/d/1ZCYSIR2Tg466Ij1ghH5LSc8DLBCxWjIaD9IJcOyMZwU/edit?usp=sharing&quot;&gt;Google Slides&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;My mentors, &lt;a href=&quot;https://github.com/martinda&quot;&gt;Martin&lt;/a&gt; and &lt;a href=&quot;https://github.com/oleg-nenashev&quot;&gt;Oleg&lt;/a&gt;,
-and I have set up public meetings related to this plugin.
-You are invited to join our discussions if you’d like to get more insight about the project.
-The meetings are taking place twice a week on the &lt;a href=&quot;https://rtyler.github.io/jenkins.io/hangout&quot;&gt;Jenkins hangout&lt;/a&gt;,
-every Monday at
-&lt;a href=&quot;http://www.timeanddate.com/worldclock/fixedtime.html?msg=External+Workspace+Manager+Plugin+(Mondays+weekly+recurring)&amp;amp;iso=20160606T12&amp;amp;p1=1440&amp;amp;ah=1&quot;&gt;12 PM UTC&lt;/a&gt;
-and every Thursday at
-&lt;a href=&quot;http://www.timeanddate.com/worldclock/fixedtime.html?msg=External+Workspace+Manager+Plugin+(Thursdays+weekly+recurring)&amp;amp;iso=20160609T05&amp;amp;p1=1440&amp;amp;ah=1&quot;&gt;5 PM UTC&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;If you have any issues in setting up or using the plugin, please feel free to ask me on the plugin’s Gitter
-&lt;a href=&quot;https://gitter.im/jenkinsci/external-workspace-manager-plugin&quot;&gt;chat&lt;/a&gt;.
-The plugin is open-source, having the repository on
-&lt;a href=&quot;https://github.com/jenkinsci/external-workspace-manager-plugin&quot;&gt;GitHub&lt;/a&gt;, and you may contribute to it.
-Any feedback is welcome, and you may provide it either on the Gitter chat, or on
-&lt;a href=&quot;https://issues.jenkins-ci.org&quot;&gt;Jira&lt;/a&gt; by using the &lt;em&gt;external-workspace-manager-plugin&lt;/em&gt; component.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://gitter.im/jenkinsci/external-workspace-manager-plugin?utm_source=share-link&amp;amp;utm_medium=link&amp;amp;utm_campaign=share-link&quot;&gt;&lt;span class=&quot;image&quot;&gt;&lt;img src=&quot;https://badges.gitter.im/jenkinsci/external-workspace-manager-plugin.svg&quot; alt=&quot;title: &quot; Gitter=&quot;&quot; /&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/jenkinsci/external-workspace-manager-plugin&quot;&gt;Project repository&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/External+Workspace+Manager+Plugin&quot;&gt;Plugin wiki page&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://youtu.be/u4zhxfUT8P4?t=22m7s&quot;&gt;Mid-term presentation&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/23/external-workspace-manager-plugin/&quot;&gt;Project intro blog post&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/&quot;&gt;GSoC page&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://jenkins.io/projects/gsoc/&quot;&gt;Jenkins GSoC Page&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/06/29/from-freestyle-to-pipeline/</id>
-<title>Migrating from chained Freestyle jobs to Pipelines</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
-<published>2016-06-29T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/29/from-freestyle-to-pipeline/" />
-<author>
-<name>rtyler</name>
-</author>
-<category term="pipeline"></category>
-<category term="infra"></category>
-<summary>
-This is a guest post by R. Tyler Croy, who is a
-long-time contributor to Jenkins and the primary contact for Jenkins project
-infrastructure. He is also a Jenkins Evangelist at
-CloudBees, Inc.
-
-
-
-
-
-
-For ages I have used the "Build After" feature in Jenkins to cobble together
-what one might refer to as a "pipeline" of sorts. The Jenkins project itself, a
-major consumer of Jenkins, has used these daisy-chained Freestyle jobs to drive
-a myriad of delivery pipelines in our infrastructure.
-
-
-One such "pipeline" helped drive the complex process of generating the pretty
-blue charts on
-stats.jenkins-ci.org.
-This statistics generation process primarily performs two major tasks, on rather
-large sets of...
-</summary>
-<content type="html">
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is a guest post by &lt;a href=&quot;https;//github.com/rtyler&quot;&gt;R. Tyler Croy&lt;/a&gt;, who is a
-long-time contributor to Jenkins and the primary contact for Jenkins project
-infrastructure. He is also a Jenkins Evangelist at
-&lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees, Inc.&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For ages I have used the &quot;Build After&quot; feature in Jenkins to cobble together
-what one might refer to as a &quot;pipeline&quot; of sorts. The Jenkins project itself, a
-major consumer of Jenkins, has used these daisy-chained Freestyle jobs to drive
-a myriad of delivery pipelines in our infrastructure.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;One such &quot;pipeline&quot; helped drive the complex process of generating the pretty
-blue charts on
-&lt;a href=&quot;http://stats.jenkins-ci.org/jenkins-stats/svg/svgs.html&quot;&gt;stats.jenkins-ci.org&lt;/a&gt;.
-This statistics generation process primarily performs two major tasks, on rather
-large sets of data:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;olist arabic&quot;&gt;
-&lt;ol class=&quot;arabic&quot;&gt;
-&lt;li&gt;
-&lt;p&gt;Generate aggregate monthly &quot;census data.&quot;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Process the census data and create trend charts&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The chained jobs allowed us to resume the independent stages of the pipeline,
-and allowed us to run different stages on different hardware (different
-capabilities) as needed. Below is a diagram of what this looked like:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/freestyle-to-pipeline-2016/freestyle-pipeline.png&quot; alt=&quot;freestyle pipeline&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The &lt;code&gt;infra_generate_monthly_json&lt;/code&gt; would run periodically creating the
-aggregated census data, which would then be picked up by &lt;code&gt;infra_census_push&lt;/code&gt;
-whose sole responsibility was to take census data and publish it to the
-necessary hosts inside the project’s infrastructure.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The second, semi-independent, &quot;pipeline&quot; would also run periodically. The
-&lt;code&gt;infra_statistics&lt;/code&gt; job’s responsibility was to use the census data, pushed
-earlier by &lt;code&gt;infra_census_push&lt;/code&gt;, to generate the myriad of pretty blue charts
-before triggering the
-&lt;code&gt;infra_checkout_stats&lt;/code&gt; job which would make sure &lt;code&gt;stats.jenkins-ci.org&lt;/code&gt; was
-properly updated.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Suffice it to say, this &quot;pipeline&quot; had grown organically over a period time when
-&lt;a href=&quot;https://rtyler.github.io/jenkins.io/doc/pipeline&quot;&gt;more advanced tools&lt;/a&gt; weren’t quite available.&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When we migrated to newer infrastructure for
-&lt;a href=&quot;https://ci.jenkins.io&quot;&gt;ci.jenkins.io&lt;/a&gt; earlier this year I took the
-opportunity to do some cleaning up. Instead of migrating jobs verbatim, I pruned
-stale jobs and refactored a number of others into proper
-&lt;a href=&quot;https://rtyler.github.io/jenkins.io/solutions/pipeline&quot;&gt;Pipelines&lt;/a&gt;, statistics generation being an obvious
-target!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Our requirements for statistics generation, in their most basic form, are:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Enable a sequence of dependent tasks to be executed as a logical group (a
-pipeline)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Enable executing those dependent tasks on various pieces of infrastructure
-which support different requirements&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Actually generate those pretty blue charts&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;If you wish to skip ahead, you can jump straight to the
-&lt;a href=&quot;https://github.com/jenkins-infra/infra-statistics/blob/a6dcaa29fca9a4f61143954fb9e1300c2f995a89/Jenkinsfile&quot;&gt;Jenkinsfile&lt;/a&gt;
-which implements our new Pipeline.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The first iteration of the &lt;code&gt;Jenkinsfile&lt;/code&gt; simply defined the conceptual stages we
-would need:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node {
-    stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Sync raw data and census files&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-    stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Process raw logs&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-    stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Generate census data&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-    stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Generate stats&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-    stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Publish census&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-    stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Publish stats&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;How exciting! Although not terrifically useful. When I began actually
-implementing the first couple stages, I noticed that the Pipeline might sync
-&lt;em&gt;dozens&lt;/em&gt; of gigabytes of data every time it ran on a new agent in the cluster.
-While this problem will soon be solved by the
-&lt;a href=&quot;https://github.com/jenkinsci/external-workspace-manager-plugin&quot;&gt;External
-Workspace Manager plugin&lt;/a&gt;, which is currently being developed. Until it’s ready,
-I chose to mitigate the issue by pinning the execution to a consistent agent.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;&lt;span style=&quot;color:#777&quot;&gt;/* `census` is a node label for a single machine, ideally, which will be
- * consistently used for processing usage statistics and generating census data
- */&lt;/span&gt;
-node(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;census &amp;amp;&amp;amp; docker&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
-    &lt;span style=&quot;color:#777&quot;&gt;/* .. */&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Restricting a workload which previously used multiple agents to a single one
-introduced the next challenge. As an infrastructure administrator, technically
-speaking, I &lt;em&gt;could&lt;/em&gt; just install all the system dependencies that I want on this
-one special Jenkins agent. But what kind of example would that be setting!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The statistics generation process requires:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;JDK8&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.groovy-lang.org&quot;&gt;Groovy&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;A running &lt;a href=&quot;https://www.mongodb.org/&quot;&gt;MongoDB&lt;/a&gt; instance&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Fortunately, with Pipeline we have a couple of useful features at our disposal:
-tool auto-installers and the
-&lt;a href=&quot;https://go.cloudbees.com/docs/cloudbees-documentation/cje-user-guide/chapter-docker-workflow.html&quot;&gt;CloudBees
-Docker Pipeline plugin&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;tool-auto-installers&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#tool-auto-installers&quot;&gt;&lt;/a&gt;Tool Auto-Installers&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Tool Auto-Installers are exposed in Pipeline through the &lt;code&gt;tool&lt;/code&gt; step and on
-&lt;a href=&quot;https://ci.jenkins.io&quot;&gt;ci.jenkins.io&lt;/a&gt; we already had JDK8 and Groovy
-available. This meant that the &lt;code&gt;Jenkinsfile&lt;/code&gt; would invoke &lt;code&gt;tool&lt;/code&gt; and Pipeline
-would automatically install the desired tool on the agent executing the current
-Pipeline steps.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The &lt;code&gt;tool&lt;/code&gt; step does not modify the &lt;code&gt;PATH&lt;/code&gt; environment variable, so it’s usually
-used in conjunction with the &lt;code&gt;withEnv&lt;/code&gt; step, for example:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;census &amp;amp;&amp;amp; docker&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
-    &lt;span style=&quot;color:#777&quot;&gt;/* .. */&lt;/span&gt;
-
-    &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; javaHome = tool(&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;jdk8&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
-    &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; groovyHome = tool(&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;groovy&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
-
-    &lt;span style=&quot;color:#777&quot;&gt;/* Set up environment variables for re-using our auto-installed tools */&lt;/span&gt;
-    &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; customEnv = [
-        &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;PATH+JDK=&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;javaHome&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;/bin&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,
-        &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;PATH+GROOVY=&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;groovyHome&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;/bin&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,
-        &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;JAVA_HOME=&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;javaHome&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,
-    ]
-
-    &lt;span style=&quot;color:#777&quot;&gt;/* use our auto-installed tools */&lt;/span&gt;
-    withEnv(customEnv) {
-        sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;java --version&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-    }
-
-    &lt;span style=&quot;color:#777&quot;&gt;/* .. */&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;cloudbees-docker-pipeline-plugin&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#cloudbees-docker-pipeline-plugin&quot;&gt;&lt;/a&gt;CloudBees Docker Pipeline plugin&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Satisfying the MongoDB dependency would still be tricky. If I caved in and installed
-MongoDB on a single unicorn agent in the cluster, what could I say the next time
-somebody asked for a special, one-off, piece of software installed on our
-Jenkins build agents?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;After doing my usual complaining and whining, I discovered that the CloudBees
-Docker Pipeline plugin provides the ability to &lt;strong&gt;run containers&lt;/strong&gt; inside of a
-&lt;code&gt;Jenkinsfile&lt;/code&gt;. To make things even better, there are
-&lt;a href=&quot;https://hub.docker.com/_/mongo/&quot;&gt;official MongoDB docker images&lt;/a&gt; readily
-available on DockerHub!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This feature requires that the machine has a running Docker daemon which is
-accessible to the user running the Jenkins agent. After that, running a
-container in the background is easy, for example:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;census &amp;amp;&amp;amp; docker&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
-    &lt;span style=&quot;color:#777&quot;&gt;/* .. */&lt;/span&gt;
-
-    &lt;span style=&quot;color:#777&quot;&gt;/* Run MongoDB in the background, mapping its port 27017 to our host's port
-     * 27017 so our script can talk to it, then execute our Groovy script with
-     * tools from our `customEnv`
-     */&lt;/span&gt;
-    docker.image(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;mongo:2&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).withRun(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;-p 27017:27017&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) { container -&amp;gt;
-        withEnv(customEnv) {
-            sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;groovy parseUsage.groovy --logs &lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;usagestats_dir&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; --output &lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;census_dir&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; --incremental&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-        }
-    }
-
-    &lt;span style=&quot;color:#777&quot;&gt;/* .. */&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The beauty, to me, of this example is that you can pass a
-&lt;a href=&quot;http://www.groovy-lang.org/Closures&quot;&gt;closure&lt;/a&gt; to &lt;code&gt;withRun&lt;/code&gt; which will
-execute &lt;em&gt;while&lt;/em&gt; the container is running. When the closure is finished executin,
-just the &lt;code&gt;sh&lt;/code&gt; step in this case, the container is destroyed.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;With that system requirement satisfied, the rest of the stages of the Pipeline
-fell into place. We now have a single source of truth, the
-&lt;a href=&quot;https://github.com/jenkins-infra/infra-statistics/blob/master/Jenkinsfile&quot;&gt;Jenkinsfile&lt;/a&gt;,
-for the sequence of dependent tasks which need to be executed, accounting for
-variations in systems requirements, and it actually generates
-&lt;a href=&quot;http://stats.jenkins-ci.org/jenkins-stats/svg/svgs.html&quot;&gt;those pretty
-blue charts&lt;/a&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Of course, a nice added bonus is the beautiful visualization of our
-&lt;a href=&quot;https://ci.jenkins.io/job/Infrastructure/job/statistics/&quot;&gt;new Pipeline&lt;/a&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/freestyle-to-pipeline-2016/stats-pipeline.png&quot; alt=&quot;The New and Improved Statistics Pipeline&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h3&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/doc/pipeline&quot;&gt;Pipeline documentation&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://go.cloudbees.com/docs/cloudbees-documentation/cje-user-guide/chapter-docker-workflow.html&quot;&gt;CloudBees Docker Pipeline plugin documentation&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Live &lt;a href=&quot;https://ci.jenkins.io/job/Infrastructure/job/statistics/&quot;&gt;statistics Pipeline&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/06/21/gsoc-midterm-presentations-ann/</id>
-<title>GSoC: Mid-term presentations by students on June 23 and 24</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
-<published>2016-06-21T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/21/gsoc-midterm-presentations-ann/" />
-<author>
-<name>oleg_nenashev</name>
-</author>
-<category term="core"></category>
-<category term="gsoc"></category>
-<category term="plugin"></category>
-<category term="general"></category>
-<summary>
-As you probably know, on this year Jenkins projects participates in
-Google Summer of Code 2016.
-You can find more information about the accepted projects on the GSoC subproject page and in the
-Jenkins Developer mailing list.
-
-
-On this week GSoC students are going to present their projects as a part of mid-term evaluation,
-which covers one month of community bonding and one month of coding.
-
-
-We would like to invite Jenkins developers to attend these meetings.
-There are two additional months of coding ahead for successful students, so any feedback from Jenkins contributors and users will be appreciated.
-
-
-Meeting #1 - June 23, 7:00 PM UTC -...
-</summary>
-<content type="html">
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;As you probably know, on this year Jenkins projects participates in
-&lt;a href=&quot;https://developers.google.com/open-source/gsoc/&quot;&gt;Google Summer of Code 2016&lt;/a&gt;.
-You can find more information about the accepted projects &lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/gsoc/&quot;&gt;on the GSoC subproject page&lt;/a&gt; and in the
-&lt;a href=&quot;https://groups.google.com/forum/#!topic/jenkinsci-dev&quot;&gt;Jenkins Developer&lt;/a&gt; mailing list.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;On &lt;strong&gt;this week&lt;/strong&gt; GSoC students are going to present their projects as a part of mid-term evaluation,
-which covers one month of community bonding and one month of coding.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We would like to invite Jenkins developers to attend these meetings.
-There are two additional months of coding ahead for successful students, so any feedback from Jenkins contributors and users will be appreciated.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;meeting-1-june-23-a-href-http-www-google-com-url-q-http-3a-2f-2fwww-timeanddate-com-2fworldclock-2ffixedtime-html-3fmsg-3dgoogle-2bsummer-2bof-2bcode-2bmid-term-2bevaluation-2bpresentations-2b-25231-26iso-3d20160623t19-26p1-3d-253a-26ah-3d2-sa-d-sntz-1-usg-afqjcnguzwpgrftutijdw9tyd5gi6ljn0g-7-00-pm-utc-9-00-pm-utc-a&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#meeting-1-june-23-a-href-http-www-google-com-url-q-http-3a-2f-2fwww-timeanddate-com-2fworldclock-2ffixedtime-html-3fmsg-3dgoogle-2bsummer-2bof-2bcode-2bmid-term-2bevaluation-2bpresentations-2b-25231-26iso-3d20160623t19-26p1-3d-253a-26ah-3d2-sa-d-sntz-1-usg-afqjcnguzwpgrftutijdw9tyd5gi6ljn0g-7-00-pm-utc-9-00-pm-utc-a&quot;&gt;&lt;/a&gt;Meeting #1 - June 23, &lt;a href=&quot;http://www.google.com/url?q=http%3A%2F%2Fwww.timeanddate.com%2Fworldclock%2Ffixedtime.html%3Fmsg%3DGoogle%2BSummer%2Bof%2BCode.%2BMid-term%2BEvaluation%2BPresentations%2B%25231%26iso%3D20160623T19%26p1%3D%253A%26ah%3D2&amp;amp;sa=D&amp;amp;sntz=1&amp;amp;usg=AFQjCNGUZwPgrFTUtIJdw9tyD5gi6Ljn0g&quot;&gt;7:00 PM UTC - 9:00 PM UTC&lt;/a&gt;&lt;/h4&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Support Core plugin improvements by &lt;a href=&quot;https://github.com/minudika&quot;&gt;Minudika Malshan&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/06/14/gsoc-jenkins-support-core-plugin-improvements&quot;&gt;Intro blogpost&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;External Workspace Manager by &lt;a href=&quot;https://github.com/alexsomai&quot;&gt;Alex Somai&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/23/external-workspace-manager-plugin&quot;&gt;Intro blogpost&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Plugin documentation publishing to jenkins.io by &lt;a href=&quot;https://github.com/anyangocynthia&quot;&gt;Cynthia Anyango&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/06/01/gsoc-automatic-plugin-documentation&quot;&gt;Intro blogpost&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Q&amp;amp;A session&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://plus.google.com/events/cic4c57cd4of7bauc5blmcr59p4&quot;&gt;Meeting link&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;meeting-2-june-24-a-href-http-www-google-com-url-q-http-3a-2f-2fwww-timeanddate-com-2fworldclock-2ffixedtime-html-3fmsg-3dgoogle-2bsummer-2bof-2bcode-2bmid-term-2bevaluation-2bpresentations-2b-25232-26iso-3d20160624t08-26p1-3d-253a-26ah-3d1-sa-d-sntz-1-usg-afqjcnhc36yi3bwpo_w5fikjarteye918w-8am-utc-9-am-utc-a&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#meeting-2-june-24-a-href-http-www-google-com-url-q-http-3a-2f-2fwww-timeanddate-com-2fworldclock-2ffixedtime-html-3fmsg-3dgoogle-2bsummer-2bof-2bcode-2bmid-term-2bevaluation-2bpresentations-2b-25232-26iso-3d20160624t08-26p1-3d-253a-26ah-3d1-sa-d-sntz-1-usg-afqjcnhc36yi3bwpo_w5fikjarteye918w-8am-utc-9-am-utc-a&quot;&gt;&lt;/a&gt;Meeting #2 - June 24, &lt;a href=&quot;http://www.google.com/url?q=http%3A%2F%2Fwww.timeanddate.com%2Fworldclock%2Ffixedtime.html%3Fmsg%3DGoogle%2BSummer%2Bof%2BCode.%2BMid-term%2BEvaluation%2BPresentations%2B%25232%26iso%3D20160624T08%26p1%3D%253A%26ah%3D1&amp;amp;sa=D&amp;amp;sntz=1&amp;amp;usg=AFQjCNHC36YI3bwpO_W5FIkjaRTeye918w&quot;&gt;8AM UTC - 9 AM UTC&lt;/a&gt;&lt;/h4&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Jenkins WebUI: Improving Job Creation/Configuration by &lt;a href=&quot;https://github.com/samatdav&quot;&gt;Samat Davletshin&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/26/gsoc-jenkins-web-ui-project&quot;&gt;Intro blogpost&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Q&amp;amp;A session&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://plus.google.com/events/cj09ur9ikphda1r5dmqu1cse9q8&quot;&gt;Meeting link&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Both meetings will be conducted and recorded via &lt;strong&gt;Hangouts on Air&lt;/strong&gt;.
-The recorded sessions will be made public after the meetup.
-The agenda may change a bit.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h4&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://groups.google.com/forum/#!topic/jenkinsci-dev/OX1ZdRVqS24&quot;&gt;Mid-term presentations announcement on Jenkins Developer mailing list&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Google+Summer+Of+Code+2016&quot;&gt;Jenkins GSoC 2016 Wiki Page&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/organizations/5668199471251456/&quot;&gt;Jenkins project page on the GSoC2016 website&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/06/16/parallel-test-executor-plugin/</id>
-<title>Faster Pipelines with the Parallel Test Executor Plugin</title>
-<updated>2017-01-06T13:07:11-08:00</updated>
-<published>2016-06-16T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/06/16/parallel-test-executor-plugin/" />
-<author>
-<name>lnewman</name>
-</author>
-<category term="tutorial"></category>
-<category term="pipeline"></category>
-<category term="plugins"></category>
-<summary>
-This is a guest post by Liam Newman,
-Technical Evangelist at CloudBees.
-
-
-
-
-
-In this blog post, I’ll show you how to speed up your pipeline by using the
-Parallel Test Executor Plugin.
-
-
-So much to do, so little time&#8230;&#8203;
-
-In my career, I&#8217;ve helped many teams move to continuous integration and delivery. One problem
-we always encounter is how to run all the tests needed to ensure high-quality
-changes while still keeping pipeline times reasonable and changes flowing
-smoothly. More tests mean greater confidence, but also longer wait times.
-Build systems may or may not support running tests in parallel, but they still only use one
-machine even while other...
-</summary>
-<content type="html">
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-This is a guest post by &lt;a href=&quot;https://github.com/bitwiseman&quot;&gt;Liam Newman&lt;/a&gt;,
-Technical Evangelist at &lt;a href=&quot;https://cloudbees.com&quot;&gt;CloudBees&lt;/a&gt;.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In this blog post, I’ll show you how to speed up your pipeline by using the
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin&quot;&gt;Parallel Test Executor Plugin&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;so-much-to-do-so-little-time&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#so-much-to-do-so-little-time&quot;&gt;&lt;/a&gt;So much to do, so little time…​&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In my career, I’ve helped many teams move to continuous integration and delivery. One problem
-we always encounter is how to run all the tests needed to ensure high-quality
-changes while still keeping pipeline times reasonable and changes flowing
-smoothly. More tests mean greater confidence, but also longer wait times.
-Build systems may or may not support running tests in parallel, but they still only use one
-machine even while other lab machines sit idle. In these cases, parallelizing
-test execution across multiple machines is a great way to speed up pipelines.
-The Parallel Test Executor plugin lets us leverage Jenkins do just that with no
-disruption to the rest of the build system.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;serial-test-execution&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#serial-test-execution&quot;&gt;&lt;/a&gt;Serial Test Execution&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For this post, I’ll be running a pipeline based on the
-&lt;a href=&quot;https://github.com/jenkinsci/git-plugin&quot;&gt;Jenkins Git Plugin&lt;/a&gt;. I’ve modified
-the Jenkinsfile from that project to allow us to compare execution times to our
-later changes, and I’ve truncated the &quot;mvn&quot; utility method since it remains
-unchanged.  You can find the original file
-&lt;a href=&quot;https://github.com/jenkinsci/git-plugin/blob/7a31858e61d2ca2e752b0e4f1285bddcb7a75c4d/Jenkinsfile&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node {
-  stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Checkout&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-  checkout scm
-
-  stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Build&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;/* Call the Maven build without tests. */&lt;/span&gt;
-  mvn &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;clean install -DskipTests&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-
-  stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Test&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-  runTests()
-
-  &lt;span style=&quot;color:#777&quot;&gt;/* Save Results. */&lt;/span&gt;
-  stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Results&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;/* Archive the build artifacts */&lt;/span&gt;
-  archive &lt;span style=&quot;color:#606&quot;&gt;includes&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;target/*.hpi,target/*.jpi&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-}
-
-&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;void&lt;/span&gt; runTests(&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; args) {
-  &lt;span style=&quot;color:#777&quot;&gt;/* Call the Maven build with tests. */&lt;/span&gt;
-  mvn &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;install -Dmaven.test.failure.ignore=true&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;/* Archive the test results */&lt;/span&gt;
-  step([&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;JUnitResultArchiver&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#B06;font-weight:bold&quot;&gt;testResults&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;**/target/surefire-reports/TEST-*.xml&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;])
-}
-
-&lt;span style=&quot;color:#777&quot;&gt;/* Run Maven */&lt;/span&gt;
-&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;void&lt;/span&gt; mvn(&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; args) { &lt;span style=&quot;color:#777&quot;&gt;/* ... */&lt;/span&gt; }&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This pipeline expects to be run from a &lt;code&gt;Jenkinsfile&lt;/code&gt; in SCM.
-To copy and paste it directly into a Jenkins Pipeline job, replace the &lt;code&gt;checkout scm&lt;/code&gt; step with
-&lt;code&gt;git 'https://github.com/jenkinsci/git-plugin.git'&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is a Maven project, so the Jenkinsfile is pretty simple.
-I’ve split the Maven build into separate “Build” and “Test”
-stages. Maven doesn’t support this split very well, it wants to run all
-the steps of the lifecycle in order every time. So, I have to call Maven twice:
-first using the “skipTests” property to do only build steps in the first call,
-and then a second time with out that property to run tests.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;On my quad-core machine, executing this pipeline takes about 13 minutes and 30
-seconds.  Of that time, it takes 13 minutes to run about 2.7 thousand tests in
-serial.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-06-16/serial.png&quot; alt=&quot;Serial Test Pipeline&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;parallel-test-execution&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#parallel-test-execution&quot;&gt;&lt;/a&gt;Parallel Test Execution&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This looks like an ideal project for parallel test execution: a short build
-followed by a large number of serially executed tests that consume the most of
-the pipeline time. There are a number of things I could try to speed this up.
-For example, I could modify test harness to look for ways to parallelize
-the test execution on this single machine. Or I could try speed up the tests
-themselves. Both of those can be time-consuming and both risk destabilizing the
-tests. I’d need to know more about the project to do it well.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I’ll avoid that risk by using Jenkins and the
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin&quot;&gt;Parallel Test Executor Plugin&lt;/a&gt; to
-parallelize the tests across multiple nodes instead. This will isolate the tests
-from each other, while still giving us speed gains from parallel execution.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The plugin reads the list of tests from the results archived in the previous execution of this
-job and splits that list into a specified number of sublists. I can then use
-those sublists to execute the tests in parallel, passing a different sublist to
-each node.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Let’s look at how this changes the pipeline:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node { &lt;span style=&quot;color:#777&quot;&gt;/* ...unchanged... */&lt;/span&gt; }
-
-&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;void&lt;/span&gt; runTests(&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; args) {
-  &lt;span style=&quot;color:#777&quot;&gt;/* Request the test groupings.  Based on previous test results. */&lt;/span&gt;
-  &lt;span style=&quot;color:#777&quot;&gt;/* see https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin and demo on github
-  /* Using arbitrary parallelism of 4 and &quot;generateInclusions&quot; feature added in v1.8. */&lt;/span&gt;
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; splits = splitTests &lt;span style=&quot;color:#606&quot;&gt;parallelism&lt;/span&gt;: [&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;CountDrivenParallelism&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#B06;font-weight:bold&quot;&gt;size&lt;/span&gt;: &lt;span style=&quot;color:#00D&quot;&gt;4&lt;/span&gt;], &lt;span style=&quot;color:#606&quot;&gt;generateInclusions&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;/* Create dictionary to hold set of parallel test executions. */&lt;/span&gt;
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; testGroups = [:]
-
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;for&lt;/span&gt; (&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;int&lt;/span&gt; i = &lt;span style=&quot;color:#00D&quot;&gt;0&lt;/span&gt;; i &amp;lt; splits.size(); i++) {
-    &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; split = splits[i]
-
-    &lt;span style=&quot;color:#777&quot;&gt;/* Loop over each record in splits to prepare the testGroups that we'll run in parallel. */&lt;/span&gt;
-    &lt;span style=&quot;color:#777&quot;&gt;/* Split records returned from splitTests contain { includes: boolean, list: List&amp;lt;String&amp;gt; }. */&lt;/span&gt;
-    &lt;span style=&quot;color:#777&quot;&gt;/*     includes = whether list specifies tests to include (true) or tests to exclude (false). */&lt;/span&gt;
-    &lt;span style=&quot;color:#777&quot;&gt;/*     list = list of tests for inclusion or exclusion. */&lt;/span&gt;
-    &lt;span style=&quot;color:#777&quot;&gt;/* The list of inclusions is constructed based on results gathered from */&lt;/span&gt;
-    &lt;span style=&quot;color:#777&quot;&gt;/* the previous successfully completed job. One additional record will exclude */&lt;/span&gt;
-    &lt;span style=&quot;color:#777&quot;&gt;/* all known tests to run any tests not seen during the previous run.  */&lt;/span&gt;
-    testGroups[&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;split-&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;i&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;] = {  &lt;span style=&quot;color:#777&quot;&gt;// example, &quot;split3&quot;&lt;/span&gt;
-      node {
-        checkout scm
-
-        &lt;span style=&quot;color:#777&quot;&gt;/* Clean each test node to start. */&lt;/span&gt;
-        mvn &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;clean&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-        &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; mavenInstall = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;install -DMaven.test.failure.ignore=true&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-        &lt;span style=&quot;color:#777&quot;&gt;/* Write includesFile or excludesFile for tests.  Split record provided by splitTests. */&lt;/span&gt;
-        &lt;span style=&quot;color:#777&quot;&gt;/* Tell Maven to read the appropriate file. */&lt;/span&gt;
-        &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;if&lt;/span&gt; (split.includes) {
-          writeFile &lt;span style=&quot;color:#606&quot;&gt;file&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;target/parallel-test-includes-&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;i&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;.txt&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;text&lt;/span&gt;: split.list.join(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#b0b&quot;&gt;\n&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;)
-          mavenInstall += &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; -Dsurefire.includesFile=target/parallel-test-includes-&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;i&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;.txt&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-        } &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;else&lt;/span&gt; {
-          writeFile &lt;span style=&quot;color:#606&quot;&gt;file&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;target/parallel-test-excludes-&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;i&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;.txt&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;text&lt;/span&gt;: split.list.join(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#b0b&quot;&gt;\n&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;)
-          mavenInstall += &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; -Dsurefire.excludesFile=target/parallel-test-excludes-&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;i&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;.txt&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-        }
-
-        &lt;span style=&quot;color:#777&quot;&gt;/* Call the Maven build with tests. */&lt;/span&gt;
-        mvn mavenInstall
-
-        &lt;span style=&quot;color:#777&quot;&gt;/* Archive the test results */&lt;/span&gt;
-        step([&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;JUnitResultArchiver&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#B06;font-weight:bold&quot;&gt;testResults&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;**/target/surefire-reports/TEST-*.xml&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;])
-      }
-    }
-  }
-  parallel testGroups
-}
-
-&lt;span style=&quot;color:#777&quot;&gt;/* Run Maven */&lt;/span&gt;
-&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;void&lt;/span&gt; mvn(&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; args) { &lt;span style=&quot;color:#777&quot;&gt;/* ... */&lt;/span&gt; }&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;That’s it!  The change is significant but it is all encapsulated in this one
-method in the &lt;code&gt;Jenkinsfile&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;great-ish-success&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#great-ish-success&quot;&gt;&lt;/a&gt;Great (ish) Success!&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Here’s the results for the new pipeline with parallel test execution:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-06-16/serial-vs-parallel.png&quot; alt=&quot;Pipeline Duration Comparison&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The tests ran almost twice as fast, without changes outside pipeline.  Great!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;However, I used 4 test executors, so why am I not seeing a 4x? improvement.
-A quick review of the logs shows the problem: A small number of tests are taking up
-to 5 minutes each to complete! This is actually good news. It means that I
-should be able to see further improvement in pipeline throughput just by refactoring
-those few long running tests into smaller parts.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;conclusion&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;While I would like to have seen closer to a 4x improvement to match to number
-of executors, 2x is still perfectly respectable. If I were working on a group of projects
-with similar pipelines, I’d be completely comfortable reusing these same changes
-on my other project and I’d expect to similar improvement without any disruption to
-other tools or processes.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h3&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin&quot; class=&quot;bare&quot;&gt;https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 </content>
 </entry>
