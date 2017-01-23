@@ -604,20 +604,20 @@ of plugins to support building, deploying and automating any project.
 <!-- ending partial downloadbanner.html.haml -->
 <!-- starting partial projectjumbotron.html.haml -->
 <style>
-  .jumbotron.featured.featured_792 {
+  .jumbotron.featured.featured_389 {
     background: #4799d6;
     padding-bottom: 0;
   }
   
-  .jumbotron.featured.featured_792 img {
+  .jumbotron.featured.featured_389 img {
     height: 400px;
   }
   
-  .jumbotron.featured.featured_792 p {
+  .jumbotron.featured.featured_389 p {
     font-size: 16px;
   }
 </style>
-<div class="featured featured_792 jumbotron jumbotron-fluid">
+<div class="featured featured_389 jumbotron jumbotron-fluid">
 <div class="container">
 <div class="rog">
 <div class="col-md-5">
@@ -815,7 +815,7 @@ Ask questions and contribute to making Jenkins better!
 <!-- ending partial steps.html.haml -->
 <!-- starting partial jumbotron.html.haml -->
 <style>
-  .jumbotron.featured.featured_657 {
+  .jumbotron.featured.featured_53 {
     background: #042E54 url(/images/full-pipeline.jpg) no-repeat center;
     background-size: cover;
     position: relative;
@@ -823,7 +823,7 @@ Ask questions and contribute to making Jenkins better!
     box-shadow:inset rgba(0, 0, 0, .33) 0 20rem 9rem -9rem, inset rgba(0, 0, 0,.25) 0 22rem
   }
 </style>
-<div class="featured featured_657 jumbotron jumbotron-fluid">
+<div class="featured featured_53 jumbotron jumbotron-fluid">
 <div class="container">
 <div class="rog">
 <div class="col-md-1"></div>
@@ -856,68 +856,6 @@ Learn more
 <!-- starting partial events.html.haml -->
 <div class="item-list">
 <ul class="ji-date-list ji-item-list">
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Guadalajara-Jenkins-Area-Meetup/events/234929834/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Jan
-</div>
-<div class="day">
-18
-</div>
-<div class="dow">
-Wed
-</div>
-</div>
-<div class="time">
- 7:00 pm
-</div>
-</div>
-<h5 class="title">
-Guadalajara JAM
-</h5>
-</div>
-<p class="teaser">
-Jenkins Install & Setup
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Austin-Jenkins-Area-Meetup/events/236706375/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Jan
-</div>
-<div class="day">
-19
-</div>
-<div class="dow">
-Thu
-</div>
-</div>
-<div class="time">
- 6:00 pm
-</div>
-</div>
-<h5 class="title">
-Austin JAM
-</h5>
-</div>
-<p class="teaser">
-Jenkins War Stories
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
 <li class="post event">
 <a class="body" href="https://www.meetup.com/Washington-DC-Jenkins-Area-Meetup/events/236734311/" target="_blank">
 <div class="header time">
@@ -1220,6 +1158,265 @@ Recent Blog Posts
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
 <li class="post">
+<a class="body" href="/blog/2017/01/20/blueocean-dev-log-jan2/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+20
+</div>
+</div>
+<h5 class="title">
+Blue Ocean Dev Log: January Week #3
+</h5>
+</div>
+<p class="teaser">
+As we get closer to
+Blue Ocean
+1.0, which is planned for the end of March, I have started
+highlighting
+some of the good stuff that has been going on, and this week was a very busy week.
+
+
+A new Blue Ocean beta (b18) was released with:
+
+
+
+
+Parametrized pipelines are now supported!
+
+
+i18n improvements
+
+
+Better support for matrix and the evil (yet somehow still used) Maven project type (don&#8217;t use it!)
+
+
+SSE fixes...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/michaelneale">Michael Neale</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/blueocean">
+blueocean
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2017/01/19/converting-conditional-to-pipeline/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+19
+</div>
+</div>
+<h5 class="title">
+Converting Conditional Build Steps to Jenkins Pipeline
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Introduction
+
+
+With all the new developments in
+Jenkins Pipeline (and
+Declarative Pipeline on the horizon),
+it&#8217;s easy to forget what we did to create "pipelines" before
+Pipeline.
+There are number of plugins, some that have been around since the very beginning,
+that enable users to create "pipelines" in Jenkins.
+For example, basic job chaining worked well in many cases, and the
+Parameterized Trigger...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/bitwiseman">Liam Newman</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/freestyle">
+freestyle
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/conditional-build-step">
+conditional-build-step
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2017/01/17/scm-api-2/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+17
+</div>
+</div>
+<h5 class="title">
+SCM API turns 2.0 and what that means for you
+</h5>
+</div>
+<p class="teaser">
+Due to regressions
+discovered after release it is not recommended to upgrade the plugins listed
+below at this time.
+
+
+
+
+
+
+We are announcing the
+SCM API
+2.0.x and
+Branch API
+2.0.x release lines.
+
+
+Downstream of this there are also some great improvements to a number of popular plugins including:
+
+
+
+
+GitHub Branch Source
+
+
+BitBucket branch source
+
+
+Git
+
+
+Mercurial
+
+
+Pipeline Multibranch
+
+
+GitHub Organization Folders
+
+
+
+
+There are some gotcha&#8217;s that Jenkins administrators will need to be aware of.
+
+
+
+
+
+
+
+
+Always take a backup of your...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/stephenc">Stephen Connolly</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/development">
+development
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/plugins">
+plugins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2017/01/17/Jenkins-is-upgrading-to-Java-8/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+17
+</div>
+</div>
+<h5 class="title">
+Jenkins Upgrades To Java 8
+</h5>
+</div>
+<p class="teaser">
+In the next few months, Jenkins will require Java 8 as its runtime.
+
+
+Back in
+last November,
+we discussed interesting statistics showing that Jenkins was now running Java 8
+on a majority of its running instances.
+
+
+Timeline
+
+
+Here is how we plan to roll that baseline upgrade in the next few months.
+
+
+
+
+Now: Announce the intention publicly.
+
+
+April, 2017: Drop support for Java 7 in Jenkins weekly.
+With the current rhythm, that means...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/batmat">Baptiste Mathus</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/java8">
+java8
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/upgrade">
+upgrade
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
 <a class="body" href="/blog/2017/01/13/blueocean-dev-log-jan/">
 <div class="header">
 <div class="date">
@@ -1516,245 +1713,6 @@ azure
 <li>
 <a class="tag-link" href="/node/tags/gsoc">
 gsoc
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/12/20/jenkins-puppet-enterprise-plugin/">
-<div class="header">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-20
-</div>
-</div>
-<h5 class="title">
-Continuous Delivery with Jenkins and Puppet Enterprise
-</h5>
-</div>
-<p class="teaser">
-This is a guest post by Carl Caum,
-who works at Puppet and created the
-Puppet Enterprise Pipeline plugin.
-
-
-
-
-
-
-During PuppetConf 2016, myself and Brian Dawson from CloudBees announced the
-Puppet Enterprise
-plugin for Jenkins Pipeline.
-Let&#8217;s take a look at how the plugin makes it trivial to use Puppet to perform
-some or all of the deployment tasks in continuous delivery pipelines.
-
-
-Jenkins Pipeline introduced an amazing world where the definition...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/ccaum">Carl Caum</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/continuousdelivery">
-continuousdelivery
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/puppet">
-puppet
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/pipeline">
-pipeline
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/puppetenterprise">
-puppetenterprise
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/12/19/declarative-pipeline-beta/">
-<div class="header">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-19
-</div>
-</div>
-<h5 class="title">
-Announcing the beta of Declarative Pipeline Syntax
-</h5>
-</div>
-<p class="teaser">
-Last week we released version 0.7.1 of the
-Pipeline-Model-Defintion
-plugin and wanted to crown it as the official Beta version of the Declarative
-Pipeline syntax. Although it has been available in the update center
-since August,
-we continue to solidify the syntax. We feel this release is getting
-very close to the final version and should not change much before 1.0. However,
-it is still a Beta so further tweaks are...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/HRMPW">Patrick Wolf</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/pipeline">
-pipeline
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/blueocean">
-blueocean
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/12/10/monthly-jam-recap-november/">
-<div class="header">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-10
-</div>
-</div>
-<h5 class="title">
-Monthly JAM Recap - November 2016
-</h5>
-</div>
-<p class="teaser">
-As we near the end of the year, the number of November JAMs show that the
-Jenkins community isn&#8217;t slowing down for holiday season. We had a number of
-excellent events hosted around the world this November with plenty of great
-stories and presentations shared by the various members of the world-wide
-Jenkins community.
-
-
-Melbourne, Australia JAM
-
-Melbourne JAM leaders,
-Raisa
-and
-Bhuva
-hosted Blue Ocean for the inaugural meeting. Attendees learned the values...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/alyssat">Alyssa Tong</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/event">
-event
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/jam">
-jam
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/meetup">
-meetup
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2016/12/09/december-jenkins-events/">
-<div class="header">
-<div class="date">
-<div class="month">
-Dec
-</div>
-<div class="day">
-09
-</div>
-</div>
-<h5 class="title">
-Upcoming December Jenkins Events
-</h5>
-</div>
-<p class="teaser">
-Happy Holidays! A special shout out to all JAM leaders who continue to keep
-local activities going in December.
-
-
-Online JAM
-
-
-
-December 14 | Live Demos: Pipeline, Git, and Blue Ocean
-
-
-
-
-
-North America
-
-
-
-December 7 | Seattle JAM: Jenkins at Microsoft
-
-
-December 14 | Los Angeles JAM: Jenkins Days
-
-
-December 14 | Guadalajara JAM: Jenkins &amp; Docker
-
-
-
-
-
-Australia
-
-
-
-December 14 | Melbourne JAM: Meeting at AWS Office
-
-
-
-
-
-Links
-
-
-
-Start a JAM in your city if...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/alyssat">Alyssa Tong</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/events">
-events
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/jam">
-jam
 </a>
 </li>
 </ul>

@@ -412,9 +412,12 @@ some of them.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When the <strong>Enable Security</strong> checkbox is checked, which has been the default
-since Jenkins 2.0, users must log in with a username and password in order to
-perform administrative operations. This checkbox should <strong>always</strong> be enabled for
-any non-local (test) Jenkins environment.</p>
+since Jenkins 2.0, users can log in with a username and password in order to
+perform operations not available to anonymous users. Which operations require
+users to log in depends on the chosen authorization strategy and its configuration;
+by default anonymous users have no permissions, and logged in users have full
+control. This checkbox should <strong>always</strong> be enabled for any non-local (test) Jenkins
+environment.</p>
 </div>
 <div class="paragraph">
 <p>The Enable Security section of the web UI allows a Jenkins administrator to
@@ -509,11 +512,27 @@ environments.</p>
 <p>Delegate all authentication to a configured LDAP server, including both
 users and groups. This option is more common for larger installations in
 organizations which already have configured an external identity provider such
-as LDAP. Organizations using Active Directory can use this setting with Active
-Directory&#8217;s LDAP integration, but may want to consider using the
-<a href="https://plugins.jenkins.io/active-directory">Active Directory</a> plugin
-instead.</p>
+as LDAP. This also supports Active Directory installations.</p>
 </dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This feature is provided by the <a href="https://plugins.jenkins.io/ldap">LDAP plugin</a>
+that may not be installed on your instance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">Unix user/group database</dt>
 <dd>
 <p>Delegates the authentication to the underlying Unix
@@ -572,9 +591,9 @@ a few different Authorization options:</p>
 <dl>
 <dt class="hdlist1">Anyone can do anything</dt>
 <dd>
-<p>No authorization is performed. Everyone gets full control of Jenkins,
-including anonymous users who haven&#8217;t signed on. <strong>Do not use this setting</strong> for
-anything other than local test Jenkins masters.</p>
+<p>Everyone gets full control of Jenkins, including
+anonymous users who haven&#8217;t logged in. <strong>Do not use this setting</strong> for anything
+other than local test Jenkins masters.</p>
 </dd>
 <dt class="hdlist1">Legacy mode</dt>
 <dd>
@@ -585,10 +604,10 @@ setting</strong> for anything other than local test Jenkins masters.</p>
 </dd>
 <dt class="hdlist1">Logged in users can do anything</dt>
 <dd>
-<p>In this mode, every logged-in user gets full control of Jenkins. The only user
-who won&#8217;t have full control is an anonymous user, who only gets read access.
-This mode is useful to force users to log in before taking actions, so that
-there is an audit trail of users' actions.</p>
+<p>In this mode, every logged-in user gets full
+control of Jenkins. Depending on an advanced option, anonymous users get read
+access to Jenkins, or no access at all. This mode is useful to force users to
+log in before taking actions, so that there is an audit trail of users' actions.</p>
 </dd>
 <dt class="hdlist1">Matrix-based security</dt>
 <dd>
@@ -608,6 +627,22 @@ defined in the Configure Global Security screen will be combined with
 project-specific ACLs.</p>
 </dd>
 </dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Matrix-based security and Project-based Matrix Authorization Strategy are provided
+by the <a href="https://plugins.jenkins.io/matrix-auth">Matrix Authorization Strategy Plugin</a>
+and may not be installed on your Jenkins.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>For most Jenkins environments, Matrix-based security provides the most security
@@ -636,7 +671,8 @@ to all authenticated users accessing the environment.</p>
 <p>The permissions granted in the matrix are additive. For example, if a user
 "kohsuke" is in the groups "developers" and "administrators", then the
 permissions granted to "kohsuke" will be a union of all those permissions
-granted to "kohsuke", "developers", "administrators", and "anonymous."</p>
+granted to "kohsuke", "developers", "administrators", "authenticated", and
+"anonymous."</p>
 </div>
 </div>
 </div>
@@ -656,13 +692,6 @@ entities.</p>
 <p>Using the <strong>Safe HTML</strong> Markup Formatter allows for users and
 administrators to inject useful and information HTML snippets into Project
 Descriptions and elsewhere.</p>
-</div>
-<div class="paragraph">
-<p>It is not recommended that administrators
-operating Jenkins on hostile networks (for example, the internet) select any
-markup formatter other than <strong>Plain Text</strong> to reduce the risk for
-<a href="https://en.wikipedia.org/wiki/Cross-site_scripting">Cross-site Scripting</a>
-attacks.</p>
 </div>
 </div>
 </div>
@@ -686,13 +715,14 @@ by default with all Jenkins versions since 2.0.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When the option is enabled, Jenkins will check for a nonce
-<sup class="footnote" id="_footnote_nonce">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>,
-or "crumb", on any request that may change data in the Jenkins environment.
-This includes any form submission and calls to the remote API.</p>
+<p>When the option is enabled, Jenkins will check for a CSRF token, or "crumb",
+on any request that may change data in the Jenkins environment. This includes
+any form submission and calls to the remote API, including those using "Basic"
+authentication.</p>
 </div>
 <div class="paragraph">
-<p>It is <strong>strongly recommended</strong> that this option be left <strong>enabled</strong>.</p>
+<p>It is <strong>strongly recommended</strong> that this option be left <strong>enabled</strong>, including on
+instances operating on private, fully trusted networks.</p>
 </div>
 <div class="sect2">
 <h3 id="caveats"><a class="anchor" href="#caveats"></a>Caveats</h3>
@@ -742,7 +772,7 @@ trust model is insufficient.</p>
 </div>
 <div class="paragraph">
 <p>The Agent/Master Access Control system was introduced
-<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>
 to allow Jenkins administrators to add more granular access control definitions
 between the Jenkins master and the connected agents.</p>
 </div>
@@ -786,7 +816,7 @@ caution and refuse to execute the command.</p>
 </div>
 <div class="paragraph">
 <p>In such cases, Jenkins administrators may "whitelist"
-<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup>
+<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>
 certain commands as acceptable for execution on the master.</p>
 </div>
 <div class="imageblock center">
@@ -813,7 +843,7 @@ Jenkins boots.</p>
 directory, where commands added via the web UI are written. In order to disable
 the ability of administrators to change whitelisted commands from the web UI,
 place an empty <code>gui.conf</code> file in the directory and change its permissions such
-that is is not writeable by the operating system user Jenkins run as.</p>
+that is not writeable by the operating system user Jenkins run as.</p>
 </div>
 </div>
 </div>
@@ -926,7 +956,7 @@ manner which indicates their load order.</p>
 File Access Rules added via the web UI are written. In order to disable the
 ability of administrators to change the File Access Rules from the web UI,
 place an empty <code>50-gui.conf</code> file in the directory and change its permissions
-such that is is not writeable by the operating system user Jenkins run as.</p>
+such that is not writeable by the operating system user Jenkins run as.</p>
 </div>
 </div>
 </div>
@@ -974,13 +1004,10 @@ review whether any disabled security settings should be re-enabled.</p>
 <a href="#_footnoteref_1">1</a>. <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery" class="bare">www.owasp.org/index.php/Cross-Site_Request_Forgery</a>
 </div>
 <div class="footnote" id="_footnote_2">
-<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" class="bare">en.wikipedia.org/wiki/Cryptographic_nonce</a>
+<a href="#_footnoteref_2">2</a>. Starting with 1.587, and 1.580.1, releases
 </div>
 <div class="footnote" id="_footnote_3">
-<a href="#_footnoteref_3">3</a>. Starting with 1.587, and 1.580.1, releases
-</div>
-<div class="footnote" id="_footnote_4">
-<a href="#_footnoteref_4">4</a>. <a href="https://en.wikipedia.org/wiki/Whitelist" class="bare">en.wikipedia.org/wiki/Whitelist</a>
+<a href="#_footnoteref_3">3</a>. <a href="https://en.wikipedia.org/wiki/Whitelist" class="bare">en.wikipedia.org/wiki/Whitelist</a>
 </div>
 </div>
 </div>

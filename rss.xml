@@ -3,13 +3,1594 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>https://rtyler.github.io/jenkins.io/</id>
 <title>Jenkins Blog</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-23T08:25:07-08:00</updated>
 <link rel="self" type="application/atom+xml" href="https://rtyler.github.io/jenkins.io/rss.xml" />
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/" />
 <entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/20/blueocean-dev-log-jan2/</id>
+<title>Blue Ocean Dev Log: January Week #3</title>
+<updated>2017-01-23T08:25:07-08:00</updated>
+<published>2017-01-20T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/20/blueocean-dev-log-jan2/" />
+<author>
+<name>michaelneale</name>
+</author>
+<category term="blueocean"></category>
+<summary>
+As we get closer to
+Blue Ocean
+1.0, which is planned for the end of March, I have started
+highlighting
+some of the good stuff that has been going on, and this week was a very busy week.
+
+
+A new Blue Ocean beta (b18) was released with:
+
+
+
+
+Parametrized pipelines are now supported!
+
+
+i18n improvements
+
+
+Better support for matrix and the evil (yet somehow still used) Maven project type (don&#8217;t use it!)
+
+
+SSE fixes for IE and Edge browsers
+
+
+An alpha release of the Visual Editor for Jenkinsfiles on top of
+Declarative Pipeline
+has snuck into the "experimental" update center. Andrew will be talking
+about Declarative Pipelines at
+FOSDEM next week.
+
+
+
+
+Parametrized Pipelines
+
+
+You would know this...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As we get closer to
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;Blue Ocean&lt;/a&gt;
+1.0, which is planned for the end of March, I have started
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/&quot;&gt;highlighting&lt;/a&gt;
+some of the good stuff that has been going on, and this week was a &lt;em&gt;very&lt;/em&gt; busy week.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A new Blue Ocean beta (&lt;strong&gt;b18&lt;/strong&gt;) was released with:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Parametrized pipelines are now supported!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;i18n improvements&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Better support for matrix and the &lt;em&gt;evil&lt;/em&gt; (yet somehow still used) Maven project type (don’t use it!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Server-sent_events&quot;&gt;SSE&lt;/a&gt; fixes for IE and Edge browsers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An alpha release of the Visual Editor for Jenkinsfiles on top of
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/&quot;&gt;Declarative Pipeline&lt;/a&gt;
+has snuck into the &quot;experimental&quot; update center. Andrew will be talking
+about Declarative Pipelines at
+&lt;a href=&quot;https://fosdem.org/2017/schedule/event/declarative_pipeline/&quot;&gt;FOSDEM next week&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;parametrized-pipelines&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#parametrized-pipelines&quot;&gt;&lt;/a&gt;Parametrized Pipelines&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You would know this if you followed
+&lt;a href=&quot;https://twitter.com/ThorScherler&quot;&gt;Thorsten’s twitter account&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock center&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/start-with-parameters.png&quot; alt=&quot;Starting with parameters from @thorscherler&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That twitter account is mostly pics of Thorsten in running gear, but
+occasionally he announces new features as they land.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When you run a pipeline that requires parameters, it will popup a dialog
+like this no matter where you run it from. Most input types are supported
+(similar to input), with a planned extension point for custom input types.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;editor&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#editor&quot;&gt;&lt;/a&gt;Editor&lt;/h3&gt;
+&lt;div class=&quot;imageblock center&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/gui-editor.png&quot; alt=&quot;Pipeline Editor plugin&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A very-very early version of the
+&lt;a href=&quot;https://github.com/jenkinsci/blueocean-pipeline-editor-plugin&quot;&gt;Blue Ocean Pipeline Editor plugin&lt;/a&gt;
+that will set your hair on fire of the editor is in the experimental update
+center.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Declarative pipelines are still not at version 1.0 status, but will be
+shortly. This editor allows you to roundtrip Jenkinsfiles written in this
+way, so they can be edited as text, or visually. The steps available are
+discovered form the installed plugins. One to watch.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So, &lt;strong&gt;what’s next?&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Creation of Git Pipelines, and likely GitHub too.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Show parallel branches that aren’t in a stage visually&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Show stderr/out in test reports&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Show more information when Jenkins is &quot;busy&quot;, such as when agents are coming online, in the Pipeline view&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you’re interested in helping to make Blue Ocean a great user experience for
+Jenkins, please join the Blue Ocean development team on
+&lt;a href=&quot;https://gitter.im/jenkinsci/blueocean-plugin&quot;&gt;Gitter&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/19/converting-conditional-to-pipeline/</id>
+<title>Converting Conditional Build Steps to Jenkins Pipeline</title>
+<updated>2017-01-20T13:16:34-08:00</updated>
+<published>2017-01-19T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/19/converting-conditional-to-pipeline/" />
+<author>
+<name>lnewman</name>
+</author>
+<category term="pipeline"></category>
+<category term="freestyle"></category>
+<category term="plugins"></category>
+<category term="conditional-build-step"></category>
+<summary>
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Introduction
+
+
+With all the new developments in
+Jenkins Pipeline (and
+Declarative Pipeline on the horizon),
+it&#8217;s easy to forget what we did to create "pipelines" before
+Pipeline.
+There are number of plugins, some that have been around since the very beginning,
+that enable users to create "pipelines" in Jenkins.
+For example, basic job chaining worked well in many cases, and the
+Parameterized Trigger plugin
+made chaining more flexible.
+However, creating chained jobs with conditional behavior was
+still one of the harder things to do in Jenkins.
+
+
+The
+Conditional BuildStep plugin
+is a powerful tool that has allowed Jenkins users to write Jenkins jobs with complex...
+</summary>
+<content type="html">
+&lt;div class=&quot;admonitionblock note&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+This is a guest post by &lt;a href=&quot;https://github.com/bitwiseman&quot;&gt;Liam Newman&lt;/a&gt;,
+Technical Evangelist at &lt;a href=&quot;https://cloudbees.com&quot;&gt;CloudBees&lt;/a&gt;.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;With all the new developments in
+&lt;a href=&quot;https://jenkins.io/doc/book/pipeline/&quot;&gt;Jenkins Pipeline&lt;/a&gt; (and
+&lt;a href=&quot;https://jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/&quot;&gt;Declarative Pipeline on the horizon&lt;/a&gt;),
+it’s easy to forget what we did to create &quot;pipelines&quot; before
+&lt;strong&gt;Pipeline&lt;/strong&gt;.
+There are number of plugins, some that have been around since the very beginning,
+that enable users to create &quot;pipelines&quot; in Jenkins.
+For example, basic job chaining worked well in many cases, and the
+&lt;a href=&quot;https://plugins.jenkins.io/parameterized-trigger&quot;&gt;Parameterized Trigger plugin&lt;/a&gt;
+made chaining more flexible.
+However, creating chained jobs with conditional behavior was
+still one of the harder things to do in Jenkins.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The
+&lt;a href=&quot;https://plugins.jenkins.io/conditional-buildstep&quot;&gt;Conditional BuildStep plugin&lt;/a&gt;
+is a powerful tool that has allowed Jenkins users to write Jenkins jobs with complex conditional logic.
+In this post, we’ll take a look at how we might converting Freestyle jobs that
+include conditional build steps to Jenkins Pipeline.
+Unlike Freestyle jobs, implementing conditional operations in Jenkins Pipeline is trivial,
+but matching the behavior of complex conditional build steps will require a bit more care.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;graphical-programming&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#graphical-programming&quot;&gt;&lt;/a&gt;Graphical Programming&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Conditional BuildStep plugin lets users add conditional logic to Freestyle
+jobs from within the Jenkins web UI.  It does this by:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Adding two types of Conditional BuildStep (&quot;Single&quot; and &quot;Multiple&quot;) -
+these build steps contain one or more other build steps to be run when the configured
+condition is met&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adding a set of Condition operations -
+these control whether the Conditional BuildStep execute the contained step(s)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Leveraging the Token Macro facility -
+these provide values to the Conditions for evaluation&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the example below, this project will run the shell script step when the value of the
+&lt;code&gt;REQUESTED_ACTION&lt;/code&gt; token equals &quot;greeting&quot;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock center&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2017-01-19/freestyle-conditional-param.png&quot; alt=&quot;Freestyle Job Parameters&quot; width=&quot;800&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock center&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2017-01-19/freestyle-conditional-config.png&quot; alt=&quot;Freestyle Job Conditional BuildStep&quot; width=&quot;800&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s the output when I run this project with &lt;code&gt;REQUESTED_ACTION&lt;/code&gt; set to &quot;greeting&quot;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;Run condition [Strings match] enabling prebuild for step [Execute shell]
+Strings match run condition: string 1=[greeting], string 2=[greeting]
+Run condition [Strings match] enabling perform for step [Execute shell]
+[freestyle-conditional] $ /bin/sh -xe /var/folders/hp/f7yc_mwj2tq1hmbv_5n10v2c0000gn/T/hudson5963233933358491209.sh
++ echo 'Hello, bitwiseman!'
+Hello, bitwiseman!
+Finished: SUCCESS&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And when I pass the value &quot;silence&quot;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;Run condition [Strings match] enabling prebuild for step [Execute shell]
+Strings match run condition: string 1=[silence], string 2=[greeting]
+Run condition [Strings match] preventing perform for step [Execute shell]
+Finished: SUCCESS&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is a simple example but the conditional step can contain any regular build step.
+When combined with other plugins, it can control whether to send notifications,
+gather data from other sources, wait for user feedback, or call other projects.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Conditional BuildStep plugin does a great job of leveraging strengths of
+the Jenkins web UI, Freestyle jobs, and UI-based programming,
+but it is also hampered by their limitations.
+The Jenkins web UI can be clunky and confusing at times.
+Like the steps in any Freestyle job, these conditional steps are only
+stored and viewable in Jenkins.
+They are not versioned with other product or build code and can’t be code reviewed.
+Like any number of UI-based programming tools, it has to make trade-offs between clarity
+and flexibility: more options or clearer presentation.
+There’s only so much space on the screen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;converting-to-pipeline&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#converting-to-pipeline&quot;&gt;&lt;/a&gt;Converting to Pipeline&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Jenkins Pipeline, on the other hand, enables users to implement their pipeline as code.
+Pipeline code can be written directly in the Jenkins Web UI or in any text editor.
+It is a full-featured programming language,
+which gives users access to much broader set of conditional statements
+without the restrictions of UI-based programming.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So, taking the example above, the Pipeline equivalent is:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;pipeline {
+    agent any
+    parameters {
+        choice(
+            &lt;span style=&quot;color:#777&quot;&gt;// choices are a string of newline separated values&lt;/span&gt;
+            &lt;span style=&quot;color:#777&quot;&gt;// https://issues.jenkins-ci.org/browse/JENKINS-41180&lt;/span&gt;
+            &lt;span style=&quot;color:#606&quot;&gt;choices&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;greeting\nsilence&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;description&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;REQUESTED_ACTION&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
+    }
+
+    stages {
+        stage (&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Speak&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
+            when {
+                &lt;span style=&quot;color:#777&quot;&gt;// Only say hello if a &quot;greeting&quot; is requested&lt;/span&gt;
+                expression { params.REQUESTED_ACTION == &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;greeting&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt; }
+            }
+            steps {
+                echo &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Hello, bitwiseman!&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+            }
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;  &lt;div class=&quot;pipeline-script-expand&quot;&gt;
+    &lt;a href=&quot;#&quot; onclick=&quot;javascript:$(this).parent().siblings(&amp;apos;.pipeline-script&amp;apos;).toggle(); return false;&quot;&gt;Toggle Pipeline Script&lt;/a&gt;
+    &lt;em&gt;(Advanced)&lt;/em&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;listingblock pipeline-script&quot; style=&quot;display: none&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Scripted Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;properties ([
+    parameters ([
+        choice (
+            &lt;span style=&quot;color:#777&quot;&gt;// choices are a string of newline separated values&lt;/span&gt;
+            &lt;span style=&quot;color:#777&quot;&gt;// https://issues.jenkins-ci.org/browse/JENKINS-41180&lt;/span&gt;
+            &lt;span style=&quot;color:#606&quot;&gt;choices&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;greeting\nsilence&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;description&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            name : &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;REQUESTED_ACTION&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
+    ])
+])
+
+node {
+    stage (&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Speak&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
+        &lt;span style=&quot;color:#777&quot;&gt;// Only say hello if a &quot;greeting&quot; is requested&lt;/span&gt;
+        &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;if&lt;/span&gt; (params.REQUESTED_ACTION == &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;greeting&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
+            echo &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Hello, bitwiseman!&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When I run this project with &lt;code&gt;REQUESTED_ACTION&lt;/code&gt; set to &quot;greeting&quot;, here’s the output:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;[Pipeline] node
+Running on osx_mbp in /Users/bitwiseman/jenkins/agents/osx_mbp/workspace/pipeline-conditional
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Speak)
+[Pipeline] echo
+Hello, bitwiseman!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When I pass the value &quot;silence&quot;, the only change is &quot;Hello, bitwiseman!&quot; is not printed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Some might argue that the Pipeline code is a bit harder to understand on first reading.
+Others would say the UI is just as confusing if not more so.
+Either way, the Pipeline representation is considerably more compact than the Jenkins UI presentation.
+Pipeline also lets us add helpful comments, which we can’t do in the Freestyle UI.
+And we can easily put this Pipeline in a &lt;code&gt;Jenkinsfile&lt;/code&gt; to be code-reviewed, checked-in, and versioned
+along with the rest of our code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;conditions&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#conditions&quot;&gt;&lt;/a&gt;Conditions&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The previous example showed the &quot;Strings match&quot; condition and its Pipeline equivalent.
+Let’s look at couple more interesting conditions and their Jenkins Pipeline equivalents.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;boolean-condition&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#boolean-condition&quot;&gt;&lt;/a&gt;Boolean condition&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You might think that a boolean condition would be the simplest condition, but it isn’t.
+Since it works with string values from tokens, the Conditional BuildStep plugin offers
+a number of ways to indicate true or false.
+Truth is a case insensitive match of one of the following:
+&lt;code&gt;1&lt;/code&gt; (the number one), &lt;code&gt;Y&lt;/code&gt;, &lt;code&gt;YES&lt;/code&gt;, &lt;code&gt;T&lt;/code&gt;, &lt;code&gt;TRUE&lt;/code&gt;, &lt;code&gt;ON&lt;/code&gt; or &lt;code&gt;RUN&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Pipeline can duplicate these, but depending on the scenario we might consider
+whether a simpler expression would suffice.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;when {
+    &lt;span style=&quot;color:#777&quot;&gt;// case insensitive regular expression for truthy values&lt;/span&gt;
+    expression { &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;return&lt;/span&gt; token ==~ &lt;span style=&quot;background-color:hsla(300,100%,50%,0.06)&quot;&gt;&lt;span style=&quot;color:#404&quot;&gt;/&lt;/span&gt;&lt;span style=&quot;color:#808&quot;&gt;(?i)(Y|YES|T|TRUE|ON|RUN)&lt;/span&gt;&lt;span style=&quot;color:#404&quot;&gt;/&lt;/span&gt;&lt;/span&gt; }
+}
+steps {
+    &lt;span style=&quot;color:#777&quot;&gt;/* step */&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;  &lt;div class=&quot;pipeline-script-expand&quot;&gt;
+    &lt;a href=&quot;#&quot; onclick=&quot;javascript:$(this).parent().siblings(&amp;apos;.pipeline-script&amp;apos;).toggle(); return false;&quot;&gt;Toggle Pipeline Script&lt;/a&gt;
+    &lt;em&gt;(Advanced)&lt;/em&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;listingblock pipeline-script&quot; style=&quot;display: none&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Scripted Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;&lt;span style=&quot;color:#777&quot;&gt;// case insensitive regular expression for truthy values&lt;/span&gt;
+&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;if&lt;/span&gt; (token ==~ &lt;span style=&quot;background-color:hsla(300,100%,50%,0.06)&quot;&gt;&lt;span style=&quot;color:#404&quot;&gt;/&lt;/span&gt;&lt;span style=&quot;color:#808&quot;&gt;(?i)(Y|YES|T|TRUE|ON|RUN)&lt;/span&gt;&lt;span style=&quot;color:#404&quot;&gt;/&lt;/span&gt;&lt;/span&gt;) {
+    &lt;span style=&quot;color:#777&quot;&gt;/* step */&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;logical-or-of-conditions&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#logical-or-of-conditions&quot;&gt;&lt;/a&gt;Logical &quot;OR&quot; of conditions&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This condition wraps other conditions.
+It takes their results as inputs and performs a logical &quot;or&quot; of the results.
+The &lt;code&gt;AND&lt;/code&gt; and &lt;code&gt;NOT&lt;/code&gt; conditions do the same, performing their respective operations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;when {
+    &lt;span style=&quot;color:#777&quot;&gt;// A or B&lt;/span&gt;
+    expression { &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;return&lt;/span&gt; A || B }
+}
+steps {
+    &lt;span style=&quot;color:#777&quot;&gt;/* step */&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;  &lt;div class=&quot;pipeline-script-expand&quot;&gt;
+    &lt;a href=&quot;#&quot; onclick=&quot;javascript:$(this).parent().siblings(&amp;apos;.pipeline-script&amp;apos;).toggle(); return false;&quot;&gt;Toggle Pipeline Script&lt;/a&gt;
+    &lt;em&gt;(Advanced)&lt;/em&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;listingblock pipeline-script&quot; style=&quot;display: none&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Scripted Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;&lt;span style=&quot;color:#777&quot;&gt;// A or B&lt;/span&gt;
+&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;if&lt;/span&gt; (A || B) {
+    &lt;span style=&quot;color:#777&quot;&gt;/* step */&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;tokens&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#tokens&quot;&gt;&lt;/a&gt;Tokens&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Tokens can be considerably more work than conditions.
+There are more of them and they cover a much broader range of behaviors.
+The previous example showed one of the simpler cases, accessing a build parameter,
+where the token has a direct equivalent in Pipeline.
+However, many tokens don’t have direct equivalents,
+some take a parameters (adding to their complexity),
+and some provide information that is simply not exposed in Pipeline yet.
+So, determining how to migrate tokens needs to be done on case-by-case basis.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let’s look at a few examples.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;file-token&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#file-token&quot;&gt;&lt;/a&gt;&quot;FILE&quot; token&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Expands to the contents of a file. The file path is relative to the build workspace root.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;em&gt;${FILE,path=&quot;PATH&quot;}&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This token maps directly to the &lt;code&gt;readFile&lt;/code&gt; step.
+The only difference is the file path for &lt;code&gt;readFile&lt;/code&gt; is relative to the
+current working directory on the agent, but that is the workspace root by default.
+No problem.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;when {
+    expression { &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;return&lt;/span&gt; readFile(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;pom.xml&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).contains(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;mycomponent&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) }
+}
+steps {
+    &lt;span style=&quot;color:#777&quot;&gt;/* step */&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;  &lt;div class=&quot;pipeline-script-expand&quot;&gt;
+    &lt;a href=&quot;#&quot; onclick=&quot;javascript:$(this).parent().siblings(&amp;apos;.pipeline-script&amp;apos;).toggle(); return false;&quot;&gt;Toggle Pipeline Script&lt;/a&gt;
+    &lt;em&gt;(Advanced)&lt;/em&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;listingblock pipeline-script&quot; style=&quot;display: none&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Scripted Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;if&lt;/span&gt; (readFile(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;pom.xml&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).contains(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;mycomponent&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)) {
+    &lt;span style=&quot;color:#777&quot;&gt;/* step */&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;git_branch&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#git_branch&quot;&gt;&lt;/a&gt;GIT_BRANCH&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Expands to the name of the branch that was built.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt; (descriptions omitted): &lt;em&gt;all&lt;/em&gt;, &lt;em&gt;fullName&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This information may or may not be exposed in Pipeline.  If you’re using the
+&lt;a href=&quot;https://plugins.jenkins.io/workflow-multibranch&quot;&gt;Pipeline Multibranch plugin&lt;/a&gt;
+&lt;code&gt;env.BRANCH_NAME&lt;/code&gt; will give similar basic information, but doesn’t offer the parameters.
+There are also
+&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-35230&quot;&gt;several&lt;/a&gt;
+&lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-24141&quot;&gt;issues&lt;/a&gt;
+filed around &lt;code&gt;GIT_*&lt;/code&gt; tokens in Pipeline.
+Until they are addressed fully, we can follow the pattern shown in
+&lt;a href=&quot;https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/gitcommit/gitcommit.groovy&quot;&gt;pipeline-examples&lt;/a&gt;,
+executing a shell to get the information we need.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;Pipeline&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;GIT_BRANCH = sh(&lt;span style=&quot;color:#606&quot;&gt;returnStdout&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;script&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;git rev-parse --abbrev-ref HEAD&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).trim()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;changes_since_last_success&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#changes_since_last_success&quot;&gt;&lt;/a&gt;CHANGES_SINCE_LAST_SUCCESS&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Displays the changes since the last successful build.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt; (descriptions omitted):
+&lt;em&gt;reverse&lt;/em&gt;, &lt;em&gt;format&lt;/em&gt;, &lt;em&gt;changesFormat&lt;/em&gt;, &lt;em&gt;showPaths&lt;/em&gt;, &lt;em&gt;pathFormat&lt;/em&gt;,
+&lt;em&gt;showDependencies&lt;/em&gt;, &lt;em&gt;dateFormat&lt;/em&gt;, &lt;em&gt;regex&lt;/em&gt;, &lt;em&gt;replace&lt;/em&gt;, &lt;em&gt;default&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Not only is the information provided by this token not exposed in Pipeline,
+the token has ten optional parameters, including format strings and regular expression
+searches. There are a number of ways we might get similar information in Pipeline.
+Each have their own particular limitations and ways they differ from the token output.
+Then we’ll need to consider how each of the parameters changes the output.
+If nothing else, translating this token is clearly beyond the scope of this post.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;slightly-more-complex-example&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#slightly-more-complex-example&quot;&gt;&lt;/a&gt;Slightly More Complex Example&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let’s do one more example that shows some of these conditions and tokens.
+This time we’ll perform different build steps depending on what branch we’re building.
+We’ll take two build parameters: &lt;code&gt;BRANCH_PATTERN&lt;/code&gt; and &lt;code&gt;FORCE_FULL_BUILD&lt;/code&gt;.
+Based on &lt;code&gt;BRANCH_PATTERN&lt;/code&gt;, we’ll checkout a repository.
+If we’re building on the &lt;code&gt;master&lt;/code&gt; branch or the user checked &lt;code&gt;FORCE_FULL_BUILD&lt;/code&gt;,
+we’ll call three other builds in parallel
+(&lt;code&gt;full-build-linux&lt;/code&gt;, &lt;code&gt;full-build-mac&lt;/code&gt;, and &lt;code&gt;full-build-windows&lt;/code&gt;),
+wait for them to finish, and report the result.
+If we’re not building on the &lt;code&gt;master&lt;/code&gt; branch and the user did not check &lt;code&gt;FORCE_FULL_BUILD&lt;/code&gt;,
+we’ll print a message saying we skipped the full builds.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;freestyle&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#freestyle&quot;&gt;&lt;/a&gt;Freestyle&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s the configuration for Freestyle version.
+(It’s pretty long.  Feel free to &lt;a href=&quot;#longer-pipeline&quot;&gt;skip down to the Pipeline version&lt;/a&gt;):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock note&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Pipeline version of this job determines the &lt;code&gt;GIT_BRANCH&lt;/code&gt; branch by
+running a shell script that returns the current local branch name.
+This means that the Pipeline version must checkout to a local branch (not a detached head).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Freestyle version of this job does not require a local branch, &lt;code&gt;GIT_BRANCH&lt;/code&gt; is set automatically.
+However, to maintain functional parity, the Freestyle version of this job includes
+&quot;Checkout to Specific Local Branch&quot; as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock center&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2017-01-19/freestyle-conditional-long-full.png&quot; alt=&quot;Longer Freestyle Job&quot; width=&quot;800&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;longer-pipeline&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#longer-pipeline&quot;&gt;&lt;/a&gt;Pipeline&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s the equivalent Pipeline:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock note&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Freestyle version of this job is not stored in source control.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In general, the Pipeline version of this job would be stored in source control,
+would &lt;code&gt;checkout scm&lt;/code&gt;, and would run that same repository.
+However, to maintain functional parity, the Pipeline version shown does a checkout
+from source control but is not stored in that repository.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pipeline-block&quot;&gt;  &lt;div class=&quot;listingblock pipeline-declarative&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Declarative Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;pipeline {
+    agent any
+    parameters {
+        string (
+            &lt;span style=&quot;color:#606&quot;&gt;defaultValue&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;*&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;description&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            name : &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;BRANCH_PATTERN&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
+        booleanParam (
+            &lt;span style=&quot;color:#606&quot;&gt;defaultValue&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;description&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            name : &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;FORCE_FULL_BUILD&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
+    }
+
+    stages {
+        stage (&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Prepare&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
+            steps {
+                checkout([&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GitSCM&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+                    &lt;span style=&quot;color:#B06;font-weight:bold&quot;&gt;branches&lt;/span&gt;: [[&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;origin/&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;BRANCH_PATTERN&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;]],
+                    &lt;span style=&quot;color:#606&quot;&gt;doGenerateSubmoduleConfigurations&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;,
+                    &lt;span style=&quot;color:#606&quot;&gt;extensions&lt;/span&gt;: [[&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;LocalBranch&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]],
+                    &lt;span style=&quot;color:#B06;font-weight:bold&quot;&gt;submoduleCfg&lt;/span&gt;: &lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;[]&lt;/span&gt;,
+                    &lt;span style=&quot;color:#606&quot;&gt;userRemoteConfigs&lt;/span&gt;: [[
+                        &lt;span style=&quot;color:#606&quot;&gt;credentialsId&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;bitwiseman_github&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+                        &lt;span style=&quot;color:#606&quot;&gt;url&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;https://github.com/bitwiseman/hermann&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]]])
+            }
+        }
+
+        stage (&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Build&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
+            when {
+                expression {
+                    GIT_BRANCH = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;origin/&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt; + sh(&lt;span style=&quot;color:#606&quot;&gt;returnStdout&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;script&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;git rev-parse --abbrev-ref HEAD&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).trim()
+                    &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;return&lt;/span&gt; GIT_BRANCH == &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;origin/master&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt; || params.FORCE_FULL_BUILD
+                }
+            }
+            steps {
+                &lt;span style=&quot;color:#777&quot;&gt;// Freestyle build trigger calls a list of jobs&lt;/span&gt;
+                &lt;span style=&quot;color:#777&quot;&gt;// Pipeline build() step only calls one job&lt;/span&gt;
+                &lt;span style=&quot;color:#777&quot;&gt;// To run all three jobs in parallel, we use &quot;parallel&quot; step&lt;/span&gt;
+                &lt;span style=&quot;color:#777&quot;&gt;// https://jenkins.io/doc/pipeline/examples/#jobs-in-parallel&lt;/span&gt;
+                parallel (
+                    &lt;span style=&quot;color:#606&quot;&gt;linux&lt;/span&gt;: {
+                        build &lt;span style=&quot;color:#606&quot;&gt;job&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;full-build-linux&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;parameters&lt;/span&gt;: [string(&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GIT_BRANCH_NAME&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;value&lt;/span&gt;: GIT_BRANCH)]
+                    },
+                    &lt;span style=&quot;color:#606&quot;&gt;mac&lt;/span&gt;: {
+                        build &lt;span style=&quot;color:#606&quot;&gt;job&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;full-build-mac&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;parameters&lt;/span&gt;: [string(&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GIT_BRANCH_NAME&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;value&lt;/span&gt;: GIT_BRANCH)]
+                    },
+                    &lt;span style=&quot;color:#606&quot;&gt;windows&lt;/span&gt;: {
+                        build &lt;span style=&quot;color:#606&quot;&gt;job&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;full-build-windows&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;parameters&lt;/span&gt;: [string(&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GIT_BRANCH_NAME&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;value&lt;/span&gt;: GIT_BRANCH)]
+                    },
+                    &lt;span style=&quot;color:#606&quot;&gt;failFast&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;)
+            }
+        }
+        stage (&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Build Skipped&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
+            when {
+                expression {
+                    GIT_BRANCH = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;origin/&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt; + sh(&lt;span style=&quot;color:#606&quot;&gt;returnStdout&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;script&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;git rev-parse --abbrev-ref HEAD&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).trim()
+                    &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;return&lt;/span&gt; !(GIT_BRANCH == &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;origin/master&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt; || params.FORCE_FULL_BUILD)
+                }
+            }
+            steps {
+                echo &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Skipped full build.&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
+            }
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;  &lt;div class=&quot;pipeline-script-expand&quot;&gt;
+    &lt;a href=&quot;#&quot; onclick=&quot;javascript:$(this).parent().siblings(&amp;apos;.pipeline-script&amp;apos;).toggle(); return false;&quot;&gt;Toggle Pipeline Script&lt;/a&gt;
+    &lt;em&gt;(Advanced)&lt;/em&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;listingblock pipeline-script&quot; style=&quot;display: none&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Jenkinsfile (Scripted Pipeline)&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+  &lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;properties ([
+    parameters ([
+        string (
+            &lt;span style=&quot;color:#606&quot;&gt;defaultValue&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;*&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;description&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            name : &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;BRANCH_PATTERN&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;),
+        booleanParam (
+            &lt;span style=&quot;color:#606&quot;&gt;defaultValue&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;description&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            name : &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;FORCE_FULL_BUILD&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
+    ])
+])
+
+node {
+    stage (&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Prepare&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
+        checkout([&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GitSCM&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+            &lt;span style=&quot;color:#B06;font-weight:bold&quot;&gt;branches&lt;/span&gt;: [[&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;origin/&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;BRANCH_PATTERN&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;]],
+            &lt;span style=&quot;color:#606&quot;&gt;doGenerateSubmoduleConfigurations&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;extensions&lt;/span&gt;: [[&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;LocalBranch&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]],
+            &lt;span style=&quot;color:#B06;font-weight:bold&quot;&gt;submoduleCfg&lt;/span&gt;: &lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;[]&lt;/span&gt;,
+            &lt;span style=&quot;color:#606&quot;&gt;userRemoteConfigs&lt;/span&gt;: [[
+                &lt;span style=&quot;color:#606&quot;&gt;credentialsId&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;bitwiseman_github&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+                &lt;span style=&quot;color:#606&quot;&gt;url&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;https://github.com/bitwiseman/hermann&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]]])
+    }
+
+    stage (&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Build&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
+        GIT_BRANCH = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;origin/&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt; + sh(&lt;span style=&quot;color:#606&quot;&gt;returnStdout&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;script&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;git rev-parse --abbrev-ref HEAD&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).trim()
+        &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;if&lt;/span&gt; (GIT_BRANCH == &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;origin/master&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt; || params.FORCE_FULL_BUILD) {
+
+            &lt;span style=&quot;color:#777&quot;&gt;// Freestyle build trigger calls a list of jobs&lt;/span&gt;
+            &lt;span style=&quot;color:#777&quot;&gt;// Pipeline build() step only calls one job&lt;/span&gt;
+            &lt;span style=&quot;color:#777&quot;&gt;// To run all three jobs in parallel, we use &quot;parallel&quot; step&lt;/span&gt;
+            &lt;span style=&quot;color:#777&quot;&gt;// https://jenkins.io/doc/pipeline/examples/#jobs-in-parallel&lt;/span&gt;
+            parallel (
+                &lt;span style=&quot;color:#606&quot;&gt;linux&lt;/span&gt;: {
+                    build &lt;span style=&quot;color:#606&quot;&gt;job&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;full-build-linux&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;parameters&lt;/span&gt;: [string(&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GIT_BRANCH_NAME&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;value&lt;/span&gt;: GIT_BRANCH)]
+                },
+                &lt;span style=&quot;color:#606&quot;&gt;mac&lt;/span&gt;: {
+                    build &lt;span style=&quot;color:#606&quot;&gt;job&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;full-build-mac&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;parameters&lt;/span&gt;: [string(&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GIT_BRANCH_NAME&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;value&lt;/span&gt;: GIT_BRANCH)]
+                },
+                &lt;span style=&quot;color:#606&quot;&gt;windows&lt;/span&gt;: {
+                    build &lt;span style=&quot;color:#606&quot;&gt;job&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;full-build-windows&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;parameters&lt;/span&gt;: [string(&lt;span style=&quot;color:#606&quot;&gt;name&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GIT_BRANCH_NAME&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;value&lt;/span&gt;: GIT_BRANCH)]
+                },
+                &lt;span style=&quot;color:#606&quot;&gt;failFast&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;)
+
+        } &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;else&lt;/span&gt; {
+            echo &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Skipped full build.&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As I said before, the Conditional BuildStep plugin is great.
+It provides a clear, easy to understand way to add conditional logic to any Freestyle job.
+Before Pipeline, it was one of the few plugins to do this and it remains one of the most popular plugins.
+Now that we have Pipeline, we can implement conditional logic directly in code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is blog post discussed how to approach converting conditional build steps to Pipeline
+and showed a couple concrete examples.  Overall, I’m pleased with the results so far.
+I found scenarios which could not easily be migrated to Pipeline, but even those
+are only more difficult, rather than impossible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The next thing to do is add a section to the
+&lt;a href=&quot;https://jenkins.io/doc/book/&quot;&gt;Jenkins Handbook&lt;/a&gt; documenting the Pipeline
+equivalent of all of the Conditions and the most commonly used Tokens.
+Look for it soon!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/conditional-buildstep&quot;&gt;Conditional BuildStep plugin&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/17/scm-api-2/</id>
+<title>SCM API turns 2.0 and what that means for you</title>
+<updated>2017-01-20T13:16:34-08:00</updated>
+<published>2017-01-17T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/17/scm-api-2/" />
+<author>
+<name>stephenc</name>
+</author>
+<category term="development"></category>
+<category term="plugins"></category>
+<summary>
+Due to regressions
+discovered after release it is not recommended to upgrade the plugins listed
+below at this time.
+
+
+
+
+
+
+We are announcing the
+SCM API
+2.0.x and
+Branch API
+2.0.x release lines.
+
+
+Downstream of this there are also some great improvements to a number of popular plugins including:
+
+
+
+
+GitHub Branch Source
+
+
+BitBucket branch source
+
+
+Git
+
+
+Mercurial
+
+
+Pipeline Multibranch
+
+
+GitHub Organization Folders
+
+
+
+
+There are some gotcha&#8217;s that Jenkins administrators will need to be aware of.
+
+
+
+
+
+
+
+
+Always take a backup of your JENKINS_HOME before upgrading any plugins.
+
+
+
+
+
+We want to give you the whole story, but the take home message is this:
+
+
+
+
+When updating the
+SCM API
+and/or
+Branch API
+plugins to the 2.0.x release lines, if you have any of the
+GitHub Organization Folders,
+GitHub...
+</summary>
+<content type="html">
+&lt;div class=&quot;admonitionblock caution&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-caution&quot; title=&quot;Caution&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Due to &lt;a href=&quot;https://issues.jenkins-ci.org/browse/JENKINS-41121&quot;&gt;regressions
+discovered after release&lt;/a&gt; it is not recommended to upgrade the plugins listed
+below at this time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We are announcing the
+&lt;a href=&quot;https://plugins.jenkins.io/scm-api&quot;&gt;SCM API&lt;/a&gt;
+2.0.x and
+&lt;a href=&quot;https://plugins.jenkins.io/branch-api&quot;&gt;Branch API&lt;/a&gt;
+2.0.x release lines.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Downstream of this there are also some great improvements to a number of popular plugins including:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/github-branch-source&quot;&gt;GitHub Branch Source&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/cloudbees-bitbucket-branch-source&quot;&gt;BitBucket branch source&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/git&quot;&gt;Git&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/mercurial&quot;&gt;Mercurial&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/workflow-multibranch&quot;&gt;Pipeline Multibranch&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/github-organization-folder&quot;&gt;GitHub Organization Folders&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There are some gotcha’s that Jenkins administrators will need to be aware of.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock tip&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+Always take a backup of your &lt;code&gt;JENKINS_HOME&lt;/code&gt; before upgrading any plugins.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We want to give you the whole story, but the take home message is this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When updating the
+&lt;a href=&quot;https://plugins.jenkins.io/scm-api&quot;&gt;SCM API&lt;/a&gt;
+and/or
+&lt;a href=&quot;https://plugins.jenkins.io/branch-api&quot;&gt;Branch API&lt;/a&gt;
+plugins to the 2.0.x release lines, if you have any of the
+&lt;a href=&quot;https://plugins.jenkins.io/github-organization-folder&quot;&gt;GitHub Organization Folders&lt;/a&gt;,
+&lt;a href=&quot;https://plugins.jenkins.io/github-branch-source&quot;&gt;GitHub Branch Source&lt;/a&gt;
+and/or
+&lt;a href=&quot;https://plugins.jenkins.io/cloudbees-bitbucket-branch-source&quot;&gt;BitBucket branch source&lt;/a&gt;
+plugins installed then you &lt;strong&gt;must&lt;/strong&gt; upgrade them &lt;strong&gt;all&lt;/strong&gt; to 2.0.x at the same time or Bad Things™ will happen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;attribution&quot;&gt;
+— A Jenkins Administrator
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock warning&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-warning&quot; title=&quot;Warning&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Do NOT upgrade some of these plugins but not others!
+Doing so may cause your jobs to fail to load.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you don’t care about the hows and whys, you can just skip down to &lt;a href=&quot;#tldr&quot;&gt;this section&lt;/a&gt; but if you are curious…​ here we go!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-back-story&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#the-back-story&quot;&gt;&lt;/a&gt;The back-story&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Way back in September 2013 we announced the
+&lt;a href=&quot;https://jenkins.io/blog/2013/09/23/literate-builds-wtf/&quot;&gt;Literate plugin&lt;/a&gt;,
+as an experimental new way of modeling branch development in Jenkins.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When you are performing an experiment, the recommendation is to do just enough work to let you perform the test.
+However, the culture in Jenkins is to always try and produce reusable components that others can use in ways you have not anticipated.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So when releasing the initial version of the
+&lt;a href=&quot;https://plugins.jenkins.io/literate&quot;&gt;Literate plugin&lt;/a&gt;
+we also separated the Literate specific bits from the SCM specific concepts and multi-branch concepts.
+These were lower level concepts were organized into the following plugins:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/scm-api&quot;&gt;SCM API&lt;/a&gt; -
+which was intended to be a plugin to hold a next generation API for interacting with source control systems.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jenkins.io/branch-api&quot;&gt;Branch API&lt;/a&gt; -
+which was intended to be a plugin to hold the multi-branch functionality that was abstracted from the usage by the Literate plugin.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In addition, we released updates to three of the more common SCM plugins which included implementations of the SCM API:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Git plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Subversion plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mercurial plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While there was some interest in the Literate plugin, it did not gain much traction - there are only 39 Jenkins instances running the Literate plugin as of December 2016.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In terms of the reusable components, we had only made a minimal implementation with some limitations:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Very basic event support - events can only trigger a re-scan of the entire repository.
+This was acceptable at the time because the only three implementations use a local cache of the remote state so re-scanning is quick.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No implementation of the &lt;code&gt;SCMFileSystem&lt;/code&gt; API.
+As a result it is not possible for plugins like
+&lt;a href=&quot;https://plugins.jenkins.io/workflow-multibranch&quot;&gt;Pipeline Multibranch&lt;/a&gt;
+to get the &lt;code&gt;Jenkinsfile&lt;/code&gt; from the remote repository without needing to checkout the repository into a workspace.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No documentation on how plugin developers are supposed to implement the SCM API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No documentation on how plugin developers are supposed to consume the SCM API (if they wanted to do something like Branch API but not the same way as Branch API)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No documentation on how plugin developers are supposed to implement the Branch API to create their own multi-branch project types&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No documentation on for users on how the Branch API based project types are expected to work.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Roll forward to November 2015 and Jenkins Pipeline got a release of the
+&lt;a href=&quot;https://plugins.jenkins.io/workflow-multibranch&quot;&gt;Pipeline Multibranch&lt;/a&gt;.
+It seems that pairing Pipeline with Branch API style multi-branch is much more successful than Literate - there are close to 60,000 instances running the pipeline multi-branch plugin as of December 2016.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There also were two new SCM plugins implementing the SCM API:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;GitHub Branch Source Plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BitBucket Branch Source Plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Unlike the previous implementations of the SCM API, however, these plugins do not maintain a local cache of the repository state.
+Rather they make queries via the GitHub / BitBucket REST APIs on demand.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The above design decision exposed one of the initial MVP compromises of the SCM API plugin: &lt;em&gt;very basic event support&lt;/em&gt;.
+Under the SCM API 1.x model, the only event that an &lt;code&gt;SCMSource&lt;/code&gt; can signal is &lt;em&gt;something changed, go look at everything again&lt;/em&gt;.
+When you are accessing an API that only allows 5,000 API calls per hour, performing a full scan of the entire repository just to pick up a change in one branch does not make optimum usage of that 5,000 calls/hour rate limit.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So we decided that perhaps the SCM API and Branch API plugins have left their Minimum Viability Experiment state and the corresponding limitations should be addressed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;enter-scm-api-2-0-x-and-branch-api-2-0-x&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#enter-scm-api-2-0-x-and-branch-api-2-0-x&quot;&gt;&lt;/a&gt;Enter SCM API 2.0.x and Branch API 2.0.x&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So what has changed in the
+&lt;a href=&quot;https://plugins.jenkins.io/scm-api&quot;&gt;SCM API&lt;/a&gt;
+2.0.x and
+&lt;a href=&quot;https://plugins.jenkins.io/branch-api&quot;&gt;Branch API&lt;/a&gt;
+2.0.x release lines?
+These plugin releases include:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;documentation on how plugin developers are supposed to
+&lt;a href=&quot;https://github.com/jenkinsci/scm-api-plugin/blob/master/docs/implementation.adoc&quot;&gt;implement the SCM API&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;documentation on how plugin developers are supposed to
+&lt;a href=&quot;https://github.com/jenkinsci/scm-api-plugin/blob/master/docs/consumer.adoc&quot;&gt;consume the SCM API&lt;/a&gt;
+(if they wanted to do something like Branch API but not the same way as Branch API)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;documentation on how plugin developers are supposed to
+&lt;a href=&quot;https://github.com/jenkinsci/branch-api-plugin/blob/master/docs/implementation.adoc&quot;&gt;implement the Branch API&lt;/a&gt;
+to create their own multi-branch project types&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;generic documentation for users on
+&lt;a href=&quot;https://github.com/jenkinsci/branch-api-plugin/blob/master/docs/user.adoc&quot;&gt;how Branch API based project types are intended to work&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;a full featured
+&lt;a href=&quot;https://github.com/jenkinsci/scm-api-plugin/blob/master/src/main/java/jenkins/scm/api/SCMEvent.java&quot;&gt;event system&lt;/a&gt;
+that allows implementers to provide fine grained notifications to consumers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jenkinsci/scm-api-plugin/tree/master/src/test/java/jenkins/scm/api&quot;&gt;lots&lt;/a&gt;
+&lt;a href=&quot;https://github.com/jenkinsci/scm-api-plugin/tree/master/src/test/java/jenkins/scm/impl&quot;&gt;and&lt;/a&gt;
+&lt;a href=&quot;https://github.com/jenkinsci/branch-api-plugin/tree/master/src/test/java/integration&quot;&gt;lots&lt;/a&gt;
+of new automated tests&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;a &lt;a href=&quot;https://github.com/jenkinsci/scm-api-plugin/tree/master/src/test/java/jenkins/scm/impl/mock&quot;&gt;mock implementation&lt;/a&gt;
+of the SCM API to help consumers of the SCM API test their usage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In addition, we have upgraded the following plugins to include the new fine-grained event support:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Git Plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mercurial Plugin&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Ok, that was the good news.
+Here is the bad news.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We found out that the GitHub Branch Source and BitBucket Branch Source plugins had made invalid assumptions about how to implement the SCM API.
+To be clear, this was not the plugin developers fault: at the time there was no documentation on how to implement the SCM API.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;But fixing the issues that we found means that you have to be careful about which specific combinations of plugin versions you have installed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;dlist&quot;&gt;
+&lt;dl&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;SCM API Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Technically, the 2.0.x line of this plugin is both API and on-disk compatible with plugins compiled against older version lines.&lt;/p&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;However, the 1.x lines of both the GitHub Branch Source and BitBucket Branch Source plugins have hard-coded assumptions about internal implementation of the SCM API that are no longer valid in the 2.0.x line.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock warning&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-warning&quot; title=&quot;Warning&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you upgrade to SCM API 2.0.x and you have either the GitHub Branch Source or the BitBucket Branch Source plugins &lt;strong&gt;and&lt;/strong&gt; you do not upgrade those instances to the 2.0.x line then your Jenkins instance will fail to start-up correctly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The solution is just to upgrade the GitHub Branch Source or the BitBucket Branch Source plugin (as appropriate) to the 2.0.x line.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock tip&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you upgrade the SCM API plugin to the 2.0.x line and do not upgrade the Branch API plugin to the 2.0.x line then you will not get any of the benefits of the new version of the SCM API plugin.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Branch API Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;The 2.0.x line of this plugin makes on-disk file format changes that mean you will be unable to roll back to the 1.x line after an upgrade without restoring the old data files from a back-up.
+Technically, the API is compatible with plugins compiled against older version lines.&lt;/p&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The 1.x lines of both the GitHub Branch Source and BitBucket Branch Source plugins have implemented hacks that make assumptions about internal implementation of the Branch API that are no longer valid in the 2.0.x line.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Pipeline Multibranch plugin made a few minor invalid assumptions about how to implement a Multibranch project type.
+For example, if you do not upgrade the Pipeline Multibranch plugin in tandem then you will be unable to manually delete an orphaned item before the orphaned item retention strategy runs, which should be significantly less frequently with the new event support.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock warning&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-warning&quot; title=&quot;Warning&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you upgrade to Branch API 2.0.x and you have either the GitHub Branch Source or the BitBucket Branch Source plugins &lt;strong&gt;and&lt;/strong&gt; you do not upgrade those instances to the 2.0.x line then your Jenkins instance will fail to start-up correctly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The solution is just to upgrade the GitHub Branch Source or the BitBucket Branch Source plugin (as appropriate) to the 2.0.x line.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Git Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;The new releases of this plugin are both API and on-disk compatible with plugins compiled against the previous releases.&lt;/p&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The 2.0.x lines of both the GitHub Branch Source and BitBucket Branch Source plugins require that you upgrade your Git Plugin to one of the versions that supports SCM API 2.0.x.
+In general, the required upgrade will be performed automatically when you upgrade your GitHub Branch Source and BitBucket Branch Source plugins.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Mercurial Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;The new release of this plugin is both API and on-disk compatible with plugins compiled against the previous releases.&lt;/p&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The 2.0.x line of the BitBucket Branch Source plugins require that you upgrade your Mercurial Plugin to the 2.0.x line.
+In general, the required upgrade will be performed automatically when you upgrade your  BitBucket Branch Source plugins.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;BitBucket Branch Source Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;The 2.0.x line of this plugin makes on-disk file format changes that mean you will be unable to roll back to the 1.x line after an upgrade without restoring the old data files from a back-up.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;GitHub Branch Source Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;The 2.0.x line of this plugin makes on-disk file format changes that mean you will be unable to roll back to the 1.x line after an upgrade without restoring the old data files from a back-up.&lt;/p&gt;
+&lt;div class=&quot;admonitionblock warning&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-warning&quot; title=&quot;Warning&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you upgrade to GitHub Branch Source 2.0.x and you have the GitHub Organization Folders plugin installed, you must upgrade that plugin to the tombstone release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;GitHub Organization Folders Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;The functionality of this plugin has been migrated to the GitHub Branch Source plugin.
+You will need to upgrade to the tombstone release in order to ensure all the data has been migrated to the classes in the GitHub Branch Source plugin.&lt;/p&gt;
+&lt;div class=&quot;admonitionblock tip&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Once you have upgraded to the tombstone version and all GitHub Organization Folders have had a full scan completed successfully, you can disable and uninstall the GitHub Organization Folders plugin.
+There will be no more releases of this plugin after the tombstone.
+The tombstone is only required for data migration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;tldr&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#tldr&quot;&gt;&lt;/a&gt;Summary for busy Jenkins Administrators&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Upgrading should make multi-branch projects much better.
+When you are ready to upgrade you must ensure that you upgrade all the required plugins.
+If you miss some, just upgrade them and restart to fix the issue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;dlist&quot;&gt;
+&lt;dl&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;SCM API Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;2.0.1 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Branch API Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;2.0.0 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Git Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;&lt;strong&gt;Either&lt;/strong&gt; 2.6.2 or newer in the 2.6.x line &lt;strong&gt;or&lt;/strong&gt; 3.0.2 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Mercurial Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;2.0.0 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;GitHub Branch Source Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;2.0.0 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;BitBucket Branch Source Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;2.0.0 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;GitHub Organization Folders Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;1.6&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Pipeline Multibranch Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;2.10 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Other plugins that may require updating:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;dlist&quot;&gt;
+&lt;dl&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;GitHub API Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;1.84 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;GitHub Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;1.25.0 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Folders Plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;5.16 or newer&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;After an upgrade you will see the data migration warning&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;summary-for-busy-jenkins-users&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#summary-for-busy-jenkins-users&quot;&gt;&lt;/a&gt;Summary for busy Jenkins users&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;SCM API 2.0.x adds fine-grained event support.
+This should significantly improve the responsiveness of multi-branch projects.
+This should significantly reduce your GitHub API rate limit usage.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are using the
+&lt;a href=&quot;https://plugins.jenkins.io/github-branch-source&quot;&gt;GitHub Branch Source&lt;/a&gt;
+or
+&lt;a href=&quot;https://plugins.jenkins.io/github-organization-folder&quot;&gt;GitHub Organization Folders&lt;/a&gt;
+plugins then upgrading will &lt;strong&gt;significantly&lt;/strong&gt; reduce the API calls made by Jenkins to GitHub.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are using any of the upgraded SCM plugins (e.g. Git, Mercurial, GitHub Branch Source, BitBucket Branch Source) then upgrading will &lt;strong&gt;significantly&lt;/strong&gt; improve the responsiveness to push event notifications.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;summary-for-busy-scm-plugin-developers&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#summary-for-busy-scm-plugin-developers&quot;&gt;&lt;/a&gt;Summary for busy SCM plugin developers&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You should read the new
+&lt;a href=&quot;https://github.com/jenkinsci/scm-api-plugin/blob/master/docs/implementation.adoc&quot;&gt;documentation&lt;/a&gt;
+on how plugin developers are supposed to implement the SCM API&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;where-to-now-dear-literate-plugin&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#where-to-now-dear-literate-plugin&quot;&gt;&lt;/a&gt;Where to now dear Literate Plugin&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The persistent reader may be wondering what happens now to the Literate plugin.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For me, the logical heir of the Literate Plugin is the
+&lt;a href=&quot;https://plugins.jenkins.io/pipeline-model-definition&quot;&gt;Pipeline Model Definition plugin&lt;/a&gt;.
+This new plugin has the advantage of an easy to read pipeline syntax with the extra functionality that I suspect was preventing people from adopting Literate.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The good news is that the Pipeline Model Definition already has 5000 installations as of December 2016 and I expect up-take to keep on growing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/17/Jenkins-is-upgrading-to-Java-8/</id>
+<title>Jenkins Upgrades To Java 8</title>
+<updated>2017-01-20T13:16:34-08:00</updated>
+<published>2017-01-17T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/17/Jenkins-is-upgrading-to-Java-8/" />
+<author>
+<name>batmat</name>
+</author>
+<category term="java8"></category>
+<category term="upgrade"></category>
+<summary>
+In the next few months, Jenkins will require Java 8 as its runtime.
+
+
+Back in
+last November,
+we discussed interesting statistics showing that Jenkins was now running Java 8
+on a majority of its running instances.
+
+
+Timeline
+
+
+Here is how we plan to roll that baseline upgrade in the next few months.
+
+
+
+
+Now: Announce the intention publicly.
+
+
+April, 2017: Drop support for Java 7 in Jenkins weekly.
+With the current rhythm, that means 2.52 will most likely be the first weekly to require Java 8.
+
+
+June 2017: First LTS version requiring Java 8 is published.
+This should be something around 2.60.1.
+
+
+
+
+
+
+
+
+
+
+If you are still running Java 7, you will not be...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;In the next few months, Jenkins will require Java 8 as its runtime.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Back in
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/&quot;&gt;last November&lt;/a&gt;,
+we discussed interesting statistics showing that Jenkins was now running Java 8
+on a majority of its running instances.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;timeline&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#timeline&quot;&gt;&lt;/a&gt;Timeline&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here is how we plan to roll that baseline upgrade in the next few months.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Now: Announce the intention publicly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;April, 2017: Drop support for Java 7 in Jenkins weekly.
+With the current rhythm, that means &lt;em&gt;2.52&lt;/em&gt; will most likely be the first weekly to require Java 8.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;June 2017: First LTS version requiring Java 8 is published.
+This should be something around &lt;em&gt;2.60.1&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock caution&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-caution&quot; title=&quot;Caution&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+If you are still running Java 7, you will not be able to upgrade to the latest LTS version after some date probably around May 2017.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;why-upgrade-to-java-8&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#why-upgrade-to-java-8&quot;&gt;&lt;/a&gt;Why Upgrade to Java 8&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Balancing those numbers with many other criteria:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Java 7 has been now end-of-lifed for 18+ months&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;People are already moving away from Java 7, as show the numbers&lt;/p&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;52.8%&lt;/em&gt; of instances were already running Java 8 back in last November, and now reaching &lt;a href=&quot;http://stats.jenkins.io/plugin-installation-trend/jvms.json&quot;&gt;&lt;em&gt;58%&lt;/em&gt; two months later&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If we only look at Jenkins 2.x, then we reach &lt;em&gt;72%&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java 8 runtime is known from the field to be more stable&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Many developers have been wanting to be allowed to leverage the improvements that Java 8 provides to the language and platform
+(lambdas, Date/Time API…​ just to name a few).
+Being also a developer community, we want Jenkins to be appealing to contributors.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you have questions or feedback about this announcement, please feel free to post it to the Jenkins developers mailing list.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/</id>
 <title>Blue Ocean Dev Log: January Week #2</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:16:34-08:00</updated>
 <published>2017-01-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/" />
 <author>
@@ -152,7 +1733,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/</id>
 <title>Declarative Pipeline Syntax Beta 2 release</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2017-01-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/" />
 <author>
@@ -366,7 +1947,7 @@ give them a try!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/11/jenkins-world-2017-cfp/</id>
 <title>Jenkins World 2017 Call for Papers is Open</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2017-01-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/11/jenkins-world-2017-cfp/" />
 <author>
@@ -426,7 +2007,7 @@ like to hear from you!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/10/security-warnings/</id>
 <title>Security warnings in Jenkins</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2017-01-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/10/security-warnings/" />
 <author>
@@ -487,7 +2068,7 @@ list of the same name, as well other means.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/10/jenkins-lifx-notifier-plugin/</id>
 <title>Learning plugin development by improving the LIFX notifier plugin</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2017-01-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/10/jenkins-lifx-notifier-plugin/" />
 <author>
@@ -728,7 +2309,7 @@ for more information about the latest releases!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/</id>
 <title>Thank you for an amazing 2016</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-12-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/" />
 <author>
@@ -1004,7 +2585,7 @@ in the Jenkins project, so if you didn’t have an opportunity to join in during
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/</id>
 <title>Continuous Delivery with Jenkins and Puppet Enterprise</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-12-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/" />
 <author>
@@ -1403,7 +2984,7 @@ You’ll be glad you did.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/</id>
 <title>Announcing the beta of Declarative Pipeline Syntax</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:16:34-08:00</updated>
 <published>2016-12-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/" />
 <author>
@@ -1639,7 +3220,7 @@ now possible to create and edit pipelines with a GUI editor.&lt;/p&gt;
 &lt;p&gt;Although we plan to launch 1.0 of Declarative Pipeline before Blue Ocean 1.0 is
 officially available, we expect to have a working Beta of the Editor available
 to play with. The combination of a simple syntax and an intuitive editor
-should make creating Jenkisn Pipelines a breeze.&lt;/p&gt;
+should make creating Jenkins Pipelines a breeze.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1659,7 +3240,7 @@ we expect great things for Jenkins in 2017!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/</id>
 <title>Monthly JAM Recap - November 2016</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-12-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/" />
 <author>
@@ -1856,7 +3437,7 @@ with very little provisioning time.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/</id>
 <title>Upcoming December Jenkins Events</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-12-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/" />
 <author>
@@ -1991,7 +3572,7 @@ local activities going in December.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/</id>
 <title>What JVM versions are running Jenkins? 2016 Update!</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-11-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" />
 <author>
@@ -2113,7 +3694,7 @@ All numbers shown below are derived from the new &lt;a href=&quot;stats.jenkins.
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/</id>
 <title>Tuning Jenkins GC For Responsiveness and Stability with Large Instances</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-11-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/" />
 <author>
@@ -2930,7 +4511,7 @@ another post…​&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/</id>
 <title>Security updates addressing zero day vulnerability</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-11-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/" />
 <author>
@@ -3009,7 +4590,7 @@ mailing list to receive future Jenkins security notifications.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/</id>
 <title>Upcoming November Jenkins Events</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-11-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/" />
 <author>
@@ -3157,7 +4738,7 @@ below please stop by to say &quot;Hi&quot; and talk Jenkins over beer.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/</id>
 <title>Addressing recently disclosed vulnerabilities in the Jenkins CLI</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-11-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/" />
 <author>
@@ -3275,7 +4856,7 @@ to follow. You can learn more about this policy and our processes on our
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/</id>
 <title>Monthly JAM Recap - October 2016</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-11-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/" />
 <author>
@@ -3420,7 +5001,7 @@ last meetups.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/</id>
 <title>xUnit and Pipeline</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-10-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/" />
 <author>
@@ -3927,7 +5508,7 @@ also write your own XSL for result formats not on the known/supported list.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/</id>
 <title>Jenkins World 2016 Session Videos</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-10-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/" />
 <author>
@@ -4009,7 +5590,7 @@ Technical Evangelist at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/</id>
 <title>Controlling the Flow with Stage, Lock, and Milestone</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-10-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/" />
 <author>
@@ -4257,7 +5838,7 @@ stage(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;s
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/</id>
 <title>Jenkins World 2016, That's a Wrap!</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/" />
 <author>
@@ -4403,7 +5984,7 @@ there isn’t, take a look at the
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/</id>
 <title>Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" />
 <author>
@@ -4612,7 +6193,7 @@ on track before, during, and after the conference.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/</id>
 <title>Jenkins World 2016 Wrap-up - Scaling</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-27T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/" />
 <author>
@@ -4834,7 +6415,7 @@ the challenges and opportunities they see ahead.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/</id>
 <title>Jenkins World 2016 Wrap-up - Pipeline</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/" />
 <author>
@@ -5078,7 +6659,7 @@ delivery practices.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/</id>
 <title>Jenkins World 2016 Wrap-up - Introduction</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/" />
 <author>
@@ -5190,7 +6771,7 @@ including slides, videos, and links to other useful resources.  Stay tuned!&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/</id>
 <title>Jenkins Online Meetup report. Plugin Development - WebUI</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/" />
 <author>
@@ -5309,7 +6890,7 @@ or via the &lt;a href=&quot;mailto:events@lists.jenkins-ci.org&quot;&gt;events@l
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/</id>
 <title>Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/" />
 <author>
@@ -5538,7 +7119,7 @@ do this without you.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/</id>
 <title>Take the 2016 Jenkins Survey!</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/" />
 <author>
@@ -5635,7 +7216,7 @@ minutes.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/</id>
 <title>Continuous Delivery of Infrastructure with Jenkins</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/" />
 <author>
@@ -5794,7 +7375,7 @@ pass.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/</id>
 <title>Pipeline at Jenkins World 2016</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/" />
 <author>
@@ -6187,7 +7768,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/</id>
 <title>Introducing a New Way to Define Jenkins Pipelines</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-06T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/" />
 <author>
@@ -6331,7 +7912,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/</id>
 <title>Jenkins World Contributor Summit</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-09-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/" />
 <author>
@@ -6446,7 +8027,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/</id>
 <title>Scaling Jenkins at Jenkins World 2016</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/" />
 <author>
@@ -6720,7 +8301,7 @@ everybody; hope to see you there!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/</id>
 <title>Demos at Jenkins World 2016</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/" />
 <author>
@@ -6937,7 +8518,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/</id>
 <title>Browser-testing with Sauce OnDemand and Pipeline</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/" />
 <author>
@@ -7402,7 +8983,7 @@ repository.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/</id>
 <title>Enforcing Jenkins Best Practices</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/" />
 <author>
@@ -7577,7 +9158,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/</id>
 <title>Ask the Experts at Jenkins World 2016</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/" />
 <author>
@@ -7723,7 +9304,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/</id>
 <title>Jenkins World 2016 Festivities</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/" />
 <author>
@@ -7921,7 +9502,7 @@ Hat and all the other sponsors&lt;/a&gt; who have made this event possible.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/</id>
 <title>GSoC: External Workspace Manager for Pipeline is released</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/" />
 <author>
@@ -8097,7 +9678,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/</id>
 <title>Continuously Delivering Continuous Delivery Pipelines</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/" />
 <author>
@@ -8296,7 +9877,7 @@ enterprise scale.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/</id>
 <title>Using Jenkins for Disparate Feedback on GitHub</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/" />
 <author>
@@ -8391,7 +9972,7 @@ register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off yo
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/</id>
 <title>Continuous Security for Rails apps with Pipeline and Brakeman</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/" />
 <author>
@@ -8922,7 +10503,7 @@ security, pipeline in code is that you can continue to iterate on it!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/</id>
 <title>GSoC: External Workspace Manager for Pipeline. Beta release is available</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/" />
 <author>
@@ -9218,7 +10799,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/</id>
 <title>Don't install software, define your environment with Docker and Pipeline</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/" />
 <author>
@@ -9475,7 +11056,7 @@ change due to a security patch).&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/</id>
 <title>St. Petersburg Jenkins Meetup #3 and #4 Reports</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-08-03T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/" />
 <author>
@@ -9717,7 +11298,7 @@ organizers of the &lt;a href=&quot;http://piter-united.ru/itgm8/itgm.html&quot;&
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/</id>
 <title>Join me for Jenkins World 2016</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
+<updated>2017-01-20T13:14:15-08:00</updated>
 <published>2016-07-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/" />
 <author>
@@ -9844,618 +11425,6 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/</id>
-<title>Blue Ocean July development update </title>
-<updated>2017-01-15T15:59:40-08:00</updated>
-<published>2016-07-19T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/19/blue-ocean-update/" />
-<author>
-<name>i386</name>
-</author>
-<category term="blueocean"></category>
-<category term="ux"></category>
-<category term="pipeline"></category>
-<summary>
-The team have been hard at work moving the needle forward on the Blue
-Ocean 1.0 features. Many of the features we have been working on have
-come a long way in the past few months but here&#8217;s a few highlights:
-
-
-Goodbye page refreshes, Hello Real Time updates!
-
-Building upon
-Tom's great work on
-Server Sent Events (SSE) both
-Cliff and
-Tom worked
-on making the all the screens in Blue Ocean update without manual
-refreshes.
-
-
-SSE is a great technology
-choice for new web apps as it only pushes out
-events to the client when things have changed on the server. That means
-there’s a lot less traffic going between your browser and...
-</summary>
-<content type="html">
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The team have been hard at work moving the needle forward on the Blue
-Ocean 1.0 features. Many of the features we have been working on have
-come a long way in the past few months but here’s a few highlights:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;goodbye-page-refreshes-hello-real-time-updates&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#goodbye-page-refreshes-hello-real-time-updates&quot;&gt;&lt;/a&gt;Goodbye page refreshes, Hello Real Time updates!&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Building upon
-&lt;a href=&quot;https://twitter.com/tomfennelly&quot;&gt;Tom&lt;/a&gt;'s great work on
-&lt;a href=&quot;https://github.com/jenkinsci/sse-gateway-plugin&quot;&gt;Server Sent Events&lt;/a&gt; (SSE) both
-&lt;a href=&quot;https://twitter.com/cliffmeyers&quot;&gt;Cliff&lt;/a&gt; and
-&lt;a href=&quot;https://twitter.com/tomfennelly&quot;&gt;Tom&lt;/a&gt; worked
-on making the all the screens in Blue Ocean update without manual
-refreshes.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events&quot;&gt;SSE is a great technology&lt;/a&gt;
-choice for new web apps as it only pushes out
-events to the client when things have changed on the server. That means
-there’s a lot less traffic going between your browser and the Jenkins
-server when compared to the continuous AJAX polling method that has been
-typical of Jenkins in the past.&lt;/p&gt;
-&lt;/div&gt;
-&lt;center&gt;
-&lt;iframe width=&quot;640&quot; height=&quot;505&quot; src=&quot;https://www.youtube-nocookie.com/embed/AEnByFwPYaE?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;new-test-reporting-ui&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#new-test-reporting-ui&quot;&gt;&lt;/a&gt;New Test Reporting UI&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/kzantow&quot;&gt;Keith&lt;/a&gt; has
-been working with &lt;a href=&quot;https://twitter.com/vivekpandey&quot;&gt;Vivek&lt;/a&gt; to
-drive out a new set of extension points that allow us to build a new
-rest reporting UI in Blue Ocean. Today this works for JUnit test reports
-but can be easily extended to work with other kinds of reports.&lt;/p&gt;
-&lt;/div&gt;
-&lt;center&gt;
-&lt;iframe width=&quot;640&quot; height=&quot;505&quot; src=&quot;https://www.youtube-nocookie.com/embed/QEeSOBCYY4o?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;pipeline-logs-are-split-into-steps-and-update-live&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#pipeline-logs-are-split-into-steps-and-update-live&quot;&gt;&lt;/a&gt;Pipeline logs are split into steps and update live&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/ThorScherler&quot;&gt;Thorsten&lt;/a&gt; and
-&lt;a href=&quot;http://twitter.com/sophistifunk&quot;&gt;Josh&lt;/a&gt; have
-been hard at work breaking down the log into steps and making the live
-log tailing follow the pipeline execution - which we’ve lovingly
-nicknamed the “karaoke mode”&lt;/p&gt;
-&lt;/div&gt;
-&lt;center&gt;
-&lt;iframe width=&quot;640&quot; height=&quot;505&quot; src=&quot;https://www.youtube-nocookie.com/embed/Ew13TjclNME?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;pipelines-can-be-triggered-from-the-ui&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#pipelines-can-be-triggered-from-the-ui&quot;&gt;&lt;/a&gt;Pipelines can be triggered from the UI&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/tomfennelly&quot;&gt;Tom&lt;/a&gt; has
-been on allowing users to trigger jobs from Blue Ocean, which is one
-less reason to go back to the Classic UI :)&lt;/p&gt;
-&lt;/div&gt;
-&lt;center&gt;
-&lt;iframe width=&quot;640&quot; height=&quot;505&quot; src=&quot;https://www.youtube-nocookie.com/embed/kdT02vPTxQI?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;blue-ocean-has-been-released-to-the-experimental-update-center&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#blue-ocean-has-been-released-to-the-experimental-update-center&quot;&gt;&lt;/a&gt;Blue Ocean has been released to the experimental update center&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Many of you have asked us questions about how you can try Blue Ocean
-today and have resorted to building the plugin yourself or running our
-Docker image.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We wanted to make the process of trying Blue Ocean in its unfinished
-state by publishing the plugin to the experimental update center - it’s
-available today!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So what is the Experimental Update Center? It is a mechanism for the
-Jenkins developer community to share early previews of new plugins with
-the broader user community. Plugins in this update center are
-experimental and we strongly advise not running them on production or
-Jenkins systems that you rely on for your work.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;That means any plugin in this update center could eat your Jenkins data,
-cause slowdowns, degrade security or have their behavior change at no
-notice.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You can learn how to
-&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2013/09/23/experimental-plugins-update-center/&quot;&gt;activate
-the experimental update center on this post&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Stay tuned for more updates!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/</id>
-<title>Sending Notifications in Pipeline</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
-<published>2016-07-18T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/18/pipline-notifications/" />
-<author>
-<name>lnewman</name>
-</author>
-<category term="tutorial"></category>
-<category term="pipeline"></category>
-<category term="plugins"></category>
-<category term="notifications"></category>
-<category term="slack"></category>
-<category term="hipchat"></category>
-<category term="emailext"></category>
-<summary>
-This is a guest post by Liam Newman,
-Technical Evangelist at CloudBees.
-
-
-
-
-
-Rather than sitting and watching Jenkins for job status, I want Jenkins to send
-notifications when events occur.  There are Jenkins plugins for
-Slack,
-HipChat,
-or even email
-among others.
-
-
-Note: Something is happening!
-
-I think we can all agree getting notified when events occur is preferable to
-having to constantly monitor them just in case.  I&#8217;m going to continue from
-where I left off in my
-previous post with the
-hermann project.  I added a Jenkins
-Pipeline with an HTML publisher for code coverage. This week, I&#8217;d like to make
-Jenkins to notify me when builds start and when...
-</summary>
-<content type="html">
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-This is a guest post by &lt;a href=&quot;https://github.com/bitwiseman&quot;&gt;Liam Newman&lt;/a&gt;,
-Technical Evangelist at &lt;a href=&quot;https://cloudbees.com&quot;&gt;CloudBees&lt;/a&gt;.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Rather than sitting and watching Jenkins for job status, I want Jenkins to send
-notifications when events occur.  There are Jenkins plugins for
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin&quot;&gt;Slack&lt;/a&gt;,
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/HipChat+Plugin&quot;&gt;HipChat&lt;/a&gt;,
-or even &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+plugin&quot;&gt;email&lt;/a&gt;
-among others.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;note-something-is-happening&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#note-something-is-happening&quot;&gt;&lt;/a&gt;Note: Something is happening!&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I think we can all agree getting notified when events occur is preferable to
-having to constantly monitor them just in case.  I’m going to continue from
-where I left off in my
-&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/07/01/html-publisher-plugin/&quot;&gt;previous post&lt;/a&gt; with the
-&lt;a href=&quot;https://github.com/reiseburo/hermann&quot;&gt;hermann&lt;/a&gt; project.  I added a Jenkins
-Pipeline with an HTML publisher for code coverage. This week, I’d like to make
-Jenkins to notify me when builds start and when they succeed or fail.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;setup-and-configuration&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#setup-and-configuration&quot;&gt;&lt;/a&gt;Setup and Configuration&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;First, I select targets for my notifications. For this blog post, I’ll use sample
-targets that I control.  I’ve created Slack and HipChat organizations called
-&quot;bitwiseman&quot;, each with one member - me.  And for email I’m running a Ruby SMTP server called
-&lt;a href=&quot;https://mailcatcher.me/&quot;&gt;mailcatcher&lt;/a&gt;, that is perfect for local testing
-such as this.  Aside for these concessions, configuration would be much the
-same in a non-demo situation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Next, I install and add server-wide configuration for the
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin&quot;&gt;Slack&lt;/a&gt;,
-&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/HipChat+Plugin&quot;&gt;HipChat&lt;/a&gt;,
-and &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+plugin&quot;&gt;Email-ext&lt;/a&gt;
-plugins.  Slack and HipChat use API tokens - both products have integration
-points on their side that generate tokens which I copy into my Jenkins
-configuration. Mailcatcher SMTP runs locally. I just point Jenkins
-at it.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Here’s what the Jenkins configuration section for each of these looks like:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-07-15/slack-config.png&quot; alt=&quot;Slack Configuration&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-07-15/hipchat-config.png&quot; alt=&quot;HipChat Configuration&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-07-15/email-config.png&quot; alt=&quot;Email Configuration&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;original-pipeline&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#original-pipeline&quot;&gt;&lt;/a&gt;Original Pipeline&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now I can start adding notification steps. The same as
-&lt;a href=&quot;blog/2016/07/01/html-publisher-plugin/&quot;&gt;last week&lt;/a&gt;, I’ll use the
-&lt;a href=&quot;blog/2016/05/31/pipeline-snippetizer/&quot;&gt;Jenkins Pipeline Snippet Generator&lt;/a&gt;
-to explore the step syntax for the notification plugins.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Here’s the base pipeline before I start making changes:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Build&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-node {
-  &lt;span style=&quot;color:#777&quot;&gt;// Checkout&lt;/span&gt;
-  checkout scm
-
-  &lt;span style=&quot;color:#777&quot;&gt;// install required bundles&lt;/span&gt;
-  sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;bundle install&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;// build and run tests with coverage&lt;/span&gt;
-  sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;bundle exec rake build spec&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;// Archive the built artifacts&lt;/span&gt;
-  archive (&lt;span style=&quot;color:#606&quot;&gt;includes&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;pkg/*.gem&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
-
-  &lt;span style=&quot;color:#777&quot;&gt;// publish html&lt;/span&gt;
-  &lt;span style=&quot;color:#777&quot;&gt;// snippet generator doesn't include &quot;target:&quot;&lt;/span&gt;
-  &lt;span style=&quot;color:#777&quot;&gt;// https://issues.jenkins-ci.org/browse/JENKINS-29711.&lt;/span&gt;
-  publishHTML (&lt;span style=&quot;color:#606&quot;&gt;target&lt;/span&gt;: [
-      &lt;span style=&quot;color:#606&quot;&gt;allowMissing&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;alwaysLinkToLastBuild&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;false&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;keepAll&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;reportDir&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;coverage&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;reportFiles&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;index.html&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;reportName&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;RCov Report&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-    ])
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This pipeline expects to be run from a &lt;code&gt;Jenkinsfile&lt;/code&gt; in SCM.
-To copy and paste it directly into a Jenkins Pipeline job, replace the &lt;code&gt;checkout scm&lt;/code&gt; step with
-&lt;code&gt;git 'https://github.com/reiseburo/hermann.git'&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;job-started-notification&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#job-started-notification&quot;&gt;&lt;/a&gt;Job Started Notification&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For the first change, I decide to add a &quot;Job Started&quot; notification.  The
-snippet generator and then reformatting makes this straightforward:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node {
-
-  notifyStarted()
-
-  &lt;span style=&quot;color:#777&quot;&gt;/* ... existing build steps ... */&lt;/span&gt;
-}
-
-&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; &lt;span style=&quot;color:#06B;font-weight:bold&quot;&gt;notifyStarted&lt;/span&gt;() {
-  &lt;span style=&quot;color:#777&quot;&gt;// send to Slack&lt;/span&gt;
-  slackSend (&lt;span style=&quot;color:#606&quot;&gt;color&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;#FFFF00&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;message&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;STARTED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]' (&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;)
-
-  &lt;span style=&quot;color:#777&quot;&gt;// send to HipChat&lt;/span&gt;
-  hipchatSend (&lt;span style=&quot;color:#606&quot;&gt;color&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;YELLOW&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;notify&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;message&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;STARTED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]' (&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-    )
-
-  &lt;span style=&quot;color:#777&quot;&gt;// send to email&lt;/span&gt;
-  emailext (
-      &lt;span style=&quot;color:#606&quot;&gt;subject&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;STARTED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;body&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;&amp;lt;p&amp;gt;STARTED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]':&amp;lt;/p&amp;gt;
-        &amp;lt;p&amp;gt;Check console output at &amp;amp;QUOT;&amp;lt;a href='&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;'&amp;gt;&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]&amp;lt;/a&amp;gt;&amp;amp;QUOT;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;recipientProviders&lt;/span&gt;: [[&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;DevelopersRecipientProvider&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]]
-    )
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Since Pipeline is a Groovy-based DSL, I can use
-&lt;a href=&quot;http://docs.groovy-lang.org/latest/html/documentation/index.html#_string_interpolation&quot;&gt;string interpolation&lt;/a&gt;
-and variables to add exactly the details I want in my notification messages. When
-I run this I get the following notifications:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-07-15/notify-started.png&quot; alt=&quot;Started Notifications&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-07-15/notify-started-email.png&quot; alt=&quot;Started Email Notification&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;job-successful-notification&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#job-successful-notification&quot;&gt;&lt;/a&gt;Job Successful Notification&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The next logical choice is to get notifications when a job succeeds.  I’ll
-copy and paste based on the &lt;code&gt;notifyStarted&lt;/code&gt; method for now and do some refactoring
-later.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node {
-
-  notifyStarted()
-
-  &lt;span style=&quot;color:#777&quot;&gt;/* ... existing build steps ... */&lt;/span&gt;
-
-  notifySuccessful()
-}
-
-&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; &lt;span style=&quot;color:#06B;font-weight:bold&quot;&gt;notifyStarted&lt;/span&gt;() { &lt;span style=&quot;color:#777&quot;&gt;/* .. */&lt;/span&gt; }
-
-&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; &lt;span style=&quot;color:#06B;font-weight:bold&quot;&gt;notifySuccessful&lt;/span&gt;() {
-  slackSend (&lt;span style=&quot;color:#606&quot;&gt;color&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;#00FF00&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;message&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;SUCCESSFUL: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]' (&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;)
-
-  hipchatSend (&lt;span style=&quot;color:#606&quot;&gt;color&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GREEN&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;notify&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;message&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;SUCCESSFUL: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]' (&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-    )
-
-  emailext (
-      &lt;span style=&quot;color:#606&quot;&gt;subject&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;SUCCESSFUL: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;body&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;&amp;lt;p&amp;gt;SUCCESSFUL: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]':&amp;lt;/p&amp;gt;
-        &amp;lt;p&amp;gt;Check console output at &amp;amp;QUOT;&amp;lt;a href='&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;'&amp;gt;&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]&amp;lt;/a&amp;gt;&amp;amp;QUOT;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;recipientProviders&lt;/span&gt;: [[&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;DevelopersRecipientProvider&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]]
-    )
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Again, I get notifications, as expected.  This build is fast enough,
-some of them are even on the screen at the same time:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-07-15/notify-successful.png&quot; alt=&quot;Multiple Notifications&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;job-failed-notification&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#job-failed-notification&quot;&gt;&lt;/a&gt;Job Failed Notification&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Next I want to add failure notification.  Here’s where we really start to see the power
-and expressiveness of Jenkins pipeline.  A Pipeline is a Groovy script, so as we’d
-expect in any Groovy script, we can handle errors using &lt;code&gt;try-catch&lt;/code&gt; blocks.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node {
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;try&lt;/span&gt; {
-    notifyStarted()
-
-    &lt;span style=&quot;color:#777&quot;&gt;/* ... existing build steps ... */&lt;/span&gt;
-
-    notifySuccessful()
-  } &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;catch&lt;/span&gt; (e) {
-    currentBuild.result = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;FAILED&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-    notifyFailed()
-    &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;throw&lt;/span&gt; e
-  }
-}
-
-&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; &lt;span style=&quot;color:#06B;font-weight:bold&quot;&gt;notifyStarted&lt;/span&gt;() { &lt;span style=&quot;color:#777&quot;&gt;/* .. */&lt;/span&gt; }
-
-&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; &lt;span style=&quot;color:#06B;font-weight:bold&quot;&gt;notifySuccessful&lt;/span&gt;() { &lt;span style=&quot;color:#777&quot;&gt;/* .. */&lt;/span&gt; }
-
-&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; &lt;span style=&quot;color:#06B;font-weight:bold&quot;&gt;notifyFailed&lt;/span&gt;() {
-  slackSend (&lt;span style=&quot;color:#606&quot;&gt;color&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;#FF0000&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;message&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;FAILED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]' (&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;)
-
-  hipchatSend (&lt;span style=&quot;color:#606&quot;&gt;color&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;RED&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;notify&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;message&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;FAILED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]' (&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-    )
-
-  emailext (
-      &lt;span style=&quot;color:#606&quot;&gt;subject&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;FAILED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;body&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;&amp;lt;p&amp;gt;FAILED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]':&amp;lt;/p&amp;gt;
-        &amp;lt;p&amp;gt;Check console output at &amp;amp;QUOT;&amp;lt;a href='&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;'&amp;gt;&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]&amp;lt;/a&amp;gt;&amp;amp;QUOT;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;/span&gt;,
-      &lt;span style=&quot;color:#606&quot;&gt;recipientProviders&lt;/span&gt;: [[&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;DevelopersRecipientProvider&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]]
-    )
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-07-15/notify-failed.png&quot; alt=&quot;Failed Notifications&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;code-cleanup&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#code-cleanup&quot;&gt;&lt;/a&gt;Code Cleanup&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Lastly, now that I have it all working, I’ll do some refactoring. I’ll unify
-all the notifications in one method and move the final success/failure notification
-into a &lt;code&gt;finally&lt;/code&gt; block.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Build&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-node {
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;try&lt;/span&gt; {
-    notifyBuild(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;STARTED&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
-
-    &lt;span style=&quot;color:#777&quot;&gt;/* ... existing build steps ... */&lt;/span&gt;
-
-  } &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;catch&lt;/span&gt; (e) {
-    &lt;span style=&quot;color:#777&quot;&gt;// If there was an exception thrown, the build failed&lt;/span&gt;
-    currentBuild.result = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;FAILED&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-    &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;throw&lt;/span&gt; e
-  } &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;finally&lt;/span&gt; {
-    &lt;span style=&quot;color:#777&quot;&gt;// Success or failure, always send notifications&lt;/span&gt;
-    notifyBuild(currentBuild.result)
-  }
-}
-
-&lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; &lt;span style=&quot;color:#06B;font-weight:bold&quot;&gt;notifyBuild&lt;/span&gt;(&lt;span style=&quot;color:#0a8;font-weight:bold&quot;&gt;String&lt;/span&gt; buildStatus = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;STARTED&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
-  &lt;span style=&quot;color:#777&quot;&gt;// build status of null means successful&lt;/span&gt;
-  buildStatus =  buildStatus ?: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;SUCCESSFUL&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;// Default values&lt;/span&gt;
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; colorName = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;RED&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; colorCode = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;#FF0000&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; subject = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;buildStatus&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]'&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; summary = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;subject&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; (&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; details = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;&amp;lt;p&amp;gt;STARTED: Job '&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]':&amp;lt;/p&amp;gt;
-    &amp;lt;p&amp;gt;Check console output at &amp;amp;QUOT;&amp;lt;a href='&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_URL&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;'&amp;gt;&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.JOB_NAME&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;background-color:hsla(0,0%,0%,0.07);color:black&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;${&lt;/span&gt;env.BUILD_NUMBER&lt;span style=&quot;font-weight:bold;color:#666&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;]&amp;lt;/a&amp;gt;&amp;amp;QUOT;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;/span&gt;
-
-  &lt;span style=&quot;color:#777&quot;&gt;// Override default values based on build status&lt;/span&gt;
-  &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;if&lt;/span&gt; (buildStatus == &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;STARTED&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
-    color = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;YELLOW&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-    colorCode = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;#FFFF00&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-  } &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;else&lt;/span&gt; &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;if&lt;/span&gt; (buildStatus == &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;SUCCESSFUL&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) {
-    color = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;GREEN&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-    colorCode = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;#00FF00&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-  } &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;else&lt;/span&gt; {
-    color = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;RED&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-    colorCode = &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;#FF0000&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-  }
-
-  &lt;span style=&quot;color:#777&quot;&gt;// Send notifications&lt;/span&gt;
-  slackSend (&lt;span style=&quot;color:#606&quot;&gt;color&lt;/span&gt;: colorCode, &lt;span style=&quot;color:#606&quot;&gt;message&lt;/span&gt;: summary)
-
-  hipchatSend (&lt;span style=&quot;color:#606&quot;&gt;color&lt;/span&gt;: color, &lt;span style=&quot;color:#606&quot;&gt;notify&lt;/span&gt;: &lt;span style=&quot;color:#069&quot;&gt;true&lt;/span&gt;, &lt;span style=&quot;color:#606&quot;&gt;message&lt;/span&gt;: summary)
-
-  emailext (
-      &lt;span style=&quot;color:#606&quot;&gt;subject&lt;/span&gt;: subject,
-      &lt;span style=&quot;color:#606&quot;&gt;body&lt;/span&gt;: details,
-      &lt;span style=&quot;color:#606&quot;&gt;recipientProviders&lt;/span&gt;: [[&lt;span style=&quot;color:#F00;background-color:#FAA&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color:#339;font-weight:bold&quot;&gt;class&lt;/span&gt;: &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;DevelopersRecipientProvider&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;]]
-    )
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;you-have-been-notified&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#you-have-been-notified&quot;&gt;&lt;/a&gt;You have been notified!&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I now get notified twice per build on three different channels.  I’m not sure I
-need to get notified this much for such a short build.  However, for a longer
-or complex CD pipeline, I might want exactly that.  If needed, I could even
-improve this to handle other status strings and call it as needed throughout
-my pipeline.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-07-15/final.png&quot; alt=&quot;Final View of Notifications&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h3&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin&quot;&gt;Slack Plugin&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/HipChat+Plugin&quot;&gt;HipChat Plugin&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+plugin&quot;&gt;Email-ext Plugin&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/31/pipeline-snippetizer/&quot;&gt;Jenkins Pipeline Snippet Generator&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/</id>
-<title>New packages for Jenkins 2.7.1</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
-<published>2016-07-14T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/14/2-7-1-re-release/" />
-<author>
-<name>daniel-beck</name>
-</author>
-<category term="jenkins2"></category>
-<category term="lts"></category>
-<summary>
-We created new native packages for Jenkins 2.7.1 today. These replace the existing packages. Due to a release process issue, the packaging (RPM, etc.) was created the same way as Jenkins 1.x LTS, resulting in problems starting Jenkins on some platforms: While we dropped support for AJP in Jenkins 2.0, some 1.x packages had it enabled by default, resulting in an exception during startup.
-
-These new packages for Jenkins 2.7.1, dated July 14, have the same scripts and parameters as Jenkins 2.x and should allow starting up Jenkins without problems. If you notice any further problems with the packaging, please report...
-</summary>
-<content type="html">
-
-&lt;p&gt;We created new native packages for Jenkins 2.7.1 today. These replace the existing packages. Due to a release process issue, the packaging (RPM, etc.) was created the same way as Jenkins 1.x LTS, resulting in problems starting Jenkins on some platforms: While we dropped support for AJP in Jenkins 2.0, some 1.x packages had it enabled by default, resulting in an exception during startup.&lt;/p&gt;
-
-&lt;p&gt;These new packages for Jenkins 2.7.1, dated July 14, have the same scripts and parameters as Jenkins 2.x and should allow starting up Jenkins without problems. If you notice any further problems with the packaging, please &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/How+to+report+an+issue&quot;&gt;report&lt;/a&gt; them in the &lt;code&gt;packaging&lt;/code&gt; component.&lt;/p&gt;
-
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/</id>
-<title>Jenkins 2 hits LTS</title>
-<updated>2017-01-15T15:59:40-08:00</updated>
-<published>2016-07-07T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/07/jenkins-2/" />
-<author>
-<name>kohsuke</name>
-</author>
-<category term="lts"></category>
-<category term="jenkins2"></category>
-<summary>
-It’s been almost three months since we’ve released Jenkins 2.0, the first ever major version upgrade for this 10 year old project. The 2.x versions since then has been adopted by more than 20% of the users, but one segment of users who haven’t seen the benefits of Jenkins 2 is those who has been running LTS releases.
-
-
-But that is no more! The new version of Jenkins LTS release we just released is 2.7.1, and now LTS users get to finally enjoy Jenkins 2.
-
-
-This release also officially marks the end-of-life for Jenkins 1.x. There won’t be any future release of...
-</summary>
-<content type="html">
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It’s been almost three months since we’ve released &lt;a href=&quot;https://jenkins.io/2.0/&quot;&gt;Jenkins 2.0&lt;/a&gt;, the first ever major version upgrade for this 10 year old project. The 2.x versions since then has been adopted by more than 20% of the users, but one segment of users who haven’t seen the benefits of Jenkins 2 is those who has been running LTS releases.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;But that is no more! The new version of Jenkins LTS release we just released is 2.7.1, and now LTS users get to finally enjoy Jenkins 2.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release also officially marks the end-of-life for Jenkins 1.x. There won’t be any future release of Jenkins 1.x beyond this point. If you are worried about the upgrade, don’t be! The core of Jenkins is still the same, and all the plugins &amp;amp; existing configuration will just work.&lt;/p&gt;
 &lt;/div&gt;
 </content>
 </entry>

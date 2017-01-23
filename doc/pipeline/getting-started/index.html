@@ -348,60 +348,57 @@ Conduct
 <div class="col-lg-3">
 <div class="sidebar-nav">
 <h4>
-Jenkins
+Guided Tour
 </h4>
 <ul>
 <li>
-<a href="/doc">
-Installing Jenkins
-</a>
-</li>
-</ul>
-<h4>
-Pipelines
-</h4>
-<ul>
-<a href="/doc/pipeline/getting-started">
-Getting Started
-</a>
-<li>
-<a href="/doc/pipeline/running-multiple-steps">
-Running multiple steps
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/getting-started">
+Creating your first Pipeline
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/controlling-your-build-environment">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/controlling-your-build-environment">
 Controlling your build environment
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/environment-variables">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/environment-variables">
 Environment variables
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/reporting-test-results-and-storing-artifacts">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/running-multiple-steps">
+Running multiple steps
+</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reporting-test-results-and-storing-artifacts">
 Reporting test results and storing artifacts
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/notifications">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/notifications">
 Notifications
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/deployment">
-Deployment
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/parallelism">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/parallelism">
 Parallelism
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps">
-Steps reference
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/deployment">
+Deployment
+</a>
+</li>
+</ul>
+<h4>
+Resources
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps">
+Pipeline Steps reference
 </a>
 </li>
 </ul>
@@ -552,114 +549,17 @@ Getting Started
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#what-is-a-pipeline">What is a Pipeline?</a></li>
-<li><a href="#quick-start">Quick Start</a></li>
-<li><a href="#java">Java</a>
+<li><a href="#create-your-first-pipeline">Create your first Pipeline</a></li>
+<li><a href="#quick-start">Quick Start</a>
 <ul class="sectlevel2">
+<li><a href="#java">Java</a></li>
 <li><a href="#node-js-javascript">Node.js / JavaScript</a></li>
 <li><a href="#ruby">Ruby</a></li>
 <li><a href="#python">Python</a></li>
 <li><a href="#php">PHP</a></li>
 </ul>
 </li>
-<li><a href="#create-your-first-pipeline">Create your first Pipeline</a></li>
 </ul>
-</div>
-<div class="sect1">
-<h2 id="what-is-a-pipeline"><a class="anchor" href="#what-is-a-pipeline"></a>What is a Pipeline?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Pipelines are a series of steps that allow you to orchestrate the work required to build, test and deploy applications. Pipelines are defined in file called <code>Jenkinsfile</code> that are stored in the root of your projects source repository.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="quick-start"><a class="anchor" href="#quick-start"></a>Quick Start</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="java"><a class="anchor" href="#java"></a>Java</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">pipeline {
-  agent docker:'maven:3.3.3'
-  stages {
-    stage('build') {
-      sh 'mvn --version'
-      sh 'mvn install'
-    }
-  }
-}</pre>
-</div>
-</div>
-<div class="sect2">
-<h3 id="node-js-javascript"><a class="anchor" href="#node-js-javascript"></a>Node.js / JavaScript</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">pipeline {
-  agent docker:'node:6.3'
-  stages {
-    stage('build') {
-      sh 'npm --version'
-      sh 'npm install'
-      sh 'npm test'
-    }
-  }
-}</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="ruby"><a class="anchor" href="#ruby"></a>Ruby</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">pipeline {
-  agent docker:'ruby:2.1'
-  stages {
-    stage('build') {
-      sh 'ruby --version'
-      sh 'bundle install'
-    }
-  }
-}</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="python"><a class="anchor" href="#python"></a>Python</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">pipeline {
-  agent docker:'python:3.5.1'
-  stages {
-    stage('build') {
-      sh 'pip --version'
-      sh 'python --version'
-    }
-  }
-}</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="php"><a class="anchor" href="#php"></a>PHP</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">pipeline {
-  agent docker:'php'
-  stages {
-    stage('build') {
-      sh 'php --version'
-    }
-  }
-}</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="sect1">
 <h2 id="create-your-first-pipeline"><a class="anchor" href="#create-your-first-pipeline"></a>Create your first Pipeline</h2>
@@ -691,6 +591,173 @@ Getting Started
 </div>
 <div class="paragraph">
 <p>After you have setup your Pipeline, Jenkins will automatically detect any new Branches or Pull Requests that are created in your repository and start running Pipelines for them.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="anchor" href="#quick-start"></a>Quick Start</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Below are some easily copied and pasted examples of a simple Pipeline with
+various languages.</p>
+</div>
+<div class="paragraph">
+<p><strong><a href="../running-multiple-steps">Continue to "Run multiple steps"</a></strong></p>
+</div>
+<div class="sect2">
+<h3 id="java"><a class="anchor" href="#java"></a>Java</h3>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+  agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.3.3</span><span style="color:#710">'</span></span> }
+  stages {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.3.3</span><span style="color:#710">'</span></span>).inside {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect2">
+<h3 id="node-js-javascript"><a class="anchor" href="#node-js-javascript"></a>Node.js / JavaScript</h3>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+  agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span> }
+  stages {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span>).inside {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect2">
+<h3 id="ruby"><a class="anchor" href="#ruby"></a>Ruby</h3>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+  agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby</span><span style="color:#710">'</span></span> }
+  stages {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby</span><span style="color:#710">'</span></span>).inside {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect2">
+<h3 id="python"><a class="anchor" href="#python"></a>Python</h3>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+  agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python:3.5.1</span><span style="color:#710">'</span></span> }
+  stages {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python:3.5.1</span><span style="color:#710">'</span></span>).inside {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect2">
+<h3 id="php"><a class="anchor" href="#php"></a>PHP</h3>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+  agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php</span><span style="color:#710">'</span></span> }
+  stages {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php</span><span style="color:#710">'</span></span>).inside {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php --version</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div></div>
 </div>
 </div>
 </div>

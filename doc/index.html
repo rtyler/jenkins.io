@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
-Installing Jenkins
+Jenkins Documentation
 </title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="Jenkins is an open source automation server" name="description">
@@ -348,60 +348,57 @@ Conduct
 <div class="col-lg-3">
 <div class="sidebar-nav">
 <h4>
-Jenkins
+Guided Tour
 </h4>
 <ul>
 <li>
-<a href="/doc">
-Installing Jenkins
-</a>
-</li>
-</ul>
-<h4>
-Pipelines
-</h4>
-<ul>
-<a href="/doc/pipeline/getting-started">
-Getting Started
-</a>
-<li>
-<a href="/doc/pipeline/running-multiple-steps">
-Running multiple steps
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/getting-started">
+Creating your first Pipeline
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/controlling-your-build-environment">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/controlling-your-build-environment">
 Controlling your build environment
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/environment-variables">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/environment-variables">
 Environment variables
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/reporting-test-results-and-storing-artifacts">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/running-multiple-steps">
+Running multiple steps
+</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reporting-test-results-and-storing-artifacts">
 Reporting test results and storing artifacts
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/notifications">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/notifications">
 Notifications
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/deployment">
-Deployment
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/parallelism">
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/parallelism">
 Parallelism
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps">
-Steps reference
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/deployment">
+Deployment
+</a>
+</li>
+</ul>
+<h4>
+Resources
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps">
+Pipeline Steps reference
 </a>
 </li>
 </ul>
@@ -547,26 +544,58 @@ Latest
 </div>
 <div class="col-lg-9">
 <h1>
-Installing Jenkins
+Jenkins Documentation
 </h1>
+<div class="paragraph">
+<p>Jenkins is a self-contained, open source automation server which can be used to
+automate all sorts of tasks such as building, testing, and deploying software.
+Jenkins can be installed through native system packages, Docker, or even run
+standalone by any machine with the Java Runtime Environment installed.</p>
+</div>
+<div class="sect1">
+<h2 id="guided-tour"><a class="anchor" href="#guided-tour"></a>Guided Tour</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guided tour will use the "standalone" Jenkins distribution which requires
+a minimum of Java 7, though Java 8 is recommended. A system with more than
+512MB of RAM is also recomended.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war">Download Jenkins</a> to your computer.</p>
+<p><a href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">Download Jenkins</a>.</p>
 </li>
 <li>
-<p>Open up your console and terminal in your download directory and run <code>java -jar jenkins.war</code></p>
+<p>Open up a terminal in the download directory and run <code>java -jar jenkins.war</code></p>
 </li>
 <li>
 <p>Browse to <code>http://localhost:8080</code> and follow the instructions to complete the installation.</p>
 </li>
 <li>
-<p>Most examples will require you to have <a href="https://docs.docker.com/engine/installation">installed Docker</a> on the same computer as Jenkins.</p>
+<p>Many Pipeline examples require an
+<a href="https://docs.docker.com/engine/installation">installed Docker</a>
+on the same computer as Jenkins.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>When installation is complete you can begin to <a href="/doc/pipeline/getting-started">create your first Pipeline</a>.</p>
+<p>When the installation is complete, start putting Jenkins to work and create a
+Pipeline.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins Pipeline is a suite of plugins which supports implementing and
+integrating continuous delivery pipelines into Jenkins. Pipeline provides an
+extensible set of tools for modeling simple-to-complex delivery pipelines "as
+code".</p>
+</div>
+<div class="paragraph">
+<p>Typically, a Pipeline is written to a <code>Jenkinsfile</code> and
+checked into a project&#8217;s source control repository.</p>
+</div>
+<div class="paragraph">
+<p><strong><a href="pipeline/getting-started">Continue to "Create your first Pipeline"</a></strong></p>
+</div>
+</div>
 </div>
 </div>
 </div>

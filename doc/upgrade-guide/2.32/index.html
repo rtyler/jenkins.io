@@ -383,6 +383,9 @@ If that happens, set the System property <code>jenkins.slaves.DefaultJnlpSlaveRe
 <div class="paragraph">
 <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Features+controlled+by+system+properties">Learn more about system properties in Jenkins.</a></p>
 </div>
+<div class="paragraph">
+<p>Additionally, this is the first remoting release that requires Java 7. While agents have needed Java 7 for a while now, remoting is also used to communicate with the Maven process in the Maven project type in the Maven Integration Plugin. These builds now needs a JDK 7 or newer to run. Use toolchains to compile with an older version of Java.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="administrative-monitors-are-now-shown-on-most-pages"><a class="anchor" href="#administrative-monitors-are-now-shown-on-most-pages"></a>Administrative monitors are now shown on most pages</h4>
