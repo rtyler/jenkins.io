@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -387,6 +387,26 @@ Archive Build Output Artifacts
 </a>
 </li>
 <li>
+<a href="#artifactory-generic-upload-download">
+Artifactory Generic Upload Download
+</a>
+</li>
+<li>
+<a href="#artifactory-gradle-build">
+Artifactory Gradle Build
+</a>
+</li>
+<li>
+<a href="#artifactory-maven-build">
+Artifactory Maven Build
+</a>
+</li>
+<li>
+<a href="#configfile-provider-plugin">
+Configfile Provider Plugin
+</a>
+</li>
+<li>
 <a href="#external-workspace-manager">
 External Workspace Manager
 </a>
@@ -550,6 +570,276 @@ node {
     
     <span style="color:#777">// Archive the build output artifacts.</span>
     archiveArtifacts <span style="color:#606">artifacts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">output/*.txt</span><span style="color:#710">'</span></span>, <span style="color:#606">excludes</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">output/*.md</span><span style="color:#710">'</span></span>
+}
+</pre></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="example">
+<div class="title">
+<a name="artifactory-generic-upload-download"></a>
+<h3>
+Artifactory Generic Upload Download
+</h3>
+</div>
+<div class="readme">
+<!--
+##### Synopsis
+
+This is a simple demonstration of how to download dependencies, upload artifacts and publish build info to Artifactory.
+<br>
+Read the full documentation [here](https://wiki.jenkins-ci.org/display/JENKINS/Artifactory+-+Working+With+the+Pipeline+Jenkins+Plugin).
+-->
+
+<h5 id="synopsis">Synopsis</h5>
+
+<p>This is a simple demonstration of how to download dependencies, upload artifacts and publish build info to Artifactory.
+<br />
+Read the full documentation <a href="https://wiki.jenkins-ci.org/display/JENKINS/Artifactory+-+Working+With+the+Pipeline+Jenkins+Plugin">here</a>.</p>
+
+
+</div>
+<div class="code">
+<!-- syntax highlighting artifactoryGenericUploadDownload.groovy -->
+
+<div class="listingblock">
+<div class="CodeRay">
+  <div class="code"><pre>node {
+    git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/jfrogdev/project-examples.git</span><span style="color:#710">'</span></span>
+
+    <span style="color:#777">// Get Artifactory server instance, defined in the Artifactory Plugin administration page.</span>
+    <span style="color:#080;font-weight:bold">def</span> server = Artifactory.server <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SERVER_ID</span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#777">// Read the upload spec and upload files to Artifactory.</span>
+    <span style="color:#080;font-weight:bold">def</span> downloadSpec =
+            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'''</span><span style="color:#D20">{
+            &quot;files&quot;: [
+                {
+                    &quot;pattern&quot;: &quot;libs-snapshot-local/*.zip&quot;,
+                    &quot;target&quot;: &quot;dependencies/&quot;,
+                    &quot;props&quot;: &quot;p1=v1;p2=v2&quot;
+                }
+            ]
+        }</span><span style="color:#710">'''</span></span>
+
+    <span style="color:#080;font-weight:bold">def</span> buildInfo1 = server.download <span style="color:#606">spec</span>: downloadSpec
+
+    <span style="color:#777">// Read the upload spec which was downloaded from github.</span>
+    <span style="color:#080;font-weight:bold">def</span> uploadSpec =
+            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'''</span><span style="color:#D20">{
+            &quot;files&quot;: [
+                {
+                    &quot;pattern&quot;: &quot;resources/Kermit.*&quot;,
+                    &quot;target&quot;: &quot;libs-snapshot-local&quot;,
+                    &quot;props&quot;: &quot;p1=v1;p2=v2&quot;
+                },
+                {
+                    &quot;pattern&quot;: &quot;resources/Frogger.*&quot;,
+                    &quot;target&quot;: &quot;libs-snapshot-local&quot;
+                }
+            ]
+        }</span><span style="color:#710">'''</span></span>
+
+    <span style="color:#777">// Upload to Artifactory.</span>
+    <span style="color:#080;font-weight:bold">def</span> buildInfo2 = server.upload <span style="color:#606">spec</span>: uploadSpec
+
+    <span style="color:#777">// Merge the upload and download build-info objects.</span>
+    buildInfo1.append buildInfo2
+
+    <span style="color:#777">// Publish the build to Artifactory</span>
+    server.publishBuildInfo buildInfo1
+}
+</pre></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="example">
+<div class="title">
+<a name="artifactory-gradle-build"></a>
+<h3>
+Artifactory Gradle Build
+</h3>
+</div>
+<div class="readme">
+<!--
+##### Synopsis
+
+This is a simple demonstration of how to run a Gradle build, that resolves dependencies, upload artifacts and publish build info to Artifactory.
+<br>
+Read the full documentation [here](https://wiki.jenkins-ci.org/display/JENKINS/Artifactory+-+Working+With+the+Pipeline+Jenkins+Plugin).
+-->
+
+<h5 id="synopsis">Synopsis</h5>
+
+<p>This is a simple demonstration of how to run a Gradle build, that resolves dependencies, upload artifacts and publish build info to Artifactory.
+<br />
+Read the full documentation <a href="https://wiki.jenkins-ci.org/display/JENKINS/Artifactory+-+Working+With+the+Pipeline+Jenkins+Plugin">here</a>.</p>
+
+
+</div>
+<div class="code">
+<!-- syntax highlighting artifactoryGradleBuild.groovy -->
+
+<div class="listingblock">
+<div class="CodeRay">
+  <div class="code"><pre>node {
+    <span style="color:#777">// Get Artifactory server instance, defined in the Artifactory Plugin administration page.</span>
+    <span style="color:#080;font-weight:bold">def</span> server = Artifactory.server <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SERVER_ID</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#777">// Create an Artifactory Gradle instance.</span>
+    <span style="color:#080;font-weight:bold">def</span> rtGradle = Artifactory.newGradleBuild()
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Clone sources</span><span style="color:#710">'</span></span>
+    git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/jfrogdev/project-examples.git</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Artifactory configuration</span><span style="color:#710">'</span></span>
+    <span style="color:#777">// Tool name from Jenkins configuration</span>
+    rtGradle.tool = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gradle-2.4</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#777">// Set Artifactory repositories for dependencies resolution and artifacts deployment.</span>
+    rtGradle.deployer <span style="color:#606">repo</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ext-release-local</span><span style="color:#710">'</span></span>, <span style="color:#606">server</span>: server
+    rtGradle.resolver <span style="color:#606">repo</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">remote-repos</span><span style="color:#710">'</span></span>, <span style="color:#606">server</span>: server
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Gradle build</span><span style="color:#710">'</span></span>
+    <span style="color:#080;font-weight:bold">def</span> buildInfo = rtGradle.run <span style="color:#606">rootDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gradle-examples/4/gradle-example-ci-server/</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">buildFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build.gradle</span><span style="color:#710">'</span></span>, <span style="color:#606">tasks</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean artifactoryPublish</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Publish build info</span><span style="color:#710">'</span></span>
+    server.publishBuildInfo buildInfo
+}</pre></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="example">
+<div class="title">
+<a name="artifactory-maven-build"></a>
+<h3>
+Artifactory Maven Build
+</h3>
+</div>
+<div class="readme">
+<!--
+##### Synopsis
+
+This is a simple demonstration of how to run a Maven build, that resolves dependencies, upload artifacts and publish build info to Artifactory.
+<br>
+Read the full documentation [here](https://wiki.jenkins-ci.org/display/JENKINS/Artifactory+-+Working+With+the+Pipeline+Jenkins+Plugin).
+-->
+
+<h5 id="synopsis">Synopsis</h5>
+
+<p>This is a simple demonstration of how to run a Maven build, that resolves dependencies, upload artifacts and publish build info to Artifactory.
+<br />
+Read the full documentation <a href="https://wiki.jenkins-ci.org/display/JENKINS/Artifactory+-+Working+With+the+Pipeline+Jenkins+Plugin">here</a>.</p>
+
+
+</div>
+<div class="code">
+<!-- syntax highlighting artifactoryMavenBuild.groovy -->
+
+<div class="listingblock">
+<div class="CodeRay">
+  <div class="code"><pre>node {
+    <span style="color:#777">// Get Artifactory server instance, defined in the Artifactory Plugin administration page.</span>
+    <span style="color:#080;font-weight:bold">def</span> server = Artifactory.server <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SERVER_ID</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#777">// Create an Artifactory Maven instance.</span>
+    <span style="color:#080;font-weight:bold">def</span> rtMaven = Artifactory.newMavenBuild()
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Clone sources</span><span style="color:#710">'</span></span>
+    git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/jfrogdev/project-examples.git</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Artifactory configuration</span><span style="color:#710">'</span></span>
+    <span style="color:#777">// Tool name from Jenkins configuration</span>
+    rtMaven.tool = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Maven-3.3.9</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#777">// Set Artifactory repositories for dependencies resolution and artifacts deployment.</span>
+    rtMaven.deployer <span style="color:#606">releaseRepo</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">libs-release-local</span><span style="color:#710">'</span></span>, <span style="color:#606">snapshotRepo</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">libs-snapshot-local</span><span style="color:#710">'</span></span>, <span style="color:#606">server</span>: server
+    rtMaven.resolver <span style="color:#606">releaseRepo</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">libs-release</span><span style="color:#710">'</span></span>, <span style="color:#606">snapshotRepo</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">libs-snapshot</span><span style="color:#710">'</span></span>, <span style="color:#606">server</span>: server
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Maven build</span><span style="color:#710">'</span></span>
+    <span style="color:#080;font-weight:bold">def</span> buildInfo = rtMaven.run <span style="color:#606">pom</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven-example/pom.xml</span><span style="color:#710">'</span></span>, <span style="color:#606">goals</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean install</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Publish build info</span><span style="color:#710">'</span></span>
+    server.publishBuildInfo buildInfo
+}</pre></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="example">
+<div class="title">
+<a name="configfile-provider-plugin"></a>
+<h3>
+Configfile Provider Plugin
+</h3>
+</div>
+<div class="readme">
+<!--
+[configFile Provider plugin] (https://plugins.jenkins.io/config-file-provider) enables provisioning of various types of configuration files. Plugin works in such a way as to make the configuration available for the entire duration of the build across all the build agents that are used to execute the build.
+
+Common scenarios that demand the usage of configuration files:
+
+- Provide properties that can be consumed by the build tool
+- Global settings that override local settings
+- Details of credentials needed to access repos
+- Inputs to generate binary images that need to be tailored to specific architectures 
+
+The example shows simple usage of configFile Provider plugin and howto access it's contents.
+
+-->
+
+<p>[configFile Provider plugin] (https://plugins.jenkins.io/config-file-provider) enables provisioning of various types of configuration files. Plugin works in such a way as to make the configuration available for the entire duration of the build across all the build agents that are used to execute the build.</p>
+
+<p>Common scenarios that demand the usage of configuration files:</p>
+
+<ul>
+  <li>Provide properties that can be consumed by the build tool</li>
+  <li>Global settings that override local settings</li>
+  <li>Details of credentials needed to access repos</li>
+  <li>Inputs to generate binary images that need to be tailored to specific architectures</li>
+</ul>
+
+<p>The example shows simple usage of configFile Provider plugin and howto access it's contents.</p>
+
+
+</div>
+<div class="code">
+<!-- syntax highlighting configFileProvider.groovy -->
+
+<div class="listingblock">
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#34b">#!groovy</span>
+
+node {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">configFile Plugin</span><span style="color:#710">'</span></span>) {
+
+        <span style="color:#777">// 'ID' refers to alpha-numeric value generated automatically by Jenkins.</span>
+        <span style="color:#777">// This code snippet assumes that the config file is stored in Jenkins.</span>
+
+        <span style="color:#777">// help to assign the ID of config file to a variable, this is optional </span>
+        <span style="color:#777">// as ID can be used directly within 'configFileProvider' step too.</span>
+        <span style="color:#080;font-weight:bold">def</span> mycfg_file = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&lt;substitute-alpha-numeric-value-cfgfille-here-within-quotes&gt;</span><span style="color:#710">'</span></span>
+
+        <span style="color:#777">// whether referencing the config file as ID (directly) or via user-defined </span>
+        <span style="color:#777">// variable, 'configFileProvider' step enables access to the config file</span>
+        <span style="color:#777">// via 'name' given for the field, 'variable:'</span>
+        configFileProvider([configFile(<span style="color:#606">fileId</span>: mycfg_file, <span style="color:#606">variable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">PACKER_OPTIONS</span><span style="color:#710">'</span></span>)]) {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> =========== ^^^^^^^^^^^^ Reading config from pipeline script </span><span style="color:#710">&quot;</span></span>
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cat </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.PACKER_OPTIONS<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> =========== ~~~~~~~~~~~~ ============ </span><span style="color:#710">&quot;</span></span>
+ 
+            <span style="color:#777">// Access to config file opens up other possibilities like</span>
+            <span style="color:#777">// passing on the configuration to an external script for other tasks, like,</span>
+            <span style="color:#777">// for example, to set generic options that can be used for generating </span>
+            <span style="color:#777">// binary images using packer.</span>
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> =========== ^^^^^^^^^^^^ Reading config via Python... </span><span style="color:#710">&quot;</span></span>
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">python build_image.py </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.PACKER_OPTIONS<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> =========== ~~~~~~~~~~~~ ============ </span><span style="color:#710">&quot;</span></span>
+        }
+    }
 }
 </pre></div>
 </div>

@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -401,7 +401,829 @@ pipeline-build-step
 </dl>
 </div>
 <div class="paragraph">
+<p>Nested Choice of Objects
+<code>$class: <em>BooleanParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ClearCaseUcmBaselineParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>baseline</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>forceRmview</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>CredentialsParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>CvsTagsParamValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>tagName</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>FileParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>file</code></dt>
+<dd>
+<div class="paragraph">
 <p>Nested Choice of Objects</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>FileSystemListParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>GeneratorKeyValueParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>GitParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>InheritableStringParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>JavaParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>selectedJDK</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>JiraIssueParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>JiraVersionParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>version</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>LabelParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>label</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>allNodesMatchingLabel</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>nodeEligibility</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Choice of Objects
+<code>$class: <em>AllNodeEligibility</em></code>
+<code>$class: <em>IgnoreOfflineNodeEligibility</em></code>
+<code>$class: <em>IgnoreTempOfflineNodeEligibility</em></code></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ListSubversionTagsParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>tagsDir</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>tag</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>MatrixCombinationsParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>combinations</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>MavenMetadataParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>groupId</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>artifactId</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>version</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>packaging</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>classifier</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>artifactUrl</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>NodeParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>labels</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>nodeEligibility</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Choice of Objects
+<code>$class: <em>AllNodeEligibility</em></code>
+<code>$class: <em>IgnoreOfflineNodeEligibility</em></code>
+<code>$class: <em>IgnoreTempOfflineNodeEligibility</em></code></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>PackageChoiceParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ParameterSeparatorValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>separatorStyle</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>sectionHeader</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>sectionHeaderStyle</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>PatchParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>file</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Choice of Objects</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>PromotedBuildParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>runId</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>RandomStringParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ReviewboardParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>RunParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>runId</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>SauceParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>selectedBrowsers</code></dt>
+<dd>
+<div class="paragraph">
+<p>+ net.sf.json.JSONArray+</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>StringParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>TextParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>VBoxParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>nodes</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>nodeDelimiter</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ValidatingStringParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>VersionParameterValue</em></code>
+<code>groupid</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>artifactid</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>propertyName</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>version</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>WHideParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>WReadonlyStringParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>WReadonlyTextParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>com.michelin.cio.hudson.plugins.passwordparam.PasswordParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>com.moded.extendedchoiceparameter.ExtendedChoiceParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>hudson.model.PasswordParameterValue</em></code>
+<code>name</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
@@ -427,6 +1249,9 @@ use the <code>result</code> property of the return value as needed.
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
 </div>
 </dd>
 </dl>

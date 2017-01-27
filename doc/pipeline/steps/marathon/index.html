@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -389,9 +389,83 @@ marathon
 <dt class="hdlist1"><code>credentialsId</code> (optional)</dt>
 <dd>
 <div class="paragraph">
-<p><strong>Type:</strong> String</p>
+<p>There are two types of authentication supported:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Basic Authentication (Username and Password)
+DC/OS Service Account (String)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Basic Authentication</pre>
+</div>
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>To authenticate with HTTP basic authentication, select a credential of type username with password. DC/OS
+does not support this authentication type.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">DC/OS Service Account</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>DC/OS Service
+Accounts use JSON Web Tokens (JWTs) to authenticate with DC/OS and retrieve an access token for use
+in subsequent requests. This plugin generates the JWT from the content of the selected credential and handles
+the creation and management of the necessary access token.</p>
+</div>
+<div class="paragraph">
+<p>The content of the selected credential is a JSON object with the following fields (extra fields are ignored):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">uid
+    DC/OS service account ID (example: `"jenkins-sa"`)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">login_endpoint
+    URL for the login end point of the target DC/OS cluster (example: `"https://leader.mesos/acs/api/v1/auth/login"`)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">schemeThis must be `"RS256"`. Algorithm to use with `private_key`.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">private_keyPrivate key to use for signing JWTs, which is verified by the corresponding
+    public key registered with DC/OS. Note the inclusion of "\n" to make the content JSON friendly.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">(example: `"-----BEGIN RSA PRIVATE KEY-----\nMIIEpAI..."`)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Example JSON Secret</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">    {"uid":"jenkins","login_endpoint":"https://leader.mesos/acs/api/v1/auth/login","scheme":"RS256","private_key":"-----BEGIN RSA PRIVATE KEY-----\nMIIEpAI..."}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>docker</code> (optional)</dt>
 <dd>
 <div class="paragraph">
@@ -410,10 +484,16 @@ marathon
 <p><strong>Type:</strong> boolean</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>id</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
 <dt class="hdlist1"><code>labels</code> (optional)</dt>
 <dd>
 <div class="paragraph">
-<p><code>java.lang.UnsupportedOperationException: do not know how to categorize attributes of type java.util.Map&lt;java.lang.String, java.lang.String&gt;</code></p>
+<p>+ java.lang.String&gt;+</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>uris</code> (optional)</dt>

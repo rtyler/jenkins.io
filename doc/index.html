@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -346,50 +346,74 @@ Conduct
 <div class="container">
 <div class="row">
 <div class="col-lg-3">
-<div class="sidebar-nav">
+<div class="sidebar-nav tour">
 <h4>
 Guided Tour
 </h4>
 <ul>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/getting-started">
-Creating your first Pipeline
-</a>
+<a href="https://rtyler.github.io/jenkins.io/doc" class="active">Index</a>
 </li>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/controlling-your-build-environment">
-Controlling your build environment
-</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/hello-world" class="">Create your first Pipeline</a>
 </li>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/environment-variables">
-Environment variables
-</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/running-multiple-steps" class="">Running multiple steps</a>
 </li>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/running-multiple-steps">
-Running multiple steps
-</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/agents" class="">Defining execution environments</a>
 </li>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reporting-test-results-and-storing-artifacts">
-Reporting test results and storing artifacts
-</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/environment" class="">Using environment variables</a>
 </li>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/notifications">
-Notifications
-</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/tests-and-artifacts" class="">Recording test results and artifacts</a>
 </li>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/parallelism">
-Parallelism
-</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/post" class="">Cleaning up and notifications</a>
 </li>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/deployment">
-Deployment
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/deployment" class="">Deployment</a>
+</li>
+</ul>
+<h4>
+User Handbook
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="../user-handbook.pdf">
+(PDF)
 </a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/getting-started" class="">Getting Started with Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/using" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/managing" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/best-practice" class="">Best Practices</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline" class="">Pipeline</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/use-case" class="">Jenkins Use-Cases</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/operating" class="">Operating Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/scaling" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/appendix" class="">Appendix</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/glossary" class="">Glossary</a>
 </li>
 </ul>
 <h4>
@@ -397,66 +421,38 @@ Resources
 </h4>
 <ul>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps">
-Pipeline Steps reference
-</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reference" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
 </li>
 </ul>
-<h4>
-User Handbook
-</h4>
+<h5>
+Recent Tutorials
+</h5>
 <ul>
 <li>
-<a href="book/getting-started">
-Getting Started with Jenkins
+<a href="/blog/2016/08/29/sauce-pipeline/">
+Browser-testing with Sauce OnDemand and Pipeline
 </a>
 </li>
 <li>
-<a href="book/using">
-Using Jenkins
+<a href="/blog/2016/08/10/rails-cd-with-pipeline/">
+Continuous Security for Rails apps with Pipeline and Brakeman
 </a>
 </li>
 <li>
-<a href="book/managing">
-Managing Jenkins
-</a>
-</li>
-<li>
-<a href="book/best-practice">
-Best Practices
-</a>
-</li>
-<li>
-<a href="book/pipeline">
-Pipeline
-</a>
-</li>
-<li>
-<a href="book/use-case">
-Jenkins Use-Cases
-</a>
-</li>
-<li>
-<a href="book/operating">
-Operating Jenkins
-</a>
-</li>
-<li>
-<a href="book/scaling">
-Scaling Jenkins
-</a>
-</li>
-<li>
-<a href="book/appendix">
-Appendix
-</a>
-</li>
-<li>
-<a href="book/glossary">
-Glossary
+<a href="/blog/2016/07/18/pipline-notifications/">
+Sending Notifications in Pipeline
 </a>
 </li>
 </ul>
+<div class="small">
+<a href="/node/tags/tutorial">
+View all tutorials
+</a>
+</div>
+<hr>
 <h4>
 Developers
 </h4>
@@ -558,7 +554,7 @@ standalone by any machine with the Java Runtime Environment installed.</p>
 <div class="paragraph">
 <p>This guided tour will use the "standalone" Jenkins distribution which requires
 a minimum of Java 7, though Java 8 is recommended. A system with more than
-512MB of RAM is also recomended.</p>
+512MB of RAM is also recommended.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -580,7 +576,7 @@ on the same computer as Jenkins.</p>
 </div>
 <div class="paragraph">
 <p>When the installation is complete, start putting Jenkins to work and create a
-Pipeline.</p>
+<a href="book/pipeline">Pipeline</a>.</p>
 </div>
 <div class="paragraph">
 <p>Jenkins Pipeline is a suite of plugins which supports implementing and
@@ -589,12 +585,50 @@ extensible set of tools for modeling simple-to-complex delivery pipelines "as
 code".</p>
 </div>
 <div class="paragraph">
-<p>Typically, a Pipeline is written to a <code>Jenkinsfile</code> and
-checked into a project&#8217;s source control repository.</p>
+<p>A
+<a href="book/pipeline/jenkinsfile"><code>Jenkinsfile</code></a>
+is a text file that contains the definition of a
+Jenkins Pipeline and is checked into source control.
+<sup class="footnote" id="_footnote_scm">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>
+This is the foundation of "Pipeline-as-Code"; treating the continuous delivery
+pipeline a part of the application to be version and reviewed like any other code.
+Creating a <code>Jenkinsfile</code> provides a number of immediate benefits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Automatically create Pipelines for all Branches and Pull Requests</p>
+</li>
+<li>
+<p>Code review/iteration on the Pipeline</p>
+</li>
+<li>
+<p>Audit trail for the Pipeline</p>
+</li>
+<li>
+<p>Single source of truth
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>
+for the Pipeline, which can be viewed and edited by multiple members of the project.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p><strong><a href="pipeline/getting-started">Continue to "Create your first Pipeline"</a></strong></p>
+<p>While the syntax for defining a Pipeline, either in the web UI or with a
+<code>Jenkinsfile</code>, is the same, it&#8217;s generally considered best practice to define
+the Pipeline in a <code>Jenkinsfile</code> and check that in to source control.</p>
 </div>
+<div class="paragraph">
+<p><strong><a href="pipeline/tour/hello-world">Continue to "Create your first Pipeline"</a></strong></p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://en.wikipedia.org/wiki/Source_control_management" class="bare">https://en.wikipedia.org/wiki/Source_control_management</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Single_Source_of_Truth" class="bare">https://en.wikipedia.org/wiki/Single_Source_of_Truth</a>
 </div>
 </div>
 </div>

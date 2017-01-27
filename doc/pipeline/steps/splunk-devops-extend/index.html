@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -362,8 +362,9 @@ splunk-devops-extend
 <ul class="sectlevel1">
 <li><a href="#splunk-devops-extend">splunk-devops-extend</a>
 <ul class="sectlevel2">
-<li><a href="#code-sendsplunk-code-send-data-to-splunk-via-dsl-script"><code>sendSplunk</code>: Send data to Splunk via DSL script</a></li>
-<li><a href="#code-sendsplunkfile-code-send-log-files-to-splunk"><code>sendSplunkFile</code>: Send log files to Splunk</a></li>
+<li><a href="#code-sendsplunkconsolelog-code-send-console-log-splunk"><code>sendSplunkConsoleLog</code>: Send console log Splunk</a></li>
+<li><a href="#code-sendsplunkfile-code-forwarding-pipeline-console-log-to-splunk"><code>sendSplunkFile</code>: Forwarding pipeline console log to Splunk</a></li>
+<li><a href="#code-sendsplunkscript-code-send-data-to-splunk-via-dsl-script"><code>sendSplunkScript</code>: Send data to Splunk via DSL script</a></li>
 </ul>
 </li>
 </ul>
@@ -372,27 +373,11 @@ splunk-devops-extend
 <h2 id="splunk-devops-extend"><a class="anchor" href="#splunk-devops-extend"></a>splunk-devops-extend</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="code-sendsplunk-code-send-data-to-splunk-via-dsl-script"><a class="anchor" href="#code-sendsplunk-code-send-data-to-splunk-via-dsl-script"></a><code>sendSplunk</code>: Send data to Splunk via DSL script</h3>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>globalScriptEnabled</code></dt>
-<dd>
-<div class="paragraph">
-<p>Run the customized command in the plugin config page
-<strong>Type:</strong> boolean</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>scriptText</code></dt>
-<dd>
-<div class="paragraph">
-<p><strong>Type:</strong> String</p>
-</div>
-</dd>
-</dl>
-</div>
+<h3 id="code-sendsplunkconsolelog-code-send-console-log-splunk"><a class="anchor" href="#code-sendsplunkconsolelog-code-send-console-log-splunk"></a><code>sendSplunkConsoleLog</code>: Send console log Splunk</h3>
+
 </div>
 <div class="sect2">
-<h3 id="code-sendsplunkfile-code-send-log-files-to-splunk"><a class="anchor" href="#code-sendsplunkfile-code-send-log-files-to-splunk"></a><code>sendSplunkFile</code>: Send log files to Splunk</h3>
+<h3 id="code-sendsplunkfile-code-forwarding-pipeline-console-log-to-splunk"><a class="anchor" href="#code-sendsplunkfile-code-forwarding-pipeline-console-log-to-splunk"></a><code>sendSplunkFile</code>: Forwarding pipeline console log to Splunk</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>includes</code></dt>
@@ -414,6 +399,26 @@ splunk-devops-extend
 </div>
 </dd>
 <dt class="hdlist1"><code>sizeLimit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-sendsplunkscript-code-send-data-to-splunk-via-dsl-script"><a class="anchor" href="#code-sendsplunkscript-code-send-data-to-splunk-via-dsl-script"></a><code>sendSplunkScript</code>: Send data to Splunk via DSL script</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>globalScriptEnabled</code></dt>
+<dd>
+<div class="paragraph">
+<p>Run the customized command in the plugin config page
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scriptText</code></dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>

@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -379,6 +379,7 @@ lockable-resources
 <div class="paragraph">
 <p>The resource name to lock as defined in Global settings.
 If the resource does not exist in Global Settings it will be automatically created on build execution.
+Either a resource or a label need to be specified.
 <strong>Type:</strong> String</p>
 </div>
 </dd>
@@ -393,6 +394,26 @@ If the resource does not exist in Global Settings it will be automatically creat
 <div class="paragraph">
 <p>By checking this option the newest build in the waiting queue will get the lock first.
 <strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>label</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The label of the resources to be locked as defined in Global settings.
+Either a resource or a label need to be specified.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>quantity</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The quantity of resources with the specified label to be locked as defined in Global settings.
+Either a resource or a label need to be specified.
+<strong>Type:</strong> int</p>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>

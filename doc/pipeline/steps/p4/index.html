@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -388,7 +388,354 @@ p4
 <dt class="hdlist1"><code>workspace</code></dt>
 <dd>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>ManualWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of the Perforce workspace to be used as the
+Jenkins build workspace. If the workspace does not yet exist, the
+configuration will be saved in Jenkins; the workspace is created only
+when it is to be used. If the workspace exists and you are connected
+to a Perforce server the auto-text fill should list suitable
+workspaces; updates are only applied when the workspace is used.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>spec</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>allwrite</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>clobber</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>compress</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>locked</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>modtime</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>rmdir</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>streamName</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>line</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>view</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>SpecWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>An existing workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of the Perforce workspace to be used as the
+Jenkins build workspace. If the workspace does not yet exist, the
+configuration will be saved in Jenkins; the workspace is created only
+when it is to be used. If the workspace exists and you are connected
+to a Perforce server the auto-text fill should list suitable
+workspaces; updates are only applied when the workspace is used.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>specPath</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>StaticWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>An existing workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of an existing workspace in Perforce to be used
+as the Jenkins build workspace. If connected to a Perforce server the
+auto-text fill should list suitable workspaces
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>StreamWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>streamName</code></dt>
+<dd>
+<div class="paragraph">
+<p>Stream codeline</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the full Perforce depot path for the given stream. If
+connected to a Perforce server the auto-text fill should list possible
+streams.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">	For example: //stream-depot/main-stream
+*Type:* String</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name formatter</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Jenklin slave nodes must each use a unique Perforce workspace.
+The format string configures the workspace name by substituting the
+specified variables: (at least one variable must be used)</p>
+</div>
+<div class="paragraph">
+<p>Variables can be taken from the Jenkins Environment or Parameterized builds
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>TemplateWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>templateName</code></dt>
+<dd>
+<div class="paragraph">
+<p>Templace workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of an existing workspace in Perforce used to create
+or update a Jenkins build workspace. If connected to a Perforce server
+the auto-text fill should list suitable workspaces
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name formatter</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Jenklin slave nodes must each use a unique Perforce workspace.
+The format string configures the workspace name by substituting the
+specified variables: (at least one variable must be used)</p>
+</div>
+<div class="paragraph">
+<p>Variables can be taken from the Jenkins Environment or Parameterized builds
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 </dd>
 </dl>
@@ -420,13 +767,434 @@ p4
 <dt class="hdlist1"><code>workspace</code></dt>
 <dd>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>ManualWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of the Perforce workspace to be used as the
+Jenkins build workspace. If the workspace does not yet exist, the
+configuration will be saved in Jenkins; the workspace is created only
+when it is to be used. If the workspace exists and you are connected
+to a Perforce server the auto-text fill should list suitable
+workspaces; updates are only applied when the workspace is used.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>spec</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>allwrite</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>clobber</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>compress</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>locked</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>modtime</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>rmdir</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>streamName</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>line</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>view</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>SpecWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>An existing workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of the Perforce workspace to be used as the
+Jenkins build workspace. If the workspace does not yet exist, the
+configuration will be saved in Jenkins; the workspace is created only
+when it is to be used. If the workspace exists and you are connected
+to a Perforce server the auto-text fill should list suitable
+workspaces; updates are only applied when the workspace is used.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>specPath</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>StaticWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>An existing workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of an existing workspace in Perforce to be used
+as the Jenkins build workspace. If connected to a Perforce server the
+auto-text fill should list suitable workspaces
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>StreamWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>streamName</code></dt>
+<dd>
+<div class="paragraph">
+<p>Stream codeline</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the full Perforce depot path for the given stream. If
+connected to a Perforce server the auto-text fill should list possible
+streams.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">	For example: //stream-depot/main-stream
+*Type:* String</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name formatter</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Jenklin slave nodes must each use a unique Perforce workspace.
+The format string configures the workspace name by substituting the
+specified variables: (at least one variable must be used)</p>
+</div>
+<div class="paragraph">
+<p>Variables can be taken from the Jenkins Environment or Parameterized builds
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>TemplateWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>templateName</code></dt>
+<dd>
+<div class="paragraph">
+<p>Templace workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of an existing workspace in Perforce used to create
+or update a Jenkins build workspace. If connected to a Perforce server
+the auto-text fill should list suitable workspaces
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name formatter</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Jenklin slave nodes must each use a unique Perforce workspace.
+The format string configures the workspace name by substituting the
+specified variables: (at least one variable must be used)</p>
+</div>
+<div class="paragraph">
+<p>Variables can be taken from the Jenkins Environment or Parameterized builds
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>publish</code></dt>
 <dd>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>ShelveImpl</em></code></p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p>The change description used to shelve or submit the assets to Perforce.
+${VAR} variables are expanded base on the system environment.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>onlyOnSuccess</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>delete</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>revert</code></dt>
+<dd>
+<div class="paragraph">
+<p>Reverts open files in the pending changelist, but leaves the content in the workspace unchanged (<em>p4 revert -k</em>)
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>SubmitImpl</em></code>
+<code>description</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The change description used to shelve or submit the assets to Perforce.
+${VAR} variables are expanded base on the system environment.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>onlyOnSuccess</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>delete</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>reopen</code></dt>
+<dd>
+<div class="paragraph">
+<p>Submitted files are reopened, allowing subsequent modification.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>purge</code></dt>
+<dd>
+<div class="paragraph">
+<p>The Perforce server only stores n number of revisions, where n
+is a number 1-10 or 16,32,64,128,256,512.  Older revisions are
+then purged as new revisions are added.
+<strong>Type:</strong> String</p>
 </div>
 </dd>
 </dl>
@@ -475,9 +1243,347 @@ p4
 <dt class="hdlist1"><code>populate</code> (optional)</dt>
 <dd>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>AutoCleanImpl</em></code>
+<code>replace</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+REPLACE missing/modified files</p>
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Perforce will check out and overwrite any depot files which are either missing from workspace,
+or have been modified locally.
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>delete</code></dt>
+<dd>
+<div class="paragraph">
+<p>DELETE generated files</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Perforce will delete any local files that are not in the depot.
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>modtime</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>quiet</code></dt>
+<dd>
+<div class="paragraph">
+<p>Suppressing info messages</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Enables the -q flag for all applicable Perforce operations. Summary details will still be displayed.
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pin</code></dt>
+<dd>
+<div class="paragraph">
+<p>Pinning a build at Perforce Label</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>When a build is triggered by Polling, Build Now or an external
+Action, the workspace will sync only to the specified label. Any other
+specified change or label will be ignored.</p>
+</div>
+<div class="paragraph">
+<p>Supports variable expansion e.g. ${VAR}.  If <em>now</em> is used, or a
+variable that expands to <em>now</em>, then the latest change is used
+(within the scope of the workspace view).
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>parallel</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>enable</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>path</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>threads</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>minfiles</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>minbytes</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>CheckOnlyImpl</em></code>
+<code>have</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>force</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>modtime</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>quiet</code></dt>
+<dd>
+<div class="paragraph">
+<p>Suppressing info messages</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Enables the -q flag for all applicable Perforce operations. Summary details will still be displayed.
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pin</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ForceCleanImpl</em></code>
+<code>have</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>quiet</code></dt>
+<dd>
+<div class="paragraph">
+<p>Suppressing info messages</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Enables the -q flag for all applicable Perforce operations. Summary details will still be displayed.
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pin</code></dt>
+<dd>
+<div class="paragraph">
+<p>Pinning a build at Perforce Label</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>When a build is triggered by Polling, Build Now or an external
+Action, the workspace will sync only to the specified label. Any other
+specified change or label will be ignored.</p>
+</div>
+<div class="paragraph">
+<p>Supports variable expansion e.g. ${VAR}.  If <em>now</em> is used, or a
+variable that expands to <em>now</em>, then the latest change is used
+(within the scope of the workspace view).
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>parallel</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>enable</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>path</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>threads</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>minfiles</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>minbytes</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>SyncOnlyImpl</em></code>
+<code>revert</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>have</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>modtime</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>quiet</code></dt>
+<dd>
+<div class="paragraph">
+<p>Suppressing info messages</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Enables the -q flag for all applicable Perforce operations. Summary details will still be displayed.
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pin</code></dt>
+<dd>
+<div class="paragraph">
+<p>Pinning a build at Perforce Label</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>When a build is triggered by Polling, Build Now or an external
+Action, the workspace will sync only to the specified label. Any other
+specified change or label will be ignored.</p>
+</div>
+<div class="paragraph">
+<p>Supports variable expansion e.g. ${VAR}.  If <em>now</em> is used, or a
+variable that expands to <em>now</em>, then the latest change is used
+(within the scope of the workspace view).
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>parallel</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>enable</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>path</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>threads</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>minfiles</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>minbytes</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>stream</code> (optional)</dt>
 <dd>
 <div class="paragraph">
@@ -485,6 +1591,366 @@ p4
 </div>
 </dd>
 <dt class="hdlist1"><code>template</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>workspace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Nested Choice of Objects
+<code>$class: <em>ManualWorkspaceImpl</em></code></p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"><code>charset</code></dt>
+<dd>
+<div class="paragraph">
+<p>P4CHARSET</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of the Perforce workspace to be used as the
+Jenkins build workspace. If the workspace does not yet exist, the
+configuration will be saved in Jenkins; the workspace is created only
+when it is to be used. If the workspace exists and you are connected
+to a Perforce server the auto-text fill should list suitable
+workspaces; updates are only applied when the workspace is used.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>spec</code></dt>
+<dd>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>allwrite</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>clobber</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>compress</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>locked</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>modtime</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>rmdir</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>streamName</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>line</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>view</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>SpecWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>An existing workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of the Perforce workspace to be used as the
+Jenkins build workspace. If the workspace does not yet exist, the
+configuration will be saved in Jenkins; the workspace is created only
+when it is to be used. If the workspace exists and you are connected
+to a Perforce server the auto-text fill should list suitable
+workspaces; updates are only applied when the workspace is used.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>specPath</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>StaticWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>An existing workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of an existing workspace in Perforce to be used
+as the Jenkins build workspace. If connected to a Perforce server the
+auto-text fill should list suitable workspaces
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>StreamWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>streamName</code></dt>
+<dd>
+<div class="paragraph">
+<p>Stream codeline</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the full Perforce depot path for the given stream. If
+connected to a Perforce server the auto-text fill should list possible
+streams.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">	For example: //stream-depot/main-stream
+*Type:* String</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name formatter</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Jenklin slave nodes must each use a unique Perforce workspace.
+The format string configures the workspace name by substituting the
+specified variables: (at least one variable must be used)</p>
+</div>
+<div class="paragraph">
+<p>Variables can be taken from the Jenkins Environment or Parameterized builds
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>TemplateWorkspaceImpl</em></code>
+<code>charset</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+P4CHARSET</p>
+</div>
+<div class="paragraph">
+<p>The character set used by Jenkins when syncing files from the
+Perforce server. This should be set to <em>none</em> unless connected to a
+Unicode enabled Perforce server.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pinHost</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>templateName</code></dt>
+<dd>
+<div class="paragraph">
+<p>Templace workspace</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Specify the name of an existing workspace in Perforce used to create
+or update a Jenkins build workspace. If connected to a Perforce server
+the auto-text fill should list suitable workspaces
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<div class="paragraph">
+<p>Workspace name formatter</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Jenklin slave nodes must each use a unique Perforce workspace.
+The format string configures the workspace name by substituting the
+specified variables: (at least one variable must be used)</p>
+</div>
+<div class="paragraph">
+<p>Variables can be taken from the Jenkins Environment or Parameterized builds
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>syncID</code> (optional)</dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>

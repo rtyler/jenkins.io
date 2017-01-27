@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -362,7 +362,7 @@ nexus-artifact-uploader
 <ul class="sectlevel1">
 <li><a href="#nexus-artifact-uploader">nexus-artifact-uploader</a>
 <ul class="sectlevel2">
-<li><a href="#code-nexusartifactuploader-code-nexus-non-maven-artifacts-uploader"><code>nexusArtifactUploader</code>: Nexus non-maven artifacts uploader</a></li>
+<li><a href="#code-nexusartifactuploader-code-nexus-artifact-uploader"><code>nexusArtifactUploader</code>: Nexus Artifact Uploader</a></li>
 </ul>
 </li>
 </ul>
@@ -371,7 +371,7 @@ nexus-artifact-uploader
 <h2 id="nexus-artifact-uploader"><a class="anchor" href="#nexus-artifact-uploader"></a>nexus-artifact-uploader</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="code-nexusartifactuploader-code-nexus-non-maven-artifacts-uploader"><a class="anchor" href="#code-nexusartifactuploader-code-nexus-non-maven-artifacts-uploader"></a><code>nexusArtifactUploader</code>: Nexus non-maven artifacts uploader</h3>
+<h3 id="code-nexusartifactuploader-code-nexus-artifact-uploader"><a class="anchor" href="#code-nexusartifactuploader-code-nexus-artifact-uploader"></a><code>nexusArtifactUploader</code>: Nexus Artifact Uploader</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>nexusVersion</code></dt>
@@ -393,32 +393,45 @@ nexus-artifact-uploader
 <strong>Type:</strong> String</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>nexusUser</code></dt>
-<dd>
-<div class="paragraph">
-<p>Nexus user account name who has artifacts upload permission.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>nexusPassword</code></dt>
-<dd>
-<div class="paragraph">
-<p><strong>Type:</strong> String</p>
-</div>
-</dd>
 <dt class="hdlist1"><code>groupId</code></dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>artifactId</code></dt>
+<dt class="hdlist1"><code>version</code></dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>version</code></dt>
+<dt class="hdlist1"><code>repository</code></dt>
+<dd>
+<div class="paragraph">
+<p>RepositoryId of the Repository in Nexus to which this artifact to be uploaded.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>credentialsId</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>artifacts</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>artifactId</code></dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>
@@ -438,24 +451,11 @@ nexus-artifact-uploader
 <strong>Type:</strong> String</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>repository</code></dt>
-<dd>
-<div class="paragraph">
-<p>RepositoryId of the Repository in Nexus to which this artifact to be uploaded.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
 <dt class="hdlist1"><code>file</code></dt>
 <dd>
 <div class="paragraph">
 <p>File path in the workspace. ex:artifact.zip or artifact.jar
 <strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>credentialsId</code></dt>
-<dd>
-<div class="paragraph">
-<p><strong>Type:</strong> String</p>
 </div>
 </dd>
 </dl>

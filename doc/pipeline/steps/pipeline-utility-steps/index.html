@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -366,6 +366,7 @@ pipeline-utility-steps
 <li><a href="#code-readmanifest-code-read-a-jar-manifest"><code>readManifest</code>: Read a Jar Manifest</a></li>
 <li><a href="#code-readmavenpom-code-read-a-maven-project-file"><code>readMavenPom</code>: Read a maven project file.</a></li>
 <li><a href="#code-readproperties-code-read-properties-from-files-in-the-workspace-or-text"><code>readProperties</code>: Read properties from files in the workspace or text.</a></li>
+<li><a href="#code-readyaml-code-read-yaml-from-files-in-the-workspace-or-text"><code>readYaml</code>: Read yaml from files in the workspace or text.</a></li>
 <li><a href="#code-touch-code-create-a-file-if-not-already-exist-in-the-workspace-and-set-the-timestamp"><code>touch</code>: Create a file (if not already exist) in the workspace, and set the timestamp</a></li>
 <li><a href="#code-unzip-code-extract-zip-file"><code>unzip</code>: Extract Zip file</a></li>
 <li><a href="#code-writemavenpom-code-write-a-maven-project-file"><code>writeMavenPom</code>: Write a maven project file.</a></li>
@@ -556,9 +557,107 @@ assert props.other == 'Override'</pre>
 <dt class="hdlist1"><code>defaults</code> (optional)</dt>
 <dd>
 <div class="paragraph">
-<p><code>java.lang.UnsupportedOperationException: do not know how to categorize attributes of type java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code></p>
+<p>+ java.lang.Object&gt;+</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>file</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>text</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-readyaml-code-read-yaml-from-files-in-the-workspace-or-text"><a class="anchor" href="#code-readyaml-code-read-yaml-from-files-in-the-workspace-or-text"></a><code>readYaml</code>: Read yaml from files in the workspace or text.</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Reads a file in the current working directory or a String as a plain text YAML file.
+It uses SnakeYAML as YAML processor.
+The returned objects are standard Java objects like List, Long, String, &#8230;&#8203;:
+bool: [true, false, on, off]
+int: 42
+float: 3.14159
+list: [<em>LITE</em>, <em>RES_ACID</em>, <em>SUS_DEXT</em>]
+map: {hp: 13, sp: 5}</p>
+</div>
+<div class="paragraph">
+<p>Fields:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">`file`:
+Optional path to a file in the workspace to read the YAML datas from.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">`text`:
+An Optional String containing YAML formatted datas.
+These are added to the resulting object after `file` and so will overwrite any value already present if not a new YAML document</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:
+With only one YAML document :
+`</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">def datas = readYaml text: """
+something: 'my datas'
+size: 3
+isEmpty: false
+"""
+assert datas.something == 'my datas'
+assert datas.size == 3
+assert datas.isEmpty == false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>`
+With several YAML documents :
+`</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">def datas = readYaml text: """
+---
+something: 'my first document'
+---
+something: 'my second document'
+"""
+assert datas.size() == 2
+assert datas[0].something == 'my first document'
+assert datas[1].something == 'my second document'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>`
+With file dir/my.yml containing <code>something: 'my datas'</code> :
+`</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">def datas = readYaml file: 'dir/my.yml', text: "something: 'Override'"
+assert datas.something == 'Override'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>`</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>file</code> (optional)</dt>
 <dd>
 <div class="paragraph">
@@ -617,6 +716,13 @@ assert props.other == 'Override'</pre>
 <dd>
 <div class="paragraph">
 <p>The name/path of the zip file to extract.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>charset</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Specify which Charset you wish to use eg. UTF-8
 <strong>Type:</strong> String</p>
 </div>
 </dd>

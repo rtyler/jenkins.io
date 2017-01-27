@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -384,13 +384,598 @@ vsphere-cloud
 <dt class="hdlist1"><code>buildStep</code> (optional)</dt>
 <dd>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>Clone</em></code>
+<code>sourceName</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the vSphere VM or template to clone.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>clone</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the cloned VM.
+<strong>Type:</strong> String</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>linkedClone</code></dt>
+<dd>
+<div class="paragraph">
+<p>Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone.  This will drastically save time, but the disk backings will be shared.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>resourcePool</code></dt>
+<dd>
+<div class="paragraph">
+<p>The Resource Pool to be used by the VM.
+  Leave it blank to use the same resource pool as the source VM.
+  Must be specified if source VM is a template.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>cluster</code></dt>
+<dd>
+<div class="paragraph">
+<p>The vCenter cluster to be used by the VM.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>datastore</code></dt>
+<dd>
+<div class="paragraph">
+<p>The data store to be used by the VM.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>folder</code></dt>
+<dd>
+<div class="paragraph">
+<p>(Optional) VSphere folder path or unique folder name where VM is going to be created.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">    If blank, it will be created in the same folder as the original VM.
+*Type:* String</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>powerOn</code></dt>
+<dd>
+<div class="paragraph">
+<p>Specifies whether or not the new VirtualMachine should be powered on after creation.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>customizationSpec</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ConvertToTemplate</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM to be converted to a template.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>force</code></dt>
+<dd>
+<div class="paragraph">
+<p>Check this if you want to force the conversion in the case where the VM is not already powered down.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ConvertToVm</em></code>
+<code>template</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the template to be converted to a Virtual Machine.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>resourcePool</code></dt>
+<dd>
+<div class="paragraph">
+<p>The Resource Pool to be used by the VM.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>cluster</code></dt>
+<dd>
+<div class="paragraph">
+<p>The vCenter cluster to be used by the VM.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>Delete</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM to be destroyed.  This is a destructive operation that cannot be undone!
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>failOnNoExist</code></dt>
+<dd>
+<div class="paragraph">
+<p>If the VM you are trying to delete doesnt exist, fail this build step.  Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>DeleteSnapshot</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>snapshotName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the snapshot.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>consolidate</code></dt>
+<dd>
+<div class="paragraph">
+<p>Consolidate all redundant redo logs for this VM?
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>failOnNoExist</code></dt>
+<dd>
+<div class="paragraph">
+<p>If the snapshot you are trying to delete doesnt exist, fail this build step.  Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>Deploy</em></code>
+<code>template</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the vSphere template to clone.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>clone</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the cloned VM.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>linkedClone</code></dt>
+<dd>
+<div class="paragraph">
+<p>Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone.  This will drastically save time, but the disk backings will be shared.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>resourcePool</code></dt>
+<dd>
+<div class="paragraph">
+<p>The Resource Pool to be used by the VM.  If no resource pool is being used, then leave blank.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>cluster</code></dt>
+<dd>
+<div class="paragraph">
+<p>The vCenter cluster to be used by the VM.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>datastore</code></dt>
+<dd>
+<div class="paragraph">
+<p>The data store to be used by the VM.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>folder</code></dt>
+<dd>
+<div class="paragraph">
+<p>(Optional) VSphere folder path or unique folder name where VM is going to be created.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">    If blank, it will be created in the same folder as the original VM.
+*Type:* String</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>customizationSpec</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>powerOn</code></dt>
+<dd>
+<div class="paragraph">
+<p>Specifies whether or not the new VirtualMachine should be powered on after creation.
+If set, the power-on operation will be done using default settings and an attempt will be made at determining the IP address.
+If you require more control over this process, use a separate step to turn on the VirtualMachine.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ExposeGuestInfo</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM to expose guest info for.
+  Variables IpAddress, Hostname, ToolsStatus, ToolsRunningStatus, ToolsVersion, ToolsVersionStatus, GuestState, GuestId,
+  GuestFamily, GuestFullName, AppHeartbeatStatus, GuestOperationsReady, InteractiveGuestOperationsReady are exposed.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>envVariablePrefix</code></dt>
+<dd>
+<div class="paragraph">
+<p>Prefix for guest info environmental variables. E.g. for prefix VM1, variables would be VM1_IpAddress, VM1_HostName etc.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>PowerOff</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM to shut down.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>evenIfSuspended</code></dt>
+<dd>
+<div class="paragraph">
+<p>If the VM is currently suspended, it will still be shutdown.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>shutdownGracefully</code></dt>
+<dd>
+<div class="paragraph">
+<p>If the VM is powered on and VMware Tools is runing, a gracefully shutdown will be attempted by performing a Guest Shutdown.  If the VM is still running after 3 minutes, a hard power off will be performed.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>ignoreIfNotExists</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>PowerOn</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM to power on.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>timeoutInSeconds</code></dt>
+<dd>
+<div class="paragraph">
+<p>The maximum number of seconds to wait for the IP.
+<strong>Type:</strong> int</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>Reconfigure</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM or template to reconfigure.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>reconfigureSteps</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Nested Choice of Objects
+<code>$class: <em>ReconfigureCpu</em></code>
+<code>cpuCores</code>::::</p>
+</div>
+<div class="paragraph">
+<p>+
+The number of CPU Cores.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>coresPerSocket</code></dt>
+<dd>
+<div class="paragraph">
+<p>The number of CPU Cores per Socket.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ReconfigureDisk</em></code>
+<code>diskSize</code>::::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>datastore</code></dt>
+<dd>
+<div class="paragraph">
+<p>The data store to be used by the disk.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ReconfigureMemory</em></code>
+<code>memorySize</code>::::</p>
+</div>
+<div class="paragraph">
+<p>+
+The amount of memory (RAM) in megabytes.
+<strong>Type:</strong> String</p>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ReconfigureNetworkAdapters</em></code>
+<code>deviceAction</code>::::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Values:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ADD</code></p>
+</li>
+<li>
+<p><code>EDIT</code></p>
+</li>
+<li>
+<p><code>REMOVE</code></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>deviceLabel</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the network device, such as "Network adapter 1". If blank, the first network adapter will be used.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>macAddress</code></dt>
+<dd>
+<div class="paragraph">
+<p>The new MAC address for this network adapter. Leave blank to keep existing or default value.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>standardSwitch</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>portGroup</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the network port group to use. Leave blank to keep existing or default value.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>distributedSwitch</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>distributedPortGroup</code></dt>
+<dd>
+<div class="paragraph">
+<p>Specifies the Distributed Switch Port Group.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>distributedPortId</code></dt>
+<dd>
+<div class="paragraph">
+<p>Port Id to be used from the specified Distributed Switch Port Group.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>Rename</em></code>
+<code>oldName</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The old name of the VM or template to be renamed.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>newName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The new name of the VM or template.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>RenameSnapshot</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM or template.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>oldName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The old name of the snapshot to be renamed.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>newName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The new name of the snapshot.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>newDescription</code></dt>
+<dd>
+<div class="paragraph">
+<p>The new description of the snapshot.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>RevertToSnapshot</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>snapshotName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the snapshot.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>SuspendVm</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM to suspend.
+<strong>Type:</strong> String</p>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>TakeSnapshot</em></code>
+<code>vm</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+The name of the VM you&#8217;d like to take a snapshot of.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>snapshotName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the snapshot.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>description</code></dt>
+<dd>
+<div class="paragraph">
+<p>The description to be saved with the snapshot.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>includeMemory</code></dt>
+<dd>
+<div class="paragraph">
+<p>Would you like to save the active memory in the snapshot?
+<strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>serverName</code> (optional)</dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
 </div>
 </dd>
 </dl>

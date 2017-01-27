@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -385,13 +385,77 @@ parallel-test-executor
 <dt class="hdlist1"><code>parallelism</code></dt>
 <dd>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>CountDrivenParallelism</em></code></p>
 </div>
 </dd>
+</dl>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Always divide the tests into N parallel sub-tasks of about equal size.
+    This mode is useful if your build slaves are not elastic to control
+    the resource consumption by this task.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>size</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> int</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>TimeDrivenParallelism</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Divide the tests into parallel sub-tasks each no bigger than N minutes.
+    Combined with elastic slaves, such as EC2, the turn-around time of the
+    tests will remain the same no matter how many tests you add.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">This value counts just the time spent on executing tests, and not including
+other time such as checking out the code, building the test, etc. For example,
+if your test job spends 50 minutes in tests and 60 minutes total from start to
+finish, then you have 10 minutes "fixed" overhead regardless of the number of tests
+it executes. If you use this mode and set the value to "10 minutes", then
+you'll have 5 parallel sub-tasks that all ends in roughly 20 minutes
+(20 mins = 10 mins tests time + 10 mins overhead.)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">"N minutes per a sub-task" is a goal, not a hard constraint. So a sub-task
+can take longer (for example if you have a single test that takes more than
+N minutes.)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>mins</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> int</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>generateInclusions</code> (optional)</dt>
 <dd>
 <div class="paragraph">
 <p>If disabled, the splitStep call will return a List&lt;List&lt;String&gt;&gt; containing the exclusion patterns for the different buckets.</p>
+</div>
+</dd>
+</dl>
 </div>
 </dd>
 </dl>

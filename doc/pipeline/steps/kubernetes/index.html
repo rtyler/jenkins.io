@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -388,6 +388,12 @@ kubernetes
 <p><strong>Type:</strong> String</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>cloud</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
 </dl>
 </div>
 </div>
@@ -579,6 +585,12 @@ be absolute provided that the launcher establishes a consistent working director
 <p><strong>Type:</strong> String</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>instanceCap</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> int</p>
+</div>
+</dd>
 <dt class="hdlist1"><code>nodeSelector</code> (optional)</dt>
 <dd>
 <div class="paragraph">
@@ -614,7 +626,142 @@ be absolute provided that the launcher establishes a consistent working director
 </dl>
 </div>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>ConfigMapVolume</em></code>
+<code>mountPath</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+Path to mount this volume inside the pod.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>configMapName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the Kubernetes Config Map to mount into the pod.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>EmptyDirVolume</em></code>
+<code>mountPath</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+Path to mount this volume inside the pod.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>memory</code></dt>
+<dd>
+<div class="paragraph">
+<p>Flag for in-memory volume.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>HostPathVolume</em></code>
+<code>hostPath</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+File or directory on the host node&#8217;s filesystem to mount into the pod.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>mountPath</code></dt>
+<dd>
+<div class="paragraph">
+<p>Path to mount this volume inside the pod.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>NfsVolume</em></code>
+<code>serverAddress</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+NFS Server Address.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>serverPath</code></dt>
+<dd>
+<div class="paragraph">
+<p>NFS Server Path.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>readOnly</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>mountPath</code></dt>
+<dd>
+<div class="paragraph">
+<p>Path to mount this volume inside the pod.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>PersistentVolumeClaim</em></code>
+<code>mountPath</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+Path to mount this volume inside the pod.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>claimName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The claim name.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>readOnly</code></dt>
+<dd>
+<div class="paragraph">
+<p>Flag for read-only volume.
+<strong>Type:</strong> boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>SecretVolume</em></code>
+<code>mountPath</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+Path to mount this volume inside the pod.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>secretName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the Kubernetes Secret to mount into the pod.
+<strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
@@ -622,6 +769,9 @@ be absolute provided that the launcher establishes a consistent working director
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
 </div>
 </dd>
 </dl>

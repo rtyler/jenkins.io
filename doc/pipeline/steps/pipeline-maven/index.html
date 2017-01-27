@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -382,6 +382,68 @@ The selected maven installation will be configured and prepended to the path.</p
 </div>
 <div class="dlist">
 <dl>
+<dt class="hdlist1"><code>globalMavenSettingsConfig</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Select a global maven settings element from File Config Provider.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">The settings element in the `settings.xml` file contains elements used
+to define values which configure Maven execution in various ways, like the `pom.xml`,
+but should not be bundled to any specific project, or distributed to an audience.
+These include values such as the local repository location, alternate remote repository servers,
+and authentication information.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">  see also: `settings.xml` reference
+*Type:* String</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>globalMavenSettingsFilePath</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Specify a global maven settings.xml file. The specified path can be absolute or relative to the workspace.
+  Shell-like environment variable expansions work in this field, by using the ${VARIABLE} syntax.
+  The file existence is checked on the build agent, if found, that one is used. If not found it will be checked on the master.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">The settings element in the `settings.xml` file contains elements used
+to define values which configure Maven execution in various ways, like the `pom.xml`,
+but should not be bundled to any specific project, or distributed to an audience.
+These include values such as the local repository location, alternate remote repository servers,
+and authentication information.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">There are two locations where a `settings.xml` file per default may live:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">The Maven install - default: `$M2_HOME/conf/settings.xml`
+A user's install  - default: `${user.home}/.m2/settings.xml`</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">The former settings.xml are also called global settings, the latter settings.xml are
+referred to as user settings. If both files exists, their contents gets merged,
+with the user-specific settings.xml being dominant.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">  see also: `settings.xml` reference
+*Type:* String</pre>
+</div>
+</div>
+</dd>
 <dt class="hdlist1"><code>jdk</code> (optional)</dt>
 <dd>
 <div class="paragraph">

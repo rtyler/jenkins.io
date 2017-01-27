@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -427,7 +427,178 @@ email-ext
 </dl>
 </div>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>CulpritsRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of users who committed a change since the last non-broken build till now.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">This list at least always include people who made changes in this build, but if the previous build
+was a failure it also includes the culprit list from there.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>DevelopersRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to all the people who caused a change in the change set.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>FailingTestSuspectsRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of users suspected of causing a unit test to begin failing.
+    This list includes committers and requestors of the build where the test began to fail,
+    and those for any consecutive failed builds prior to the build in which the test began to fail.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Build Number
+1
+2
+3
+4
+5</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Requestor
+Alice</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Alice</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Committers</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">BobClay
+ClayDan
+BobEd
+Ed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">foo
+Failed
+Failed
+Passed
+N/A
+Failed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">bar
+Failed
+Failed
+Passed
+N/A
+Passed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">baz
+Passed
+Failed
+Failed
+N/A
+Passed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">qux
+Passed
+Passed
+Failed
+N/A
+Passed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">new</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">N/A
+Failed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Suspects
+Alice (foo, bar)
+Alice (foo, bar)Bob (baz)Clay (baz)
+Bob (baz)Clay (baz, qux)Dan (qux)
+N/A(build failed)
+Alice (foo, new)Bob (foo, new)Ed (foo, new)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>FirstFailingBuildSuspectsRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of users suspected of causing the build to begin failing.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ListRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of recipients defined in the "Project Recipient List."</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>RequesterRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the user who initiated the build.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>UpstreamComitterRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of users who committed changes in upstream builds that triggered this build.</p>
+</div>
+</div>
 </div>
 <div class="dlist">
 <dl>
@@ -459,7 +630,178 @@ email-ext
 </dl>
 </div>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>CulpritsRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of users who committed a change since the last non-broken build till now.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">This list at least always include people who made changes in this build, but if the previous build
+was a failure it also includes the culprit list from there.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>DevelopersRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to all the people who caused a change in the change set.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>FailingTestSuspectsRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of users suspected of causing a unit test to begin failing.
+    This list includes committers and requestors of the build where the test began to fail,
+    and those for any consecutive failed builds prior to the build in which the test began to fail.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Build Number
+1
+2
+3
+4
+5</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Requestor
+Alice</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Alice</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Committers</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">BobClay
+ClayDan
+BobEd
+Ed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">foo
+Failed
+Failed
+Passed
+N/A
+Failed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">bar
+Failed
+Failed
+Passed
+N/A
+Passed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">baz
+Passed
+Failed
+Failed
+N/A
+Passed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">qux
+Passed
+Passed
+Failed
+N/A
+Passed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">new</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">N/A
+Failed</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Suspects
+Alice (foo, bar)
+Alice (foo, bar)Bob (baz)Clay (baz)
+Bob (baz)Clay (baz, qux)Dan (qux)
+N/A(build failed)
+Alice (foo, new)Bob (foo, new)Ed (foo, new)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>FirstFailingBuildSuspectsRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of users suspected of causing the build to begin failing.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ListRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of recipients defined in the "Project Recipient List."</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>RequesterRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the user who initiated the build.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>UpstreamComitterRecipientProvider</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sends email to the list of users who committed changes in upstream builds that triggered this build.</p>
+</div>
+</div>
 </div>
 </div>
 </div>

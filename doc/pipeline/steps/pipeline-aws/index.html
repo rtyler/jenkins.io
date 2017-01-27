@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -365,9 +365,11 @@ pipeline-aws
 <li><a href="#code-awsidentity-code-print-the-aws-identity"><code>awsIdentity</code>: Print the AWS identity</a></li>
 <li><a href="#code-cfinvalidate-code-invalidate-given-paths-in-cloudfront-distribution"><code>cfInvalidate</code>: Invalidate given paths in CloudFront distribution</a></li>
 <li><a href="#code-cfndelete-code-delete-cloudformation-stack"><code>cfnDelete</code>: Delete CloudFormation stack</a></li>
+<li><a href="#code-cfndescribe-code-describe-outputs-of-cloudformation-stack"><code>cfnDescribe</code>: Describe outputs of CloudFormation stack</a></li>
 <li><a href="#code-cfnupdate-code-create-or-update-cloudformation-stack"><code>cfnUpdate</code>: Create or Update CloudFormation stack</a></li>
 <li><a href="#code-s3download-code-copy-file-from-s3"><code>s3Download</code>: Copy file from S3</a></li>
 <li><a href="#code-s3upload-code-copy-file-to-s3"><code>s3Upload</code>: Copy file to S3</a></li>
+<li><a href="#code-snspublish-code-publish-notification-to-sns"><code>snsPublish</code>: Publish notification to SNS</a></li>
 <li><a href="#code-withaws-code-set-aws-settings-for-nested-block"><code>withAWS</code>: set AWS settings for nested block</a></li>
 </ul>
 </li>
@@ -416,6 +418,19 @@ pipeline-aws
 </div>
 </div>
 <div class="sect2">
+<h3 id="code-cfndescribe-code-describe-outputs-of-cloudformation-stack"><a class="anchor" href="#code-cfndescribe-code-describe-outputs-of-cloudformation-stack"></a><code>cfnDescribe</code>: Describe outputs of CloudFormation stack</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>stack</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
 <h3 id="code-cfnupdate-code-create-or-update-cloudformation-stack"><a class="anchor" href="#code-cfnupdate-code-create-or-update-cloudformation-stack"></a><code>cfnUpdate</code>: Create or Update CloudFormation stack</h3>
 <div class="dlist">
 <dl>
@@ -445,6 +460,19 @@ pipeline-aws
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>params</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>tags</code> (optional)</dt>
 <dd>
 <div class="paragraph">
 <p><strong>Array/List</strong></p>
@@ -504,6 +532,31 @@ pipeline-aws
 </div>
 </dd>
 <dt class="hdlist1"><code>path</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-snspublish-code-publish-notification-to-sns"><a class="anchor" href="#code-snspublish-code-publish-notification-to-sns"></a><code>snsPublish</code>: Publish notification to SNS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>topicArn</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>subject</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>message</code></dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>

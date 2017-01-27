@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -362,7 +362,7 @@ jira
 <ul class="sectlevel1">
 <li><a href="#jira">jira</a>
 <ul class="sectlevel2">
-<li><a href="#code-jiracomment-code-jira-add-comment-to-the-issue"><code>jiraComment</code>: JIRA: Add comment to the issue</a></li>
+<li><a href="#code-jiracomment-code-jira-add-a-comment-to-issue-s"><code>jiraComment</code>: JIRA: Add a comment to issue(s)</a></li>
 <li><a href="#code-jiraissueselector-code-jira-issue-selector"><code>jiraIssueSelector</code>: JIRA: Issue selector</a></li>
 <li><a href="#code-jirasearch-code-jira-search-issues"><code>jiraSearch</code>: JIRA: Search issues</a></li>
 </ul>
@@ -373,7 +373,7 @@ jira
 <h2 id="jira"><a class="anchor" href="#jira"></a>jira</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="code-jiracomment-code-jira-add-comment-to-the-issue"><a class="anchor" href="#code-jiracomment-code-jira-add-comment-to-the-issue"></a><code>jiraComment</code>: JIRA: Add comment to the issue</h3>
+<h3 id="code-jiracomment-code-jira-add-a-comment-to-issue-s"><a class="anchor" href="#code-jiracomment-code-jira-add-a-comment-to-issue-s"></a><code>jiraComment</code>: JIRA: Add a comment to issue(s)</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>issueKey</code></dt>
@@ -398,10 +398,29 @@ jira
 <dt class="hdlist1"><code>issueSelector</code> (optional)</dt>
 <dd>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>DefaultIssueSelector</em></code>
+<code>$class: <em>ExplicitIssueSelector</em></code>
+<code>issueKeys</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>JqlIssueSelector</em></code>
+<code>jql</code>:::</p>
+</div>
+<div class="paragraph">
+<p>+
+<strong>Type:</strong> String</p>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>P4JobIssueSelector</em></code>
+<code>$class: <em>PerforceJobIssueSelector</em></code></p>
 </div>
 </div>
 <div class="sect2">

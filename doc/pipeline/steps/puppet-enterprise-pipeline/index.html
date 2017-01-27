@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -365,6 +365,7 @@ puppet-enterprise-pipeline
 <li><a href="#code-puppetcode-code-deploy-puppet-environment-code"><code>puppetCode</code>: Deploy Puppet Environment Code</a></li>
 <li><a href="#code-puppethiera-code-set-hiera-data"><code>puppetHiera</code>: Set Hiera data.</a></li>
 <li><a href="#code-puppetjob-code-create-puppet-orchestrator-job"><code>puppetJob</code>: Create Puppet Orchestrator Job</a></li>
+<li><a href="#code-puppetquery-code-query-puppetdb-with-the-puppet-query-language-pql"><code>puppetQuery</code>: Query PuppetDB with the Puppet Query Language (PQL)</a></li>
 </ul>
 </li>
 </ul>
@@ -395,39 +396,18 @@ puppet-enterprise-pipeline
 <p><strong>Type:</strong> String</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>environments</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>+ java.util.ArrayList+</p>
+</div>
+</dd>
 </dl>
 </div>
 </div>
 <div class="sect2">
 <h3 id="code-puppethiera-code-set-hiera-data"><a class="anchor" href="#code-puppethiera-code-set-hiera-data"></a><code>puppetHiera</code>: Set Hiera data.</h3>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>key</code> (optional)</dt>
-<dd>
-<div class="paragraph">
-<p><strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>scope</code> (optional)</dt>
-<dd>
-<div class="paragraph">
-<p><strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>source</code> (optional)</dt>
-<dd>
-<div class="paragraph">
-<p><strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>value</code> (optional)</dt>
-<dd>
-<div class="paragraph">
-<p>+ java.lang.Object+</p>
-</div>
-</dd>
-</dl>
-</div>
+
 </div>
 <div class="sect2">
 <h3 id="code-puppetjob-code-create-puppet-orchestrator-job"><a class="anchor" href="#code-puppetjob-code-create-puppet-orchestrator-job"></a><code>puppetJob</code>: Create Puppet Orchestrator Job</h3>
@@ -476,6 +456,25 @@ puppet-enterprise-pipeline
 </div>
 </dd>
 <dt class="hdlist1"><code>target</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-puppetquery-code-query-puppetdb-with-the-puppet-query-language-pql"><a class="anchor" href="#code-puppetquery-code-query-puppetdb-with-the-puppet-query-language-pql"></a><code>puppetQuery</code>: Query PuppetDB with the Puppet Query Language (PQL)</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>credentialsId</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>query</code> (optional)</dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>

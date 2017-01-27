@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.38
+2.42
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -480,7 +480,252 @@ If you need to run steps in a different directory than the usual workspace, you 
 </dl>
 </div>
 <div class="paragraph">
-<p>Nested Choice of Objects</p>
+<p>Nested Choice of Objects
+<code>$class: <em>AmazonWebServicesCredentialsBinding</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sets one variable to the AWS access key and another one to the secret key given in the credentials.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>accessKeyVariable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Environment variable name for the AWS Access Key Id. If empty, <code>AWS_ACCESS_KEY_ID</code> will be used.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>secretKeyVariable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Environment variable name for the AWS Secret Access Key. If empty, <code>AWS_SECRET_ACCESS_KEY</code> will be used.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>credentialsId</code></dt>
+<dd>
+<div class="paragraph">
+<p>Credentials of an appropriate type to be set to the variable.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>AzurePublisherSettingsBinding</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Set a variable to point to Azure Publisher Settings file.</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>variable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of an environment variable to be set during the build.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>credentialsId</code></dt>
+<dd>
+<div class="paragraph">
+<p>Credentials of an appropriate type to be set to the variable.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>FileBinding</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Copies the file given in the credentials to a temporary location, then sets the variable to that location.
+    (The file is deleted when the build completes.)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Warning: if the master or slave node has multiple executors,
+any other build running concurrently on the same node will be able to read
+the contents of this file.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>variable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of an environment variable to be set during the build.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>credentialsId</code></dt>
+<dd>
+<div class="paragraph">
+<p>Credentials of an appropriate type to be set to the variable.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>StringBinding</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sets a variable to the text given in the credentials.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Warning: if the master or slave node has multiple executors,
+any other build running concurrently on the same node will be able to read
+the text of the secret, for example on Linux using `ps e`.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>variable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of an environment variable to be set during the build.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>credentialsId</code></dt>
+<dd>
+<div class="paragraph">
+<p>Credentials of an appropriate type to be set to the variable.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>UsernamePasswordBinding</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sets a variable to the username and password given in the credentials, separated by a colon (<code>:</code>).</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Warning: if the master or slave node has multiple executors,
+any other build running concurrently on the same node will be able to read
+the text of the secret, for example on Linux using `ps e`.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>variable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of an environment variable to be set during the build.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>credentialsId</code></dt>
+<dd>
+<div class="paragraph">
+<p>Credentials of an appropriate type to be set to the variable.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>UsernamePasswordMultiBinding</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Sets one variable to the username and one variable to the password given in the credentials.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Warning: if the master or slave node has multiple executors,
+any other build running concurrently on the same node will be able to read
+the text of the secret, for example on Linux using `ps e`.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>usernameVariable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of an environment variable to be set to the username during the build.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>passwordVariable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of an environment variable to be set to the password during the build.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>credentialsId</code></dt>
+<dd>
+<div class="paragraph">
+<p>Credentials of an appropriate type to be set to the variable.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>$class: <em>ZipFileBinding</em></code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Unpacks the ZIP file given in the credentials to a temporary directory, then sets the variable to that location.
+    (The directory is deleted when the build completes.)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Warning: if the master or slave node has multiple executors,
+any other build running concurrently on the same node will be able to read
+the contents of this directory.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>variable</code></dt>
+<dd>
+<div class="paragraph">
+<p>Name of an environment variable to be set during the build.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>credentialsId</code></dt>
+<dd>
+<div class="paragraph">
+<p>Credentials of an appropriate type to be set to the variable.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
