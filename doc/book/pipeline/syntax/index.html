@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Pipeline Syntax
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://rtyler.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://rtyler.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://rtyler.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://rtyler.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://rtyler.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="active nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://rtyler.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<h4>
+Guided Tour
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc" class="">Index</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/hello-world" class="">Create your first Pipeline</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/running-multiple-steps" class="">Running multiple steps</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/agents" class="">Defining execution environments</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/environment" class="">Using environment variables</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/tests-and-artifacts" class="">Recording test results and artifacts</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/post" class="">Cleaning up and notifications</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/deployment" class="">Deployment</a>
+</li>
+</ul>
+<h4>
+User Handbook
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="../user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/getting-started" class="">Getting Started with Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/using" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/managing" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/best-practice" class="">Best Practices</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline" class="active">Pipeline</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/use-case" class="">Jenkins Use-Cases</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/operating" class="">Operating Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/scaling" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/appendix" class="">Appendix</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/glossary" class="">Glossary</a>
+</li>
+</ul>
+<h4>
+Resources
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/reference" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
+</li>
+</ul>
+<h5>
+Recent Tutorials
+</h5>
+<ul>
+<li>
+<a href="/blog/2016/08/29/sauce-pipeline/">
+Browser-testing with Sauce OnDemand and Pipeline
+</a>
+</li>
+<li>
+<a href="/blog/2016/08/10/rails-cd-with-pipeline/">
+Continuous Security for Rails apps with Pipeline and Brakeman
+</a>
+</li>
+<li>
+<a href="/blog/2016/07/18/pipline-notifications/">
+Sending Notifications in Pipeline
+</a>
+</li>
+</ul>
+<div class="small">
+<a href="/node/tags/tutorial">
+View all tutorials
+</a>
+</div>
+<hr>
+<h4>
+Developers
+</h4>
+<h5>
+Writing plugins
+</h5>
+<ul>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins">
+Extend Jenkins
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points">
+Extension points
+</a>
+</li>
+</ul>
+<h5>
+JavaDoc
+</h5>
+<ul>
+<li>
+<a href="http://javadoc.jenkins.io/">
+Latest
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.32">
+2.32
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.19">
+2.19
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.7">
+2.7
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.651">
+1.651
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.642">
+1.642
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.625">
+1.625
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.609">
+1.609
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.596">
+1.596
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.580">
+1.580
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.565">
+1.565
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.554">
+1.554
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row body">
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../shared-libraries">
+⇐ Extending with Shared Libraries
+</a>
+<a class="up page-link" href="../">
+⇑ "Pipeline
+</a>
+<a class="next page-link" href="../../use-case">
+Jenkins Use-Cases ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+<div class="section">
+<h1>
+Pipeline Syntax
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#declarative-pipeline">Declarative Pipeline</a>
+<ul class="sectlevel2">
+<li><a href="#declarative-sections">Sections</a></li>
+<li><a href="#declarative-directives">Directives</a></li>
+<li><a href="#declarative-steps">Steps</a></li>
+</ul>
+</li>
+<li><a href="#scripted-pipeline">Scripted Pipeline</a>
+<ul class="sectlevel2">
+<li><a href="#scripted-steps">Steps</a></li>
+<li><a href="#scripted-expressions">Expressions</a></li>
+</ul>
+</li>
+<li><a href="#compare">Syntax Comparison</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section builds on the information introduced in <a href="../getting-started/">Getting Started</a>, and should be treated as solely as a reference. For more
+information on how to use Pipeline syntax in practical examples, refer to
+<a href="../jenkinsfile/">The Jenkinsfile</a> section of this chapter. As of version 2.5 of
+the Pipeline plugin, Pipeline supports two discrete syntaxes which are detailed
+below. For the pros and cons of each, see the <a href="#compare">Syntax Comparison</a>.</p>
+</div>
+<div class="paragraph">
+<p>As discussed in <a href="../getting-started/">Getting Started</a>, the most fundamental
+part of a Pipeline is the "step." Fundamentally, steps tell Jenkins <em>what</em> to
+do, and serve as the basic building block for both Declarative and Scripted
+Pipeline syntax.</p>
+</div>
+<div class="paragraph">
+<p>For an overview of available steps, please refer to the
+<a href="/doc/pipeline/steps">Pipeline Steps reference</a>
+which contains a comprehensive list of steps built into Pipeline as well as
+steps provided by plugins.</p>
+</div>
+</div>
+</div>
+<div class="sect1 syntax">
+<h2 id="declarative-pipeline"><a class="anchor" href="#declarative-pipeline"></a>Declarative Pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Declarative Pipeline is a relatively recent addition to Jenkins Pipeline
+<sup class="footnote" id="_footnote_declarative-version">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>
+which presents a more simplified and opinionated syntax on top of the Pipeline
+sub-systems.</p>
+</div>
+<div class="paragraph">
+<p>All valid Declarative Pipelines must be enclosed within a <code>pipeline</code> block, for
+example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">pipeline {
+    <span style="color:#777">/* insert Declarative Pipeline here */</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The basic statements and expressions which are valid in Declarative Pipeline
+follow the same rules as
+<a href="https://groovy-lang.org/syntax.html">Groovy&#8217;s syntax</a>
+with the following exceptions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The top-level of the Pipeline must be a <em>block</em>, specifically: <code>pipeline { }</code></p>
+</li>
+<li>
+<p>No semicolons as statement separators. Each statement has to be on its own
+line</p>
+</li>
+<li>
+<p>Blocks must only consist of <a href="#declarative-sections">Sections</a>,
+<a href="#declarative-directions">[declarative-directions]</a>, <a href="#declarative-steps">Steps</a>, or assignment statements.</p>
+</li>
+<li>
+<p>A property reference statement is treated as no-argument method invocation. So for
+example, input is treated as input()</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="declarative-sections"><a class="anchor" href="#declarative-sections"></a>Sections</h3>
+<div class="paragraph">
+<p>Sections in Declarative Pipeline typically contain one or more
+<a href="#declarative-directions">[declarative-directions]</a> or <a href="#declarative-steps">Steps</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="post"><a class="anchor" href="#post"></a>post</h4>
+<div class="paragraph">
+<p>The <code>post</code> section defines actions which will be run at the end of the Pipeline
+run. A number of additional <a href="#post-conditions">Conditions</a> blocks are supported within the <code>post</code> section:
+<code>always</code>, <code>changed</code>, <code>failure</code>, <code>success</code>, and <code>unstable</code>. These
+blocks allow for the execution of steps at the tail-end of the Pipeline run,
+depending on the status of the Pipeline.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="post-conditions"><a class="anchor" href="#post-conditions"></a>Conditions</h5>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>always</code></dt>
+<dd>
+<p>Run regardless of the completion status of the Pipeline run.</p>
+</dd>
+<dt class="hdlist1"><code>changed</code></dt>
+<dd>
+<p>Only run if the current Pipeline run has a different status from
+the previously completed Pipeline.</p>
+</dd>
+<dt class="hdlist1"><code>failure</code></dt>
+<dd>
+<p>Only run if the current Pipeline has a "failed" status, typically
+denoted in the web UI with a red indication.</p>
+</dd>
+<dt class="hdlist1"><code>success</code></dt>
+<dd>
+<p>Only run if the current Pipeline has a "success" status, typically
+denoted in the web UI with a blue or green indication.</p>
+</dd>
+<dt class="hdlist1"><code>unstable</code></dt>
+<dd>
+<p>Only run if the current Pipeline has an "unstable" status,
+usually caused by test failures, code violations, etc. Typically denoted in the
+web UI with a yellow indication.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="post-example"><a class="anchor" href="#post-example"></a>Example</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+    post { <span style="color:#777">/* &lt;1&gt; */</span>
+        always { <span style="color:#777">/* &lt;2&gt; */</span>
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I will always say Hello again!</span><span style="color:#710">'</span></span>
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Conventionally, the <code>post</code> section should be placed at the end of the
+Pipeline.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <a href="#post-conditions">Conditions</a> blocks can use steps.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="stages"><a class="anchor" href="#stages"></a>stages</h4>
+<div class="paragraph">
+<p>A sequence of one or more <a id="stage"></a> directives, the <code>stages</code> section is where
+the bulk of the "worK" described by a Pipeline will be located. At a minimum it
+is recommended that <code>stages</code> contain at least one <a id="stage"></a> directive for
+Build, Test, and Deploy.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="stages-example"><a class="anchor" href="#stages-example"></a>Example</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages { <span style="color:#777">/* &lt;1&gt; */</span>
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>stages</code> section will typically follow the directives such as <code>agent</code>,
+<code>options</code>, etc.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="steps"><a class="anchor" href="#steps"></a>steps</h4>
+<div class="paragraph">
+<p>Defines a series of steps to be executed in a given <code>stage</code> directive.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Inside each <code>stage</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="steps-example"><a class="anchor" href="#steps-example"></a>Example</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps { <span style="color:#777">/* &lt;1&gt; */</span>
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>steps</code> section must contain one or more steps.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="declarative-directives"><a class="anchor" href="#declarative-directives"></a>Directives</h3>
+<div class="sect3">
+<h4 id="agent"><a class="anchor" href="#agent"></a>agent</h4>
+<div class="paragraph">
+<p>The <code>agent</code> directive specifies where the entire Pipeline, or a specific stage,
+will execute in the Jenkins environment depending on where the <code>agent</code>
+directive is placed. The directive must be defined at the top-level inside the
+<code>pipeline</code> block, but stage-level usage is optional.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><a href="#agent-parameters">Described below</a></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Inside each <code>stage</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="agent-parameters"><a class="anchor" href="#agent-parameters"></a>Parameters</h5>
+<div class="paragraph">
+<p>In order to support the wide variety of use-cases Pipeline authors may have,
+the <code>agent</code> directive supports a few different types of parameters. These
+parameters can be applied at the top-level of the <code>pipeline</code> block, or within
+each <code>stage</code> directive.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">any</dt>
+<dd>
+<p>Execute the Pipeline, or stage, on any available agent. For example: <code>agent any</code></p>
+</dd>
+<dt class="hdlist1">none</dt>
+<dd>
+<p>When applied at the top-level of the <code>pipeline</code> block, each <code>stage</code>
+directive will need to contain its own <code>agent</code> directive. For example: <code>agent none</code></p>
+</dd>
+<dt class="hdlist1">label</dt>
+<dd>
+<p>Execute the Pipeline, or stage, on the agent available in the Jenkins
+environment with the provided label. For example: <code>agent { label 'my-defined-label' }</code></p>
+</dd>
+<dt class="hdlist1">docker</dt>
+<dd>
+<p>Execute the Pipeline, or stage, with the given container which will be
+dynamically provisioned on a <a href="../../glossary/#node">node</a> pre-configured to
+accept Docker-based Pipelines, or a node matching the optionally defined
+<code>label</code> parameter.  The <code>docker</code> also optionally accepts an <code>args</code> parameter
+which may contain parameters to pass directly to a <code>docker run</code> invocation.
+ For example: <code>agent { docker: 'maven:3-alpine' }</code> or</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">agent {
+    docker {
+        <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span>
+        <span style="color:#606">label</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-defined-label</span><span style="color:#710">'</span></span>
+        <span style="color:#606">args</span>:  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-v /tmp:/tmp</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="agent-example"><a class="anchor" href="#agent-example"></a>Example</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent { docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span> } <span style="color:#777">/* &lt;1&gt; */</span>
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn -B clean verify</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Execute all the steps defined in this Pipeline within a running container
+of the given name and tag (<code>maven:3-alpine</code>).</td>
+</tr>
+</table>
+</div>
+<div class="sect5">
+<h6 id="stage-level-code-agent-code-directive"><a class="anchor" href="#stage-level-code-agent-code-directive"></a>Stage-level <code>agent</code> directive</h6>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent none <span style="color:#777">/* &lt;1&gt; */</span>
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span> } <span style="color:#777">/* &lt;2&gt; */</span>
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn -B clean verify</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Test</span><span style="color:#710">'</span></span>) {
+            agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">openjdk:8-jre</span><span style="color:#710">'</span></span> } <span style="color:#777">/* &lt;3&gt; */</span>
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello JRE</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Defining <code>agent none</code> at the top-level of the Pipeline ensures that
+<a href="../../glossary/#executor">an Executor</a> will not be unnecessarily. Using <code>agent
+none</code> requires that each <code>stage</code> directive contain an <code>agent</code> directive.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Execute the steps contained within this stage using the given container.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Execute the steps contained within this steps using a different container
+from the previous stage.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="environment"><a class="anchor" href="#environment"></a>environment</h4>
+<div class="paragraph">
+<p>The <code>environment</code> directive specifies a sequence of key-value pairs which will
+be defined as environment variables for the all steps, or stage-specific steps,
+depending on where the <code>environment</code> directive is located within the Pipeline.</p>
+</div>
+<div class="paragraph">
+<p>This directive supports a special helper method <code>credentials()</code> which can be
+used to access pre-defined Credentials by their identifier in the Jenkins
+environment. For Credentials which are of type "Secret Text", the
+<code>credentials()</code> method will ensure that the environment variable specified
+contains the Secret Text contents. For Credentials which are of type "Standard
+username and password", the environment variable specified will be set to
+<code>username:password</code> and two additional environment variables will be
+automatically be defined: <code>MYVARNAME_USR</code> and <code>MYVARNAME_PSW</code> respective.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Inside the <code>pipeline</code> block, or within <code>stage</code> directives.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="environment-example"><a class="anchor" href="#environment-example"></a>Example</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    environment { <span style="color:#777">/* &lt;1&gt; */</span>
+        CC = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clang</span><span style="color:#710">'</span></span>
+    }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            environment { <span style="color:#777">/* &lt;2&gt; */</span>
+                AN_ACCESS_KEY = credentials(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-prefined-secret-text</span><span style="color:#710">'</span></span>) <span style="color:#777">/* &lt;3&gt; */</span>
+            }
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">printenv</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>An <code>environment</code> directive used in the top-level <code>pipeline</code> block will
+apply to all steps within the Pipeline.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>An <code>environment</code> directive defined within a <code>stage</code> will only apply the
+given environment variables to steps within the <code>stage</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>environment</code> block has a helper method <code>credentials()</code> defined which
+can be used to access pre-defined Credentials by their identifier in the
+Jenkins environment.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="options"><a class="anchor" href="#options"></a>options</h4>
+<div class="paragraph">
+<p>Traditional JobPropertys, such as buildDiscarder or disableConcurrentBuilds,
+Declarative-specifc options, such as skipDefaultCheckout, and "wrappers" that
+should wrap the entire build, such as timeout.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>TODO: REQUIRES COMPLETION OF
+<a href="https://issues.jenkins-ci.org/browse/WEBSITE-291">WEBSITE-291</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="options-example"><a class="anchor" href="#options-example"></a>Example</h5>
+<div class="pipeline-block"></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="parameters"><a class="anchor" href="#parameters"></a>parameters</h4>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="parameters-example"><a class="anchor" href="#parameters-example"></a>Example</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="triggers"><a class="anchor" href="#triggers"></a>triggers</h4>
+<div class="paragraph">
+<p>Triggers for this job, as used in other Jenkins jobs.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="stage-2"><a class="anchor" href="#stage-2"></a>stage</h4>
+<div class="paragraph">
+<p>A block for a single stage, containing a sequence of steps. Note that this
+syntax matches up with the to-be-released block-scoped stage syntax in base
+Pipeline.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Inside the <code>stages</code> section.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="triggers-example"><a class="anchor" href="#triggers-example"></a>Example</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="tools"><a class="anchor" href="#tools"></a>tools</h4>
+<div class="paragraph">
+<p>A section defining tools to auto-install and put on the PATH. This is ignored
+if image none is specified.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="tools-example"><a class="anchor" href="#tools-example"></a>Example</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="when"><a class="anchor" href="#when"></a>when</h4>
+<div class="paragraph">
+<p>A block within a stage that determines whether the stage should be executed.</p>
+</div>
+<table class="tableblock frame-all grid-all spread syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div><div class="paragraph">
+<p>Inside a <code>stage</code> directive</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="when-example"><a class="anchor" href="#when-example"></a>Example</h5>
+
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="declarative-steps"><a class="anchor" href="#declarative-steps"></a>Steps</h3>
+<div class="sect3">
+<h4 id="script"><a class="anchor" href="#script"></a>script</h4>
+<div class="paragraph">
+<p>A block within a stage&#8217;s steps that can contain Pipeline code not subject to
+the "declarative" subset described below.</p>
+</div>
+<div class="sect4">
+<h5 id="script-example"><a class="anchor" href="#script-example"></a>Example</h5>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 syntax">
+<h2 id="scripted-pipeline"><a class="anchor" href="#scripted-pipeline"></a>Scripted Pipeline</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="scripted-steps"><a class="anchor" href="#scripted-steps"></a>Steps</h3>
+
+</div>
+<div class="sect2">
+<h3 id="scripted-expressions"><a class="anchor" href="#scripted-expressions"></a>Expressions</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="compare"><a class="anchor" href="#compare"></a>Syntax Comparison</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When Pipeline was first conceived it was natural to begin with Groovy as the
+foundation. Jenkins already had an embedded Groovy scripting engine with a console
+to interact with all parts of Jenkins and Groovy is a great language for creating
+a custom Domain-Specific Language (DSL). The
+<a href="https://plugins.jenkins.io/job-dsl">Job-DSL</a>,
+plugin for Jenkins was also written in Groovy. This plugin lets you automate the
+creation and editing of any job in Jenkins, including Pipelines.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline initially introduced key pipeline-specific concepts such as <code>node</code>,
+<code>stage</code>, <code>parallel</code>, and extension points to allow plugins to add other steps
+to the DSL but, otherwise didn&#8217;t restrict the use of Groovy. This original syntax
+for creating Pipelines is now referred to as "Scripted Pipeline" and includes
+full programmatic control to allow scripting continuous delivery pipelines in Groovy.
+This gives Pipeline creators tremendous flexibility in defining a pipeline and allows it to
+be extended via <a href="../shared-libraries/">Shared Libraries</a> or plugins.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Due to the need to serialize all variables for durability some Groovy
+idioms are not fully supported yet. See
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-27421">JENKINS-27421</a>
+and
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-26481">JENKINS-26481</a>
+for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Writing Pipelines with Scripted Pipeline syntax, however, does require at least
+some proficiency with Groovy. Requiring all team members that touch the application&#8217;s
+Pipeline to understand Groovy limits the ability for full-participation in
+code-review, audits, and editing of the Pipeline as part of the application code.
+Enter "Declarative Pipeline" syntax.</p>
+</div>
+<div class="paragraph">
+<p>Declarative Pipeline syntax was created to extend Pipeline to users of all experience
+levels and complement Scripted Pipeline syntax. As the name implies, it is intended
+to enable declarative programming
+<sup class="footnote" id="_footnote_declarative">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>
+for defining Pipelines as opposed to the imperative programming
+<sup class="footnote" id="_footnote_imperative">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>
+provided by Scripted Pipeline. While it is still a DSL written
+on top of Groovy, Declarative Pipeline is a limited to a pre-defined structure
+that is much more specific to continuous delivery. This allows all stakeholders
+to help create, edit, review, and audit the application&#8217;s Pipeline.</p>
+</div>
+<div class="paragraph">
+<p>Scripted Pipeline and Declarative Pipeline both use the same underlying Pipeline
+execution engine and both are fully-supported. You can use whichever you prefer
+in any of your Pipelines and even combine them when needed. All examples in this handbook will show
+both a Declarative Pipeline version and Scripted Pipeline version for your reference.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Version 2.5 of the "Pipeline plugin" introduces support for Declarative Pipeline syntax
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Declarative_programming">Declarative Programming</a>
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://en.wikipedia.org/wiki/Imperative_programming">Imperative Programming</a>
+</div>
+</div>
+</div>
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../shared-libraries">
+⇐ Extending with Shared Libraries
+</a>
+<a class="up page-link" href="../">
+⇑ "Pipeline
+</a>
+<a class="next page-link" href="../../use-case">
+Jenkins Use-Cases ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/pipeline/syntax.adoc" title="Edit /doc/book/pipeline/syntax.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/pipeline/syntax.adoc" title="View /doc/book/pipeline/syntax.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

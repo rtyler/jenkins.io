@@ -74,7 +74,7 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.32.1
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.42
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -421,7 +421,7 @@ Resources
 </h4>
 <ul>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reference" class="">Pipeline Syntax reference</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/reference" class="">Pipeline Syntax reference</a>
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
@@ -554,7 +554,9 @@ finalization, notification, or other end-of-Pipeline tasks.</p>
     agent any
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">No-op</span><span style="color:#710">'</span></span>) {
-            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ls</span><span style="color:#710">'</span></span>
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ls</span><span style="color:#710">'</span></span>
+            }
         }
     }
     post {

@@ -74,7 +74,7 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.32.1
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.42
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -421,7 +421,7 @@ Resources
 </h4>
 <ul>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reference" class="">Pipeline Syntax reference</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/reference" class="">Pipeline Syntax reference</a>
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
@@ -607,12 +607,14 @@ various languages.</p>
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-  agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.3.3</span><span style="color:#710">'</span></span> }
-  stages {
-    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
+    agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.3.3</span><span style="color:#710">'</span></span> }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
+            }
+        }
     }
-  }
 }</code></pre>
 </div></div>  <div class="pipeline-script-expand">
     <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
@@ -624,11 +626,12 @@ various languages.</p>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
 node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
-  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
-    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.3.3</span><span style="color:#710">'</span></span>).inside {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
+    checkout scm
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+        docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.3.3</span><span style="color:#710">'</span></span>).inside {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
+        }
     }
-  }
 }</code></pre>
 </div></div></div>
 </div>
@@ -638,12 +641,14 @@ node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-  agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span> }
-  stages {
-    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
+    agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span> }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
+            }
+        }
     }
-  }
 }</code></pre>
 </div></div>  <div class="pipeline-script-expand">
     <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
@@ -655,11 +660,12 @@ node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
 node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
-  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
-    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span>).inside {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
+    checkout scm
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+        docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span>).inside {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
+        }
     }
-  }
 }</code></pre>
 </div></div></div>
 </div>
@@ -669,12 +675,14 @@ node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-  agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby</span><span style="color:#710">'</span></span> }
-  stages {
-    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby --version</span><span style="color:#710">'</span></span>
+    agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby</span><span style="color:#710">'</span></span> }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby --version</span><span style="color:#710">'</span></span>
+            }
+        }
     }
-  }
 }</code></pre>
 </div></div>  <div class="pipeline-script-expand">
     <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
@@ -686,11 +694,12 @@ node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
 node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
-  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
-    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby</span><span style="color:#710">'</span></span>).inside {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby --version</span><span style="color:#710">'</span></span>
+    checkout scm
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+        docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby</span><span style="color:#710">'</span></span>).inside {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby --version</span><span style="color:#710">'</span></span>
+        }
     }
-  }
 }</code></pre>
 </div></div></div>
 </div>
@@ -700,12 +709,14 @@ node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-  agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python:3.5.1</span><span style="color:#710">'</span></span> }
-  stages {
-    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python --version</span><span style="color:#710">'</span></span>
+    agent { <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python:3.5.1</span><span style="color:#710">'</span></span> }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python --version</span><span style="color:#710">'</span></span>
+            }
+        }
     }
-  }
 }</code></pre>
 </div></div>  <div class="pipeline-script-expand">
     <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
@@ -717,11 +728,12 @@ node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
 node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
-  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
-    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python:3.5.1</span><span style="color:#710">'</span></span>).inside {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python --version</span><span style="color:#710">'</span></span>
+    checkout scm
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+        docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python:3.5.1</span><span style="color:#710">'</span></span>).inside {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">python --version</span><span style="color:#710">'</span></span>
+        }
     }
-  }
 }</code></pre>
 </div></div></div>
 </div>
@@ -731,12 +743,14 @@ node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-  agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php</span><span style="color:#710">'</span></span> }
-  stages {
-    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php --version</span><span style="color:#710">'</span></span>
+    agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php</span><span style="color:#710">'</span></span> }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php --version</span><span style="color:#710">'</span></span>
+            }
+        }
     }
-  }
 }</code></pre>
 </div></div>  <div class="pipeline-script-expand">
     <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
@@ -748,11 +762,12 @@ node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">/* Requires the Docker Pipeline plugin */</span>
 node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
-  stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
-    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php</span><span style="color:#710">'</span></span>).inside {
-      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php --version</span><span style="color:#710">'</span></span>
+    checkout scm
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+        docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php</span><span style="color:#710">'</span></span>).inside {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">php --version</span><span style="color:#710">'</span></span>
+        }
     }
-  }
 }</code></pre>
 </div></div></div>
 </div>

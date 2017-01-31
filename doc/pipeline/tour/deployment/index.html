@@ -74,7 +74,7 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.32.1
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.42
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -421,7 +421,7 @@ Resources
 </h4>
 <ul>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reference" class="">Pipeline Syntax reference</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/reference" class="">Pipeline Syntax reference</a>
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
@@ -564,13 +564,19 @@ activity.</p>
     agent any
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
-            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Building</span><span style="color:#710">'</span></span>
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Building</span><span style="color:#710">'</span></span>
+            }
         }
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>) {
-            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Testing</span><span style="color:#710">'</span></span>
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Testing</span><span style="color:#710">'</span></span>
+            }
         }
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) {
-            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
+            }
         }
     }
 }</code></pre>
@@ -605,11 +611,15 @@ following snippet.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy - Staging</span><span style="color:#710">'</span></span>) {
-    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy staging</span><span style="color:#710">'</span></span>
-    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./run-smoke-tests</span><span style="color:#710">'</span></span>
+    steps {
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy staging</span><span style="color:#710">'</span></span>
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./run-smoke-tests</span><span style="color:#710">'</span></span>
+    }
 }
 stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy - Production</span><span style="color:#710">'</span></span>) {
-    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy production</span><span style="color:#710">'</span></span>
+    steps {
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy production</span><span style="color:#710">'</span></span>
+    }
 }</code></pre>
 </div>
 </div>
@@ -646,16 +656,22 @@ agent any
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>) { }
 
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy - Staging</span><span style="color:#710">'</span></span>) {
-            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy staging</span><span style="color:#710">'</span></span>
-            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./run-smoke-tests</span><span style="color:#710">'</span></span>
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy staging</span><span style="color:#710">'</span></span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./run-smoke-tests</span><span style="color:#710">'</span></span>
+            }
         }
 
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Sanity check</span><span style="color:#710">'</span></span>) {
-            input <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Does the staging environment look ok?</span><span style="color:#710">&quot;</span></span>
+            steps {
+                input <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Does the staging environment look ok?</span><span style="color:#710">&quot;</span></span>
+            }
         }
 
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy - Production</span><span style="color:#710">'</span></span>) {
-            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy production</span><span style="color:#710">'</span></span>
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy production</span><span style="color:#710">'</span></span>
+            }
         }
     }
 }</code></pre>

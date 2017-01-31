@@ -74,7 +74,7 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.32.1
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.42
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -421,7 +421,7 @@ Resources
 </h4>
 <ul>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reference" class="">Pipeline Syntax reference</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/reference" class="">Pipeline Syntax reference</a>
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
@@ -582,6 +582,11 @@ Branches and Pull Requests
 Extending with Shared Libraries
 </a>
 </li>
+<li>
+<a href="syntax">
+Pipeline Syntax
+</a>
+</li>
 </ul>
 </div>
 </div>
@@ -590,7 +595,6 @@ Extending with Shared Libraries
 <ul class="sectlevel1">
 <li><a href="#overview">What is Pipeline?</a></li>
 <li><a href="#why">Why Pipeline?</a></li>
-<li><a href="#syntax">Scripted Pipeline Syntax and Declarative Pipeline Syntax</a></li>
 <li><a href="#terms">Pipeline Terms</a></li>
 </ul>
 </div>
@@ -766,71 +770,6 @@ modeled in Jenkins Pipeline:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="syntax"><a class="anchor" href="#syntax"></a>Scripted Pipeline Syntax and Declarative Pipeline Syntax</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>When Pipeline was first conceived it was natural to begin with Groovy as the
-foundation. Jenkins already had an embedded Groovy scripting engine with a console
-to interact with all parts of Jenkins and Groovy is a great language for creating
-a custom Domain-Specific Language (DSL). The
-<a href="https://plugins.jenkins.io/job-dsl">Job-DSL</a>,
-plugin for Jenkins was also written in Groovy. This plugin lets you automate the
-creation and editing of any job in Jenkins, including Pipelines.</p>
-</div>
-<div class="paragraph">
-<p>Pipeline initially introduced key pipeline-specific concepts such as <code>node</code>,
-<code>stage</code>, <code>parallel</code>, and extension points to allow plugins to add other steps
-to the DSL but, otherwise didn&#8217;t restrict the use of Groovy. This original syntax
-for creating Pipelines is now referred to as "Scripted Pipeline" and includes
-full programmatic control to allow scripting continuous delivery pipelines in Groovy.
-This givesPipeline creators tremendous flexibility in defining a pipeline and allows it to
-be extended via <a href="../shared-libraries/">Shared Libraries</a> or plugins.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-Due to the need to serialize all variables for durability some Groovy
-idioms are not fully supported yet. See
-<a href="https://issues.jenkins-ci.org/browse/JENKINS-27421">JENKINS-27421</a>
-and
-<a href="https://issues.jenkins-ci.org/browse/JENKINS-26481">JENKINS-26481</a>
-for more information.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Writing Pipelines with Scripted Pipeline syntax, however, does require at least
-some proficiency with Groovy. Requiring all team members that touch the application&#8217;s
-Pipeline to understand Groovy limits the ability for full-participation in
-code-review, audits, and editing of the Pipeline as part of the application code.
-Enter "Declarative Pipeline" syntax.</p>
-</div>
-<div class="paragraph">
-<p>Declarative Pipeline syntax was created to extend Pipeline to users of all experience
-levels and complement Scripted Pipeline syntax. As the name implies, it is intended
-to enable declarative programming
-<sup class="footnote" id="_footnote_declarative">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup>
-for defining Pipelines as opposed to the imperative programming
-<sup class="footnote" id="_footnote_imperative">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup>
-provided by Scripted Pipeline. While it is still a DSL written
-on top of Groovy, Declarative Pipeline is a limited to a pre-defined structure
-that is much more specific to continuous delivery. This allows all stakeholders
-to help create, edit, review, and audit the application&#8217;s Pipeline.</p>
-</div>
-<div class="paragraph">
-<p>Scripted Pipeline and Declarative Pipeline both use the same underlying Pipeline
-execution engine and both are fully-supported. You can use whichever you prefer
-in any of your Pipelines and even combine them when needed. All examples in this handbook will show
-both a Declarative Pipeline version and Scripted Pipeline version for your reference.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="terms"><a class="anchor" href="#terms"></a>Pipeline Terms</h2>
 <div class="sectionbody">
 <div id="step" class="dlist">
@@ -890,7 +829,7 @@ for more information.
 <p><code>stage</code> is a step for defining a conceptually distinct subset of the
 entire Pipeline, for example: "Build", "Test", and "Deploy", which is used by many
 plugins to visualize or present Jenkins Pipeline status/progress.
-<sup class="footnote" id="_footnote_blueocean">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup></p>
+<sup class="footnote" id="_footnote_blueocean">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
 </dd>
 </dl>
 </div>
@@ -908,13 +847,7 @@ plugins to visualize or present Jenkins Pipeline status/progress.
 <a href="#_footnoteref_3">3</a>. <a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folder plugin</a>
 </div>
 <div class="footnote" id="_footnote_4">
-<a href="#_footnoteref_4">4</a>. <a href="https://en.wikipedia.org/wiki/Declarative_programming">Declarative Programming</a>
-</div>
-<div class="footnote" id="_footnote_5">
-<a href="#_footnoteref_5">5</a>. <a href="https://en.wikipedia.org/wiki/Imperative_programming">Imperative Programming</a>
-</div>
-<div class="footnote" id="_footnote_6">
-<a href="#_footnoteref_6">6</a>. <a href="/projects/blueocean">Blue Ocean</a>, <a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Stage+View+Plugin">Pipeline Stage View plugin</a>
+<a href="#_footnoteref_4">4</a>. <a href="/projects/blueocean">Blue Ocean</a>, <a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Stage+View+Plugin">Pipeline Stage View plugin</a>
 </div>
 </div>
 </div>

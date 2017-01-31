@@ -74,7 +74,7 @@ users and plugin developers.
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.32.1
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -147,7 +147,7 @@ Windows
 <div class="btn-group">
 <a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
 <i class="icon-box-add"></i>
-2.42
+
 .war
 </a>
 <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
@@ -421,7 +421,7 @@ Resources
 </h4>
 <ul>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/reference" class="">Pipeline Syntax reference</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/reference" class="">Pipeline Syntax reference</a>
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
@@ -578,11 +578,13 @@ a shell command in a Pipeline.</p>
     agent any
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
-            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;Hello World&quot;</span><span style="color:#710">'</span></span>
-            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'''</span><span style="color:#D20">
-                echo &quot;Multiline shell steps works too&quot;
-                ls -lah
-            </span><span style="color:#710">'''</span></span>
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;Hello World&quot;</span><span style="color:#710">'</span></span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'''</span><span style="color:#D20">
+                    echo &quot;Multiline shell steps works too&quot;
+                    ls -lah
+                </span><span style="color:#710">'''</span></span>
+            }
         }
     }
 }</code></pre>
@@ -617,7 +619,9 @@ a shell command in a Pipeline.</p>
     agent any
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
-            bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">set</span><span style="color:#710">'</span></span>
+            steps {
+                bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">set</span><span style="color:#710">'</span></span>
+            }
         }
     }
 }</code></pre>
@@ -651,12 +655,14 @@ step takes too long (<code>timeout</code>).</p>
     agent any
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) {
-            retry(<span style="color:#00D">3</span>) {
-                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./flakey-deploy.sh</span><span style="color:#710">'</span></span>
-            }
+            steps {
+                retry(<span style="color:#00D">3</span>) {
+                    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./flakey-deploy.sh</span><span style="color:#710">'</span></span>
+                }
 
-            timeout(<span style="color:#606">time</span>: <span style="color:#00D">3</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MINUTES</span><span style="color:#710">'</span></span>) {
-                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./slow-process.sh</span><span style="color:#710">'</span></span>
+                timeout(<span style="color:#606">time</span>: <span style="color:#00D">3</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MINUTES</span><span style="color:#710">'</span></span>) {
+                    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./slow-process.sh</span><span style="color:#710">'</span></span>
+                }
             }
         }
     }
@@ -703,9 +709,11 @@ the stage:</p>
     agent any
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) {
-            timeout(<span style="color:#606">time</span>: <span style="color:#00D">3</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MINUTES</span><span style="color:#710">'</span></span>) {
-                retry(<span style="color:#00D">3</span>) {
-                    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./flakey-deploy.sh</span><span style="color:#710">'</span></span>
+            steps {
+                timeout(<span style="color:#606">time</span>: <span style="color:#00D">3</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MINUTES</span><span style="color:#710">'</span></span>) {
+                    retry(<span style="color:#00D">3</span>) {
+                        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./flakey-deploy.sh</span><span style="color:#710">'</span></span>
+                    }
                 }
             }
         }
@@ -746,7 +754,9 @@ performed in the <code>post</code> section.</p>
     agent any
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>) {
-            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;Fail!&quot;; exit 1</span><span style="color:#710">'</span></span>
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;Fail!&quot;; exit 1</span><span style="color:#710">'</span></span>
+            }
         }
     }
     post {
