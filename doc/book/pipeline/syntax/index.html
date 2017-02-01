@@ -421,7 +421,7 @@ Resources
 </h4>
 <ul>
 <li>
-<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/reference" class="">Pipeline Syntax reference</a>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/syntax" class="active">Pipeline Syntax reference</a>
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
@@ -583,7 +583,7 @@ Pipeline Syntax
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section builds on the information introduced in <a href="../getting-started/">Getting Started</a>, and should be treated as solely as a reference. For more
+<p>This section builds on the information introduced in <a href="../getting-started/">Getting Started</a>, and should be treated solely as a reference. For more
 information on how to use Pipeline syntax in practical examples, refer to
 <a href="../jenkinsfile/">The Jenkinsfile</a> section of this chapter. As of version 2.5 of
 the Pipeline plugin, Pipeline supports two discrete syntaxes which are detailed
@@ -591,7 +591,7 @@ below. For the pros and cons of each, see the <a href="#compare">Syntax Comparis
 </div>
 <div class="paragraph">
 <p>As discussed in <a href="../getting-started/">Getting Started</a>, the most fundamental
-part of a Pipeline is the "step." Fundamentally, steps tell Jenkins <em>what</em> to
+part of a Pipeline is the "step." Basically, steps tell Jenkins <em>what</em> to
 do, and serve as the basic building block for both Declarative and Scripted
 Pipeline syntax.</p>
 </div>
@@ -640,7 +640,7 @@ line</p>
 </li>
 <li>
 <p>Blocks must only consist of <a href="#declarative-sections">Sections</a>,
-<a href="#declarative-directions">[declarative-directions]</a>, <a href="#declarative-steps">Steps</a>, or assignment statements.</p>
+<a href="#declarative-directives">Directives</a>, <a href="#declarative-steps">Steps</a>, or assignment statements.</p>
 </li>
 <li>
 <p>A property reference statement is treated as no-argument method invocation. So for
@@ -652,7 +652,7 @@ example, input is treated as input()</p>
 <h3 id="declarative-sections"><a class="anchor" href="#declarative-sections"></a>Sections</h3>
 <div class="paragraph">
 <p>Sections in Declarative Pipeline typically contain one or more
-<a href="#declarative-directions">[declarative-directions]</a> or <a href="#declarative-steps">Steps</a>.</p>
+<a href="#declarative-directives">Directives</a> or <a href="#declarative-steps">Steps</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="post"><a class="anchor" href="#post"></a>post</h4>
