@@ -369,6 +369,140 @@ follow us on Twitter
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
 <li class="post">
+<a class="body" href="/blog/2010/07/06/security-fix-hudson-1-365-released/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jul
+</div>
+<div class="day">
+06
+</div>
+</div>
+<h5 class="title">
+Security Fix! Hudson 1.365 Released
+</h5>
+</div>
+<p class="teaser">
+The Hudson team has released Hudson 1.365 which contains a critical security fix! A security advisory released yesterday by InfraDNA goes on to explain the hole with more detail:
+
+
+  This vulnerability allows an attacker to read arbitrary files in the
+server file system whose path names are known, by sending malicious
+HTTP GET requests. While such access is still subject to the normal
+access control enforced...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/general">
+general
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/core">
+core
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/news">
+news
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/releases">
+releases
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2010/07/05/so-youve-found-a-vulnerability-now-what/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jul
+</div>
+<div class="day">
+05
+</div>
+</div>
+<h5 class="title">
+So you've found a vulnerability, now what?
+</h5>
+</div>
+<p class="teaser">
+Hudson, like all web applications, is not immune from vulnerabilities that could open up attack vectors for malicious use. What puts Hudson in a league of its own compared to others is its ability to execute arbitrary commands on slave machines, or in the case of the EC2 plugin, execute arbitrary commands "in the cloud." In light of all this, Hudson is quite secure...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/general">
+general
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/core">
+core
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/plugins">
+plugins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2010/07/05/links-for-2010-07-05/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jul
+</div>
+<div class="day">
+05
+</div>
+</div>
+<h5 class="title">
+Links for 2010-07-05
+</h5>
+</div>
+<p class="teaser">
+It's been quite a while since I posted a Hudson links-roundup post, so without further ado, here goes nothing
+
+
+  Max tells us about using Hudson with Symbian's CodeScanner tool.
+  Running slaves on Mac OS X? Mirko has some handy launchctl foo for keeping his JNLP slaves online
+  Scott threw up a great configuration sample for running Hudson with an Nginx reverse...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/general">
+general
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/links">
+links
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
 <a class="body" href="/blog/2010/06/29/11th-international-free-software-forum-in-brazil/">
 <div class="header">
 <div class="date">
@@ -603,140 +737,12 @@ jenkinsci
 </ul>
 </div>
 </li>
-<li class="post">
-<a class="body" href="/blog/2010/06/11/casual-fridays-directing-traffic-with-hudson/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jun
-</div>
-<div class="day">
-11
-</div>
-</div>
-<h5 class="title">
-Casual Fridays: Directing traffic with Hudson
-</h5>
-</div>
-<p class="teaser">
-Intrepid Hudson user Christian Pelster posted a little project of his this week to the "users" mailing list called: hudsontrafficlights.
-
-Christian describes the project as:
-
-
-  This Java based daemon aggregates the status of one or more jobs from a Hudson continous integration server into a single status (red, yellow, green) and invokes a shell script on status change.
-
-
-You can use hudsontrafficlights to control a...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/general">
-general
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/just for fun">
-just for fun
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2010/06/10/subversion-repository-change-notification-push-vs-pull/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jun
-</div>
-<div class="day">
-10
-</div>
-</div>
-<h5 class="title">
-Subversion repository change notification: push vs pull
-</h5>
-</div>
-<p class="teaser">
-People often configure Hudson to start a new build whenever a change is made to the repository. In fact, this is often considered central to the practice of continuous integration.
-
-
-There are two ways to achieve this. One is the "pull" model, where Hudson periodically reaches out to a Subversion repository to see if there is any changes. The other is the "push" model, where...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/general">
-general
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/jenkinsci">
-jenkinsci
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2010/06/09/welcome-to-hudson-labs/">
-<div class="header">
-<div class="date">
-<div class="month">
-Jun
-</div>
-<div class="day">
-09
-</div>
-</div>
-<h5 class="title">
-Welcome to Hudson Labs!
-</h5>
-</div>
-<p class="teaser">
-Hello again! It's been a long time since I've written for the Hudson community, but now I'm back and ready to tackle some of the latest developments in the Hudson community.
-
-What is Hudson Labs?
-
-As you may have read in April, Kohsuke left Oracle to found InfraDNA, a company specializing around Hudson. The departure meant the Hudson community would no longer have access to some...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/general">
-general
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/meta">
-meta
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/news">
-news
-</a>
-</li>
-</ul>
-</div>
-</li>
 </ul>
 </div>
 </div>
 
 <!-- ending partial blogcardlist.html.haml -->
-<div class="pagination-links"><a href="/node/page/50.html" class="previous-link">Previous</a> <a href="/node/" class="page-link">1</a> <a href="/node/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/node/page/50.html" class="page-link">50</a> <span class="current-page">51</span> <a href="/node/page/52.html" class="page-link">52</a> <span class="skip">...</span><a href="/node/page/57.html" class="page-link">57</a> <a href="/node/page/58.html" class="page-link">58</a> <a href="/node/page/52.html" class="next-link">Next</a> </div>
+<div class="pagination-links"><a href="/node/page/50.html" class="previous-link">Previous</a> <a href="/node/" class="page-link">1</a> <a href="/node/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/node/page/50.html" class="page-link">50</a> <span class="current-page">51</span> <a href="/node/page/52.html" class="page-link">52</a> <span class="skip">...</span><a href="/node/page/58.html" class="page-link">58</a> <a href="/node/page/59.html" class="page-link">59</a> <a href="/node/page/52.html" class="next-link">Next</a> </div>
 </div>
 <div class="col-md-3 events vertical" id="sidebar">
 <!-- starting partial sidebar.html.haml -->

@@ -3,13 +3,667 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>https://rtyler.github.io/jenkins.io/</id>
 <title>Jenkins Blog</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-02-01T12:22:41-08:00</updated>
 <link rel="self" type="application/atom+xml" href="https://rtyler.github.io/jenkins.io/rss.xml" />
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/" />
 <entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/02/01/security-updates/</id>
+<title>Security updates for Jenkins core</title>
+<updated>2017-02-01T12:22:41-08:00</updated>
+<published>2017-02-01T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/01/security-updates/" />
+<author>
+<name>daniel-beck</name>
+</author>
+<category term="core"></category>
+<category term="security"></category>
+<summary>
+We just released security updates to Jenkins, versions 2.44 and 2.32.2, that fix a high severity and several medium and low severity issues.
+
+For an overview of what was fixed, see the security advisory.
+For an overview on the possible impact of these changes on upgrading Jenkins LTS, see our LTS upgrade guide.
+I strongly recommend you read these documents, as there are a few possible side effects of these fixes.
+
+Subscribe to the jenkinsci-advisories mailing list to receive important notifications related to Jenkins security....
+</summary>
+<content type="html">
+&lt;p&gt;We just released security updates to Jenkins, versions 2.44 and 2.32.2, that fix a high severity and several medium and low severity issues.&lt;/p&gt;
+
+&lt;p&gt;For an overview of what was fixed, see the &lt;a href=&quot;https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2017-02-01&quot;&gt;security advisory&lt;/a&gt;.
+For an overview on the possible impact of these changes on upgrading Jenkins LTS, see our &lt;a href=&quot;https://jenkins.io/doc/upgrade-guide/2.32/#upgrading-to-jenkins-lts-2-32-2&quot;&gt;LTS upgrade guide&lt;/a&gt;.
+I strongly recommend you read these documents, as there are a few possible side effects of these fixes.&lt;/p&gt;
+
+&lt;p&gt;Subscribe to the &lt;a href=&quot;https://rtyler.github.io/jenkins.io/content/mailing-lists&quot;&gt;jenkinsci-advisories mailing list&lt;/a&gt; to receive important notifications related to Jenkins security.&lt;/p&gt;
+
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/02/01/pipeline-scalability-best-practice/</id>
+<title>Best Practices for Scalable Pipeline Code</title>
+<updated>2017-02-01T12:22:41-08:00</updated>
+<published>2017-02-01T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/01/pipeline-scalability-best-practice/" />
+<author>
+<name>svanoort</name>
+</author>
+<category term="pipeline"></category>
+<category term="performance"></category>
+<category term="scalability"></category>
+<summary>
+This is a guest post by Sam Van Oort,
+Software Engineer at CloudBees and contributor to
+the Jenkins project.
+
+
+
+
+
+
+Today I&#8217;m going to show you best practices to write scalable and robust Jenkins Pipelines. This is drawn from a
+combination of work with the internals of Pipeline and observations with large-scale users.
+
+
+Pipeline code works beautifully for its intended role of automating
+build/test/deploy/administer tasks.  As it is pressed into more complex roles
+and unanticipated uses, some users hit issues.  In these cases, applying the
+best practices can make the difference between:
+
+
+
+
+A single master running
+hundreds
+of concurrent builds on low end hardware (4 CPU cores and 4 GB...
+</summary>
+<content type="html">
+&lt;div class=&quot;admonitionblock note&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is a guest post by &lt;a href=&quot;https://github.com/svanoort&quot;&gt;Sam Van Oort&lt;/a&gt;,
+Software Engineer at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees&lt;/a&gt; and contributor to
+the Jenkins project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Today I’m going to show you best practices to write scalable and robust Jenkins Pipelines. This is drawn from a
+combination of work with the internals of Pipeline and observations with large-scale users.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Pipeline code works beautifully for its intended role of automating
+build/test/deploy/administer tasks.  As it is pressed into more complex roles
+and unanticipated uses, some users hit issues.  In these cases, applying the
+best practices can make the difference between:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A single master running
+&lt;a href=&quot;https://www.cloudbees.com/so-you-want-build-worlds-biggest-jenkins-cluster&quot;&gt;hundreds
+of concurrent builds&lt;/a&gt; on low end hardware (4 CPU cores and 4 GB of
+heap)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Running a couple dozen builds and bringing a master to its knees or
+crashing it…​even with 16+ CPU cores and 20+ GB of heap!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This has been seen in the wild.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;fundamentals&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#fundamentals&quot;&gt;&lt;/a&gt;Fundamentals&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To understand Pipeline behavior you must understand a few points about
+how it executes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Except for the steps themselves, all of the Pipeline logic, the Groovy conditionals, loops, etc execute on the master. Whether simple &lt;em&gt;or&lt;/em&gt; complex! Even inside a &lt;code&gt;node&lt;/code&gt; block!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Steps&lt;/em&gt; may use executors to do work where appropriate, but each
+step has a small on-master overhead too.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pipeline code is written as Groovy but the execution model is
+radically transformed at compile-time to Continuation Passing Style
+(CPS).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This transformation provides valuable safety and durability
+guarantees for Pipelines, but it comes with trade-offs:&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Steps can invoke Java and execute fast and efficiently, but Groovy
+is &lt;em&gt;much&lt;/em&gt; slower to run than normal.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Groovy logic requires far more memory, because an object-based
+syntax/block tree is kept in memory.&lt;br /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pipelines persist the program and its state frequently to be able to
+survive failure of the master.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;From these we arrive at a set of best practices to make pipelines more
+effective.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;best-practices-for-Pipeline-code&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#best-practices-for-Pipeline-code&quot;&gt;&lt;/a&gt;Best Practices For Pipeline Code&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Think of Pipeline code as glue:&lt;/strong&gt; just enough Groovy code to connect
+together the Pipeline steps and integrate tools, and no more.&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;This makes code easier to maintain, more robust against bugs, and
+reduces load on masters.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Keep it simple:&lt;/strong&gt; limit the amount of complex logic embedded in the
+Pipeline itself (similarly to a shell script) and avoid treating it as a
+general-purpose programming language.&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Pipeline restricts all variables to &lt;code&gt;Serializable&lt;/code&gt; types, so keeping
+Pipeline logic simple helps avoid a &lt;code&gt;NotSerializableException&lt;/code&gt; - see
+appendix at the bottom.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Use trusted global libraries or &lt;code&gt;@NonCPS&lt;/code&gt;-annotated functions for slightly more complex work.&lt;/strong&gt;
+This means more involved processing, logic, and transformations. This
+lets you leverage additional Groovy &amp;amp; functional features for more
+powerful, concise, and performant code.&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;This still runs on masters so be mindful of complexity, but is much
+faster than native Pipeline code because it doesn’t provide durability
+and uses a faster execution model. Still, be mindful of the CPU cost and
+offload to executors for complex work (see below).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;@NonCPS&lt;/code&gt; functions can use a much broader subset of the Groovy
+language, such as iterators and functional features, which makes them
+more terse and fast to write.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;@NonCPS&lt;/code&gt; functions should not use Pipeline steps internally, however
+you can store the result of a Pipeline step to a variable and use it
+that as the input to a &lt;code&gt;@NonCPS&lt;/code&gt; function.&lt;/p&gt;
+&lt;div class=&quot;olist lowerroman&quot;&gt;
+&lt;ol class=&quot;lowerroman&quot; type=&quot;i&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gotcha:&lt;/strong&gt; It’s not guaranteed that use of a step will generate an
+error (there is an open RFE to implement that), but you should not rely
+on that behavior. You may see improper handling of exceptions, in
+particular.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;While normal Pipeline is restricted to serializable local variables
+(see appendix at bottom), &lt;code&gt;@NonCPS&lt;/code&gt; functions can use more complex,
+nonserializable types internally (for example regex matchers, etc). Parameters
+and return types should still be Serializable, however.&lt;/p&gt;
+&lt;div class=&quot;olist lowerroman&quot;&gt;
+&lt;ol class=&quot;lowerroman&quot; type=&quot;i&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gotcha:&lt;/strong&gt; improper usages are not guaranteed to raise an error with
+normal Pipeline (optimizations may mask the issue), but it is unsafe to
+rely on this behavior.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Prefer external scripts/tools for complex or CPU-expensive
+processing&lt;/strong&gt; rather than Groovy language features. This offloads work
+from the master to external executors, allowing for easy scale-out of
+hardware resources. It is also generally easier to test because these
+components can be tested in isolation without the full on-master
+execution environment.&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Many software vendors will provide easy command-line clients for
+their tools in various programming languages. These are often robust,
+performant, and easy to use. Plugins offer another option (see below).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Shell or batch steps are often the easiest way to integrate these
+tools, which can be written in any language. For example: &lt;code&gt;sh “java -jar
+client.jar $endPointUrl $inputData”&lt;/code&gt; for a Java client, or &lt;code&gt;sh “python
+jiraClient.py $issueId $someParam”&lt;/code&gt; for a Python client.&lt;br /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gotcha: especially avoid Pipeline XML or JSON parsing using Groovy’s &lt;code&gt;XmlSlurper&lt;/code&gt; and &lt;code&gt;JsonSlurper&lt;/code&gt;!  Strongly prefer command-line tools or scripts.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;olist lowerroman&quot;&gt;
+&lt;ol class=&quot;lowerroman&quot; type=&quot;i&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;The Groovy implementations are complex and as a result more brittle in Pipeline use.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;XmlSlurper&lt;/code&gt; and &lt;code&gt;JsonSlurper&lt;/code&gt; can carry a high memory and CPU cost in pipelines&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;xmllint and xmlstartlet are command-line tools offering XML extraction via xpath&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stedolan.github.io/jq/&quot;&gt;jq&lt;/a&gt; offers the same functionality for JSON&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;These extraction tools may be coupled to curl or wget for fetching information from an HTTP API&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Examples of other places to use command-line tools:&lt;/p&gt;
+&lt;div class=&quot;olist lowerroman&quot;&gt;
+&lt;ol class=&quot;lowerroman&quot; type=&quot;i&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Templating large files&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Nontrivial integration with external APIs (for bigger vendors,
+consider a Jenkins plugin if a quality offering exists)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Simulations/complex calculations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Business logic&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Consider existing plugins for external integrations.&lt;/strong&gt; Jenkins has a
+wealth of plugins, especially for source control, artifact management,
+deployment systems, and systems automation. These can greatly reduce the
+amount of Pipeline code to maintain. Well-written plugins may be
+faster and more robust than Pipeline equivalents.&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Consider both plugins and command-line clients (above) — one may be
+easier than the other.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Plugins may be of widely varying quality. Look at the number of installations and how frequently and recently updates appear in the changelog. Poorly-maintained plugins
+with limited installations may actually be worse than writing a little
+custom Pipeline code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;As a last resort, if there is a good-quality plugin that is not
+Pipeline-enabled, it is &lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/25/update-plugin-for-pipeline/&quot;&gt;fairly easy to write a Pipeline wrapper&lt;/a&gt; to
+integrate it or write a custom step that will invoke it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Assume things will go wrong:&lt;/strong&gt; don’t rely on workspaces being clean
+of the remnants from previous executions, clean explicitly where needed.
+Make use of timeouts and retry steps (that’s what they’re there for).&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Within a git repository, &lt;code&gt;git clean -fdx&lt;/code&gt; is a good way to
+accomplish this and reduces the amount of SCM cloning&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DO use parameterized Pipelines and variables to make your Pipeline
+scripts more reusable.&lt;/strong&gt; Passing in parameters is especially helpful for
+handling different environments and should be preferred to applying
+conditional lookup logic; however, try to limit parameterized pipelines invoking each other.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Try to limit business logic embedded in Pipelines.&lt;/strong&gt; To some extent
+this is inevitable, but try to focus on tasks to complete instead,
+because this yields more maintainable, reusable, and often more
+performant Pipeline code.&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;One code smell that points to a problem is many hard-coded
+constants. Consider taking advantage of the options above to refactor
+code for better composability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;For complex cases, consider using Jenkins integration options
+(plugins, Jenkins API calls, invoking input steps externally) to offload
+implementation of more complex business rules to an external system if
+they fit more naturally there.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please, think of these as guidelines, not strict rules – Jenkins
+Pipeline provides a great deal of power and flexibility, and it’s there
+to be used.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Breaking enough of these rules at scale can cause masters to fail by
+placing an unsustainable load on them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For additional guidance, I also recommend
+&lt;a href=&quot;https://www.cloudbees.com/need-speed-building-Pipelines-be-faster&quot;&gt;this
+Jenkins World talk&lt;/a&gt;
+on how to engineer Pipelines for speed and performance:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;appendix-serializable-vs.-non-serializable-types&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#appendix-serializable-vs.-non-serializable-types&quot;&gt;&lt;/a&gt;Appendix: Serializable vs. Non-Serializable Types:&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To assist with Pipeline development, here are common serializable and
+non-serializable types, to assist with deciding if your logic can be CPS
+or should be in a &lt;code&gt;@NonCPS&lt;/code&gt; function to avoid issues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Common Serializable Types (safe everywhere):&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;All primitive types and their object wrappers: byte, boolean, int,
+double, short, char&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Strings&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;enums&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Arrays of serializable types&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ArrayLists and normal Groovy Lists&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sets: HashSet&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Maps: normal Groovy Map, HashMap, TreeMap&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Exceptions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;URLs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dates&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Regex Patterns (compiled patterns)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Common non-Serializable Types (only safe in &lt;code&gt;@NonCPS&lt;/code&gt; functions):&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Iterators: this is a common problem. You need to use C-style loop, i.e.
+&lt;code&gt;for(int i=0; i&amp;lt;max; i++){&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Regex Matchers (you can use the
+built-in functions in String, etc, just not the Matcher itself)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; &lt;code&gt;JsonObject&lt;/code&gt;, &lt;code&gt;JsonSlurper&lt;/code&gt;, etc in Groovy 2+ (used in some 2.x+
+versions of Jenkins).&lt;/p&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;This is due to an internal implementation change — earlier versions may serialize.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/01/27/blueocean-dev-log-jan4/</id>
+<title>Blue Ocean Dev Log: January Week #4</title>
+<updated>2017-02-01T12:22:41-08:00</updated>
+<published>2017-01-27T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/27/blueocean-dev-log-jan4/" />
+<author>
+<name>michaelneale</name>
+</author>
+<category term="blueocean"></category>
+<summary>
+As we get closer to
+Blue Ocean
+1.0, which is planned for the end of March, I have
+started
+highlighting
+some of the good stuff that has been going on. This week was 10 steps forward, and about 1.5 backwards&#8230;&#8203;
+
+
+There were two releases this week, b19 and b20. Unfortunately, b20 had to
+be released shortly after b19 hit the Update Center as an incompatible API
+change in a 3rd party plugin was discovered.
+
+
+Regardless, the latest b20 has a lot of important improvements, and some
+very nice new features.
+
+
+
+
+
+
+
+A first cut of the "Create Pipeline" UX, seen above, allowing you to create Git
+based Multibranch Pipelines like you have never...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As we get closer to
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;Blue Ocean&lt;/a&gt;
+1.0, which is planned for the end of March, I have
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/&quot;&gt;started&lt;/a&gt;
+&lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2017/01/20/blueocean-dev-log-jan2/&quot;&gt;highlighting&lt;/a&gt;
+some of the good stuff that has been going on. This week was 10 steps forward, and about 1.5 backwards…​&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There were two releases this week, &lt;code&gt;b19&lt;/code&gt; and &lt;code&gt;b20&lt;/code&gt;. Unfortunately, &lt;code&gt;b20&lt;/code&gt; had to
+be released shortly after &lt;code&gt;b19&lt;/code&gt; hit the Update Center as an incompatible API
+change in a 3rd party plugin was discovered.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Regardless, the latest &lt;code&gt;b20&lt;/code&gt; has a &lt;strong&gt;lot&lt;/strong&gt; of important improvements, and some
+very nice new features.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/pipeline-creation-flow.png&quot; alt=&quot;Creating a Pipeline in Blue Ocean&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A first cut of the &quot;Create Pipeline&quot; UX, seen above, allowing you to create Git
+based &lt;a href=&quot;https://rtyler.github.io/jenkins.io/doc/book/pipeline/multibranch/&quot;&gt;Multibranch Pipelines&lt;/a&gt; like you have never seen before.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Handling network disconnections from the browser to server (eg server
+restart, network etc) gracefully with a nice UI.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;More precise time information for steps and running Pipelines.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;More information when a Pipeline is blocked on infrastructure, such as when
+the Pipeline is waiting for an agent to become available.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed a really embarrassing typo (a prize if you spot it).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Test reports now include stdout and stderr&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Better support for parallel visualisation, such as when a &lt;code&gt;parallel&lt;/code&gt; step exists outside of a stage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Visual Editor also had another release, with the &quot;sheets&quot; visual component
+and better validation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;creation&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#creation&quot;&gt;&lt;/a&gt;Creation&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Currently this is hidden behind a
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Feature_toggle&quot;&gt;feature toggle&lt;/a&gt;,
+to access append &lt;code&gt;?blueCreate&lt;/code&gt; to the URL in you browser, and then press the
+&quot;New Pipeline&quot; button. Currently it lets you quickly create a Pipeline from
+Git, add credentials, etc, in a very nice UX. More SCM types are being added to
+support this.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;reconnect-disconnect&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#reconnect-disconnect&quot;&gt;&lt;/a&gt;Reconnect/disconnect&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/connection-lost.png&quot; alt=&quot;Lost connection&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As Blue Ocean is a very &quot;live&quot; style of UX, if your network becomes
+unavailable, or the server is restarted, it is good to know in case you
+were staring at the screen waiting for something to happen (don’t you have
+anything better to do??). When this happens, now you get a polite message,
+and then when the connection is restored, even if you are waiting for a
+Pipeline run to finish, it will then notice this, and refresh things for
+you:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/connection-ok.png&quot; alt=&quot;Reconnected&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Note the opacity changes to make it clear even if you don’t see the little
+message. Very nice addition for those of us who work on a train far to often.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;up-next&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#up-next&quot;&gt;&lt;/a&gt;Up next&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;What is up next:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;SCM Api changes should land, making things much better for users of
+GitHub, Bitbucket, and many more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Creating Pipelines from GitHub (including automatic discovery).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lots of fixes and enhancements in the Pipeline from all over the place&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;More ATH &lt;sup class=&quot;footnote&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/sup&gt; coverage against regressions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;More Visual Editor releases as Declarative Pipeline reaches version 1.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Improvements to i18n&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There was also a couple of &quot;alternative beta&quot; releases in the &quot;Experimental
+Update Center&quot; to help test the new SCM API improvements for better use of
+GitHub APIs (based on
+&lt;a href=&quot;https://github.com/jenkinsci/blueocean-plugin/pull/742&quot;&gt;this branch&lt;/a&gt;)
+I do not recommend trying this branch unless you know what you are doing,
+as this will migrate some data, but help testing it would be appreciated!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you’re interested in helping to make Blue Ocean a great user experience for
+Jenkins, please join the Blue Ocean development team on
+&lt;a href=&quot;https://gitter.im/jenkinsci/blueocean-plugin&quot;&gt;Gitter&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;footnotes&quot;&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;footnote&quot; id=&quot;_footnote_1&quot;&gt;
+&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt;. Acceptance Test Harness
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/20/blueocean-dev-log-jan2/</id>
 <title>Blue Ocean Dev Log: January Week #3</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-02-01T12:22:41-08:00</updated>
 <published>2017-01-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/20/blueocean-dev-log-jan2/" />
 <author>
@@ -96,10 +750,8 @@ about Declarative Pipelines at
 &lt;p&gt;You would know this if you followed
 &lt;a href=&quot;https://twitter.com/ThorScherler&quot;&gt;Thorsten’s twitter account&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/start-with-parameters.png&quot; alt=&quot;Starting with parameters from @thorscherler&quot; /&gt;
-&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/start-with-parameters.png&quot; alt=&quot;Starting with parameters from @thorscherler&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;That twitter account is mostly pics of Thorsten in running gear, but
@@ -112,10 +764,8 @@ like this no matter where you run it from. Most input types are supported
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
 &lt;h3 id=&quot;editor&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#editor&quot;&gt;&lt;/a&gt;Editor&lt;/h3&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/gui-editor.png&quot; alt=&quot;Pipeline Editor plugin&quot; /&gt;
-&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/blueocean-dev-log/gui-editor.png&quot; alt=&quot;Pipeline Editor plugin&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;A very-very early version of the
@@ -165,7 +815,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/19/converting-conditional-to-pipeline/</id>
 <title>Converting Conditional Build Steps to Jenkins Pipeline</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-02-01T12:22:41-08:00</updated>
 <published>2017-01-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/19/converting-conditional-to-pipeline/" />
 <author>
@@ -175,6 +825,7 @@ Jenkins, please join the Blue Ocean development team on
 <category term="freestyle"></category>
 <category term="plugins"></category>
 <category term="conditional-build-step"></category>
+<category term="tutorial"></category>
 <summary>
 This is a guest post by Liam Newman,
 Technical Evangelist at CloudBees.
@@ -839,7 +1490,7 @@ Look for it soon!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/17/scm-api-2/</id>
 <title>SCM API turns 2.0 and what that means for you</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2017-01-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/17/scm-api-2/" />
 <author>
@@ -1454,7 +2105,7 @@ This new plugin has the advantage of an easy to read pipeline syntax with the ex
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/17/Jenkins-is-upgrading-to-Java-8/</id>
 <title>Jenkins Upgrades To Java 8</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2017-01-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/17/Jenkins-is-upgrading-to-Java-8/" />
 <author>
@@ -1590,7 +2241,7 @@ Being also a developer community, we want Jenkins to be appealing to contributor
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/</id>
 <title>Blue Ocean Dev Log: January Week #2</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2017-01-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/" />
 <author>
@@ -1733,7 +2384,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/</id>
 <title>Declarative Pipeline Syntax Beta 2 release</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2017-01-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/" />
 <author>
@@ -1947,7 +2598,7 @@ give them a try!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/11/jenkins-world-2017-cfp/</id>
 <title>Jenkins World 2017 Call for Papers is Open</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2017-01-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/11/jenkins-world-2017-cfp/" />
 <author>
@@ -2007,7 +2658,7 @@ like to hear from you!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/10/security-warnings/</id>
 <title>Security warnings in Jenkins</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2017-01-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/10/security-warnings/" />
 <author>
@@ -2068,7 +2719,7 @@ list of the same name, as well other means.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/10/jenkins-lifx-notifier-plugin/</id>
 <title>Learning plugin development by improving the LIFX notifier plugin</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2017-01-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/10/jenkins-lifx-notifier-plugin/" />
 <author>
@@ -2309,7 +2960,7 @@ for more information about the latest releases!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/</id>
 <title>Thank you for an amazing 2016</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-12-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/" />
 <author>
@@ -2585,7 +3236,7 @@ in the Jenkins project, so if you didn’t have an opportunity to join in during
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/</id>
 <title>Continuous Delivery with Jenkins and Puppet Enterprise</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-12-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/" />
 <author>
@@ -2984,7 +3635,7 @@ You’ll be glad you did.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/</id>
 <title>Announcing the beta of Declarative Pipeline Syntax</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-12-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/" />
 <author>
@@ -3240,7 +3891,7 @@ we expect great things for Jenkins in 2017!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/</id>
 <title>Monthly JAM Recap - November 2016</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-12-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/" />
 <author>
@@ -3437,7 +4088,7 @@ with very little provisioning time.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/</id>
 <title>Upcoming December Jenkins Events</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-12-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/" />
 <author>
@@ -3572,7 +4223,7 @@ local activities going in December.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/</id>
 <title>What JVM versions are running Jenkins? 2016 Update!</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-11-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" />
 <author>
@@ -3694,7 +4345,7 @@ All numbers shown below are derived from the new &lt;a href=&quot;stats.jenkins.
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/</id>
 <title>Tuning Jenkins GC For Responsiveness and Stability with Large Instances</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-11-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/" />
 <author>
@@ -4511,7 +5162,7 @@ another post…​&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/</id>
 <title>Security updates addressing zero day vulnerability</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-11-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/" />
 <author>
@@ -4590,7 +5241,7 @@ mailing list to receive future Jenkins security notifications.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/</id>
 <title>Upcoming November Jenkins Events</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-11-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/" />
 <author>
@@ -4738,7 +5389,7 @@ below please stop by to say &quot;Hi&quot; and talk Jenkins over beer.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/</id>
 <title>Addressing recently disclosed vulnerabilities in the Jenkins CLI</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-11-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/" />
 <author>
@@ -4856,7 +5507,7 @@ to follow. You can learn more about this policy and our processes on our
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/</id>
 <title>Monthly JAM Recap - October 2016</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-11-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/" />
 <author>
@@ -5001,7 +5652,7 @@ last meetups.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/</id>
 <title>xUnit and Pipeline</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-10-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/" />
 <author>
@@ -5508,7 +6159,7 @@ also write your own XSL for result formats not on the known/supported list.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/</id>
 <title>Jenkins World 2016 Session Videos</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-10-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/" />
 <author>
@@ -5590,7 +6241,7 @@ Technical Evangelist at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/</id>
 <title>Controlling the Flow with Stage, Lock, and Milestone</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-10-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/" />
 <author>
@@ -5838,7 +6489,7 @@ stage(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;s
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/</id>
 <title>Jenkins World 2016, That's a Wrap!</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/" />
 <author>
@@ -5984,7 +6635,7 @@ there isn’t, take a look at the
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/</id>
 <title>Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" />
 <author>
@@ -6193,7 +6844,7 @@ on track before, during, and after the conference.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/</id>
 <title>Jenkins World 2016 Wrap-up - Scaling</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-27T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/" />
 <author>
@@ -6415,7 +7066,7 @@ the challenges and opportunities they see ahead.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/</id>
 <title>Jenkins World 2016 Wrap-up - Pipeline</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/" />
 <author>
@@ -6659,7 +7310,7 @@ delivery practices.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/</id>
 <title>Jenkins World 2016 Wrap-up - Introduction</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/" />
 <author>
@@ -6771,7 +7422,7 @@ including slides, videos, and links to other useful resources.  Stay tuned!&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/</id>
 <title>Jenkins Online Meetup report. Plugin Development - WebUI</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/20/jom-plugin-development/" />
 <author>
@@ -6890,7 +7541,7 @@ or via the &lt;a href=&quot;mailto:events@lists.jenkins-ci.org&quot;&gt;events@l
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/</id>
 <title>Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/" />
 <author>
@@ -7119,7 +7770,7 @@ do this without you.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/</id>
 <title>Take the 2016 Jenkins Survey!</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/09/take-the-2016-jenkins-survey-blog/" />
 <author>
@@ -7216,7 +7867,7 @@ minutes.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/</id>
 <title>Continuous Delivery of Infrastructure with Jenkins</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/08/continuous-delivery-of-infra/" />
 <author>
@@ -7375,7 +8026,7 @@ pass.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/</id>
 <title>Pipeline at Jenkins World 2016</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/07/pipeline-at-jenkins-world/" />
 <author>
@@ -7768,7 +8419,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/</id>
 <title>Introducing a New Way to Define Jenkins Pipelines</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-06T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/06/jenkins-world-speaker-blog-pipeline-model-definition/" />
 <author>
@@ -7912,7 +8563,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/</id>
 <title>Jenkins World Contributor Summit</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-09-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/01/jenkins-world-contributor-summit/" />
 <author>
@@ -8027,7 +8678,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/</id>
 <title>Scaling Jenkins at Jenkins World 2016</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/31/scaling-jenkins-at-jenkins-world/" />
 <author>
@@ -8301,7 +8952,7 @@ everybody; hope to see you there!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/</id>
 <title>Demos at Jenkins World 2016</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/30/ask-experts-demos/" />
 <author>
@@ -8518,7 +9169,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/</id>
 <title>Browser-testing with Sauce OnDemand and Pipeline</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/sauce-pipeline/" />
 <author>
@@ -8983,7 +9634,7 @@ repository.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/</id>
 <title>Enforcing Jenkins Best Practices</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/" />
 <author>
@@ -9158,7 +9809,7 @@ Register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for 20% off your full con
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/</id>
 <title>Ask the Experts at Jenkins World 2016</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-26T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/26/ask-the-experts-jenkins-world/" />
 <author>
@@ -9304,7 +9955,7 @@ September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off y
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/</id>
 <title>Jenkins World 2016 Festivities</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/24/jenkins-world-2016-festivities/" />
 <author>
@@ -9502,7 +10153,7 @@ Hat and all the other sponsors&lt;/a&gt; who have made this event possible.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/</id>
 <title>GSoC: External Workspace Manager for Pipeline is released</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/22/ewm-stable-release/" />
 <author>
@@ -9678,7 +10329,7 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/</id>
 <title>Continuously Delivering Continuous Delivery Pipelines</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/17/jenkins-world-speaker-blog-aquilent/" />
 <author>
@@ -9877,7 +10528,7 @@ enterprise scale.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/</id>
 <title>Using Jenkins for Disparate Feedback on GitHub</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/11/speaker-blog-edx-jenkins-world/" />
 <author>
@@ -9972,7 +10623,7 @@ register with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off yo
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/</id>
 <title>Continuous Security for Rails apps with Pipeline and Brakeman</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/10/rails-cd-with-pipeline/" />
 <author>
@@ -10503,7 +11154,7 @@ security, pipeline in code is that you can continue to iterate on it!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/</id>
 <title>GSoC: External Workspace Manager for Pipeline. Beta release is available</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
+<updated>2017-01-31T19:01:02-08:00</updated>
 <published>2016-08-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/09/ewm-beta-version/" />
 <author>
@@ -10793,638 +11444,6 @@ Any feedback is welcome, and you may provide it either on the Gitter chat, or on
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/</id>
-<title>Don't install software, define your environment with Docker and Pipeline</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
-<published>2016-08-08T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/08/docker-pipeline-environments/" />
-<author>
-<name>michaelneale</name>
-</author>
-<category term="pipeline"></category>
-<category term="plugins"></category>
-<category term="blueocean"></category>
-<category term="ux"></category>
-<category term="javascript"></category>
-<category term="nodejs"></category>
-<summary>
-This is a guest post by Michael Neale, long time open
-source developer and contributor to the Blue Ocean
-project.
-
-
-
-
-
-
-If you are running parts of your pipeline on Linux, possibly the easiest way to
-get a clean reusable environment is to use:
-CloudBees
-Docker Pipeline plugin.
-
-
-In this short post I wanted to show how you can avoid installing stuff on the agents, and have per project, or even per branch, customized build environments.
-Your environment, as well as your pipeline is defined and versioned alongside your code.
-
-
-I wanted to use the Blue Ocean project as an
-example of a
-project that uses the CloudBees Docker Pipeline plugin.
-
-
-Environment and...
-</summary>
-<content type="html">
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is a guest post by &lt;a href=&quot;https://github.com&quot;&gt;Michael Neale&lt;/a&gt;, long time open
-source developer and contributor to the &lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;Blue Ocean&lt;/a&gt;
-project.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;If you are running parts of your pipeline on Linux, possibly the easiest way to
-get a clean reusable environment is to use:
-&lt;a href=&quot;https://go.cloudbees.com/docs/cloudbees-documentation/cje-user-guide/chapter-docker-workflow.html&quot;&gt;CloudBees
-Docker Pipeline plugin&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In this short post I wanted to show how you can avoid installing stuff on the agents, and have per project, or even per branch, customized build environments.
-Your environment, as well as your pipeline is defined and versioned alongside your code.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I wanted to use the &lt;a href=&quot;https://rtyler.github.io/jenkins.io/doc/blueocean&quot;&gt;Blue Ocean&lt;/a&gt; project as an
-&lt;a href=&quot;https://github.com/jenkinsci/jenkins-design-language/&quot;&gt;example&lt;/a&gt; of a
-project that uses the CloudBees Docker Pipeline plugin.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;environment-and-pipeline-for-javascript-components&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#environment-and-pipeline-for-javascript-components&quot;&gt;&lt;/a&gt;Environment and Pipeline for JavaScript components&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The &lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;Blue Ocean&lt;/a&gt; project has a few moving parts, one of
-which is called the &quot;Jenkins Design Language&quot;.  This is a grab bag of re-usable
-CSS, HTML, style rules, icons and JavaScript components (using React.js) that
-provide the look and feel for Blue Ocean.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;JavaScript and Web Development being what it is in 2016, many utilities are
-need to assemble a web app.  This includes npm and all that it needs, less.js
-to convert Less to CSS, Babel to &quot;transpile&quot; versions of JavaScript to other
-types of JavaScript (don’t ask) and more.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We could spend time installling nodejs/npm on the agents, but why not just use
-the &lt;a href=&quot;https://hub.docker.com/_/node/&quot;&gt;official off the shelf&lt;/a&gt; docker image
-from &lt;a href=&quot;http://hub.docker.com&quot;&gt;Docker Hub&lt;/a&gt;?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The only thing that has to be installed and run on the build agents is the Jenkins agent, and a docker daemon.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A simple pipeline using this approach would be:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node {
-        stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Prepare environment&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-          checkout scm
-          docker.image(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;node&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).inside {
-            stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Checkout and build deps&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-                sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;npm install&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-
-            stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Test and validate&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-                sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;npm install gulp-cli &amp;amp;&amp;amp; ./node_modules/.bin/gulp&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-          }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This uses the stock &quot;official&quot; Node.js image from the Docker Hub, but doesn’t let us customize much about the environment.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;customising-the-environment-without-installing-bits-on-the-agent&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#customising-the-environment-without-installing-bits-on-the-agent&quot;&gt;&lt;/a&gt;Customising the environment, without installing bits on the agent&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Being the forward looking and lazy person that I am, I didn’t want to have to
-go and fish around for a Docker image every time a developer wanted something
-special installed.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Instead, I put a &lt;code&gt;Dockerfile&lt;/code&gt; in the root of the repo, alongside the &lt;code&gt;Jenkinsfile&lt;/code&gt;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-08-03/environment_jenkinsfile.png&quot; alt=&quot;Environment&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The contents of the &lt;code&gt;Dockerfile&lt;/code&gt; can then define the exact environment needed
-to build the project.  Sure enough, shortly after this, someone came along
-saying they wanted to use &lt;a href=&quot;https://flowtype.org/&quot;&gt;Flow&lt;/a&gt; from Facebook (A
-typechecker for JavaScript).  This required an additional native component to
-work (via &lt;code&gt;apt-get install&lt;/code&gt;).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This was achieved via a
-&lt;a href=&quot;https://github.com/jenkinsci/jenkins-design-language/pull/72/files&quot;&gt;pull
-request&lt;/a&gt; to both the &lt;code&gt;Jenkinsfile&lt;/code&gt; and the &lt;code&gt;Dockerfile&lt;/code&gt; at the same time.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So now our environment is defined by a &lt;code&gt;Dockerfile&lt;/code&gt; with the following contents:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;shell&quot;&gt;# Lets not just use any old version but pick one
-FROM node:5.11.1
-
-# This is needed for flow, and the weirdos that built it in ocaml:
-RUN apt-get update &amp;amp;&amp;amp; apt-get install -y libelf1
-
-RUN useradd jenkins --shell /bin/bash --create-home
-USER jenkins&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The &lt;code&gt;Jenkinsfile&lt;/code&gt; pipeline now has the following contents:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;node {
-    stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Prepare environment&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-        checkout scm
-        &lt;span style=&quot;color:#080;font-weight:bold&quot;&gt;def&lt;/span&gt; environment  = docker.build &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;cloudbees-node&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-
-        environment.inside {
-            stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Checkout and build deps&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-                sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;npm install&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-
-            stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Validate types&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-                sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;./node_modules/.bin/flow&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-
-            stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Test and validate&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-                sh &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;npm install gulp-cli &amp;amp;&amp;amp; ./node_modules/.bin/gulp&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-                junit &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;reports/**/*.xml&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
-        }
-
-    stage &lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;Cleanup&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
-        deleteDir()
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock tip&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-tip&quot; title=&quot;Tip&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-Even hip JavaScript tools can emit that weird XML format that test
-reporters can use, e.g. the junit result archiver.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The main change is that we have &lt;code&gt;docker.build&lt;/code&gt; being called to produce the
-&lt;code&gt;environment&lt;/code&gt; which is then used.  Running &lt;code&gt;docker build&lt;/code&gt; is essentially a
-&quot;no-op&quot; if the image has already been built on the agent before.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;what-s-it-like-to-drive&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#what-s-it-like-to-drive&quot;&gt;&lt;/a&gt;What’s it like to drive?&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Well, using Blue Ocean, to build Blue Ocean, yields a pipeline that visually
-looks like this (a recent run I screen capped):&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock center&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-08-03/JDL_pipeline.png&quot; alt=&quot;Pipeline&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This creates a pipeline that developers can tweak on a pull-request basis,
-along with any changes to the environment needed to support it, without having
-to install any packages on the agent.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;why-not-use-docker-commands-directly&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#why-not-use-docker-commands-directly&quot;&gt;&lt;/a&gt;Why not use docker commands directly?&lt;/h4&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You could of course just use shell commands to do things with Docker directly,
-however, Jenkins Pipeline keeps track of Docker images used in a &lt;code&gt;Dockerfile&lt;/code&gt;
-via the &quot;Docker Fingerprints&quot; link (which is good, should that image need to
-change due to a security patch).&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h3&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;The project used as as an example is &lt;a href=&quot;https://github.com/jenkinsci/jenkins-design-language/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;The pipeline is defined by the &lt;a href=&quot;https://github.com/jenkinsci/jenkins-design-language/blob/master/Jenkinsfile&quot;&gt;Jenkinsfile&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The environment is defined by the &lt;a href=&quot;https://github.com/jenkinsci/jenkins-design-language/blob/master/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Read more on &lt;a href=&quot;https://go.cloudbees.com/docs/cloudbees-documentation/cje-user-guide/chapter-docker-workflow.html&quot;&gt;Docker Pipeline&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/</id>
-<title>St. Petersburg Jenkins Meetup #3 and #4 Reports</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
-<published>2016-08-03T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/08/03/st-petersburg-jam-3-4-report/" />
-<author>
-<name>oleg_nenashev</name>
-</author>
-<category term="jam"></category>
-<category term="jenkins_ru"></category>
-<summary>
-I would like to write about two last Jenkins Meetups in Saint Petersburg, Russia.
-
-
-
-
-
-
-
-Meetup #3. Jenkins Administration (May 20, 2016)
-
-
-In May we had a meetup about Jenkins administration techniques.
-At this meetup we were talking about common Jenkins ecosystem components
-like custom update centers, tool repositories and generic jobs.
-
-
-Talks:
-
-
-
-
-Kirill Merkushev, Yandex, "Juseppe. A custom Update Center for Jenkins"
-
-
-
-Presentation (rus)
-
-
-Keywords: Juseppe
-
-
-
-
-
-Anna Muravieva, EMC, "Generic jobs in Jenkins. How to build anything?"
-
-
-
-Presentation (rus)
-
-
-Keywords: Generic Builds, Scripted Build Wrappers
-
-
-
-
-
-Oleg Nenashev, CloudBees, "Building Jenkins Tool infrastructures with help of Custom Tools Plugin and Docker"
-
-
-
-Presentation (rus)
-
-
-Keywords: Custom Tools Plugin, Extra Tool Installers Plugin, Docker
-
-
-
-
-
-
-
-
-
-Meetup #4. IT Global...
-</summary>
-<content type="html">
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I would like to write about two last Jenkins Meetups in Saint Petersburg, Russia.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock right&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/sites/default/files/images/stpetersburg-butler_0.jpeg&quot; alt=&quot;stpetersburg butler 0&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;meetup-3-jenkins-administration-may-20-2016&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#meetup-3-jenkins-administration-may-20-2016&quot;&gt;&lt;/a&gt;Meetup #3. Jenkins Administration (May 20, 2016)&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In May we had a meetup about Jenkins administration techniques.
-At this meetup we were talking about common Jenkins ecosystem components
-like custom update centers, tool repositories and generic jobs.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Talks:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Kirill Merkushev&lt;/strong&gt;, Yandex, &quot;Juseppe. A custom Update Center for Jenkins&quot;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/lanwen/juseppe&quot;&gt;Presentation&lt;/a&gt; (rus)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Keywords: &lt;a href=&quot;https://github.com/yandex-qatools/juseppe&quot;&gt;Juseppe&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Anna Muravieva&lt;/strong&gt;, EMC, &quot;Generic jobs in Jenkins. How to build anything?&quot;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/anamura/generic-jobs-v-jenkins-ili-kak-sobrat-vsie-chto-ughodno&quot;&gt;Presentation&lt;/a&gt; (rus)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Keywords: Generic Builds, Scripted Build Wrappers&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Oleg Nenashev&lt;/strong&gt;, CloudBees, &quot;Building Jenkins Tool infrastructures with help of Custom Tools Plugin and Docker&quot;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/onenashev/spb-jenkins-meetup-number-3-razviertyvaniie-tulovoi-infrastruktury-v-jenkins&quot;&gt;Presentation&lt;/a&gt; (rus)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Keywords: &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Custom+Tools+Plugin&quot;&gt;Custom Tools Plugin&lt;/a&gt;, &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Extra+Tool+Installers+Plugin&quot;&gt;Extra Tool Installers Plugin&lt;/a&gt;, Docker&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;meetup-4-it-global-meetup-july-23-2016&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#meetup-4-it-global-meetup-july-23-2016&quot;&gt;&lt;/a&gt;Meetup #4. IT Global Meetup (July 23, 2016)&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In Saint Petersburg there is a regular gathering of local IT communities.
-This &lt;a href=&quot;http://piter-united.ru/itgm8/itgm.html&quot;&gt;IT Global Meetup&lt;/a&gt; is a full-day event, which provides an opportunity to dozens of communities and hundreds of visitors to meet at a single place.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;On July 23rd our local Jenkins community participated in the eight’s global meetup.
-We conduced 2 talks in main tracks and also had a round table in the evening.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Talks:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Oleg Nenashev&lt;/strong&gt;, CloudBees, &quot;About Jenkins 2 and future plans&quot;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Oleg provided a top-level overview about changes in Jenkins,
-shared insights about upgrading to the new Jenkins 2.7.1 LTS and talked about Jenkins plans&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/onenashev/itgm8-o-jenkins-2-i-planakh-na-budushchieie&quot;&gt;Presentation&lt;/a&gt; (rus)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Aleksandr Tarasov&lt;/strong&gt;, Alfa-Laboratory, &quot;Continuous Delivery with Jenkins: Lessons learned&quot;&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Aleksandr summarized AlfaLab’s experience of Jenkins usage for Continuous Delivery in their environment.
-He talked about the flow based on &lt;a href=&quot;https://jenkins.io/doc/pipeline/&quot;&gt;Jenkins Pipeline&lt;/a&gt;, &lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin&quot;&gt;JobDSL&lt;/a&gt; and &lt;a href=&quot;https://jenkins.io/projects/blueocean/&quot;&gt;BlueOcean&lt;/a&gt; prototype.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.slideshare.net/aatarasoff/continuous-delivery-with-jenkins-lessons-learned&quot;&gt;Presentation&lt;/a&gt; (rus)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;After the talks we had a roundtable about Jenkins (~10 Jenkins experts).
-Oleg provided an overview of Docker and Configuration-as-Code features available in Jenkins,
-and then we talked about common use-cases in Jenkins installations.
-We hope to finally organize a &quot;Jenkins &amp;amp; Docker&quot; meetup at some point.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;q-a&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#q-a&quot;&gt;&lt;/a&gt;Q&amp;amp;A&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;If you have any questions, all speakers can be contacted via
-&lt;a href=&quot;https://gitter.im/jenkinsci-ru/public&quot;&gt;Jenkins RU Gitter Chat&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;links&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#links&quot;&gt;&lt;/a&gt;Links&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/St-Petersburg-Jenkins-Meetup/&quot;&gt;St. Petersburg Meetup page&lt;/a&gt; (follow the events here)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/jenkins_spb&quot;&gt;St. Petersburg Meetup Twitter&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/jenkins_ru&quot;&gt;Jenkins RU Twitter&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://gitter.im/jenkinsci-ru/public&quot;&gt;Jenkins RU Gitter Chat&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://piter-united.ru/itgm8/itgm.html&quot;&gt;IT Global Meetup&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;acknowledgments&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#acknowledgments&quot;&gt;&lt;/a&gt;Acknowledgments&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The events have been organized with help from
-&lt;a href=&quot;https://www.cloudbees.com/&quot;&gt;CloudBees&lt;/a&gt;, &lt;a href=&quot;https://emc.com/company/&quot;&gt;EMC&lt;/a&gt; and
-organizers of the &lt;a href=&quot;http://piter-united.ru/itgm8/itgm.html&quot;&gt;St. Petersburg IT Global Meetup&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/</id>
-<title>Join me for Jenkins World 2016</title>
-<updated>2017-01-31T17:00:29-08:00</updated>
-<published>2016-07-26T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/07/26/join-me-at-jenkinsworld/" />
-<author>
-<name>kohsuke</name>
-</author>
-<category term="event"></category>
-<category term="jenkinsworld"></category>
-<summary>
-Jenkins World, September
-13-15 at the Santa Clara Convention Center (SCCC), takes our 6th annual
-community user conference to a whole new level. It will be one big party for
-everything Jenkins, from users to developers, from the community to vendors.
-There will be more of what people always loved in past user conferences, such
-as technical sessions from users and developers, the Ask the Experts booth and
-plugin development workshop, and even more has been added, such as Jenkins
-training pre-conference, workshops and the opportunity to get certified for
-free. Jenkins World is a not-to-be-missed.
-
-
-For me, the best part of Jenkins World is the opportunity to meet...
-</summary>
-<content type="html">
-&lt;div class=&quot;imageblock right&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/conferences/Jenkins-World_125x125.png&quot; alt=&quot;Jenkins World 125x125&quot; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;http://jenkinsworld.com/&quot;&gt;Jenkins World&lt;/a&gt;, September
-13-15 at the Santa Clara Convention Center (SCCC), takes our 6th annual
-community user conference to a whole new level. It will be one big party for
-everything Jenkins, from users to developers, from the community to vendors.
-There will be more of what people always loved in past user conferences, such
-as technical sessions from users and developers, the Ask the Experts booth and
-plugin development workshop, and even more has been added, such as Jenkins
-training pre-conference, workshops and the opportunity to get certified for
-free. Jenkins World is a not-to-be-missed.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For me, the best part of Jenkins World is the opportunity to meet other Jenkins
-users and developers face-to-face. We all interact on IRC, Google Groups or
-GitHub, but when you have a chance to meet in person, the person behind the
-GitHub ID or IRC name, whose plugin you use every day, becomes a real person.
-Your motivation might be a little different from mine, but we have the breath
-in the agenda to cover everyone from new users to senior plugin developers.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This year, you’ll have more opportunities than ever before to learn about
-Jenkins and continuous delivery/DevOps practices, and explore what Jenkins has
-to offer.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;If you are travelling from somewhere, you might as well get a two-day Jenkins training course to be held onsite, starting Monday.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;On Tuesday, you can attend your choice of workshops, which gives you more hands-on time to go deeper, including:&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;The DevOps Toolkit 2.0 Workshop&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Let’s Build a Jenkins Pipeline&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Preparing for Jenkins Certification&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Intro to Plugin Development&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CD and DevOps Maturity for Managers&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;On Wednesday, the formal conference kicks off. Throughout Wednesday and
-Thursday, you can choose from sessions spread across five tracks and covering
-a diverse range of topics like infrastructure as code, security, containers,
-pipeline automation, best practices, scaling Jenkins and new community
-development initiatives.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;At Jenkins World, you’ll be exposed to projects going on in the community such
-as &lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;Blue Ocean&lt;/a&gt;, a new Jenkins UX project. You can
-learn more about &lt;a href=&quot;https://rtyler.github.io/jenkins.io/2.0/&quot;&gt;Jenkins 2&lt;/a&gt; - a major release for the project, and based on the
-huge number of downloads we saw in the weeks following its introduction at the
-end of April, it was a big +1. At Jenkins World, you will be immersed in
-Jenkins and community, and leave knowing that you are part of a meaningful open
-source project that, with your involvement, can do anything!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This year there will only be one Jenkins World conference, so that everyone
-involved in Jenkins can get together in one place at one time and actually see
-each other. I understand that it might be a bit more difficult for Jenkins
-users outside of the US to make it to Jenkins World, but hopefully we made the
-event worth your visit. As the final push on the back, CloudBees has created a
-special &lt;a href=&quot;https://www.cloudbees.com/juc/international-program&quot;&gt;international program&lt;/a&gt;
-for those who are coming from outside the United States.  You’ll have
-time to talk with all of the other Jenkins users who have made the journey from
-across the globe, you’ll be able to attend exclusive networking events and
-more.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I hope to see you September 13th through 15th in Santa Clara at
-&lt;a href=&quot;http://jenkinsworld.com&quot;&gt;Jenkins World&lt;/a&gt; in Santa Clara!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock caution&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-caution&quot; title=&quot;Caution&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Register for &lt;a href=&quot;https://www.cloudbees.com/jenkinsworld/home&quot;&gt;Jenkins World&lt;/a&gt; in
-September with the code &lt;code&gt;JWFOSS&lt;/code&gt; for a 20% discount off your pass.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
 &lt;/div&gt;
 </content>
 </entry>

@@ -432,6 +432,11 @@ Recent Tutorials
 </h5>
 <ul>
 <li>
+<a href="/blog/2017/01/19/converting-conditional-to-pipeline/">
+Converting Conditional Build Steps to Jenkins Pipeline
+</a>
+</li>
+<li>
 <a href="/blog/2016/08/29/sauce-pipeline/">
 Browser-testing with Sauce OnDemand and Pipeline
 </a>
@@ -439,11 +444,6 @@ Browser-testing with Sauce OnDemand and Pipeline
 <li>
 <a href="/blog/2016/08/10/rails-cd-with-pipeline/">
 Continuous Security for Rails apps with Pipeline and Brakeman
-</a>
-</li>
-<li>
-<a href="/blog/2016/07/18/pipline-notifications/">
-Sending Notifications in Pipeline
 </a>
 </li>
 </ul>
@@ -652,8 +652,7 @@ proceed without a person confirming the progress.</p>
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
 agent any
     stages {
-        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { }
-        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>) { }
+        <span style="color:#777">/* &quot;Build&quot; and &quot;Test&quot; stages omitted */</span>
 
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy - Staging</span><span style="color:#710">'</span></span>) {
             steps {

@@ -432,6 +432,11 @@ Recent Tutorials
 </h5>
 <ul>
 <li>
+<a href="/blog/2017/01/19/converting-conditional-to-pipeline/">
+Converting Conditional Build Steps to Jenkins Pipeline
+</a>
+</li>
+<li>
 <a href="/blog/2016/08/29/sauce-pipeline/">
 Browser-testing with Sauce OnDemand and Pipeline
 </a>
@@ -439,11 +444,6 @@ Browser-testing with Sauce OnDemand and Pipeline
 <li>
 <a href="/blog/2016/08/10/rails-cd-with-pipeline/">
 Continuous Security for Rails apps with Pipeline and Brakeman
-</a>
-</li>
-<li>
-<a href="/blog/2016/07/18/pipline-notifications/">
-Sending Notifications in Pipeline
 </a>
 </li>
 </ul>
@@ -682,12 +682,6 @@ depending on the status of the Pipeline.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p>In the top-level <code>pipeline</code> block and each <code>stage</code> block.</p>
@@ -790,12 +784,6 @@ Build, Test, and Deploy.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p>Only once, inside the <code>pipeline</code> block.</p>
@@ -851,12 +839,6 @@ Build, Test, and Deploy.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p><em>None</em></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
 </div></div></td>
 </tr>
 <tr>
@@ -920,12 +902,6 @@ directive is placed. The directive must be defined at the top-level inside the
 <th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p><a href="#agent-parameters">Described below</a></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1089,12 +1065,6 @@ automatically be defined: <code>MYVARNAME_USR</code> and <code>MYVARNAME_PSW</co
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p>Inside the <code>pipeline</code> block, or within <code>stage</code> directives.</p>
@@ -1170,12 +1140,6 @@ as <code>buildDiscarder</code>, but they may also be provided by plugins, such a
 <th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p><em>None</em></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1296,12 +1260,6 @@ see the <a href="#parameters-example">Example</a> for its specific usage.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p>Only once, inside the <code>pipeline</code> block.</p>
@@ -1385,12 +1343,6 @@ triggers are <code>cron</code> and <code>pollScm</code>.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p><em>None</em></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1478,12 +1430,6 @@ in one or more <code>stage</code> directives.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p>Inside the <code>stages</code> section.</p>
@@ -1531,12 +1477,6 @@ if <code>agent none</code> is specified.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p><em>None</em></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1600,12 +1540,6 @@ be executed depending on the given condition.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
 <td class="tableblock halign-right valign-top"><div><div class="paragraph">
 <p><em>None</em></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">Accepts Block</p></th>
-<td class="tableblock halign-right valign-top"><div><div class="paragraph">
-<p>Yes</p>
 </div></div></td>
 </tr>
 <tr>

@@ -432,6 +432,11 @@ Recent Tutorials
 </h5>
 <ul>
 <li>
+<a href="/blog/2017/01/19/converting-conditional-to-pipeline/">
+Converting Conditional Build Steps to Jenkins Pipeline
+</a>
+</li>
+<li>
 <a href="/blog/2016/08/29/sauce-pipeline/">
 Browser-testing with Sauce OnDemand and Pipeline
 </a>
@@ -439,11 +444,6 @@ Browser-testing with Sauce OnDemand and Pipeline
 <li>
 <a href="/blog/2016/08/10/rails-cd-with-pipeline/">
 Continuous Security for Rails apps with Pipeline and Brakeman
-</a>
-</li>
-<li>
-<a href="/blog/2016/07/18/pipline-notifications/">
-Sending Notifications in Pipeline
 </a>
 </li>
 </ul>
@@ -573,7 +573,8 @@ Extending with Shared Libraries
 </li>
 <li><a href="#using-libraries">Using libraries</a>
 <ul class="sectlevel2">
-<li><a href="#overriding-versions">Overriding versions</a></li>
+<li><a href="#library-versions">Library versions</a></li>
+<li><a href="#retrieval-method">Retrieval Method</a></li>
 </ul>
 </li>
 <li><a href="#writing-libraries">Writing libraries</a>
@@ -685,6 +686,11 @@ Currently this feature is not supported for internal libraries.</p>
 the use-case. <em>Manage Jenkins » Configure System » Global Pipeline Libraries</em>
 as many libraries as necessary can be configured.</p>
 </div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/add-global-pipeline-libraries.png" alt="Add a Global Pipeline Library">
+</div>
+</div>
 <div class="paragraph">
 <p>Since these libraries will be globally usable, any Pipeline in the system can
 utilize functionality implemented in these libraries.</p>
@@ -729,21 +735,23 @@ branch, using an anonymous checkout.</p>
 <h2 id="using-libraries"><a class="anchor" href="#using-libraries"></a>Using libraries</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pipelines can access shared libraries marked <em>Load implicitly</em>, They may
-immediately use classes or global variables defined by any such libraries
-(details below).</p>
+<p>Shared Libraries marked <em>Load implicitly</em> allows Pipelines to immediately use
+classes or global variables defined by any such libraries. To access other
+shared libraries, the <code>Jenkinsfile</code> needs to use the <code>@Library</code> annotation,
+specifying the library&#8217;s name:</p>
 </div>
-<div class="paragraph">
-<p>To access other shared libraries, a script needs to use the <code>@Library</code>
-annotation, specifying the library&#8217;s name:</p>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/configure-global-pipeline-library.png" alt="Configuring a Global Pipeline Library">
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>) _
 <span style="color:#777">/* Using a version specifier, such as branch, tag, etc */</span>
-<span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib@1.0</span><span style="color:#710">'</span></span>)
+<span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library@1.0</span><span style="color:#710">'</span></span>) _
 <span style="color:#777">/* Accessing multiple libraries with one statement */</span>
-<span style="color:#007">@Library</span>([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">otherlib@abc1234</span><span style="color:#710">'</span></span>])</code></pre>
+<span style="color:#007">@Library</span>([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">otherlib@abc1234</span><span style="color:#710">'</span></span>]) _</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -757,23 +765,33 @@ conventionally the annotation goes on an <code>import</code> statement:</p>
 <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">com.mycorp.pipeline.somelib.UsefulClass</span></code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>It is legal, though unnecessary, to <code>import</code> a global variable (or method)
-defined in the <code>vars/</code> directory:</p>
+<p>For Shared Libraries which only define Global Variables (<code>vars/</code>), or a
+<code>Jenkinsfile</code> which only needs a Global Variable, the
+<a href="http://groovy-lang.org/objectorientation.html#_annotation">annotation</a>
+pattern <code>@Library('my-shared-library') _</code> may be useful for keeping code
+concise. In essence, instead of annotating an unnecessary <code>import</code> statement,
+the symbol <code>_</code> is annotated.</p>
+</div>
+<div class="paragraph">
+<p>It is not recommended to <code>import</code> a global variable/function,
+since this will force the compiler to interpret fields and methods as <code>static</code>
+even if they were intended to be instance.
+The Groovy compiler in this case can produce confusing error messages.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Note that libraries are resolved and loaded during <em>compilation</em> of the script,
+<p>Libraries are resolved and loaded during <em>compilation</em> of the script,
 before it starts executing.  This allows the Groovy compiler to understand the
 meaning of symbols used in static type checking, and permits them to be used
 in type declarations in the script, for example:</p>
@@ -795,12 +813,49 @@ echo useSomeLib(<span style="color:#080;font-weight:bold">new</span> Helper(<spa
 <p>Global Variables however, are resolved at runtime.</p>
 </div>
 <div class="sect2">
-<h3 id="overriding-versions"><a class="anchor" href="#overriding-versions"></a>Overriding versions</h3>
+<h3 id="library-versions"><a class="anchor" href="#library-versions"></a>Library versions</h3>
 <div class="paragraph">
-<p>A <code>@Library</code> annotation may override a default version given in the library’s
-definition, if the definition permits this.  In particular, a shared library
-marked for implicit use can still be loaded in a different version using the
-annotation (unless the definition specifically forbids this).</p>
+<p>The "Default version" for a configured Shared Library is used when "Load
+implicitly" is checked, or if a Pipeline references the library only by name,
+for example <code>@Library('my-shared-library') _</code>. If a "Default version" is <strong>not</strong>
+defined, the Pipeline must specify a version, for example
+<code>@Library('my-shared-library@master') _</code>.</p>
+</div>
+<div class="paragraph">
+<p>If "Allow default version to be overridden" is enabled in the Shared Library&#8217;s
+configuration, a <code>@Library</code> annotation may also override a default version
+defined for the library. This also allows a library with "Load implicitly" to
+be loaded from a different version if necessary.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="retrieval-method"><a class="anchor" href="#retrieval-method"></a>Retrieval Method</h3>
+<div class="paragraph">
+<p>The best way to specify the SCM is using an SCM plugin which has been
+specifically updated to support a new API for checking out an arbitrary named
+version (<strong>Modern SCM</strong> option). As of this writing, the latest versions of the
+Git and Subversion plugins support this mode.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/global-pipeline-library-modern-scm.png" alt="Configuring a 'Modern SCM' for a Pipeline Library">
+</div>
+</div>
+<div class="sect3">
+<h4 id="legacy-scm"><a class="anchor" href="#legacy-scm"></a>Legacy SCM</h4>
+<div class="paragraph">
+<p>SCM plugins which have not yet been updated to support the newer features
+required by Shared Libraries, may still be used via the <strong>Legacy SCM</strong> option.
+In this case, include <code>${library.yourlibrarynamehere.version}</code> wherever a
+branch/tag/ref may be configured for that particular SCM plugin.  This ensures
+that during checkout of the library&#8217;s source code, the SCM plugin will expand
+this variable to checkout the appropriate version of the library.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/global-pipeline-library-legacy-scm.png" alt="Configuring a 'Legacy SCM' for a Pipeline Library">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -925,13 +980,37 @@ single <code>.groovy</code> file which interact with each other, for example:</p
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/acme.groovy</span>
 <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">setName</span>(value) {
-    <span style="color:#950">this</span>.name = value;
+    name = value
 }
 <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">getName</span>() {
-    <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.name;
+    name
 }
 <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">caution</span>(message) {
-    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span><span style="color:#950">this</span>.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">! CAUTION: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">! CAUTION: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above, <code>name</code> is not referring to a field (even if you write it as <code>this.name</code>!),
+but to an entry created on demand in a <code>Script.binding</code>.
+To be clear about what data you intend to store and of what type,
+you can instead provide an explicit class declaration
+(the class name should match the file basename):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/acme.groovy</span>
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">acme</span> <span style="color:#088;font-weight:bold">implements</span> <span style="color:#0a8;font-weight:bold">Serializable</span> {
+    <span style="color:#088;font-weight:bold">private</span> <span style="color:#0a8;font-weight:bold">String</span> name
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">setName</span>(value) {
+        name = value
+    }
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">getName</span>() {
+        name
+    }
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">caution</span>(message) {
+        echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">! CAUTION: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    }
 }</code></pre>
 </div>
 </div>
