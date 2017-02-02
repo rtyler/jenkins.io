@@ -622,39 +622,38 @@ to understand some topics covered in this chapter.</p>
 <p>Jenkins Pipeline is a suite of plugins which supports implementing and
 integrating continuous delivery pipelines into Jenkins. Pipeline provides an
 extensible set of tools for modeling simple-to-complex delivery pipelines "as
-code" via the <a href="#syntax">Pipeline DSL</a>.
+code" via the <a href="../syntax/">Pipeline DSL</a>.
 <sup class="footnote" id="_footnote_dsl">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
 </div>
 <div class="paragraph">
-<p>Typically, this "Pipeline as Code" would be written to  a <a href="#Jenkinsfile"><code>Jenkinsfile</code></a> and
-checked into a project&#8217;s source control repository, for example:</p>
+<p>Typically, this "Pipeline as Code" would be written to a
+<a href="../Jenkinsfile/"><code>Jenkinsfile</code></a> and checked into a project&#8217;s source control
+repository, for example:</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-declarative">
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-  agent { <span style="color:#777">// &lt;1&gt;</span>
-    label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>
-  }
+    agent any <span style="color:#777">// &lt;1&gt;</span>
 
-  stages{
-    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { <span style="color:#777">// &lt;2&gt;</span>
-      steps { <span style="color:#777">// &lt;3&gt;</span>
-        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make</span><span style="color:#710">'</span></span> <span style="color:#777">// &lt;4&gt;</span>
-      }
-    }
-    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>){
-      steps {
-        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make check</span><span style="color:#710">'</span></span>
-        junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**/*.xml</span><span style="color:#710">'</span></span> <span style="color:#777">// &lt;5&gt;</span>
-      }
-    }
-    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) {
-        steps {
-          sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make publish</span><span style="color:#710">'</span></span>
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { <span style="color:#777">// &lt;2&gt;</span>
+            steps { <span style="color:#777">// &lt;3&gt;</span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make</span><span style="color:#710">'</span></span> <span style="color:#777">// &lt;4&gt;</span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>){
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make check</span><span style="color:#710">'</span></span>
+                junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**/*.xml</span><span style="color:#710">'</span></span> <span style="color:#777">// &lt;5&gt;</span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make publish</span><span style="color:#710">'</span></span>
+            }
         }
     }
-  }
 }</code></pre>
 </div></div>  <div class="pipeline-script-expand">
     <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
@@ -692,7 +691,7 @@ this part of the Pipeline.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td><a href="#steps"><code>steps</code></a> describes the steps to be run in this <code>stage</code></td>
+<td><a href="#step"><code>steps</code></a> describes the steps to be run in this <code>stage</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>

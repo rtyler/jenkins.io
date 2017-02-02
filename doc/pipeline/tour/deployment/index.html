@@ -641,16 +641,17 @@ Jenkins Pipeline readily supports both.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Often when passing between stages, especially environment stages, you may want
-a human to judge if the application is in a good enough state to "promote" to
-the production environment. This can be accomplished with the <code>input</code> step.\In
-the example below, the "Sanity check" stage actually blocks for input and won&#8217;t
-proceed without a person confirming the progress.</p>
+human input before continuing. For example, to judge if the application is in a
+good enough state to "promote" to the production environment. This can be
+accomplished with the <code>input</code> step.\In the example below, the "Sanity check"
+stage actually blocks for input and won&#8217;t proceed without a person confirming
+the progress.</p>
 </div>
 <div class="pipeline-block">  <div class="listingblock pipeline-declarative">
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-agent any
+    agent any
     stages {
         <span style="color:#777">/* &quot;Build&quot; and &quot;Test&quot; stages omitted */</span>
 
@@ -672,6 +673,30 @@ agent any
                 sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy production</span><span style="color:#710">'</span></span>
             }
         }
+    }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
+    <span style="color:#777">/* &quot;Build&quot; and &quot;Test&quot; stages omitted */</span>
+
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy - Staging</span><span style="color:#710">'</span></span>) {
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy staging</span><span style="color:#710">'</span></span>
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./run-smoke-tests</span><span style="color:#710">'</span></span>
+    }
+
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Sanity check</span><span style="color:#710">'</span></span>) {
+        input <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Does the staging environment look ok?</span><span style="color:#710">&quot;</span></span>
+    }
+
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy - Production</span><span style="color:#710">'</span></span>) {
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy production</span><span style="color:#710">'</span></span>
     }
 }</code></pre>
 </div></div></div>

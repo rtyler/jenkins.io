@@ -586,26 +586,26 @@ finalization, notification, or other end-of-Pipeline tasks.</p>
         style="display: none">
     <div class="title">Jenkinsfile (Scripted Pipeline)</div>
     <div class="content">
-  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#080;font-weight:bold">try</span> {
-    node {
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
+    <span style="color:#080;font-weight:bold">try</span> {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">No-op</span><span style="color:#710">'</span></span>) {
             sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ls</span><span style="color:#710">'</span></span>
         }
     }
+}
 <span style="color:#080;font-weight:bold">catch</span> (exc) {
     echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I failed</span><span style="color:#710">'</span></span>
 }
 <span style="color:#080;font-weight:bold">finally</span> {
     <span style="color:#080;font-weight:bold">if</span> (currentBuild.result == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">UNSTABLE</span><span style="color:#710">'</span></span>) {
         echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I am unstable :/</span><span style="color:#710">'</span></span>
-    }
-    <span style="color:#080;font-weight:bold">else</span> {
+    } <span style="color:#080;font-weight:bold">else</span> {
         echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">One way or another, I have finished</span><span style="color:#710">'</span></span>
     }
 }</code></pre>
 </div></div></div>
 <div class="paragraph">
-<p>THere are plenty of ways to send notifications, below are a few snippets
+<p>There are plenty of ways to send notifications, below are a few snippets
 demonstrating how to send notifications about a Pipeline to an email, a Hipchat
 room, or a Slack channel.</p>
 </div>
