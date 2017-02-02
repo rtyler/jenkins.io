@@ -699,7 +699,7 @@ utilize functionality implemented in these libraries.</p>
 <p>These libraries are considered "trusted:" they can run any methods in Java,
 Groovy, Jenkins internal APIs, Jenkins plugins, or third-party libraries.  This
 allows you to define libraries which encapsulate individually unsafe APIs in a
-higher-level wrapper safe for use from any job.  Beware that <strong>anyone able to
+higher-level wrapper safe for use from any Pipeline.  Beware that <strong>anyone able to
 push commits to this SCM repository could obtain unlimited access to Jenkins</strong>.
 You need the <em>Overall/RunScripts</em> permission to configure these libraries
 (normally this will be granted to Jenkins administrators).</p>
@@ -1106,8 +1106,8 @@ accepts a block:</p>
 <div class="sect2">
 <h3 id="defining-a-more-structured-dsl"><a class="anchor" href="#defining-a-more-structured-dsl"></a>Defining a more structured DSL</h3>
 <div class="paragraph">
-<p>If you have a lot of Pipeline jobs that are mostly similar, the global
-variable mechanism gives you a handy tool to build a higher-level DSL
+<p>If you have a lot of Pipelines that are mostly similar, the global
+variable mechanism provides a handy tool to build a higher-level DSL
 that captures the similarity. For example, all Jenkins plugins are built and
 tested in the same way, so we might write a step named
 <code>buildPlugin</code>:</p>
