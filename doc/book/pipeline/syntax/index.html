@@ -7,219 +7,49 @@ Pipeline Syntax
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="Jenkins is an open source automation server" name="description">
 <link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
-<!-- starting partial scriptlinks.html.haml -->
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Pipeline Syntax" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Pipeline Syntax" name="twitter:title">
+<meta content="Jenkins – Continuous Delivery for every team" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="img/blueocean.gif" name="twitter:image">
+<meta content="img/blueocean.gif" name="twitter:image:src">
+<!-- Open Graph data -->
+<meta content="Pipeline Syntax" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/pipeline/syntax/index.html" property="og:url">
+<meta content="Jenkins – Continuous Delivery for every team" property="og:description">
+<meta content="Pipeline Syntax" property="og:site_name">
 <link href="https://rtyler.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
-<link href="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
-
-<!-- ending partial scriptlinks.html.haml -->
 </head>
 <body>
 <!-- starting partial toptoolbar.html.haml -->
-<script>
-  $(function () {
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox();
-    });
-  })
-</script>
-<div id="ji-hover-layer"></div>
-<div class="ji-toolbar-offset"></div>
-<div class="fixed top">
-<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
-<a class="fixed navbar-brand" href="https://rtyler.github.io/jenkins.io" id="home-logo">
+<nav class="navbar navbar-toggleable-md navbar-inverse top bg-inverse" id="ji-toolbar">
+<div class="container">
+<button class="navbar-toggler navbar-toggler-rght hidden-lg-up float-right" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<i class="ion-navicon"></i>
+</button>
+<a class="navbar-brand" href="https://rtyler.github.io/jenkins.io">
 Jenkins
 </a>
-<ul class="nav navbar-nav">
-<li class="nav-item fixed">
-<div class="btn-group" id="download-menu">
-<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-Downloads
-</a>
-<!-- starting partial downloadlist.html.haml -->
-<div class="dropdown-menu">
-<div class="row">
-<div class="col-md-6 text-xs-center">
-<h3>
-LTS Release
-</h3>
-<p>
-LTS (Long-Term Support) releases are chosen every 12 weeks from the
-stream of regular releases as the stable release for that time period.
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
-Learn more…
-</a>
-</p>
-</div>
-<div class="col-md-6 text-xs-center">
-<h3>
-Weekly Release
-</h3>
-<p>
-A new release is produced weekly to deliver bug fixes and features to
-users and plugin developers.
-</p>
-</div>
-</div>
-<div class="row">
-<div class="col-md-6 text-xs-center">
-<div class="btn-group">
-<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
-<i class="icon-box-add"></i>
-2.32.1
-.war
-</a>
-<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
-<span class="icon"></span>
-<span class="title">
-Docker
-</span>
-</a>
-<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
-<span class="icon"></span>
-<span class="title">
-FreeBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
-<span class="icon"></span>
-<span class="title">
-Gentoo
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
-<span class="icon"></span>
-<span class="title">
-Mac OS X
-</span>
-</a>
-<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
-<span class="icon"></span>
-<span class="title">
-OpenBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
-<span class="icon"></span>
-<span class="title">
-openSUSE
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
-<span class="icon"></span>
-<span class="title">
-Red Hat/Fedora/CentOS
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
-<span class="icon"></span>
-<span class="title">
-Ubuntu/Debian
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
-<span class="icon"></span>
-<span class="title">
-Windows
-</span>
-</a>
-</div>
-</div>
-<p class="details">
-<a class="item" href="/changelog-stable">Changelog</a>
-|
-<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
-|
-<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
-</p>
-</div>
-<div class="col-md-6 text-xs-center">
-<div class="btn-group">
-<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
-<i class="icon-box-add"></i>
-2.43
-.war
-</a>
-<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
-<span class="icon"></span>
-<span class="title">
-Docker
-</span>
-</a>
-<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
-<span class="icon"></span>
-<span class="title">
-FreeBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
-<span class="icon"></span>
-<span class="title">
-Gentoo
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
-<span class="icon"></span>
-<span class="title">
-Mac OS X
-</span>
-</a>
-<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
-<span class="icon"></span>
-<span class="title">
-OpenBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
-<span class="icon"></span>
-<span class="title">
-openSUSE
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
-<span class="icon"></span>
-<span class="title">
-Red Hat/Fedora/CentOS
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
-<span class="icon"></span>
-<span class="title">
-Ubuntu/Debian
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
-<span class="icon"></span>
-<span class="title">
-Windows
-</span>
-</a>
-</div>
-</div>
-<p class="details">
-<a class="item" href="/changelog">Changelog</a>
-|
-<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
-</p>
-</div>
-</div>
-</div>
-
-<!-- ending partial downloadlist.html.haml -->
-</div>
-</li>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
 <li class="nav-item">
 <a class="nav-link" href="https://rtyler.github.io/jenkins.io/node">
 Blog
@@ -236,9 +66,9 @@ Plugins
 </a>
 </li>
 <li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
 Use-cases
-</a>
+</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/android">
 Android
@@ -274,10 +104,8 @@ Ruby
 Participate
 </a>
 </li>
-<li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
-Sub-projects
-</a>
+<li class="dropdown nav-item">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Sub-projects</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/projects/">
 Overview
@@ -297,20 +125,20 @@ Jenkins Area Meetups
 </div>
 </li>
 <li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
 Resources
-</a>
+</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
 Account Management
 </a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/chat" title="Chat with the rest of the Jenkins community on IRC">
 Chat
 </a>
 <a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
 Issue Tracker
 </a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
 Mailing Lists
 </a>
 <a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
@@ -318,33 +146,42 @@ Wiki
 </a>
 </div>
 </li>
-<li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/security">
+<li class="nav-item dropdown">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
+About
+</div>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/security">
 Security
 </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/press">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/press">
 Press
 </a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/project/conduct">
+Conduct
+</a>
+</div>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/conduct">
-Conduct
+<a class="nav-link btn btn-outline-secondary" href="https://rtyler.github.io/jenkins.io/download">
+Download
 </a>
 </li>
 </ul>
+</div>
+</div>
 </nav>
-</div>
-<div id="ji-top-peg">
-<a href="https://github.com/jenkinsci" id="ji-fork-tag">
-<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
-</a>
-</div>
 
 <!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
 <div class="container">
-<div class="row">
+<div class="row body">
 <div class="col-lg-3">
 <div class="sidebar-nav tour">
 <h4>
@@ -379,7 +216,7 @@ Guided Tour
 <h4>
 User Handbook
 <span style="font-size: 0.6rem; vertical-align: middle;">
-<a href="../user-handbook.pdf">
+<a href="/user-handbook.pdf">
 (PDF)
 </a>
 </span>
@@ -399,6 +236,9 @@ User Handbook
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline" class="active">Pipeline</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/blueocean" class="">Blue Ocean</a>
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/book/use-case" class="">Jenkins Use-Cases</a>
@@ -426,24 +266,27 @@ Resources
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
 </li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/upgrade-guide" class="">LTS Upgrade Guide</a>
+</li>
 </ul>
 <h5>
 Recent Tutorials
 </h5>
 <ul>
 <li>
-<a href="/blog/2017/01/19/converting-conditional-to-pipeline/">
-Converting Conditional Build Steps to Jenkins Pipeline
+<a href="/blog/2017/02/15/declarative-notifications/">
+Declarative Pipeline: Notifications and Shared Libraries
 </a>
 </li>
 <li>
-<a href="/blog/2016/08/29/sauce-pipeline/">
-Browser-testing with Sauce OnDemand and Pipeline
+<a href="/blog/2017/02/10/declarative-html-publisher/">
+Declarative Pipeline: Publishing HTML Reports
 </a>
 </li>
 <li>
-<a href="/blog/2016/08/10/rails-cd-with-pipeline/">
-Continuous Security for Rails apps with Pipeline and Brakeman
+<a href="/blog/2017/02/07/declarative-maven-project/">
+Declarative Pipeline for Maven Projects
 </a>
 </li>
 </ul>
@@ -457,105 +300,43 @@ View all tutorials
 Developers
 </h4>
 <h5>
-Writing plugins
+<a href="https://rtyler.github.io/jenkins.io/doc/developer" class="">Reference Documentation</a>
 </h5>
-<ul>
-<li>
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins">
-Extend Jenkins
-</a>
-</li>
-<li>
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points">
-Extension points
-</a>
-</li>
-</ul>
-<h5>
-JavaDoc
-</h5>
-<ul>
-<li>
-<a href="http://javadoc.jenkins.io/">
-Latest
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-2.32">
-2.32
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-2.19">
-2.19
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-2.7">
-2.7
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.651">
-1.651
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.642">
-1.642
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.625">
-1.625
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.609">
-1.609
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.596">
-1.596
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.580">
-1.580
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.565">
-1.565
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.554">
-1.554
-</a>
-</li>
-</ul>
 </div>
 </div>
 <div class="col-lg-9">
 <div class="container">
-<div class="row body">
-<div class="section_nav pagination-links">
-<a class="prev page-link" href="../shared-libraries">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../shared-libraries">
 ⇐ Extending with Shared Libraries
 </a>
-<a class="up page-link" href="../">
-⇑ "Pipeline
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ Pipeline
 </a>
-<a class="next page-link" href="../../use-case">
-Jenkins Use-Cases ⇒
-</a>
-<br>
-<a class="index page-link" href="../../">
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
 Index
 </a>
 </div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../../blueocean">
+Blue Ocean ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
 <div class="section">
 <h1>
 Pipeline Syntax
@@ -626,7 +407,7 @@ example:</p>
 <div class="paragraph">
 <p>The basic statements and expressions which are valid in Declarative Pipeline
 follow the same rules as
-<a href="https://groovy-lang.org/syntax.html">Groovy&#8217;s syntax</a>
+<a href="http://groovy-lang.org/syntax.html">Groovy&#8217;s syntax</a>
 with the following exceptions:</p>
 </div>
 <div class="ulist">
@@ -735,8 +516,8 @@ web UI with a yellow indication.</p>
             }
         }
     }
-    post { <span style="color:#777">/* &lt;1&gt; */</span>
-        always { <span style="color:#777">/* &lt;2&gt; */</span>
+    post { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+        always { <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
             echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I will always say Hello again!</span><span style="color:#710">'</span></span>
         }
     }
@@ -799,7 +580,7 @@ Deploy.</p>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
     agent any
-    stages { <span style="color:#777">/* &lt;1&gt; */</span>
+    stages { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
             steps {
                 echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
@@ -859,7 +640,7 @@ Deploy.</p>
     agent any
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
-            steps { <span style="color:#777">/* &lt;1&gt; */</span>
+            steps { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
                 echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
             }
         }
@@ -938,6 +719,12 @@ need to contain its own <code>agent</code> directive. For example: <code>agent n
 <p>Execute the Pipeline, or stage, on an agent available in the Jenkins
 environment with the provided label. For example: <code>agent { label 'my-defined-label' }</code></p>
 </dd>
+<dt class="hdlist1">node</dt>
+<dd>
+<p><code>agent { node { label 'labelName' } }</code> behaves the same as
+<code>agent { label 'labelName' }</code>, but <code>node</code> allows for additional options (such
+as <code>customWorkspace</code>).</p>
+</dd>
 <dt class="hdlist1">docker</dt>
 <dd>
 <p>Execute the Pipeline, or stage, with the given container which will be
@@ -945,20 +732,77 @@ dynamically provisioned on a <a href="../../glossary/#node">node</a> pre-configu
 accept Docker-based Pipelines, or on a node matching the optionally defined
 <code>label</code> parameter.  <code>docker</code> also optionally accepts an <code>args</code> parameter
 which may contain arguments to pass directly to a <code>docker run</code> invocation.
- For example: <code>agent { docker: 'maven:3-alpine' }</code> or</p>
-</dd>
-</dl>
-</div>
+ For example: <code>agent { docker 'maven:3-alpine' }</code> or</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">agent {
     docker {
-        <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span>
-        <span style="color:#606">label</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-defined-label</span><span style="color:#710">'</span></span>
-        <span style="color:#606">args</span>:  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-v /tmp:/tmp</span><span style="color:#710">'</span></span>
+        image <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span>
+        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-defined-label</span><span style="color:#710">'</span></span>
+        args  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-v /tmp:/tmp</span><span style="color:#710">'</span></span>
     }
 }</code></pre>
 </div>
+</div>
+</dd>
+<dt class="hdlist1">dockerfile</dt>
+<dd>
+<p>Execute the Pipeline, or stage, with a container built from a
+<code>Dockerfile</code> contained in the source repository. Conventionally this is the
+<code>Dockerfile</code> in the root of the source repository: <code>agent { dockerfile
+true }</code>. If building a <code>Dockerfile</code> in another directory, use the <code>dir</code>
+option: <code>agent { dockerfile { dir 'someSubDir' } }</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="common-options"><a class="anchor" href="#common-options"></a>Common Options</h5>
+<div class="paragraph">
+<p>These are a few options for two or more <code>agent</code> implementations. They are not
+required unless explicitly stated.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">label</dt>
+<dd>
+<p>A string. The label on which to run the Pipeline or individual <code>stage</code>.</p>
+<div class="paragraph">
+<p>This option is valid for <code>node</code>, <code>docker</code> and <code>dockerfile</code>, and is required for
+<code>node</code>.</p>
+</div>
+</dd>
+<dt class="hdlist1">customWorkspace</dt>
+<dd>
+<p>A string. Run the Pipeline or individual <code>stage</code> this <code>agent</code>
+is applied to within this custom workspace, rather than the default. It can be
+either a relative path, in which case the custom workspace will be under the
+workspace root on the node, or an absolute path. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">agent {
+    node {
+        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-defined-label</span><span style="color:#710">'</span></span>
+        customWorkspace <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/some/other/path</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This option is valid for <code>node</code>, <code>docker</code> and <code>dockerfile</code>.</p>
+</div>
+</dd>
+<dt class="hdlist1">reuseNode</dt>
+<dd>
+<p>A boolean, false by default. If true, run the container in the node
+specified at the top-level of the Pipeline, in the same workspace, rather than
+on a new node entirely.</p>
+<div class="paragraph">
+<p>This option is valid for <code>docker</code> and <code>dockerfile</code>, and only has an effect when
+used on an <code>agent</code> for an individual <code>stage</code>.</p>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 <div class="sect4">
@@ -967,7 +811,7 @@ which may contain arguments to pass directly to a <code>docker run</code> invoca
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-    agent { docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span> } <span style="color:#777">/* &lt;1&gt; */</span>
+    agent { docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span> } <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
             steps {
@@ -992,18 +836,20 @@ of the given name and tag (<code>maven:3-alpine</code>).</td>
     <div class="title">Jenkinsfile (Declarative Pipeline)</div>
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
-    agent none <span style="color:#777">/* &lt;1&gt; */</span>
+    agent none <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
-            agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span> } <span style="color:#777">/* &lt;2&gt; */</span>
+            agent { docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span> } <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
             steps {
-                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn -B clean verify</span><span style="color:#710">'</span></span>
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, Maven</span><span style="color:#710">'</span></span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
             }
         }
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Test</span><span style="color:#710">'</span></span>) {
-            agent { <span style="color:#606">docker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">openjdk:8-jre</span><span style="color:#710">'</span></span> } <span style="color:#777">/* &lt;3&gt; */</span>
+            agent { docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">openjdk:8-jre</span><span style="color:#710">'</span></span> } <span style="color:#777"><i class="conum" data-value="3"></i><b>(3)</b></span>
             steps {
-                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello JRE</span><span style="color:#710">'</span></span>
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, JDK</span><span style="color:#710">'</span></span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">java -version</span><span style="color:#710">'</span></span>
             }
         }
     }
@@ -1081,13 +927,13 @@ automatically be defined: <code>MYVARNAME_USR</code> and <code>MYVARNAME_PSW</co
     <div class="content">
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
     agent any
-    environment { <span style="color:#777">/* &lt;1&gt; */</span>
+    environment { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
         CC = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clang</span><span style="color:#710">'</span></span>
     }
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
-            environment { <span style="color:#777">/* &lt;2&gt; */</span>
-                AN_ACCESS_KEY = credentials(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-prefined-secret-text</span><span style="color:#710">'</span></span>) <span style="color:#777">/* &lt;3&gt; */</span>
+            environment { <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
+                AN_ACCESS_KEY = credentials(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-prefined-secret-text</span><span style="color:#710">'</span></span>) <span style="color:#777"><i class="conum" data-value="3"></i><b>(3)</b></span>
             }
             steps {
                 sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">printenv</span><span style="color:#710">'</span></span>
@@ -1175,7 +1021,7 @@ the <code>agent</code> directive. For example: <code>options { skipDefaultChecko
 <dt class="hdlist1">timeout</dt>
 <dd>
 <p>Set a timeout period for the Pipeline run, after which Jenkins should
-abort the Pipeline. For example: <code>options { timeout(time: 1, unit: 'HOUR') }</code></p>
+abort the Pipeline. For example: <code>options { timeout(time: 1, unit: 'HOURS') }</code></p>
 </dd>
 <dt class="hdlist1">retry</dt>
 <dd>
@@ -1198,7 +1044,7 @@ time at which the line was emitted. For example: <code>options { timestamps() }<
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
     agent any
     options {
-        timeout(<span style="color:#606">time</span>: <span style="color:#00D">1</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">HOUR</span><span style="color:#710">'</span></span>) <span style="color:#777">/* &lt;1&gt; */</span>
+        timeout(<span style="color:#606">time</span>: <span style="color:#00D">1</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">HOURS</span><span style="color:#710">'</span></span>) <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
     }
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
@@ -1327,7 +1173,7 @@ see the <a href="#parameters-example">Example</a> for its specific usage.</p>
 should be re-triggered. For Pipelines which are integrated with a source such
 as GitHub or BitBucket, <code>triggers</code> may not be necessary as webhooks-based
 integration will likely already be present. Currently the only two available
-triggers are <code>cron</code> and <code>pollScm</code>.</p>
+triggers are <code>cron</code> and <code>pollSCM</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread syntax">
 <colgroup>
@@ -1362,11 +1208,11 @@ triggers are <code>cron</code> and <code>pollScm</code>.</p>
 <p>Accepts a cron-style string to define a regular interval at which the
 Pipeline should be re-triggered, for example: <code>triggers { cron('H 4/* 0 0 1-5') }</code></p>
 </dd>
-<dt class="hdlist1">pollScm</dt>
+<dt class="hdlist1">pollSCM</dt>
 <dd>
 <p>Accepts a cron-style string to define a regular interval at which
 Jenkins should check for new source changes. If new changes exist, the Pipeline
-will be re-triggered. For example: <code>triggers { pollScm('H 4/* 0 0 1-5') }</code></p>
+will be re-triggered. For example: <code>triggers { pollSCM('H 4/* 0 0 1-5') }</code></p>
 </dd>
 </dl>
 </div>
@@ -1378,7 +1224,7 @@ will be re-triggered. For example: <code>triggers { pollScm('H 4/* 0 0 1-5') }</
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>pollScm</code> trigger is only available in Jenkins 2.22 or later.</p>
+<p>The <code>pollSCM</code> trigger is only available in Jenkins 2.22 or later.</p>
 </div>
 </td>
 </tr>
@@ -1494,7 +1340,7 @@ if <code>agent none</code> is specified.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">maven</dt>
-<dt class="hdlist1">java</dt>
+<dt class="hdlist1">jdk</dt>
 <dt class="hdlist1">gradle</dt>
 </dl>
 </div>
@@ -1507,7 +1353,7 @@ if <code>agent none</code> is specified.</p>
   <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
     agent any
     tools {
-        maven <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">apache-maven-3.0.1</span><span style="color:#710">'</span></span> <span style="color:#777">/* &lt;1&gt; */</span>
+        maven <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">apache-maven-3.0.1</span><span style="color:#710">'</span></span> <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
     }
     stages {
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
@@ -1568,7 +1414,7 @@ be executed depending on the given condition.</p>
 <dt class="hdlist1">branch</dt>
 <dd>
 <p>Execute the stage when the branch being built matches the branch
-pattern given, for example: <code>when { branch '*/master' }</code></p>
+pattern given, for example: <code>when { branch 'master' }</code></p>
 </dd>
 <dt class="hdlist1">environment</dt>
 <dd>
@@ -1578,7 +1424,7 @@ to the given value, for example: <code>when { environment name: 'DEPLOY_TO', val
 <dt class="hdlist1">expression</dt>
 <dd>
 <p>Execute the stage when the specified Groovy expression evaluates
-to true, for example: <code>when { return params.DEBUG_BUILD }</code></p>
+to true, for example: <code>when { expression { return params.DEBUG_BUILD } }</code></p>
 </dd>
 </dl>
 </div>
@@ -1598,9 +1444,8 @@ to true, for example: <code>when { return params.DEBUG_BUILD }</code></p>
         }
         stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Deploy</span><span style="color:#710">'</span></span>) {
             when {
-                branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">*/production</span><span style="color:#710">'</span></span>
+                branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
             }
-            steps {
                 echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
             }
         }
@@ -1800,22 +1645,38 @@ Whereas Scripted Pipelines follow a more imperative programming model..
 </div>
 </div>
 </div>
-<div class="section_nav pagination-links">
-<a class="prev page-link" href="../shared-libraries">
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../shared-libraries">
 ⇐ Extending with Shared Libraries
 </a>
-<a class="up page-link" href="../">
-⇑ "Pipeline
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ Pipeline
 </a>
-<a class="next page-link" href="../../use-case">
-Jenkins Use-Cases ⇒
-</a>
-<br>
-<a class="index page-link" href="../../">
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
 Index
 </a>
 </div>
 </div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../../blueocean">
+Blue Ocean ⇒
+</a>
+</div>
+</div>
+</div>
 </div>
 
 </div>
@@ -1823,6 +1684,9 @@ Index
 </div>
 
 
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
 <footer id="footer">
 <div class="container">
 <div class="row">
@@ -1833,7 +1697,7 @@ Index
 <h5>Resources</h5>
 <ul class="resources">
 <li>
-<a href="/content/event-calendar">
+<a href="/events">
 Events
 </a>
 </li>
@@ -1984,7 +1848,6 @@ The content driving this site is licensed under the Creative Commons Attribution
 </div>
 </div>
 </footer>
-<!-- starting partial footer.html.haml -->
 <script>
  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -2008,7 +1871,5 @@ ga('set', 'anonymizeIp', true);
     }
   }(document,"script","twitter-wjs");
 </script>
-
-<!-- ending partial footer.html.haml -->
 </body>
 </html>

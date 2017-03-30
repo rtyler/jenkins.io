@@ -7,219 +7,49 @@ Jenkins Community Blog
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="Jenkins is an open source automation server" name="description">
 <link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
-<!-- starting partial scriptlinks.html.haml -->
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Jenkins Community Blog" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Community Blog" name="twitter:title">
+<meta content="Jenkins – Continuous Delivery for every team" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="img/blueocean.gif" name="twitter:image">
+<meta content="img/blueocean.gif" name="twitter:image:src">
+<!-- Open Graph data -->
+<meta content="Jenkins Community Blog" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/node/page/47.html" property="og:url">
+<meta content="Jenkins – Continuous Delivery for every team" property="og:description">
+<meta content="Jenkins Community Blog" property="og:site_name">
 <link href="https://rtyler.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
-<link href="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
-
-<!-- ending partial scriptlinks.html.haml -->
 </head>
 <body>
 <!-- starting partial toptoolbar.html.haml -->
-<script>
-  $(function () {
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox();
-    });
-  })
-</script>
-<div id="ji-hover-layer"></div>
-<div class="ji-toolbar-offset"></div>
-<div class="fixed top">
-<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
-<a class="fixed navbar-brand" href="https://rtyler.github.io/jenkins.io" id="home-logo">
+<nav class="navbar navbar-toggleable-md navbar-inverse top bg-inverse" id="ji-toolbar">
+<div class="container">
+<button class="navbar-toggler navbar-toggler-rght hidden-lg-up float-right" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<i class="ion-navicon"></i>
+</button>
+<a class="navbar-brand" href="https://rtyler.github.io/jenkins.io">
 Jenkins
 </a>
-<ul class="nav navbar-nav">
-<li class="nav-item fixed">
-<div class="btn-group" id="download-menu">
-<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-Downloads
-</a>
-<!-- starting partial downloadlist.html.haml -->
-<div class="dropdown-menu">
-<div class="row">
-<div class="col-md-6 text-xs-center">
-<h3>
-LTS Release
-</h3>
-<p>
-LTS (Long-Term Support) releases are chosen every 12 weeks from the
-stream of regular releases as the stable release for that time period.
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
-Learn more…
-</a>
-</p>
-</div>
-<div class="col-md-6 text-xs-center">
-<h3>
-Weekly Release
-</h3>
-<p>
-A new release is produced weekly to deliver bug fixes and features to
-users and plugin developers.
-</p>
-</div>
-</div>
-<div class="row">
-<div class="col-md-6 text-xs-center">
-<div class="btn-group">
-<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
-<i class="icon-box-add"></i>
-2.32.1
-.war
-</a>
-<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
-<span class="icon"></span>
-<span class="title">
-Docker
-</span>
-</a>
-<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
-<span class="icon"></span>
-<span class="title">
-FreeBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
-<span class="icon"></span>
-<span class="title">
-Gentoo
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
-<span class="icon"></span>
-<span class="title">
-Mac OS X
-</span>
-</a>
-<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
-<span class="icon"></span>
-<span class="title">
-OpenBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
-<span class="icon"></span>
-<span class="title">
-openSUSE
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
-<span class="icon"></span>
-<span class="title">
-Red Hat/Fedora/CentOS
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
-<span class="icon"></span>
-<span class="title">
-Ubuntu/Debian
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
-<span class="icon"></span>
-<span class="title">
-Windows
-</span>
-</a>
-</div>
-</div>
-<p class="details">
-<a class="item" href="/changelog-stable">Changelog</a>
-|
-<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
-|
-<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
-</p>
-</div>
-<div class="col-md-6 text-xs-center">
-<div class="btn-group">
-<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
-<i class="icon-box-add"></i>
-2.43
-.war
-</a>
-<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
-<span class="icon"></span>
-<span class="title">
-Docker
-</span>
-</a>
-<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
-<span class="icon"></span>
-<span class="title">
-FreeBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
-<span class="icon"></span>
-<span class="title">
-Gentoo
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
-<span class="icon"></span>
-<span class="title">
-Mac OS X
-</span>
-</a>
-<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
-<span class="icon"></span>
-<span class="title">
-OpenBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
-<span class="icon"></span>
-<span class="title">
-openSUSE
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
-<span class="icon"></span>
-<span class="title">
-Red Hat/Fedora/CentOS
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
-<span class="icon"></span>
-<span class="title">
-Ubuntu/Debian
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
-<span class="icon"></span>
-<span class="title">
-Windows
-</span>
-</a>
-</div>
-</div>
-<p class="details">
-<a class="item" href="/changelog">Changelog</a>
-|
-<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
-</p>
-</div>
-</div>
-</div>
-
-<!-- ending partial downloadlist.html.haml -->
-</div>
-</li>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
 <li class="active nav-item">
 <a class="nav-link" href="https://rtyler.github.io/jenkins.io/node">
 Blog
@@ -236,9 +66,9 @@ Plugins
 </a>
 </li>
 <li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
 Use-cases
-</a>
+</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/android">
 Android
@@ -274,10 +104,8 @@ Ruby
 Participate
 </a>
 </li>
-<li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
-Sub-projects
-</a>
+<li class="dropdown nav-item">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Sub-projects</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/projects/">
 Overview
@@ -297,20 +125,20 @@ Jenkins Area Meetups
 </div>
 </li>
 <li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
 Resources
-</a>
+</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
 Account Management
 </a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/chat" title="Chat with the rest of the Jenkins community on IRC">
 Chat
 </a>
 <a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
 Issue Tracker
 </a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
 Mailing Lists
 </a>
 <a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
@@ -318,34 +146,35 @@ Wiki
 </a>
 </div>
 </li>
-<li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/security">
+<li class="nav-item dropdown">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
+About
+</div>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/security">
 Security
 </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/press">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/press">
 Press
 </a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/project/conduct">
+Conduct
+</a>
+</div>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/conduct">
-Conduct
+<a class="nav-link btn btn-outline-secondary" href="https://rtyler.github.io/jenkins.io/download">
+Download
 </a>
 </li>
 </ul>
+</div>
+</div>
 </nav>
-</div>
-<div id="ji-top-peg">
-<a href="https://github.com/jenkinsci" id="ji-fork-tag">
-<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
-</a>
-</div>
 
 <!-- ending partial toptoolbar.html.haml -->
-<div class="container blog-post no-margin">
+<div class="container blog-post">
 <div class="row body">
-<div class="col-md-1"></div>
 <div class="col-md-8 main-content with-sidebar" id="content">
 <div id="content-top">
 <h2>
@@ -369,22 +198,24 @@ follow us on Twitter
 <div class="item-list">
 <ul class="ji-blog-list ji-item-list">
 <li class="post">
-<a class="body" href="/blog/2010/09/22/javaone-day-two-in-pictures/">
+<a class="body" href="/blog/2011/04/04/the-final-two-run-off-vote-for-the-new-jenkins-logo/">
 <div class="header">
 <div class="date">
 <div class="month">
-Sep
+Apr
 </div>
 <div class="day">
-22
+04
 </div>
 </div>
 <h5 class="title">
-JavaOne: Day Two in Pictures
+The final two: run-off vote for the new Jenkins logo
 </h5>
 </div>
 <p class="teaser">
-On the off chance you've not seen some of the photos posted to the @hudsonci Twitter stream, here's some of the photos from day two of JavaOne....
+A little over a week ago we opened the polls to the larger user-base to vote for the new and improved Jenkins logo. After receiving hundreds of votes, we are now ready to enter the final round of voting (click images to see larger versions in a new window).
+
+Voting will end April 9th at 23:59 UTC, so make sure to tell your friends, coworkers...
 <span class="more"></span>
 </p>
 </a>
@@ -397,201 +228,35 @@ general
 </a>
 </li>
 <li>
-<a class="tag-link" href="/node/tags/javaone">
-javaone
+<a class="tag-link" href="/node/tags/feedback">
+feedback
 </a>
 </li>
 </ul>
 </div>
 </li>
 <li class="post">
-<a class="body" href="/blog/2010/09/21/video-kohsuke-talks-hudson-on-otn/">
+<a class="body" href="/blog/2011/04/01/san-francisco-jenkins-meetup-wednesday-april-13th/">
 <div class="header">
 <div class="date">
 <div class="month">
-Sep
+Apr
 </div>
 <div class="day">
-21
+01
 </div>
 </div>
 <h5 class="title">
-Video: Kohsuke talks Hudson on OTN
+San Francisco Jenkins Meetup - Wednesday, April 13th
 </h5>
 </div>
 <p class="teaser">
-For the uninitiated, "OTN" is short for the "Oracle Technology Network" where speakers and other persons of interest sit in front of cameras and their words are streamed live to the internets.
-
-After his session yesterday, Kohsuke hustled over to OTN headquarters, which look suspiciously like a tent in the middle of Mason St., and gave the following interview/chat....
+We're happy to announce that there'll be a Jenkins meetup in San Francisco on Wed., Apr 13th, generously hosted by Engine Yard. The meetup will start at 6:30 - you can find more information here. Dr Nic Williams of Engine Yard will talk about their use of Jenkins with Ruby, and Kohsuke will give an update on the JRuby plugin development work he and...
 <span class="more"></span>
 </p>
 </a>
 <div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/general">
-general
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/javaone">
-javaone
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2010/09/21/live-blog-john-smart-demos-advanced-hudson-usage/">
-<div class="header">
-<div class="date">
-<div class="month">
-Sep
-</div>
-<div class="day">
-21
-</div>
-</div>
-<h5 class="title">
-Live Blog: John Smart demos advanced Hudson usage
-</h5>
-</div>
-<p class="teaser">
-Editor's Note: This is a very rough set of notes from John Ferguson Smart's presentation at JavaOne 2010. Unlike Kohsuke's presentation, John spent a lot of time in demos which made live-blogging a bit difficult.
-
-
-
-John takes the stage at 9:30, this presentation is totally different from yesterday's presentation from Kohsuke
-
-Taking Hudson a little further, beyond just scheduling a build job.
-
-Who is not using Hudson,...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/general">
-general
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/javaone">
-javaone
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2010/09/21/javaone-day-one-in-pictures/">
-<div class="header">
-<div class="date">
-<div class="month">
-Sep
-</div>
-<div class="day">
-21
-</div>
-</div>
-<h5 class="title">
-JavaOne: Day One in Pictures
-</h5>
-</div>
-<p class="teaser">
-In case you haven't been following the frequently updated @hudsonci Twitter stream. Here's a collection of photos I've taken thus far....
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/general">
-general
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/javaone">
-javaone
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2010/09/20/tweet-of-the-day/">
-<div class="header">
-<div class="date">
-<div class="month">
-Sep
-</div>
-<div class="day">
-20
-</div>
-</div>
-<h5 class="title">
-Tweet of the Day
-</h5>
-</div>
-<p class="teaser">
-Some of you may have been following all the photos posted to the hudsonlabs Flickr account from this year's JavaOne conference in San Francisco.
-
-Alan O'Leary responded to this photo with one of the funniest comments of the day:
-
-"Java and Oracle - 'In Opposite Directions'"...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
-<ul class="list-inline tags">
-<li>
-<a class="tag-link" href="/node/tags/general">
-general
-</a>
-</li>
-<li>
-<a class="tag-link" href="/node/tags/just for fun">
-just for fun
-</a>
-</li>
-</ul>
-</div>
-</li>
-<li class="post">
-<a class="body" href="/blog/2010/09/20/pre-javaone-hudson-meetup-redux/">
-<div class="header">
-<div class="date">
-<div class="month">
-Sep
-</div>
-<div class="day">
-20
-</div>
-</div>
-<h5 class="title">
-Pre-JavaOne Hudson Meetup Redux
-</h5>
-</div>
-<p class="teaser">
-Yesterday Digg was kind enough to host and "sponsor" (read: free drinks and
-pizza!) a Hudson meetup at their offices in San Francisco. While Digg has been
-the source of some controversy and press due to their recent redesign and corporate
-shake-ups, as far as the Hudson community goes they've been largely responsible for
-a great case study on continuous deployment using Hudson and Gerrit.
-
-
-
-Attendees included all of...
-<span class="more"></span>
-</p>
-</a>
-<div class="attrs">
-<a href="https://github.com/rtyler">R. Tyler Croy</a>
+<a href="https://github.com/abayer">Andrew Bayer</a>
 <ul class="list-inline tags">
 <li>
 <a class="tag-link" href="/node/tags/general">
@@ -603,38 +268,84 @@ general
 meetup
 </a>
 </li>
+<li>
+<a class="tag-link" href="/node/tags/news">
+news
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/jenkinsci">
+jenkinsci
+</a>
+</li>
 </ul>
 </div>
 </li>
 <li class="post">
-<a class="body" href="/blog/2010/09/20/live-blog-kohsukes-presentation-at-javaone/">
+<a class="body" href="/blog/2011/03/23/windows-installers-are-now-available/">
 <div class="header">
 <div class="date">
 <div class="month">
-Sep
+Mar
 </div>
 <div class="day">
-20
+23
 </div>
 </div>
 <h5 class="title">
-Live Blog: Kohsuke's Presentation at JavaOne
+Windows installers are now available
 </h5>
 </div>
 <p class="teaser">
-Editor's note: This is a very rough set of notes from Kohsuke Kawaguchi's presentation at JavaOne 2010.
+Good portion of Java developers use Windows, so we tend to think the opposite is true, that a good portion of Windows folks use Java. But this is not true.
 
 
+As Jenkins gains traction among .NET developers, it's becoming increasingly clear that Java is very alien to them. They naturally have no idea of what a war file means, and often don't even have Java...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/general">
+general
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/releases">
+releases
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/jenkinsci">
+jenkinsci
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2011/03/21/the-polls-are-open-for-the-jenkins-logo-contest/">
+<div class="header">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+21
+</div>
+</div>
+<h5 class="title">
+The polls are open for the Jenkins Logo Contest!
+</h5>
+</div>
+<p class="teaser">
+After a number of absolutely fantastic logo submissions from a number of designers, I'm extremely pleased to open the polls on the vote for the brand new Jenkins logo!
 
-Kohsuke takes the stage, asks "who uses's Hudson" the majority of
-audience raises their hands
+The thumbnails do not do any of these logos justice in my opinion, so I recommend opening each logo up in its own tab to get the full effect :)
 
-Discussing the great ecosystem using Hudson across the wide-variety of platforms/languages.
-330+ community written plugins. Last year at JavaOne we had 230+ plugins
-
-Eclipse Community Survey, Hudson adoption from 9.1% in 2009 to 21.8%
-
-Discussing Hudson adoption, going...
+I plan to end voting March 28th...
 <span class="more"></span>
 </p>
 </a>
@@ -647,34 +358,180 @@ general
 </a>
 </li>
 <li>
-<a class="tag-link" href="/node/tags/javaone">
-javaone
+<a class="tag-link" href="/node/tags/feedback">
+feedback
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/news">
+news
 </a>
 </li>
 </ul>
 </div>
 </li>
 <li class="post">
-<a class="body" href="/blog/2010/09/17/javaone-taking-shape/">
+<a class="body" href="/blog/2011/03/13/jenkins-hits-1-400/">
 <div class="header">
 <div class="date">
 <div class="month">
-Sep
+Mar
 </div>
 <div class="day">
-17
+13
 </div>
 </div>
 <h5 class="title">
-JavaOne taking shape
+Jenkins hits 1.400
 </h5>
 </div>
 <p class="teaser">
-Last night on my way out of San Francisco I stopped by 4th and Howard St to get my first taste of JavaOne/Oracle OpenWorld which was already taking shape at the location. Besides snapping the photo below, I also managed to get yelled out by an old woman wearing a red "security" jacket; suffice to say my JavaOne experience is already everything I expected!
+Jenkins is now at 1.400 (as of last Monday, yes, I know. But better late than never...). As with 1.300 and 1.200, this release doesn't particularly signify any substantial major release, but nonetheless it is a milestone for those of us who are involved in the project &mdash; I think repeating something 400 times is something one can be proud of. It's a bit...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/development">
+development
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/core">
+core
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2011/03/03/updated-usage-stats-available/">
+<div class="header">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+03
+</div>
+</div>
+<h5 class="title">
+Updated Usage Stats Available!
+</h5>
+</div>
+<p class="teaser">
+Updated usage statistics are now available at http://jenkins-ci.org/census This data has been scrubbed of distinguishing information as much as possible, filtered for installations we've seen at least twice a month with at least one job set up, and split up into monthly JSON files. Starting with August, we only have data on installations of version 1.368 or later - before that, reports go to...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/abayer">Andrew Bayer</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/general">
+general
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/core">
+core
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/meta">
+meta
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/news">
+news
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/jenkinsci">
+jenkinsci
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2011/02/14/upcoming-jenkins-events-in-tokyo/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+14
+</div>
+</div>
+<h5 class="title">
+Upcoming Jenkins events in Tokyo
+</h5>
+</div>
+<p class="teaser">
+I'll be visiting Tokyo again for the week of 2/21 for a number of events.
+
+Tokyo Jenkins User Meetup
+
+The Japanese Jenkins user community may not be as visible from outside but very strong. This is the 2nd meet up in Tokyo, and once again we maxed out the 80 people room capacity in just a few days (but you can still RSVP for the social...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="/node/tags/general">
+general
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/meetup">
+meetup
+</a>
+</li>
+<li>
+<a class="tag-link" href="/node/tags/news">
+news
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/blog/2011/02/05/first-governance-meeting-recap/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+05
+</div>
+</div>
+<h5 class="title">
+First Governance Meeting Recap
+</h5>
+</div>
+<p class="teaser">
+As mentioned on Friday the Jenkins project held it's first meeting on the IRC channel at the request of the interim board. In the interest of transparency, we recorded meeting minutes and tried to involve as many folks as possible.
+
+Topics Covered
 
 
-
-Unlike...
+  Proposal/Discussion of Jenkins project governance structure
+  What to do about the logo
+  Registering the Jenkins trademark
+  Moving Jenkins under...
 <span class="more"></span>
 </p>
 </a>
@@ -687,8 +544,8 @@ general
 </a>
 </li>
 <li>
-<a class="tag-link" href="/node/tags/javaone">
-javaone
+<a class="tag-link" href="/node/tags/core">
+core
 </a>
 </li>
 </ul>
@@ -699,27 +556,311 @@ javaone
 </div>
 
 <!-- ending partial blogcardlist.html.haml -->
-<div class="pagination-links"><a href="/node/page/46.html" class="previous-link">Previous</a> <a href="/node/" class="page-link">1</a> <a href="/node/page/2.html" class="page-link">2</a> <span class="skip">...</span><a href="/node/page/46.html" class="page-link">46</a> <span class="current-page">47</span> <a href="/node/page/48.html" class="page-link">48</a> <span class="skip">...</span><a href="/node/page/58.html" class="page-link">58</a> <a href="/node/page/59.html" class="page-link">59</a> <a href="/node/page/48.html" class="next-link">Next</a> </div>
+<div>
+<nav>
+<ul class="pagination">
+<li class='24085620: 28443860: 29113000: 29946940: 30281660: 30507760: 30763180: 30980120: :change_frequency=&gt;"never", :lastmod=&gt;"2017-03-30", :layout=&gt;"default", :paginate_generated=&gt;true, :posts=&gt;[Awestruct::Page{ :priority=&gt;0.1, :section=&gt;"blog", :selected_tag=&gt;nil, :title=&gt;"Jenkins :url=&gt;"/node/page/46.html"} Awestruct::Page{ Blog", Community layout=&gt;post output_path=&gt;/blog/2011/04/14/jenkins-new-look/index.html, output_path=&gt;/blog/2011/05/04/hamburg-hackathon-a-great-success/index.html, output_path=&gt;/blog/2011/05/12/ruby-plugins-hack-session-5-12-2011/index.html, output_path=&gt;/blog/2011/05/12/the-state-of-the-jenkins-project/index.html, output_path=&gt;/blog/2011/05/27/ruby-plugins-hack-session-5-27-2011/index.html, output_path=&gt;/blog/2011/06/08/building-a-software-diamond-with-jenkins/index.html, output_path=&gt;/blog/2011/06/09/a-big-thanks-to-rackspace/index.html, output_path=&gt;/blog/2011/06/14/upcoming-events-in-june-and-early-july/index.html, page-item source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-04-14-jenkins-new-look.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-05-04-hamburg-hackathon-a-great-success.html, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-05-12-ruby-plugins-hack-session-5-12-2011.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-05-12-the-state-of-the-jenkins-project.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-05-27-ruby-plugins-hack-session-5-27-2011.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-06-08-building-a-software-diamond-with-jenkins.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-06-09-a-big-thanks-to-rackspace.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-06-14-upcoming-events-in-june-and-early-july.md, {:__is_layout=&gt;false, }, }],'>
+<a class="page-link" href="/node/page/46.html">
+&laquo;
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node">
+1
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/2.html">
+2
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/3.html">
+3
+</a>
+</li>
+<li class="page-item disabled">
+<a class="page-link" href="#">
+...
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/5.html">
+5
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/6.html">
+6
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/7.html">
+7
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/8.html">
+8
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/9.html">
+9
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/10.html">
+10
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/11.html">
+11
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/12.html">
+12
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/13.html">
+13
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/14.html">
+14
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/15.html">
+15
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/16.html">
+16
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/17.html">
+17
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/18.html">
+18
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/19.html">
+19
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/20.html">
+20
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/21.html">
+21
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/22.html">
+22
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/23.html">
+23
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/24.html">
+24
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/25.html">
+25
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/26.html">
+26
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/27.html">
+27
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/28.html">
+28
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/29.html">
+29
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/30.html">
+30
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/31.html">
+31
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/32.html">
+32
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/33.html">
+33
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/34.html">
+34
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/35.html">
+35
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/36.html">
+36
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/37.html">
+37
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/38.html">
+38
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/39.html">
+39
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/40.html">
+40
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/41.html">
+41
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/42.html">
+42
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/43.html">
+43
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/44.html">
+44
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/45.html">
+45
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/46.html">
+46
+</a>
+</li>
+<li class="active page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/47.html">
+47
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/48.html">
+48
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/49.html">
+49
+</a>
+</li>
+<li class="page-item disabled">
+<a class="page-link" href="#">
+...
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/58.html">
+58
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/59.html">
+59
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/60.html">
+60
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="https://rtyler.github.io/jenkins.io/node/page/61.html">
+61
+</a>
+</li>
+<li class='13706900: 16761320: 21914680: 22813220: 23191020: 24092020: 28448840: 29183780: :change_frequency=&gt;"never", :lastmod=&gt;"2017-03-30", :layout=&gt;"default", :paginate_generated=&gt;true, :posts=&gt;[Awestruct::Page{ :priority=&gt;0.1, :section=&gt;"blog", :selected_tag=&gt;nil, :title=&gt;"Jenkins :url=&gt;"/node/page/48.html"} Awestruct::Page{ Blog", Community layout=&gt;post output_path=&gt;/blog/2010/11/30/whos-driving-this-thing/index.html, output_path=&gt;/blog/2010/12/01/a-brief-update/index.html, output_path=&gt;/blog/2010/12/05/weekend-update-with-andrew-bayer/index.html, output_path=&gt;/blog/2011/01/08/installing-plugins-has-always-been-easy-now-its-fast-too/index.html, output_path=&gt;/blog/2011/01/11/hudsons-future/index.html, output_path=&gt;/blog/2011/01/29/jenkins/index.html, output_path=&gt;/blog/2011/02/04/governance-meeting-today/index.html, output_path=&gt;/blog/2011/02/04/the-first-24-hours-in-downloads/index.html, page-item source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2010/2010-11-30-whos-driving-this-thing.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2010/2010-12-01-a-brief-update.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2010/2010-12-05-weekend-update-with-andrew-bayer.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-01-08-installing-plugins-has-always-been-easy-now-its-fast-too.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-01-11-hudsons-future.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-01-29-jenkins.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-02-04-governance-meeting-today.md, source_path=&gt;/home/tyler/source/github/jenkins-infra/jenkins.io/content/blog/2011/2011-02-04-the-first-24-hours-in-downloads.md, {:__is_layout=&gt;false, }, }],'>
+<a class="page-link" href="/node/page/48.html">
+&raquo;
+</a>
+</li>
+</ul>
+</nav>
 </div>
-<div class="col-md-3 events vertical" id="sidebar">
-<!-- starting partial sidebar.html.haml -->
+</div>
+<div class="col-md-4 events vertical">
 <div class="content">
 <!-- starting partial events.html.haml -->
 <div class="item-list">
 <ul class="ji-date-list ji-item-list">
 <li class="post event">
-<a class="body" href="https://www.meetup.com/jenkinsmeetup/events/236370435/" target="_blank">
+<a class="body" href="https://www.meetup.com/Tel-Aviv-Jenkins-Area-Meetup/events/238368942/" target="_blank">
 <div class="header time">
 <div class="date-time">
 <div class="date">
 <div class="month">
-Feb
+Apr
 </div>
 <div class="day">
 3
 </div>
 <div class="dow">
-Fri
+Mon
 </div>
 </div>
 <div class="time">
@@ -727,11 +868,11 @@ Fri
 </div>
 </div>
 <h5 class="title">
-Pre-FOSDEM Happy Hour
+Tel Aviv-Yafo JAM
 </h5>
 </div>
 <p class="teaser">
-Beer Anyone?
+Testing and Deploying with Jenkins
 
 <div class="more"></div>
 </p>
@@ -739,111 +880,18 @@ Beer Anyone?
 <div class="attrs"></div>
 </li>
 <li class="post event">
-<a class="body" href="https://fosdem.org/2017/" target="_blank">
+<a class="body" href="https://www.meetup.com/Goteborg-Jenkins-Area-Meetup/events/238462261/" target="_blank">
 <div class="header time">
 <div class="date-time">
 <div class="date">
 <div class="month">
-Feb
+Apr
 </div>
 <div class="day">
-4
-</div>
-<div class="dow">
-Sat
-</div>
-</div>
-<div class="time">
- 8:00 am
-</div>
-</div>
-<h5 class="title">
-FOSDEM'17
-</h5>
-</div>
-<p class="teaser">
-Visit Jenkins in exhibit hall
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
-<li class="post event">
-<a class="body" href="https://www.meetup.com/jenkinsmeetup/events/236370750/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Feb
-</div>
-<div class="day">
-6
+3
 </div>
 <div class="dow">
 Mon
-</div>
-</div>
-<div class="time">
- 9:00 am
-</div>
-</div>
-<h5 class="title">
-Post FOSDEM Contributor Hackathon
-</h5>
-</div>
-<p class="teaser">
-Hackathon
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
-<li class="post event">
-<a class="body" href="https://www.meetup.com/munchen-jenkins-area-meetup/events/236604016/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Feb
-</div>
-<div class="day">
-6
-</div>
-<div class="dow">
-Mon
-</div>
-</div>
-<div class="time">
- 6:30 pm
-</div>
-</div>
-<h5 class="title">
-Munchen JAM
-</h5>
-</div>
-<p class="teaser">
-Inaugural Meeting
-
-<div class="more"></div>
-</p>
-</a>
-<div class="attrs"></div>
-</li>
-<li class="post event">
-<a class="body" href="https://www.meetup.com/Boston-Jenkins-Area-Meetup/events/236766736/" target="_blank">
-<div class="header time">
-<div class="date-time">
-<div class="date">
-<div class="month">
-Feb
-</div>
-<div class="day">
-7
-</div>
-<div class="dow">
-Tue
 </div>
 </div>
 <div class="time">
@@ -851,11 +899,11 @@ Tue
 </div>
 </div>
 <h5 class="title">
-Boston JAM
+Goteborg JAM
 </h5>
 </div>
 <p class="teaser">
-Terraform, Ansible, Jenkins Integration
+Intro to Jenkins Pipeline
 
 <div class="more"></div>
 </p>
@@ -863,18 +911,18 @@ Terraform, Ansible, Jenkins Integration
 <div class="attrs"></div>
 </li>
 <li class="post event">
-<a class="body" href="https://www.meetup.com/DFW-Jenkins-Area-Meetup/events/235576632/" target="_blank">
+<a class="body" href="https://www.meetup.com/Barcelona-Jenkins-Area-Meetup/events/238612461/" target="_blank">
 <div class="header time">
 <div class="date-time">
 <div class="date">
 <div class="month">
-Feb
+Apr
 </div>
 <div class="day">
-7
+5
 </div>
 <div class="dow">
-Tue
+Wed
 </div>
 </div>
 <div class="time">
@@ -882,10 +930,259 @@ Tue
 </div>
 </div>
 <h5 class="title">
-DFW JAM
+Barcelona JAM
 </h5>
 </div>
 <p class="teaser">
+Jenkins Automated Functional Testing with Parametrized Pipelines
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Brasilia-Jenkins-Area-Meetup/events/238645566/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+8
+</div>
+<div class="dow">
+Sat
+</div>
+</div>
+<div class="time">
+ 2:00 pm
+</div>
+</div>
+<h5 class="title">
+Brasilia JAM
+</h5>
+</div>
+<p class="teaser">
+CI/CD, DevOps and Hands-on Jenkins Install
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Boston-Jenkins-Area-Meetup/events/237134409/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+18
+</div>
+<div class="dow">
+Tue
+</div>
+</div>
+<div class="time">
+12:00 pm
+</div>
+</div>
+<h5 class="title">
+Boston JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins & DevOps Dojo
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Melbourne-Jenkins-Area-Meetup/events/238459861/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+19
+</div>
+<div class="dow">
+Wed
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Melbourne JAM
+</h5>
+</div>
+<p class="teaser">
+Fun with Azure and Jenkins
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Austin-Jenkins-Area-Meetup/events/237555543/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+21
+</div>
+<div class="dow">
+Fri
+</div>
+</div>
+<div class="time">
+12:00 pm
+</div>
+</div>
+<h5 class="title">
+Austin JAM
+</h5>
+</div>
+<p class="teaser">
+Microservices Lifecycle Explained through Docker and Continuous Deployment
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Madrid-Jenkins-Area-Meetup/events/237217570/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+27
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+ 7:00 pm
+</div>
+</div>
+<h5 class="title">
+Madrid JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins Pipelines: Limitations, Difficulties, Best Practices
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Boston-Jenkins-Area-Meetup/events/237134421/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+4
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+12:00 pm
+</div>
+</div>
+<h5 class="title">
+Boston JAM
+</h5>
+</div>
+<p class="teaser">
+Jenkins and DevOps Dojo
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Boston-Jenkins-Area-Meetup/events/237134375/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+4
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+ 7:00 pm
+</div>
+</div>
+<h5 class="title">
+Boston JAM
+</h5>
+</div>
+<p class="teaser">
+Life Sciences and Jenkins
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.meetup.com/Chicago-Jenkins-Area-Meetup/events/238265392/" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+18
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+ 6:00 pm
+</div>
+</div>
+<h5 class="title">
+Chicago JAM
+</h5>
+</div>
+<p class="teaser">
+Build Continuous Deploy into your CD Pipeline
 
 <div class="more"></div>
 </p>
@@ -928,13 +1225,14 @@ The Largest Jenkins Event
 
 <!-- ending partial events.html.haml -->
 </div>
-
-<!-- ending partial sidebar.html.haml -->
 </div>
 </div>
 </div>
 
 
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
 <footer id="footer">
 <div class="container">
 <div class="row">
@@ -945,7 +1243,7 @@ The Largest Jenkins Event
 <h5>Resources</h5>
 <ul class="resources">
 <li>
-<a href="/content/event-calendar">
+<a href="/events">
 Events
 </a>
 </li>
@@ -1096,7 +1394,6 @@ The content driving this site is licensed under the Creative Commons Attribution
 </div>
 </div>
 </footer>
-<!-- starting partial footer.html.haml -->
 <script>
  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -1120,7 +1417,5 @@ ga('set', 'anonymizeIp', true);
     }
   }(document,"script","twitter-wjs");
 </script>
-
-<!-- ending partial footer.html.haml -->
 </body>
 </html>

@@ -2,230 +2,60 @@
 <html>
 <head>
 <title>
-vsphere-cloud
+vSphere Plugin
 </title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="Jenkins is an open source automation server" name="description">
 <link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
-<!-- starting partial scriptlinks.html.haml -->
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="vSphere Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="vSphere Plugin" name="twitter:title">
+<meta content="Jenkins – Continuous Delivery for every team" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="img/blueocean.gif" name="twitter:image">
+<meta content="img/blueocean.gif" name="twitter:image:src">
+<!-- Open Graph data -->
+<meta content="vSphere Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/pipeline/steps/vsphere-cloud/index.html" property="og:url">
+<meta content="Jenkins – Continuous Delivery for every team" property="og:description">
+<meta content="vSphere Plugin" property="og:site_name">
 <link href="https://rtyler.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
-<link href="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
-
-<!-- ending partial scriptlinks.html.haml -->
 </head>
 <body>
 <!-- starting partial toptoolbar.html.haml -->
-<script>
-  $(function () {
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox();
-    });
-  })
-</script>
-<div id="ji-hover-layer"></div>
-<div class="ji-toolbar-offset"></div>
-<div class="fixed top">
-<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
-<a class="fixed navbar-brand" href="https://rtyler.github.io/jenkins.io" id="home-logo">
+<nav class="navbar navbar-toggleable-md navbar-inverse top bg-inverse" id="ji-toolbar">
+<div class="container">
+<button class="navbar-toggler navbar-toggler-rght hidden-lg-up float-right" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<i class="ion-navicon"></i>
+</button>
+<a class="navbar-brand" href="https://rtyler.github.io/jenkins.io">
 Jenkins
 </a>
-<ul class="nav navbar-nav">
-<li class="nav-item fixed">
-<div class="btn-group" id="download-menu">
-<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-Downloads
-</a>
-<!-- starting partial downloadlist.html.haml -->
-<div class="dropdown-menu">
-<div class="row">
-<div class="col-md-6 text-xs-center">
-<h3>
-LTS Release
-</h3>
-<p>
-LTS (Long-Term Support) releases are chosen every 12 weeks from the
-stream of regular releases as the stable release for that time period.
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
-Learn more…
-</a>
-</p>
-</div>
-<div class="col-md-6 text-xs-center">
-<h3>
-Weekly Release
-</h3>
-<p>
-A new release is produced weekly to deliver bug fixes and features to
-users and plugin developers.
-</p>
-</div>
-</div>
-<div class="row">
-<div class="col-md-6 text-xs-center">
-<div class="btn-group">
-<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
-<i class="icon-box-add"></i>
-2.32.1
-.war
-</a>
-<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
-<span class="icon"></span>
-<span class="title">
-Docker
-</span>
-</a>
-<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
-<span class="icon"></span>
-<span class="title">
-FreeBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
-<span class="icon"></span>
-<span class="title">
-Gentoo
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
-<span class="icon"></span>
-<span class="title">
-Mac OS X
-</span>
-</a>
-<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
-<span class="icon"></span>
-<span class="title">
-OpenBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
-<span class="icon"></span>
-<span class="title">
-openSUSE
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
-<span class="icon"></span>
-<span class="title">
-Red Hat/Fedora/CentOS
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
-<span class="icon"></span>
-<span class="title">
-Ubuntu/Debian
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
-<span class="icon"></span>
-<span class="title">
-Windows
-</span>
-</a>
-</div>
-</div>
-<p class="details">
-<a class="item" href="/changelog-stable">Changelog</a>
-|
-<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
-|
-<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
-</p>
-</div>
-<div class="col-md-6 text-xs-center">
-<div class="btn-group">
-<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
-<i class="icon-box-add"></i>
-2.43
-.war
-</a>
-<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
-<span class="icon"></span>
-<span class="title">
-Docker
-</span>
-</a>
-<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
-<span class="icon"></span>
-<span class="title">
-FreeBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
-<span class="icon"></span>
-<span class="title">
-Gentoo
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
-<span class="icon"></span>
-<span class="title">
-Mac OS X
-</span>
-</a>
-<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
-<span class="icon"></span>
-<span class="title">
-OpenBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
-<span class="icon"></span>
-<span class="title">
-openSUSE
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
-<span class="icon"></span>
-<span class="title">
-Red Hat/Fedora/CentOS
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
-<span class="icon"></span>
-<span class="title">
-Ubuntu/Debian
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
-<span class="icon"></span>
-<span class="title">
-Windows
-</span>
-</a>
-</div>
-</div>
-<p class="details">
-<a class="item" href="/changelog">Changelog</a>
-|
-<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
-</p>
-</div>
-</div>
-</div>
-
-<!-- ending partial downloadlist.html.haml -->
-</div>
-</li>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
 <li class="nav-item">
 <a class="nav-link" href="https://rtyler.github.io/jenkins.io/node">
 Blog
 </a>
 </li>
-<li class="nav-item">
+<li class="active nav-item">
 <a class="nav-link" href="https://rtyler.github.io/jenkins.io/doc">
 Documentation
 </a>
@@ -236,9 +66,9 @@ Plugins
 </a>
 </li>
 <li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
 Use-cases
-</a>
+</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/android">
 Android
@@ -274,10 +104,8 @@ Ruby
 Participate
 </a>
 </li>
-<li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
-Sub-projects
-</a>
+<li class="dropdown nav-item">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Sub-projects</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/projects/">
 Overview
@@ -297,20 +125,20 @@ Jenkins Area Meetups
 </div>
 </li>
 <li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
 Resources
-</a>
+</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
 Account Management
 </a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/chat" title="Chat with the rest of the Jenkins community on IRC">
 Chat
 </a>
 <a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
 Issue Tracker
 </a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
 Mailing Lists
 </a>
 <a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
@@ -318,49 +146,169 @@ Wiki
 </a>
 </div>
 </li>
-<li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/security">
+<li class="nav-item dropdown">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
+About
+</div>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/security">
 Security
 </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/press">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/press">
 Press
 </a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/project/conduct">
+Conduct
+</a>
+</div>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/conduct">
-Conduct
+<a class="nav-link btn btn-outline-secondary" href="https://rtyler.github.io/jenkins.io/download">
+Download
 </a>
 </li>
 </ul>
+</div>
+</div>
 </nav>
-</div>
-<div id="ji-top-peg">
-<a href="https://github.com/jenkinsci" id="ji-fork-tag">
-<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
-</a>
-</div>
 
 <!-- ending partial toptoolbar.html.haml -->
-<style>
-  .row {
-    margin-right: 5em;
-    margin-left: 5em;
-  }
-  .toc {
-      float: right;
-  }
-</style>
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
 <div class="container">
 <div class="row body">
-<h1>
-vsphere-cloud
-</h1>
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<h4>
+Guided Tour
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc" class="">Index</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/hello-world" class="">Create your first Pipeline</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/running-multiple-steps" class="">Running multiple steps</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/agents" class="">Defining execution environments</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/environment" class="">Using environment variables</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/tests-and-artifacts" class="">Recording test results and artifacts</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/post" class="">Cleaning up and notifications</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/tour/deployment" class="">Deployment</a>
+</li>
+</ul>
+<h4>
+User Handbook
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="/user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/getting-started" class="">Getting Started with Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/using" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/managing" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/best-practice" class="">Best Practices</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline" class="">Pipeline</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/use-case" class="">Jenkins Use-Cases</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/operating" class="">Operating Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/scaling" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/appendix" class="">Appendix</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/glossary" class="">Glossary</a>
+</li>
+</ul>
+<h4>
+Resources
+</h4>
+<ul>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline/syntax" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/upgrade-guide" class="">LTS Upgrade Guide</a>
+</li>
+</ul>
+<h5>
+Recent Tutorials
+</h5>
+<ul>
+<li>
+<a href="/blog/2017/02/15/declarative-notifications/">
+Declarative Pipeline: Notifications and Shared Libraries
+</a>
+</li>
+<li>
+<a href="/blog/2017/02/10/declarative-html-publisher/">
+Declarative Pipeline: Publishing HTML Reports
+</a>
+</li>
+<li>
+<a href="/blog/2017/02/07/declarative-maven-project/">
+Declarative Pipeline for Maven Projects
+</a>
+</li>
+</ul>
+<div class="small">
+<a href="/node/tags/tutorial">
+View all tutorials
+</a>
+</div>
+<hr>
+<h4>
+Developers
+</h4>
+<h5>
+<a href="https://rtyler.github.io/jenkins.io/doc/developer" class="">Reference Documentation</a>
+</h5>
+</div>
+</div>
+<div class="col-lg-9">
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#vsphere-cloud">vsphere-cloud</a>
+<li><a href="#vsphere-plugin">vSphere Plugin</a>
 <ul class="sectlevel2">
 <li><a href="#code-vsphere-code-invoke-an-vsphere-action-exposing-the-vm-ip-under-some-actions"><code>vSphere</code>: Invoke an vSphere action, exposing the VM IP under some actions</a></li>
 </ul>
@@ -368,16 +316,15 @@ vsphere-cloud
 </ul>
 </div>
 <div class="sect1">
-<h2 id="vsphere-cloud"><a class="anchor" href="#vsphere-cloud"></a>vsphere-cloud</h2>
+<h2 id="vsphere-plugin"><a class="anchor" href="#vsphere-plugin"></a>vSphere Plugin</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/vsphere-cloud">View this plugin on the Plugins Index</a></p>
+</div>
 <div class="sect2">
 <h3 id="code-vsphere-code-invoke-an-vsphere-action-exposing-the-vm-ip-under-some-actions"><a class="anchor" href="#code-vsphere-code-invoke-an-vsphere-action-exposing-the-vm-ip-under-some-actions"></a><code>vSphere</code>: Invoke an vSphere action, exposing the VM IP under some actions</h3>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>Execute vCenter actions. Reusing vSphereBuildStep forms, cut properly exposing VSPHERE_IP for PowerOn, Deploy and Clone options.</p>
-</div>
-</div>
+<div>
+  Execute vCenter actions. Reusing vSphereBuildStep forms, cut properly exposing VSPHERE_IP for PowerOn, Deploy and Clone options.
 </div>
 <div class="dlist">
 <dl>
@@ -389,75 +336,116 @@ vsphere-cloud
 <code>sourceName</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the vSphere VM or template to clone.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the vSphere VM or template to clone.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>clone</code></dt>
 <dd>
-<div class="paragraph">
-<p>The name of the cloned VM.
-<strong>Type:</strong> String</p>
+<div>
+  The name of the cloned VM.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>linkedClone</code></dt>
 <dd>
-<div class="paragraph">
-<p>Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone.  This will drastically save time, but the disk backings will be shared.
-<strong>Type:</strong> boolean</p>
+<div>
+  Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone. This will drastically save time, but the disk backings will be shared.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>resourcePool</code></dt>
 <dd>
-<div class="paragraph">
-<p>The Resource Pool to be used by the VM.
-  Leave it blank to use the same resource pool as the source VM.
-  Must be specified if source VM is a template.
-<strong>Type:</strong> String</p>
+<div>
+  The Resource Pool to be used by the VM. Leave it blank to use the same resource pool as the source VM. Must be specified if source VM is a template.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>cluster</code></dt>
 <dd>
-<div class="paragraph">
-<p>The vCenter cluster to be used by the VM.
-<strong>Type:</strong> String</p>
+<div>
+  The vCenter cluster to be used by the VM.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>datastore</code></dt>
 <dd>
-<div class="paragraph">
-<p>The data store to be used by the VM.
-<strong>Type:</strong> String</p>
+<div>
+  The data store to be used by the VM.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>folder</code></dt>
 <dd>
-<div class="paragraph">
-<p>(Optional) VSphere folder path or unique folder name where VM is going to be created.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">    If blank, it will be created in the same folder as the original VM.
-*Type:* String</pre>
-</div>
+<div>
+  (Optional) VSphere folder path or unique folder name where VM is going to be created.
+ <br> If blank, it will be created in the same folder as the original VM.
+ <br>
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>powerOn</code></dt>
 <dd>
-<div class="paragraph">
-<p>Specifies whether or not the new VirtualMachine should be powered on after creation.
-<strong>Type:</strong> boolean</p>
+<div>
+  Specifies whether or not the new VirtualMachine should be powered on after creation.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>customizationSpec</code></dt>
 <dd>
 <div class="paragraph">
 <p><strong>Type:</strong> String</p>
-</div>
-</dd>
-</dl>
 </div>
 </dd>
 </dl>
@@ -467,160 +455,239 @@ The name of the vSphere VM or template to clone.
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM to be converted to a template.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM to be converted to a template.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>force</code></dt>
 <dd>
-<div class="paragraph">
-<p>Check this if you want to force the conversion in the case where the VM is not already powered down.
-<strong>Type:</strong> boolean</p>
+<div>
+  Check this if you want to force the conversion in the case where the VM is not already powered down.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>ConvertToVm</em></code>
 <code>template</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the template to be converted to a Virtual Machine.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the template to be converted to a Virtual Machine.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>resourcePool</code></dt>
 <dd>
-<div class="paragraph">
-<p>The Resource Pool to be used by the VM.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>cluster</code></dt>
-<dd>
-<div class="paragraph">
-<p>The vCenter cluster to be used by the VM.
-<strong>Type:</strong> String</p>
+<div>
+  The Resource Pool to be used by the VM.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>cluster</code></dt>
+<dd>
+<div>
+  The vCenter cluster to be used by the VM.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>Delete</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM to be destroyed.  This is a destructive operation that cannot be undone!
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM to be destroyed. This is a destructive operation that cannot be undone!
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>failOnNoExist</code></dt>
 <dd>
-<div class="paragraph">
-<p>If the VM you are trying to delete doesnt exist, fail this build step.  Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
-<strong>Type:</strong> boolean</p>
+<div>
+  If the VM you are trying to delete doesnt exist, fail this build step. Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>DeleteSnapshot</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>snapshotName</code></dt>
 <dd>
-<div class="paragraph">
-<p>The name of the snapshot.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>consolidate</code></dt>
-<dd>
-<div class="paragraph">
-<p>Consolidate all redundant redo logs for this VM?
-<strong>Type:</strong> boolean</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>failOnNoExist</code></dt>
-<dd>
-<div class="paragraph">
-<p>If the snapshot you are trying to delete doesnt exist, fail this build step.  Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
-<strong>Type:</strong> boolean</p>
+<div>
+  The name of the snapshot.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>consolidate</code></dt>
+<dd>
+<div>
+  Consolidate all redundant redo logs for this VM?
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>failOnNoExist</code></dt>
+<dd>
+<div>
+  If the snapshot you are trying to delete doesnt exist, fail this build step. Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>Deploy</em></code>
 <code>template</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the vSphere template to clone.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the vSphere template to clone.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>clone</code></dt>
 <dd>
-<div class="paragraph">
-<p>The name of the cloned VM.
-<strong>Type:</strong> String</p>
+<div>
+  The name of the cloned VM.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>linkedClone</code></dt>
 <dd>
-<div class="paragraph">
-<p>Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone.  This will drastically save time, but the disk backings will be shared.
-<strong>Type:</strong> boolean</p>
+<div>
+  Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone. This will drastically save time, but the disk backings will be shared.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>resourcePool</code></dt>
 <dd>
-<div class="paragraph">
-<p>The Resource Pool to be used by the VM.  If no resource pool is being used, then leave blank.
-<strong>Type:</strong> String</p>
+<div>
+  The Resource Pool to be used by the VM. If no resource pool is being used, then leave blank.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>cluster</code></dt>
 <dd>
-<div class="paragraph">
-<p>The vCenter cluster to be used by the VM.
-<strong>Type:</strong> String</p>
+<div>
+  The vCenter cluster to be used by the VM.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>datastore</code></dt>
 <dd>
-<div class="paragraph">
-<p>The data store to be used by the VM.
-<strong>Type:</strong> String</p>
+<div>
+  The data store to be used by the VM.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>folder</code></dt>
 <dd>
-<div class="paragraph">
-<p>(Optional) VSphere folder path or unique folder name where VM is going to be created.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">    If blank, it will be created in the same folder as the original VM.
-*Type:* String</pre>
-</div>
+<div>
+  (Optional) VSphere folder path or unique folder name where VM is going to be created.
+ <br> If blank, it will be created in the same folder as the original VM.
+ <br>
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>customizationSpec</code></dt>
 <dd>
 <div class="paragraph">
@@ -629,62 +696,83 @@ The name of the vSphere template to clone.
 </dd>
 <dt class="hdlist1"><code>powerOn</code></dt>
 <dd>
-<div class="paragraph">
-<p>Specifies whether or not the new VirtualMachine should be powered on after creation.
-If set, the power-on operation will be done using default settings and an attempt will be made at determining the IP address.
-If you require more control over this process, use a separate step to turn on the VirtualMachine.
-<strong>Type:</strong> boolean</p>
+<div>
+  Specifies whether or not the new VirtualMachine should be powered on after creation. If set, the power-on operation will be done using default settings and an attempt will be made at determining the IP address. If you require more control over this process, use a separate step to turn on the VirtualMachine.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>ExposeGuestInfo</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM to expose guest info for.
-  Variables IpAddress, Hostname, ToolsStatus, ToolsRunningStatus, ToolsVersion, ToolsVersionStatus, GuestState, GuestId,
-  GuestFamily, GuestFullName, AppHeartbeatStatus, GuestOperationsReady, InteractiveGuestOperationsReady are exposed.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM to expose guest info for.
+ <br> Variables IpAddress, Hostname, ToolsStatus, ToolsRunningStatus, ToolsVersion, ToolsVersionStatus, GuestState, GuestId, GuestFamily, GuestFullName, AppHeartbeatStatus, GuestOperationsReady, InteractiveGuestOperationsReady are exposed.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>envVariablePrefix</code></dt>
 <dd>
-<div class="paragraph">
-<p>Prefix for guest info environmental variables. E.g. for prefix VM1, variables would be VM1_IpAddress, VM1_HostName etc.
-<strong>Type:</strong> String</p>
+<div>
+  Prefix for guest info environmental variables. E.g. for prefix VM1, variables would be VM1_IpAddress, VM1_HostName etc.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>PowerOff</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM to shut down.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM to shut down.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>evenIfSuspended</code></dt>
 <dd>
-<div class="paragraph">
-<p>If the VM is currently suspended, it will still be shutdown.
-<strong>Type:</strong> boolean</p>
+<div>
+  If the VM is currently suspended, it will still be shutdown.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>shutdownGracefully</code></dt>
 <dd>
-<div class="paragraph">
-<p>If the VM is powered on and VMware Tools is runing, a gracefully shutdown will be attempted by performing a Guest Shutdown.  If the VM is still running after 3 minutes, a hard power off will be performed.
-<strong>Type:</strong> boolean</p>
+<div>
+  If the VM is powered on and VMware Tools is runing, a gracefully shutdown will be attempted by performing a Guest Shutdown. If the VM is still running after 3 minutes, a hard power off will be performed.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>ignoreIfNotExists</code></dt>
 <dd>
 <div class="paragraph">
@@ -698,29 +786,39 @@ The name of the VM to shut down.
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM to power on.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM to power on.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>timeoutInSeconds</code></dt>
 <dd>
-<div class="paragraph">
-<p>The maximum number of seconds to wait for the IP.
-<strong>Type:</strong> int</p>
+<div>
+  The maximum number of seconds to wait for the IP.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> int</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>Reconfigure</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM or template to reconfigure.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM or template to reconfigure.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
@@ -738,20 +836,26 @@ The name of the VM or template to reconfigure.
 <code>cpuCores</code>::::</p>
 </div>
 <div class="paragraph">
-<p>+
-The number of CPU Cores.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The number of CPU Cores.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>coresPerSocket</code></dt>
 <dd>
-<div class="paragraph">
-<p>The number of CPU Cores per Socket.
-<strong>Type:</strong> String</p>
+<div>
+  The number of CPU Cores per Socket.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>ReconfigureDisk</em></code>
@@ -765,21 +869,27 @@ The number of CPU Cores.
 <dl>
 <dt class="hdlist1"><code>datastore</code></dt>
 <dd>
-<div class="paragraph">
-<p>The data store to be used by the disk.
-<strong>Type:</strong> String</p>
+<div>
+  The data store to be used by the disk.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>ReconfigureMemory</em></code>
 <code>memorySize</code>::::</p>
 </div>
 <div class="paragraph">
-<p>+
-The amount of memory (RAM) in megabytes.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The amount of memory (RAM) in megabytes.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>ReconfigureNetworkAdapters</em></code>
@@ -803,49 +913,8 @@ The amount of memory (RAM) in megabytes.
 <dl>
 <dt class="hdlist1"><code>deviceLabel</code></dt>
 <dd>
-<div class="paragraph">
-<p>The name of the network device, such as "Network adapter 1". If blank, the first network adapter will be used.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>macAddress</code></dt>
-<dd>
-<div class="paragraph">
-<p>The new MAC address for this network adapter. Leave blank to keep existing or default value.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>standardSwitch</code></dt>
-<dd>
-<div class="paragraph">
-<p><strong>Type:</strong> boolean</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>portGroup</code></dt>
-<dd>
-<div class="paragraph">
-<p>The name of the network port group to use. Leave blank to keep existing or default value.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>distributedSwitch</code></dt>
-<dd>
-<div class="paragraph">
-<p><strong>Type:</strong> boolean</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>distributedPortGroup</code></dt>
-<dd>
-<div class="paragraph">
-<p>Specifies the Distributed Switch Port Group.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>distributedPortId</code></dt>
-<dd>
-<div class="paragraph">
-<p>Port Id to be used from the specified Distributed Switch Port Group.
-<strong>Type:</strong> String</p>
+<div>
+  The name of the network device, such as "Network adapter 1". If blank, the first network adapter will be used.
 </div>
 </dd>
 </dl>
@@ -854,118 +923,240 @@ The amount of memory (RAM) in megabytes.
 </ul>
 </div>
 <div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>macAddress</code></dt>
+<dd>
+<div>
+  The new MAC address for this network adapter. Leave blank to keep existing or default value.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>standardSwitch</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>portGroup</code></dt>
+<dd>
+<div>
+  The name of the network port group to use. Leave blank to keep existing or default value.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>distributedSwitch</code></dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>distributedPortGroup</code></dt>
+<dd>
+<div>
+  Specifies the Distributed Switch Port Group.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>distributedPortId</code></dt>
+<dd>
+<div>
+  Port Id to be used from the specified Distributed Switch Port Group.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="paragraph">
 <p><code>$class: <em>Rename</em></code>
 <code>oldName</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The old name of the VM or template to be renamed.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The old name of the VM or template to be renamed.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>newName</code></dt>
 <dd>
-<div class="paragraph">
-<p>The new name of the VM or template.
-<strong>Type:</strong> String</p>
+<div>
+  The new name of the VM or template.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>RenameSnapshot</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM or template.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM or template.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>oldName</code></dt>
 <dd>
-<div class="paragraph">
-<p>The old name of the snapshot to be renamed.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>newName</code></dt>
-<dd>
-<div class="paragraph">
-<p>The new name of the snapshot.
-<strong>Type:</strong> String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>newDescription</code></dt>
-<dd>
-<div class="paragraph">
-<p>The new description of the snapshot.
-<strong>Type:</strong> String</p>
+<div>
+  The old name of the snapshot to be renamed.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>newName</code></dt>
+<dd>
+<div>
+  The new name of the snapshot.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>newDescription</code></dt>
+<dd>
+<div>
+  The new description of the snapshot.
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>RevertToSnapshot</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>snapshotName</code></dt>
 <dd>
-<div class="paragraph">
-<p>The name of the snapshot.
-<strong>Type:</strong> String</p>
+<div>
+  The name of the snapshot.
 </div>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>SuspendVm</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM to suspend.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM to suspend.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="paragraph">
 <p><code>$class: <em>TakeSnapshot</em></code>
 <code>vm</code>:::</p>
 </div>
 <div class="paragraph">
-<p>+
-The name of the VM you&#8217;d like to take a snapshot of.
-<strong>Type:</strong> String</p>
+<p>+</p>
+</div>
+<div>
+  The name of the VM you'd like to take a snapshot of.
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>snapshotName</code></dt>
 <dd>
-<div class="paragraph">
-<p>The name of the snapshot.
-<strong>Type:</strong> String</p>
+<div>
+  The name of the snapshot.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>description</code></dt>
 <dd>
-<div class="paragraph">
-<p>The description to be saved with the snapshot.
-<strong>Type:</strong> String</p>
+<div>
+  The description to be saved with the snapshot.
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><code>includeMemory</code></dt>
 <dd>
+<div>
+  Would you like to save the active memory in the snapshot?
+</div>
+</dd>
+</dl>
+</div>
 <div class="paragraph">
-<p>Would you like to save the active memory in the snapshot?
-<strong>Type:</strong> boolean</p>
+<p><strong>Type:</strong> boolean</p>
 </div>
 <div class="dlist">
 <dl>
@@ -977,16 +1168,18 @@ The name of the VM you&#8217;d like to take a snapshot of.
 </dd>
 </dl>
 </div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
+
 </div>
 </div>
 </div>
 
 
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
 <footer id="footer">
 <div class="container">
 <div class="row">
@@ -997,7 +1190,7 @@ The name of the VM you&#8217;d like to take a snapshot of.
 <h5>Resources</h5>
 <ul class="resources">
 <li>
-<a href="/content/event-calendar">
+<a href="/events">
 Events
 </a>
 </li>
@@ -1123,15 +1316,6 @@ Reddit
 </ul>
 </div>
 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
-<p class="box">
-<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/pipeline/steps/vsphere-cloud.adoc" title="Edit /doc/pipeline/steps/vsphere-cloud.adoc on GitHub">
-Improve this page
-</a>
-|
-<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/pipeline/steps/vsphere-cloud.adoc" title="View /doc/pipeline/steps/vsphere-cloud.adoc history on GitHub">
-Page history
-</a>
-</p>
 <div class="license-box">
 <div id="creativecommons">
 <a href="https://creativecommons.org/licenses/by-sa/4.0/">
@@ -1148,7 +1332,6 @@ The content driving this site is licensed under the Creative Commons Attribution
 </div>
 </div>
 </footer>
-<!-- starting partial footer.html.haml -->
 <script>
  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -1172,7 +1355,5 @@ ga('set', 'anonymizeIp', true);
     }
   }(document,"script","twitter-wjs");
 </script>
-
-<!-- ending partial footer.html.haml -->
 </body>
 </html>

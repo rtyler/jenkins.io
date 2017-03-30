@@ -7,219 +7,49 @@ Pipeline Steps Reference
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="Jenkins is an open source automation server" name="description">
 <link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
-<!-- starting partial scriptlinks.html.haml -->
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Pipeline Steps Reference" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Pipeline Steps Reference" name="twitter:title">
+<meta content="Jenkins – Continuous Delivery for every team" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="img/blueocean.gif" name="twitter:image">
+<meta content="img/blueocean.gif" name="twitter:image:src">
+<!-- Open Graph data -->
+<meta content="Pipeline Steps Reference" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/pipeline/steps/index.html" property="og:url">
+<meta content="Jenkins – Continuous Delivery for every team" property="og:description">
+<meta content="Pipeline Steps Reference" property="og:site_name">
 <link href="https://rtyler.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
-<link href="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://rtyler.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
-
-<!-- ending partial scriptlinks.html.haml -->
 </head>
 <body>
 <!-- starting partial toptoolbar.html.haml -->
-<script>
-  $(function () {
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox();
-    });
-  })
-</script>
-<div id="ji-hover-layer"></div>
-<div class="ji-toolbar-offset"></div>
-<div class="fixed top">
-<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
-<a class="fixed navbar-brand" href="https://rtyler.github.io/jenkins.io" id="home-logo">
+<nav class="navbar navbar-toggleable-md navbar-inverse top bg-inverse" id="ji-toolbar">
+<div class="container">
+<button class="navbar-toggler navbar-toggler-rght hidden-lg-up float-right" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<i class="ion-navicon"></i>
+</button>
+<a class="navbar-brand" href="https://rtyler.github.io/jenkins.io">
 Jenkins
 </a>
-<ul class="nav navbar-nav">
-<li class="nav-item fixed">
-<div class="btn-group" id="download-menu">
-<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-Downloads
-</a>
-<!-- starting partial downloadlist.html.haml -->
-<div class="dropdown-menu">
-<div class="row">
-<div class="col-md-6 text-xs-center">
-<h3>
-LTS Release
-</h3>
-<p>
-LTS (Long-Term Support) releases are chosen every 12 weeks from the
-stream of regular releases as the stable release for that time period.
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
-Learn more…
-</a>
-</p>
-</div>
-<div class="col-md-6 text-xs-center">
-<h3>
-Weekly Release
-</h3>
-<p>
-A new release is produced weekly to deliver bug fixes and features to
-users and plugin developers.
-</p>
-</div>
-</div>
-<div class="row">
-<div class="col-md-6 text-xs-center">
-<div class="btn-group">
-<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
-<i class="icon-box-add"></i>
-2.32.1
-.war
-</a>
-<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
-<span class="icon"></span>
-<span class="title">
-Docker
-</span>
-</a>
-<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
-<span class="icon"></span>
-<span class="title">
-FreeBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
-<span class="icon"></span>
-<span class="title">
-Gentoo
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
-<span class="icon"></span>
-<span class="title">
-Mac OS X
-</span>
-</a>
-<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
-<span class="icon"></span>
-<span class="title">
-OpenBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
-<span class="icon"></span>
-<span class="title">
-openSUSE
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
-<span class="icon"></span>
-<span class="title">
-Red Hat/Fedora/CentOS
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
-<span class="icon"></span>
-<span class="title">
-Ubuntu/Debian
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
-<span class="icon"></span>
-<span class="title">
-Windows
-</span>
-</a>
-</div>
-</div>
-<p class="details">
-<a class="item" href="/changelog-stable">Changelog</a>
-|
-<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
-|
-<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
-</p>
-</div>
-<div class="col-md-6 text-xs-center">
-<div class="btn-group">
-<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
-<i class="icon-box-add"></i>
-2.43
-.war
-</a>
-<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
-<div class="dropdown-menu">
-<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
-<span class="icon"></span>
-<span class="title">
-Docker
-</span>
-</a>
-<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
-<span class="icon"></span>
-<span class="title">
-FreeBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
-<span class="icon"></span>
-<span class="title">
-Gentoo
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
-<span class="icon"></span>
-<span class="title">
-Mac OS X
-</span>
-</a>
-<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
-<span class="icon"></span>
-<span class="title">
-OpenBSD
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
-<span class="icon"></span>
-<span class="title">
-openSUSE
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
-<span class="icon"></span>
-<span class="title">
-Red Hat/Fedora/CentOS
-</span>
-</a>
-<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
-<span class="icon"></span>
-<span class="title">
-Ubuntu/Debian
-</span>
-</a>
-<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
-<span class="icon"></span>
-<span class="title">
-Windows
-</span>
-</a>
-</div>
-</div>
-<p class="details">
-<a class="item" href="/changelog">Changelog</a>
-|
-<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
-</p>
-</div>
-</div>
-</div>
-
-<!-- ending partial downloadlist.html.haml -->
-</div>
-</li>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
 <li class="nav-item">
 <a class="nav-link" href="https://rtyler.github.io/jenkins.io/node">
 Blog
@@ -236,9 +66,9 @@ Plugins
 </a>
 </li>
 <li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
 Use-cases
-</a>
+</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/solutions/android">
 Android
@@ -274,10 +104,8 @@ Ruby
 Participate
 </a>
 </li>
-<li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
-Sub-projects
-</a>
+<li class="dropdown nav-item">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Sub-projects</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://rtyler.github.io/jenkins.io/projects/">
 Overview
@@ -297,20 +125,20 @@ Jenkins Area Meetups
 </div>
 </li>
 <li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
 Resources
-</a>
+</div>
 <div class="dropdown-menu">
 <a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
 Account Management
 </a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/chat" title="Chat with the rest of the Jenkins community on IRC">
 Chat
 </a>
 <a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
 Issue Tracker
 </a>
-<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
 Mailing Lists
 </a>
 <a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
@@ -318,33 +146,42 @@ Wiki
 </a>
 </div>
 </li>
-<li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/security">
+<li class="nav-item dropdown">
+<div aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">
+About
+</div>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/security">
 Security
 </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/press">
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/press">
 Press
 </a>
+<a class="dropdown-item" href="https://rtyler.github.io/jenkins.io/project/conduct">
+Conduct
+</a>
+</div>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="https://rtyler.github.io/jenkins.io/conduct">
-Conduct
+<a class="nav-link btn btn-outline-secondary" href="https://rtyler.github.io/jenkins.io/download">
+Download
 </a>
 </li>
 </ul>
+</div>
+</div>
 </nav>
-</div>
-<div id="ji-top-peg">
-<a href="https://github.com/jenkinsci" id="ji-fork-tag">
-<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
-</a>
-</div>
 
 <!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
 <div class="container">
-<div class="row">
+<div class="row body">
 <div class="col-lg-3">
 <div class="sidebar-nav tour">
 <h4>
@@ -379,7 +216,7 @@ Guided Tour
 <h4>
 User Handbook
 <span style="font-size: 0.6rem; vertical-align: middle;">
-<a href="../user-handbook.pdf">
+<a href="/user-handbook.pdf">
 (PDF)
 </a>
 </span>
@@ -399,6 +236,9 @@ User Handbook
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/book/pipeline" class="">Pipeline</a>
+</li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/book/blueocean" class="">Blue Ocean</a>
 </li>
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/book/use-case" class="">Jenkins Use-Cases</a>
@@ -426,24 +266,27 @@ Resources
 <li>
 <a href="https://rtyler.github.io/jenkins.io/doc/pipeline/steps" class="active">Pipeline Steps reference</a>
 </li>
+<li>
+<a href="https://rtyler.github.io/jenkins.io/doc/upgrade-guide" class="">LTS Upgrade Guide</a>
+</li>
 </ul>
 <h5>
 Recent Tutorials
 </h5>
 <ul>
 <li>
-<a href="/blog/2017/01/19/converting-conditional-to-pipeline/">
-Converting Conditional Build Steps to Jenkins Pipeline
+<a href="/blog/2017/02/15/declarative-notifications/">
+Declarative Pipeline: Notifications and Shared Libraries
 </a>
 </li>
 <li>
-<a href="/blog/2016/08/29/sauce-pipeline/">
-Browser-testing with Sauce OnDemand and Pipeline
+<a href="/blog/2017/02/10/declarative-html-publisher/">
+Declarative Pipeline: Publishing HTML Reports
 </a>
 </li>
 <li>
-<a href="/blog/2016/08/10/rails-cd-with-pipeline/">
-Continuous Security for Rails apps with Pipeline and Brakeman
+<a href="/blog/2017/02/07/declarative-maven-project/">
+Declarative Pipeline for Maven Projects
 </a>
 </li>
 </ul>
@@ -457,85 +300,8 @@ View all tutorials
 Developers
 </h4>
 <h5>
-Writing plugins
+<a href="https://rtyler.github.io/jenkins.io/doc/developer" class="">Reference Documentation</a>
 </h5>
-<ul>
-<li>
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins">
-Extend Jenkins
-</a>
-</li>
-<li>
-<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points">
-Extension points
-</a>
-</li>
-</ul>
-<h5>
-JavaDoc
-</h5>
-<ul>
-<li>
-<a href="http://javadoc.jenkins.io/">
-Latest
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-2.32">
-2.32
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-2.19">
-2.19
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-2.7">
-2.7
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.651">
-1.651
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.642">
-1.642
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.625">
-1.625
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.609">
-1.609
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.596">
-1.596
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.580">
-1.580
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.565">
-1.565
-</a>
-</li>
-<li>
-<a href="http://javadoc.jenkins.io/archive/jenkins-1.554">
-1.554
-</a>
-</li>
-</ul>
 </div>
 </div>
 <div class="col-lg-9">
@@ -549,20 +315,20 @@ offers more information about the parameters for each step.
 <div>
 <ul>
 <li>
-<a href="/doc/pipeline/steps/Office-365-Connector/">
-Office-365-Connector
+<a href="/doc/pipeline/steps/android-signing/">
+Android Signing Plugin
 </a>
 <ul>
 <li>
-<a href="/doc/pipeline/steps/Office-365-Connector/#office365connectorsend-office365connectorsend">
-office365ConnectorSend: office365ConnectorSend
+<a href="/doc/pipeline/steps/android-signing/#signandroidapks-sign-android-apks">
+signAndroidApks: Sign Android APKs
 </a>
 </li>
 </ul>
 </li>
 <li>
 <a href="/doc/pipeline/steps/ansible/">
-ansible
+Ansible plugin
 </a>
 <ul>
 <li>
@@ -574,7 +340,7 @@ ansiblePlaybook: Invoke an ansible playbook
 </li>
 <li>
 <a href="/doc/pipeline/steps/ansicolor/">
-ansicolor
+AnsiColor
 </a>
 <ul>
 <li>
@@ -586,7 +352,7 @@ ansiColor: Color ANSI Console Output
 </li>
 <li>
 <a href="/doc/pipeline/steps/artifactory/">
-artifactory
+Artifactory Plugin
 </a>
 <ul>
 <li>
@@ -597,6 +363,11 @@ ArtifactoryGradleBuild: run Artifactory gradle
 <li>
 <a href="/doc/pipeline/steps/artifactory/#artifactorymavenbuild-run-artifactory-maven">
 ArtifactoryMavenBuild: run Artifactory maven
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/artifactory/#mavendescriptorstep-get-artifactory-maven-descriptor">
+MavenDescriptorStep: Get Artifactory Maven descriptor
 </a>
 </li>
 <li>
@@ -659,11 +430,40 @@ newMavenBuild: New Artifactory maven
 publishBuildInfo: Publish build Info to Artifactory
 </a>
 </li>
+<li>
+<a href="/doc/pipeline/steps/artifactory/#xrayscanbuild-xray-build-scanning">
+xrayScanBuild: Xray build scanning
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/aws-codebuild/">
+AWS CodeBuild Plugin for Jenkins
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/aws-codebuild/#awscodebuild-invoke-an-aws-codebuild-build">
+awsCodeBuild: Invoke an AWS CodeBuild build
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/bearychat/">
+BearyChat Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/bearychat/#bearychatsend-send-bearychat-message">
+bearychatSend: Send Bearychat Message
+</a>
+</li>
 </ul>
 </li>
 <li>
 <a href="/doc/pipeline/steps/bitbucket-build-status-notifier/">
-bitbucket-build-status-notifier
+Bitbucket Build Status Notifier Plugin
 </a>
 <ul>
 <li>
@@ -675,7 +475,7 @@ bitbucketStatusNotify: Notify a build status to BitBucket.
 </li>
 <li>
 <a href="/doc/pipeline/steps/blackduck-hub/">
-blackduck-hub
+Black Duck Hub Plugin for Jenkins
 </a>
 <ul>
 <li>
@@ -692,7 +492,7 @@ hub_scan_failure: Black Duck Hub Failure Conditions (Hub 3.0+)
 </li>
 <li>
 <a href="/doc/pipeline/steps/brakeman/">
-brakeman
+Brakeman Plugin
 </a>
 <ul>
 <li>
@@ -703,8 +503,20 @@ publishBrakeman: Publish Brakeman reports
 </ul>
 </li>
 <li>
+<a href="/doc/pipeline/steps/cloudshare-docker/">
+CloudShare Docker-Machine Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/cloudshare-docker/#cloudsharedockermachine-cloudshare-docker-machine">
+cloudshareDockerMachine: CloudShare Docker-Machine
+</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="/doc/pipeline/steps/codefresh/">
-codefresh
+Codefresh Integration Plugin
 </a>
 <ul>
 <li>
@@ -715,8 +527,25 @@ codefresh: Run a Codefresh Build
 </ul>
 </li>
 <li>
+<a href="/doc/pipeline/steps/contrast-continuous-application-security/">
+Contrast Continuous Application Security
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/contrast-continuous-application-security/#contrastagent-download-latest-contrast-agent">
+contrastAgent: Download latest Contrast agent
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/contrast-continuous-application-security/#contrastverification-verify-vulnerabilities-in-a-build">
+contrastVerification: Verify vulnerabilities in a build
+</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="/doc/pipeline/steps/credentials-binding/">
-credentials-binding
+Credentials Binding Plugin
 </a>
 <ul>
 <li>
@@ -751,20 +580,8 @@ awaitDeployment: Awaiting for deployment
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/docker-slaves/">
-docker-slaves
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/docker-slaves/#dockernode-allocate-a-docker-node">
-dockerNode: Allocate a docker node
-</a>
-</li>
-</ul>
-</li>
-<li>
 <a href="/doc/pipeline/steps/docker-workflow/">
-docker-workflow
+Docker Pipeline
 </a>
 <ul>
 <li>
@@ -795,8 +612,20 @@ withDockerServer: Sets up Docker server endpoint
 </ul>
 </li>
 <li>
+<a href="/doc/pipeline/steps/docker-slaves/">
+Docker Slaves Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/docker-slaves/#dockernode-allocate-a-docker-node">
+dockerNode: Allocate a docker node
+</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="/doc/pipeline/steps/email-ext/">
-email-ext
+Email Extension Plugin
 </a>
 <ul>
 <li>
@@ -813,7 +642,7 @@ emailextrecipients: Extended Email Recipients
 </li>
 <li>
 <a href="/doc/pipeline/steps/external-workspace-manager/">
-external-workspace-manager
+External Workspace Manager Plugin
 </a>
 <ul>
 <li>
@@ -830,7 +659,7 @@ exwsAllocate: Allocate external workspace
 </li>
 <li>
 <a href="/doc/pipeline/steps/figlet-buildstep/">
-figlet-buildstep
+Figlet Buildstep
 </a>
 <ul>
 <li>
@@ -842,7 +671,7 @@ figlet: Figlet
 </li>
 <li>
 <a href="/doc/pipeline/steps/gatling/">
-gatling
+Gatling Jenkins Plugin
 </a>
 <ul>
 <li>
@@ -854,7 +683,7 @@ gatlingArchive: Archive Gatling reports
 </li>
 <li>
 <a href="/doc/pipeline/steps/gerrit-trigger/">
-gerrit-trigger
+Gerrit Trigger
 </a>
 <ul>
 <li>
@@ -866,7 +695,7 @@ setGerritReview: Set Gerrit review
 </li>
 <li>
 <a href="/doc/pipeline/steps/git/">
-git
+Git plugin
 </a>
 <ul>
 <li>
@@ -878,7 +707,7 @@ git: Git
 </li>
 <li>
 <a href="/doc/pipeline/steps/github-pullrequest/">
-github-pullrequest
+GitHub Integration Plugin
 </a>
 <ul>
 <li>
@@ -890,7 +719,7 @@ setGitHubPullRequestStatus: Set GitHub PullRequest Commit Status
 </li>
 <li>
 <a href="/doc/pipeline/steps/gitlab-plugin/">
-gitlab-plugin
+GitLab Plugin
 </a>
 <ul>
 <li>
@@ -922,7 +751,7 @@ updateGitlabCommitStatus: Update the commit status in GitLab
 </li>
 <li>
 <a href="/doc/pipeline/steps/hipchat/">
-hipchat
+HipChat Plugin
 </a>
 <ul>
 <li>
@@ -934,7 +763,7 @@ hipchatSend: Send HipChat Message
 </li>
 <li>
 <a href="/doc/pipeline/steps/hp-application-automation-tools-plugin/">
-hp-application-automation-tools-plugin
+HP Application Automation Tools
 </a>
 <ul>
 <li>
@@ -976,7 +805,7 @@ uftScenarioLoad: Run UFT scenario
 </li>
 <li>
 <a href="/doc/pipeline/steps/htmlpublisher/">
-htmlpublisher
+HTML Publisher plugin
 </a>
 <ul>
 <li>
@@ -988,7 +817,7 @@ publishHTML: Publish HTML reports
 </li>
 <li>
 <a href="/doc/pipeline/steps/http_request/">
-http_request
+HTTP Request Plugin
 </a>
 <ul>
 <li>
@@ -999,30 +828,162 @@ httpRequest: Perform an HTTP Request and return a response object
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/integrity-plugin/">
-integrity-plugin
+<a href="/doc/pipeline/steps/hubot-steps/">
+Hubot Pipeline Steps
 </a>
 <ul>
 <li>
-<a href="/doc/pipeline/steps/integrity-plugin/#siaddprojectlabel-integrity-scm-label">
-siaddprojectlabel: Integrity SCM Label
+<a href="/doc/pipeline/steps/hubot-steps/#hubotapprove-hubot-send-approval-message">
+hubotApprove: Hubot: Send approval message
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/integrity-plugin/#sicheckpoint-integrity-scm-checkpoint">
-sicheckpoint: Integrity SCM Checkpoint
+<a href="/doc/pipeline/steps/hubot-steps/#hubotsend-hubot-send-message">
+hubotSend: Hubot: Send message
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/">
+JIRA Pipeline Steps
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiraaddcomment-jira-steps-add-comment">
+jiraAddComment: JIRA Steps: Add Comment
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/integrity-plugin/#sici-integrity-scm-checkin">
-sici: Integrity SCM Checkin
+<a href="/doc/pipeline/steps/jira-steps/#jiraaddwatcher-jira-steps-add-watcher">
+jiraAddWatcher: JIRA Steps: Add Watcher
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiraassignissue-jira-steps-assign-issue">
+jiraAssignIssue: JIRA Steps: Assign Issue
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiraeditcomment-jira-steps-edit-issue-comment">
+jiraEditComment: JIRA Steps: Edit Issue Comment
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiraeditcomponent-jira-steps-edit-component">
+jiraEditComponent: JIRA Steps: Edit Component
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiraeditissue-jira-steps-edit-issue">
+jiraEditIssue: JIRA Steps: Edit Issue
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiraeditversion-jira-steps-edit-version">
+jiraEditVersion: JIRA Steps: Edit Version
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetcomment-jira-steps-get-issue-comment">
+jiraGetComment: JIRA Steps: Get Issue Comment
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetcomments-jira-steps-get-issue-comments">
+jiraGetComments: JIRA Steps: Get Issue Comments
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetcomponent-jira-steps-get-component">
+jiraGetComponent: JIRA Steps: Get Component
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetcomponentissuecount-jira-steps-get-component-issue-count">
+jiraGetComponentIssueCount: JIRA Steps: Get Component Issue Count
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetissue-jira-steps-get-issue">
+jiraGetIssue: JIRA Steps: Get Issue
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetissuelinktypes-jira-steps-get-issue-link-types">
+jiraGetIssueLinkTypes: JIRA Steps: Get Issue Link Types
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetissuetransitions-jira-steps-get-issue-transitions">
+jiraGetIssueTransitions: JIRA Steps: Get Issue Transitions
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetissuewatches-jira-steps-get-issue-watches">
+jiraGetIssueWatches: JIRA Steps: Get Issue Watches
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetproject-jira-steps-get-project">
+jiraGetProject: JIRA Steps: Get Project
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetprojects-jira-steps-get-projects">
+jiraGetProjects: JIRA Steps: Get Projects
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiragetversion-jira-steps-get-version">
+jiraGetVersion: JIRA Steps: Get Version
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jirajqlsearch-jira-steps-jql-search">
+jiraJqlSearch: JIRA Steps: JQL Search
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiralinkissues-jira-steps-link-issues">
+jiraLinkIssues: JIRA Steps: Link Issues
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiranewcomponent-jira-steps-create-new-component">
+jiraNewComponent: JIRA Steps: Create New Component
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiranewissue-jira-steps-create-new-issue">
+jiraNewIssue: JIRA Steps: Create New Issue
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiranewissues-jira-steps-create-new-issues">
+jiraNewIssues: JIRA Steps: Create New Issues
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiranewversion-jira-steps-create-new-version">
+jiraNewVersion: JIRA Steps: Create New Version
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiranotifyissue-jira-steps-notify-issue">
+jiraNotifyIssue: JIRA Steps: Notify Issue
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/jira-steps/#jiratransitionissue-jira-steps-transition-issue">
+jiraTransitionIssue: JIRA Steps: Transition Issue
 </a>
 </li>
 </ul>
 </li>
 <li>
 <a href="/doc/pipeline/steps/jira/">
-jira
+JIRA plugin
 </a>
 <ul>
 <li>
@@ -1044,7 +1005,7 @@ jiraSearch: JIRA: Search issues
 </li>
 <li>
 <a href="/doc/pipeline/steps/jms-messaging/">
-jms-messaging
+JMS Messaging Plugin
 </a>
 <ul>
 <li>
@@ -1060,25 +1021,20 @@ waitForCIMessage: CI Subscriber
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/kubernetes/">
-kubernetes
+<a href="/doc/pipeline/steps/jobcacher/">
+Job Cacher plugin
 </a>
 <ul>
 <li>
-<a href="/doc/pipeline/steps/kubernetes/#container-run-build-steps-in-a-container">
-container: Run build steps in a container
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/kubernetes/#podtemplate-define-a-podtemplate-to-use-in-the-kubernetes-plugin">
-podTemplate: Define a podTemplate to use in the kubernetes plugin
+<a href="/doc/pipeline/steps/jobcacher/#cache-caches-files-from-previous-build-to-current-build">
+cache: Caches files from previous build to current build
 </a>
 </li>
 </ul>
 </li>
 <li>
 <a href="/doc/pipeline/steps/kubernetes-pipeline-devops-steps/">
-kubernetes-pipeline-devops-steps
+Kubernetes :: Pipeline :: DevOps Steps
 </a>
 <ul>
 <li>
@@ -1105,7 +1061,7 @@ kubernetesApply: Apply resources to Kubernetes, lazily creating environments and
 </li>
 <li>
 <a href="/doc/pipeline/steps/kubernetes-pipeline-steps/">
-kubernetes-pipeline-steps
+Kubernetes :: Pipeline :: Kubernetes Steps
 </a>
 <ul>
 <li>
@@ -1131,8 +1087,25 @@ withPod: Run build steps in a Pod
 </ul>
 </li>
 <li>
+<a href="/doc/pipeline/steps/kubernetes/">
+Kubernetes plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/kubernetes/#container-run-build-steps-in-a-container">
+container: Run build steps in a container
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/kubernetes/#podtemplate-define-a-podtemplate-to-use-in-the-kubernetes-plugin">
+podTemplate: Define a podTemplate to use in the kubernetes plugin
+</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="/doc/pipeline/steps/liquibase-runner/">
-liquibase-runner
+Liquibase Runner
 </a>
 <ul>
 <li>
@@ -1154,7 +1127,7 @@ liquibaseUpdate: Evaluate liquibase changesets
 </li>
 <li>
 <a href="/doc/pipeline/steps/lockable-resources/">
-lockable-resources
+Lockable Resources plugin
 </a>
 <ul>
 <li>
@@ -1166,7 +1139,7 @@ lock: Lock shared resource
 </li>
 <li>
 <a href="/doc/pipeline/steps/marathon/">
-marathon
+Marathon Deployment
 </a>
 <ul>
 <li>
@@ -1178,7 +1151,7 @@ marathon: Marathon Deployment
 </li>
 <li>
 <a href="/doc/pipeline/steps/mattermost/">
-mattermost
+Mattermost Notification Plugin
 </a>
 <ul>
 <li>
@@ -1190,7 +1163,7 @@ mattermostSend: Send Mattermost message
 </li>
 <li>
 <a href="/doc/pipeline/steps/mock-load-builder/">
-mock-load-builder
+Mock Load Builder Plugin
 </a>
 <ul>
 <li>
@@ -1202,7 +1175,7 @@ mockLoad: Mock Load
 </li>
 <li>
 <a href="/doc/pipeline/steps/nexus-artifact-uploader/">
-nexus-artifact-uploader
+Nexus Artifact Uploader
 </a>
 <ul>
 <li>
@@ -1213,8 +1186,42 @@ nexusArtifactUploader: Nexus Artifact Uploader
 </ul>
 </li>
 <li>
+<a href="/doc/pipeline/steps/Office-365-Connector/">
+Office 365 Connector
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/Office-365-Connector/#office365connectorsend-office365connectorsend">
+office365ConnectorSend: office365ConnectorSend
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/openshift-client/">
+OpenShift Client Jenkins Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/openshift-client/#_ocaction-internal-utility-function-for-openshift-dsl">
+_OcAction: Internal utility function for OpenShift DSL
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/openshift-client/#_occontextinit-internal-utility-function-for-openshift-dsl">
+_OcContextInit: Internal utility function for OpenShift DSL
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/openshift-client/#_ocwatch-internal-utility-function-for-openshift-dsl">
+_OcWatch: Internal utility function for OpenShift DSL
+</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="/doc/pipeline/steps/openshift-pipeline/">
-openshift-pipeline
+OpenShift Pipeline Jenkins Plugin
 </a>
 <ul>
 <li>
@@ -1286,7 +1293,7 @@ openshiftVerifyService: Verify OpenShift Service
 </li>
 <li>
 <a href="/doc/pipeline/steps/p4/">
-p4
+P4 Plugin
 </a>
 <ul>
 <li>
@@ -1323,7 +1330,7 @@ p4unshelve: P4 Unshelve
 </li>
 <li>
 <a href="/doc/pipeline/steps/parallel-test-executor/">
-parallel-test-executor
+Parallel Test Executor Plugin
 </a>
 <ul>
 <li>
@@ -1334,84 +1341,20 @@ splitTests: Split Test Runs
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/pipeline-aws/">
-pipeline-aws
+<a href="/doc/pipeline/steps/pipeline-dependency-walker/">
+Pipeline Dependency Walker Plugin
 </a>
 <ul>
 <li>
-<a href="/doc/pipeline/steps/pipeline-aws/#awsidentity-print-the-aws-identity">
-awsIdentity: Print the AWS identity
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-aws/#cfinvalidate-invalidate-given-paths-in-cloudfront-distribution">
-cfInvalidate: Invalidate given paths in CloudFront distribution
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-aws/#cfndelete-delete-cloudformation-stack">
-cfnDelete: Delete CloudFormation stack
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-aws/#cfndescribe-describe-outputs-of-cloudformation-stack">
-cfnDescribe: Describe outputs of CloudFormation stack
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-aws/#cfnupdate-create-or-update-cloudformation-stack">
-cfnUpdate: Create or Update CloudFormation stack
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-aws/#s3download-copy-file-from-s3">
-s3Download: Copy file from S3
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-aws/#s3upload-copy-file-to-s3">
-s3Upload: Copy file to S3
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-aws/#snspublish-publish-notification-to-sns">
-snsPublish: Publish notification to SNS
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-aws/#withaws-set-aws-settings-for-nested-block">
-withAWS: set AWS settings for nested block
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-build-step/">
-pipeline-build-step
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/pipeline-build-step/#build-build-a-job">
-build: Build a job
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-classpath/">
-pipeline-classpath
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/pipeline-classpath/#addtoclasspath-add-file-path-to-groovy-classpath">
-addToClasspath: Add file path to Groovy classPath
+<a href="/doc/pipeline/steps/pipeline-dependency-walker/#walk-execute-a-pipeline-task-for-the-job-and-all-its-downstream-jobs">
+walk: Execute a pipeline task for the job and all its downstream jobs.
 </a>
 </li>
 </ul>
 </li>
 <li>
 <a href="/doc/pipeline/steps/pipeline-githubnotify-step/">
-pipeline-githubnotify-step
+Pipeline GitHub Notify Step Plugin
 </a>
 <ul>
 <li>
@@ -1422,20 +1365,8 @@ githubNotify: Notifies GitHub of the status of a Pull Request
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/pipeline-input-step/">
-pipeline-input-step
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/pipeline-input-step/#input-wait-for-interactive-input">
-input: Wait for interactive input
-</a>
-</li>
-</ul>
-</li>
-<li>
 <a href="/doc/pipeline/steps/pipeline-maven/">
-pipeline-maven
+Pipeline Maven Integration Plugin
 </a>
 <ul>
 <li>
@@ -1446,59 +1377,30 @@ withMaven: Provide Maven environment
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/pipeline-milestone-step/">
-pipeline-milestone-step
+<a href="/doc/pipeline/steps/pipeline-npm/">
+Pipeline NPM Integration Plugin
 </a>
 <ul>
 <li>
-<a href="/doc/pipeline/steps/pipeline-milestone-step/#milestone-the-milestone-step-forces-all-builds-to-go-through-in-order">
-milestone: The milestone step forces all builds to go through in order
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-model-definition/">
-pipeline-model-definition
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/pipeline-model-definition/#script-run-arbitrary-pipeline-script">
-script: Run arbitrary Pipeline script
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-model-definition/#dockerlabel-dockerlabelstep">
-dockerLabel: DockerLabelStep
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-model-definition/#envvarsfortool-fetches-the-environment-variables-for-a-given-tool-in-a-list-of-foo-bar-strings-suitable-for-the-withenv-step">
-envVarsForTool: Fetches the environment variables for a given tool in a list of 'FOO=bar' strings suitable for the withEnv step.
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/pipeline-stage-step/">
-pipeline-stage-step
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/pipeline-stage-step/#stage-stage">
-stage: Stage
+<a href="/doc/pipeline/steps/pipeline-npm/#withnpm-provide-npm-environment">
+withNPM: Provide NPM environment
 </a>
 </li>
 </ul>
 </li>
 <li>
 <a href="/doc/pipeline/steps/pipeline-utility-steps/">
-pipeline-utility-steps
+Pipeline Utility Steps
 </a>
 <ul>
 <li>
 <a href="/doc/pipeline/steps/pipeline-utility-steps/#findfiles-find-files-in-the-workspace">
 findFiles: Find files in the workspace
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/pipeline-utility-steps/#readjson-read-json-from-files-in-the-workspace">
+readJSON: Read JSON from files in the workspace.
 </a>
 </li>
 <li>
@@ -1532,6 +1434,11 @@ unzip: Extract Zip file
 </a>
 </li>
 <li>
+<a href="/doc/pipeline/steps/pipeline-utility-steps/#writejson-write-json-to-a-file-in-the-workspace">
+writeJSON: Write JSON to a file in the workspace.
+</a>
+</li>
+<li>
 <a href="/doc/pipeline/steps/pipeline-utility-steps/#writemavenpom-write-a-maven-project-file">
 writeMavenPom: Write a maven project file.
 </a>
@@ -1544,206 +1451,70 @@ zip: Create Zip file
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/pragprog/">
-pragprog
+<a href="/doc/pipeline/steps/pipeline-aws/">
+Pipeline: AWS Steps
 </a>
 <ul>
 <li>
-<a href="/doc/pipeline/steps/pragprog/#pragprog-activate-tips-from-the-pragmatic-programmer">
-pragprog: Activate tips from The Pragmatic Programmer
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/">
-puppet-enterprise-pipeline
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/#puppetcode-deploy-puppet-environment-code">
-puppetCode: Deploy Puppet Environment Code
+<a href="/doc/pipeline/steps/pipeline-aws/#awsidentity-print-the-aws-identity">
+awsIdentity: Print the AWS identity
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/#puppethiera-set-hiera-data">
-puppetHiera: Set Hiera data.
+<a href="/doc/pipeline/steps/pipeline-aws/#cfinvalidate-invalidate-given-paths-in-cloudfront-distribution">
+cfInvalidate: Invalidate given paths in CloudFront distribution
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/#puppetjob-create-puppet-orchestrator-job">
-puppetJob: Create Puppet Orchestrator Job
+<a href="/doc/pipeline/steps/pipeline-aws/#cfndelete-delete-cloudformation-stack">
+cfnDelete: Delete CloudFormation stack
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/#puppetquery-query-puppetdb-with-the-puppet-query-language-pql">
-puppetQuery: Query PuppetDB with the Puppet Query Language (PQL)
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/rocketchatnotifier/">
-rocketchatnotifier
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/rocketchatnotifier/#rocketsend-send-rocketchat-message">
-rocketSend: Send RocketChat Message
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/run-selector/">
-run-selector
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/run-selector/#selectrun-select-run">
-selectRun: Select Run
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/sauce-ondemand/">
-sauce-ondemand
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/sauce-ondemand/#sauce-sauce">
-sauce: Sauce
+<a href="/doc/pipeline/steps/pipeline-aws/#cfndescribe-describe-outputs-of-cloudformation-stack">
+cfnDescribe: Describe outputs of CloudFormation stack
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/sauce-ondemand/#sauceconnect-sauce-connect">
-sauceconnect: Sauce Connect
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/slack/">
-slack
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/slack/#slacksend-send-slack-message">
-slackSend: Send Slack Message
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/splunk-devops-extend/">
-splunk-devops-extend
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/splunk-devops-extend/#sendsplunkconsolelog-send-console-log-splunk">
-sendSplunkConsoleLog: Send console log Splunk
+<a href="/doc/pipeline/steps/pipeline-aws/#cfnexports-describe-cloudformation-global-exports">
+cfnExports: Describe CloudFormation global exports
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/splunk-devops-extend/#sendsplunkfile-forwarding-pipeline-console-log-to-splunk">
-sendSplunkFile: Forwarding pipeline console log to Splunk
+<a href="/doc/pipeline/steps/pipeline-aws/#cfnupdate-create-or-update-cloudformation-stack">
+cfnUpdate: Create or Update CloudFormation stack
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/splunk-devops-extend/#sendsplunkscript-send-data-to-splunk-via-dsl-script">
-sendSplunkScript: Send data to Splunk via DSL script
+<a href="/doc/pipeline/steps/pipeline-aws/#cfnvalidate-validate-cloudformation-template">
+cfnValidate: Validate CloudFormation template
 </a>
 </li>
-</ul>
-</li>
 <li>
-<a href="/doc/pipeline/steps/ssh-agent/">
-ssh-agent
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/ssh-agent/#sshagent-ssh-agent">
-sshagent: SSH Agent
+<a href="/doc/pipeline/steps/pipeline-aws/#s3download-copy-file-from-s3">
+s3Download: Copy file from S3
 </a>
 </li>
-</ul>
-</li>
 <li>
-<a href="/doc/pipeline/steps/stepcounter/">
-stepcounter
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/stepcounter/#stepcounter-count-steps">
-stepcounter: Count steps
+<a href="/doc/pipeline/steps/pipeline-aws/#s3upload-copy-file-to-s3">
+s3Upload: Copy file to S3
 </a>
 </li>
-</ul>
-</li>
 <li>
-<a href="/doc/pipeline/steps/subversion/">
-subversion
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/subversion/#svn-subversion">
-svn: Subversion
+<a href="/doc/pipeline/steps/pipeline-aws/#snspublish-publish-notification-to-sns">
+snsPublish: Publish notification to SNS
 </a>
 </li>
-</ul>
-</li>
 <li>
-<a href="/doc/pipeline/steps/teamconcert/">
-teamconcert
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/teamconcert/#teamconcert-team-concert">
-teamconcert: Team Concert
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/timestamper/">
-timestamper
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/timestamper/#timestamps-timestamps">
-timestamps: Timestamps
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/versionnumber/">
-versionnumber
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/versionnumber/#versionnumber-determine-the-correct-version-number">
-VersionNumber: Determine the correct version number
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="/doc/pipeline/steps/vsphere-cloud/">
-vsphere-cloud
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/vsphere-cloud/#vsphere-invoke-an-vsphere-action-exposing-the-vm-ip-under-some-actions">
-vSphere: Invoke an vSphere action, exposing the VM IP under some actions
+<a href="/doc/pipeline/steps/pipeline-aws/#withaws-set-aws-settings-for-nested-block">
+withAWS: set AWS settings for nested block
 </a>
 </li>
 </ul>
 </li>
 <li>
 <a href="/doc/pipeline/steps/workflow-basic-steps/">
-workflow-basic-steps
+Pipeline: Basic Steps
 </a>
 <ul>
 <li>
@@ -1812,11 +1583,6 @@ stash: Stash some files to be used later in the build
 </a>
 </li>
 <li>
-<a href="/doc/pipeline/steps/workflow-basic-steps/#step-general-build-step">
-step: General Build Step
-</a>
-</li>
-<li>
 <a href="/doc/pipeline/steps/workflow-basic-steps/#timeout-enforce-time-limit">
 timeout: Enforce time limit
 </a>
@@ -1874,8 +1640,32 @@ withContext: Use contextual object from internal APIs within a block
 </ul>
 </li>
 <li>
+<a href="/doc/pipeline/steps/pipeline-build-step/">
+Pipeline: Build Step
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/pipeline-build-step/#build-build-a-job">
+build: Build a job
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/pipeline-classpath/">
+Pipeline: Classpath Steps
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/pipeline-classpath/#addtoclasspath-add-file-path-to-groovy-classpath">
+addToClasspath: Add file path to Groovy classPath
+</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="/doc/pipeline/steps/workflow-cps/">
-workflow-cps
+Pipeline: Groovy
 </a>
 <ul>
 <li>
@@ -1891,20 +1681,76 @@ parallel: Execute in parallel
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/workflow-cps-global-lib/">
-workflow-cps-global-lib
+<a href="/doc/pipeline/steps/pipeline-input-step/">
+Pipeline: Input Step
 </a>
 <ul>
 <li>
-<a href="/doc/pipeline/steps/workflow-cps-global-lib/#libraryresource-load-a-resource-file-from-a-shared-library">
-libraryResource: Load a resource file from a shared library
+<a href="/doc/pipeline/steps/pipeline-input-step/#input-wait-for-interactive-input">
+input: Wait for interactive input
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/pipeline-milestone-step/">
+Pipeline: Milestone Step
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/pipeline-milestone-step/#milestone-the-milestone-step-forces-all-builds-to-go-through-in-order">
+milestone: The milestone step forces all builds to go through in order
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/pipeline-model-definition/">
+Pipeline: Model Definition
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/pipeline-model-definition/#script-run-arbitrary-pipeline-script">
+script: Run arbitrary Pipeline script
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/pipeline-model-definition/#validatedeclarativepipeline-validate-a-file-containing-a-declarative-pipeline">
+validateDeclarativePipeline: Validate a file containing a Declarative Pipeline
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/pipeline-model-definition/#envvarsfortool-fetches-the-environment-variables-for-a-given-tool-in-a-list-of-foo-bar-strings-suitable-for-the-withenv-step">
+envVarsForTool: Fetches the environment variables for a given tool in a list of 'FOO=bar' strings suitable for the withEnv step.
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/workflow-multibranch/">
+Pipeline: Multibranch
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/workflow-multibranch/#properties-set-job-properties">
+properties: Set job properties
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/workflow-multibranch/#readtrusted-read-trusted-file-from-scm">
+readTrusted: Read trusted file from SCM
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/workflow-multibranch/#resolvescm-resolves-an-scm-from-an-scm-source-and-a-list-of-candidate-target-branch-names">
+resolveScm: Resolves an SCM from an SCM Source and a list of candidate target branch names
 </a>
 </li>
 </ul>
 </li>
 <li>
 <a href="/doc/pipeline/steps/workflow-durable-task-step/">
-workflow-durable-task-step
+Pipeline: Nodes and Processes
 </a>
 <ul>
 <li>
@@ -1930,25 +1776,8 @@ ws: Allocate workspace
 </ul>
 </li>
 <li>
-<a href="/doc/pipeline/steps/workflow-multibranch/">
-workflow-multibranch
-</a>
-<ul>
-<li>
-<a href="/doc/pipeline/steps/workflow-multibranch/#properties-set-job-properties">
-properties: Set job properties
-</a>
-</li>
-<li>
-<a href="/doc/pipeline/steps/workflow-multibranch/#readtrusted-read-trusted-file-from-scm">
-readTrusted: Read trusted file from SCM
-</a>
-</li>
-</ul>
-</li>
-<li>
 <a href="/doc/pipeline/steps/workflow-scm-step/">
-workflow-scm-step
+Pipeline: SCM Step
 </a>
 <ul>
 <li>
@@ -1958,6 +1787,349 @@ checkout: General SCM
 </li>
 </ul>
 </li>
+<li>
+<a href="/doc/pipeline/steps/workflow-cps-global-lib/">
+Pipeline: Shared Groovy Libraries
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/workflow-cps-global-lib/#library-load-a-shared-library-on-the-fly">
+library: Load a shared library on the fly
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/workflow-cps-global-lib/#libraryresource-load-a-resource-file-from-a-shared-library">
+libraryResource: Load a resource file from a shared library
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/pipeline-stage-step/">
+Pipeline: Stage Step
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/pipeline-stage-step/#stage-stage">
+stage: Stage
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/plasticscm-plugin/">
+PlasticSCM Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/plasticscm-plugin/#cm-plastic-scm">
+cm: Plastic SCM
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/pragprog/">
+Pragprog Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/pragprog/#pragprog-activate-tips-from-the-pragmatic-programmer">
+pragprog: Activate tips from The Pragmatic Programmer
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/integrity-plugin/">
+PTC Integrity CM - Jenkins Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/integrity-plugin/#siaddprojectlabel-integrity-scm-label">
+siaddprojectlabel: Integrity SCM Label
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/integrity-plugin/#sicheckpoint-integrity-scm-checkpoint">
+sicheckpoint: Integrity SCM Checkpoint
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/integrity-plugin/#sici-integrity-scm-checkin">
+sici: Integrity SCM Checkin
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/">
+Puppet Enterprise Pipeline
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/#puppetcode-deploy-puppet-environment-code">
+puppetCode: Deploy Puppet Environment Code
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/#puppethiera-set-hiera-data">
+puppetHiera: Set Hiera data.
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/#puppetjob-create-puppet-orchestrator-job">
+puppetJob: Create Puppet Orchestrator Job
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/puppet-enterprise-pipeline/#puppetquery-query-puppetdb-with-the-puppet-query-language-pql">
+puppetQuery: Query PuppetDB with the Puppet Query Language (PQL)
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/r/">
+R Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/r/#r-execute-r-script">
+r: Execute R script
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/rocketchatnotifier/">
+RocketChat Notifier
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/rocketchatnotifier/#rocketsend-send-rocketchat-message">
+rocketSend: Send RocketChat Message
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/run-selector/">
+Run Selector Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/run-selector/#selectrun-select-run">
+selectRun: Select Run
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/saltstack/">
+SaltStack plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/saltstack/#salt-send-a-message-to-salt-api">
+salt: Send a message to Salt API
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/sauce-ondemand/">
+Sauce OnDemand plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/sauce-ondemand/#sauce-sauce">
+sauce: Sauce
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/sauce-ondemand/#sauceconnect-sauce-connect">
+sauceconnect: Sauce Connect
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/Surround-SCM-plugin/">
+Seapine Surround SCM Plug-in
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/Surround-SCM-plugin/#sscm-surround-scm">
+sscm: Surround SCM
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/slack/">
+Slack Notification Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/slack/#slacksend-send-slack-message">
+slackSend: Send Slack Message
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/sonar/">
+SonarQube Scanner for Jenkins
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/sonar/#waitforqualitygate-wait-for-sonarqube-analysis-to-be-completed-and-return-quality-gate-status">
+waitForQualityGate: Wait for SonarQube analysis to be completed and return quality gate status
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/splunk-devops-extend/">
+Splunk Plugin Extension
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/splunk-devops-extend/#sendsplunkconsolelog-send-console-log-splunk">
+sendSplunkConsoleLog: Send console log Splunk
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/splunk-devops-extend/#sendsplunkfile-forwarding-pipeline-console-log-to-splunk">
+sendSplunkFile: Forwarding pipeline console log to Splunk
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/splunk-devops-extend/#sendsplunkscript-send-data-to-splunk-via-dsl-script">
+sendSplunkScript: Send data to Splunk via DSL script
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/ssh-agent/">
+SSH Agent Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/ssh-agent/#sshagent-ssh-agent">
+sshagent: SSH Agent
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/stepcounter/">
+StepCounter Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/stepcounter/#stepcounter-count-steps">
+stepcounter: Count steps
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/subversion/">
+Subversion Plug-in
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/subversion/#svn-subversion">
+svn: Subversion
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/teamconcert/">
+Team Concert Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/teamconcert/#teamconcert-team-concert">
+teamconcert: Team Concert
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/timestamper/">
+Timestamper
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/timestamper/#timestamps-timestamps">
+timestamps: Timestamps
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/versionnumber/">
+Version Number Plug-In
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/versionnumber/#versionnumber-determine-the-correct-version-number">
+VersionNumber: Determine the correct version number
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/vsphere-cloud/">
+vSphere Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/vsphere-cloud/#vsphere-invoke-an-vsphere-action-exposing-the-vm-ip-under-some-actions">
+vSphere: Invoke an vSphere action, exposing the VM IP under some actions
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/deployit-plugin/">
+XebiaLabs XL Deploy Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/deployit-plugin/#xldcreatepackage-create-a-deployment-package">
+xldCreatePackage: Create a deployment package
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/deployit-plugin/#xlddeploy-deploy-a-package-to-a-environment">
+xldDeploy: Deploy a package to a environment
+</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/deployit-plugin/#xldpublishpackage-publish-a-deployment-package-to-xldeploy">
+xldPublishPackage: Publish a deployment package to XLDeploy
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/pipeline/steps/xlrelease-plugin/">
+XebiaLabs XL Release Plugin
+</a>
+<ul>
+<li>
+<a href="/doc/pipeline/steps/xlrelease-plugin/#xlrcreaterelease-create-and-invoke-a-xlr-release">
+xlrCreateRelease: Create and invoke a XLR release
+</a>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -1966,6 +2138,9 @@ checkout: General SCM
 </div>
 
 
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
 <footer id="footer">
 <div class="container">
 <div class="row">
@@ -1976,7 +2151,7 @@ checkout: General SCM
 <h5>Resources</h5>
 <ul class="resources">
 <li>
-<a href="/content/event-calendar">
+<a href="/events">
 Events
 </a>
 </li>
@@ -2127,7 +2302,6 @@ The content driving this site is licensed under the Creative Commons Attribution
 </div>
 </div>
 </footer>
-<!-- starting partial footer.html.haml -->
 <script>
  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -2151,7 +2325,5 @@ ga('set', 'anonymizeIp', true);
     }
   }(document,"script","twitter-wjs");
 </script>
-
-<!-- ending partial footer.html.haml -->
 </body>
 </html>
