@@ -2,11 +2,91 @@
   <title>Jenkins plugin releases</title>
   <link href='https://jenkins.io/' />
   <link href='http://kohsuke.org/test.atom' rel='self' type='application/atom+xml' />
-  <updated>2017-03-30T12:01:03.594-07:00</updated>
+  <updated>2017-03-30T17:15:55.009-07:00</updated>
   <author>
     <name>Jenkins History Bot</name>
   </author>
   <id>urn:63067410335c11e0bc8e0800200c9a66:feed</id>
+  <entry>
+    <title>Credentials Binding Plugin 1.11</title>
+    <link href='https://plugins.jenkins.io/credentials-binding' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:credentials-binding:1.11</id>
+    <published>2017-03-30T11:56:17.534-07:00</published>
+    <updated>2017-03-30T11:56:17.534-07:00</updated>
+    <summary>Credentials Binding Plugin 1.11</summary>
+  </entry>
+  <entry>
+    <title>docker-build-step 1.41</title>
+    <link href='https://plugins.jenkins.io/docker-build-step' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:docker-build-step:1.41</id>
+    <published>2017-03-30T12:48:16.576-07:00</published>
+    <updated>2017-03-30T12:48:16.576-07:00</updated>
+    <summary>docker-build-step 1.41</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Git client plugin 2.4.1</title>
+    <link href='https://plugins.jenkins.io/git-client' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git-client:2.4.1</id>
+    <published>2017-03-30T15:03:59.452-07:00</published>
+    <updated>2017-03-30T15:03:59.452-07:00</updated>
+    <summary>Jenkins Git client plugin 2.4.1</summary>
+  </entry>
+  <entry>
+    <title>OctoPerf Load Testing Plugin. 3.0.1</title>
+    <link href='https://plugins.jenkins.io/octoperf' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:octoperf:3.0.1</id>
+    <published>2017-03-30T12:11:23.764-07:00</published>
+    <updated>2017-03-30T12:11:23.764-07:00</updated>
+    <summary>OctoPerf Load Testing Plugin. 3.0.1</summary>
+  </entry>
+  <entry>
+    <title>Jenkins SaltStack plugin 2.1.0</title>
+    <link href='https://plugins.jenkins.io/saltstack' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:saltstack:2.1.0</id>
+    <published>2017-03-30T13:35:03.235-07:00</published>
+    <updated>2017-03-30T13:35:03.235-07:00</updated>
+    <summary>Jenkins SaltStack plugin 2.1.0</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Violation Comments to GitHub Plugin 1.40</title>
+    <link href='https://plugins.jenkins.io/violation-comments-to-github' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:violation-comments-to-github:1.40</id>
+    <published>2017-03-30T10:55:25.562-07:00</published>
+    <updated>2017-03-30T10:55:25.562-07:00</updated>
+    <summary>Jenkins Violation Comments to GitHub Plugin 1.40</summary>
+  </entry>
+  <entry>
+    <title>Violation Comments to GitLab Plugin 1.4</title>
+    <link href='https://plugins.jenkins.io/violation-comments-to-gitlab' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:violation-comments-to-gitlab:1.4</id>
+    <published>2017-03-30T10:43:11.107-07:00</published>
+    <updated>2017-03-30T10:43:11.107-07:00</updated>
+    <summary>Violation Comments to GitLab Plugin 1.4</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Violation Comments to Bitbucket Server Plugin 1.48</title>
+    <link href='https://plugins.jenkins.io/violation-comments-to-stash' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:violation-comments-to-stash:1.48</id>
+    <published>2017-03-30T10:41:43.894-07:00</published>
+    <updated>2017-03-30T10:41:43.894-07:00</updated>
+    <summary>Jenkins Violation Comments to Bitbucket Server Plugin 1.48</summary>
+  </entry>
+  <entry>
+    <title>Cadence vManager Plugin for Jenkins 2.4.8</title>
+    <link href='https://plugins.jenkins.io/vmanager-plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:vmanager-plugin:2.4.8</id>
+    <published>2017-03-30T15:41:25.617-07:00</published>
+    <updated>2017-03-30T15:41:25.617-07:00</updated>
+    <summary>Cadence vManager Plugin for Jenkins 2.4.8</summary>
+  </entry>
+  <entry>
+    <title>Webhook Step Plugin 1.0 (new)</title>
+    <link href='https://plugins.jenkins.io/webhook-step' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:webhook-step:1.0</id>
+    <published>2017-03-30T11:30:24.728-07:00</published>
+    <updated>2017-03-30T11:30:24.728-07:00</updated>
+    <summary>Webhook Step Plugin 1.0</summary>
+  </entry>
   <entry>
     <title>Generic Webhook Trigger Plugin 1.6</title>
     <link href='https://plugins.jenkins.io/generic-webhook-trigger' rel='alternate' type='text/html' />
@@ -2078,69 +2158,5 @@
     <published>2017-03-01T14:57:46.761-08:00</published>
     <updated>2017-03-01T14:57:46.761-08:00</updated>
     <summary>Tinfoil Security Plugin 1.6</summary>
-  </entry>
-  <entry>
-    <title>Jenkins Accurev plugin 0.7.10</title>
-    <link href='https://plugins.jenkins.io/accurev' rel='alternate' type='text/html' />
-    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:accurev:0.7.10</id>
-    <published>2017-02-27T16:42:00.502-08:00</published>
-    <updated>2017-02-27T16:42:00.502-08:00</updated>
-    <summary>Jenkins Accurev plugin 0.7.10</summary>
-  </entry>
-  <entry>
-    <title>CRX Content Package Deployer Plugin 1.6.3</title>
-    <link href='https://plugins.jenkins.io/crx-content-package-deployer' rel='alternate' type='text/html' />
-    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:crx-content-package-deployer:1.6.3</id>
-    <published>2017-02-28T10:42:24.836-08:00</published>
-    <updated>2017-02-28T10:42:24.836-08:00</updated>
-    <summary>CRX Content Package Deployer Plugin 1.6.3</summary>
-  </entry>
-  <entry>
-    <title>Extended Choice Parameter Plug-In 0.76</title>
-    <link href='https://plugins.jenkins.io/extended-choice-parameter' rel='alternate' type='text/html' />
-    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:extended-choice-parameter:0.76</id>
-    <published>2017-02-28T07:43:05.256-08:00</published>
-    <updated>2017-02-28T07:43:05.256-08:00</updated>
-    <summary>Extended Choice Parameter Plug-In 0.76</summary>
-  </entry>
-  <entry>
-    <title>Jenkins Git client plugin 2.3.0</title>
-    <link href='https://plugins.jenkins.io/git-client' rel='alternate' type='text/html' />
-    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git-client:2.3.0</id>
-    <published>2017-02-27T17:32:01.545-08:00</published>
-    <updated>2017-02-27T17:32:01.545-08:00</updated>
-    <summary>Jenkins Git client plugin 2.3.0</summary>
-  </entry>
-  <entry>
-    <title>GitHub Integration Plugin 0.1.0-rc22</title>
-    <link href='https://plugins.jenkins.io/github-pullrequest' rel='alternate' type='text/html' />
-    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:github-pullrequest:0.1.0-rc22</id>
-    <published>2017-02-28T11:36:38.593-08:00</published>
-    <updated>2017-02-28T11:36:38.593-08:00</updated>
-    <summary>GitHub Integration Plugin 0.1.0-rc22</summary>
-  </entry>
-  <entry>
-    <title>Spotinst plugin 1.2.7</title>
-    <link href='https://plugins.jenkins.io/spotinst' rel='alternate' type='text/html' />
-    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:spotinst:1.2.7</id>
-    <published>2017-02-28T06:59:53.024-08:00</published>
-    <updated>2017-02-28T06:59:53.024-08:00</updated>
-    <summary>Spotinst plugin 1.2.7</summary>
-  </entry>
-  <entry>
-    <title>SQLPlus Script Runner 1.0.6</title>
-    <link href='https://plugins.jenkins.io/sqlplus-script-runner' rel='alternate' type='text/html' />
-    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sqlplus-script-runner:1.0.6</id>
-    <published>2017-02-27T20:15:41.769-08:00</published>
-    <updated>2017-02-27T20:15:41.769-08:00</updated>
-    <summary>SQLPlus Script Runner 1.0.6</summary>
-  </entry>
-  <entry>
-    <title>White Source Jenkins plugin 1.7.6</title>
-    <link href='https://plugins.jenkins.io/whitesource' rel='alternate' type='text/html' />
-    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:whitesource:1.7.6</id>
-    <published>2017-02-28T06:35:45.379-08:00</published>
-    <updated>2017-02-28T06:35:45.379-08:00</updated>
-    <summary>White Source Jenkins plugin 1.7.6</summary>
   </entry>
 </feed>
