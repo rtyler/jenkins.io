@@ -234,6 +234,31 @@ Changelog
 
 <!-- ending partial changelog-header.html -->
 <div class="ratings">
+<h3 id="v2.53">
+What's new in 2.53 (2017-04-02)
+</h3>
+<ul class="image">
+<!-- starting partial changes.html.haml -->
+<li class="major bug">
+Update to Windows Service Wrapper <tt>2.0.3</tt> and Windows Agent Installer <tt>1.8</tt> to prevent conversion of environment variables to lowercase in the agent executable, regression in Jenkins <tt>2.50</tt>.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-42744">issue 42744</a>)
+(<a href="https://github.com/kohsuke/winsw/blob/master/CHANGELOG.md#203">WinSW Changelog</a>,&nbsp;<a href="https://github.com/jenkinsci/windows-slave-installer-module/blob/master/CHANGELOG.md#18">Windows Agent Installer changelog</a>)
+</li>
+<li class="rfe">
+GC Performance: Avoid using <code>FileInputStream</code> and <code>FileOutputStream</code> in the core codebase.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-42934">issue 42934</a>)
+(<a href="https://bugs.openjdk.java.net/browse/JDK-8080225">JDK-8080225</a>)
+</li>
+<li class="rfe">
+Internal API: Add support of a new full screen mode in <tt>layout.jelly</tt>.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-34670">issue 34670</a>)
+</li>
+
+<!-- ending partial changes.html.haml -->
+</ul>
 <h3 id="v2.52">
 What's new in 2.52 (2017-03-26)
 </h3>
