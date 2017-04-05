@@ -241,6 +241,133 @@ LTS upgrade guide
 for advice on upgrading Jenkins.
 </div>
 <div class="ratings">
+<h3 id="v2.46.1">
+What's new in 2.46.1 (2017-03-29)
+</h3>
+<div>
+<strong>
+Changes since 2.46:
+</strong>
+</div>
+<ul class="image">
+<!-- starting partial changes.html.haml -->
+<li class="bug">
+Prevent file descriptor leaks when Windows Service installer fails to read data from the service startup log.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-42670">issue 42670</a>)
+</li>
+<li class="bug">
+Update Remoting from <code>3.5</code> to <code>3.7</code> in order to prevent file descriptor leaks on agents in the case of multiple connection attempts.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-42371">issue 42371</a>)
+(<a href="https://github.com/jenkinsci/remoting/blob/master/CHANGELOG.md#37">full changelog</a>)
+</li>
+<li class="bug">
+Exceptions during Jenkins cleanup step should not block restart.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-42164">issue 42164</a>)
+</li>
+<li class="bug">
+Cryptic error message when loading JnlpSlaveAgentProtocol4.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-41987">issue 41987</a>)
+</li>
+<li class="bug">
+Developer: Snapshot builds of plugins that had dependencies on other snapshot builds were not having their version numbers compared correctly.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-41899">issue 41899</a>)
+</li>
+<li class="bug">
+Do not attempt to find the next occurrence of an impossible date such as June 31st in validation of trigger schedules.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-41864">issue 41864</a>)
+</li>
+<li class="bug">
+Remoting 3.5: Stability improvements.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-41513">issue 41513</a><a></a>,&nbsp;<a href="https://issues.jenkins-ci.org/browse/JENKINS-41852">issue 41852</a><a></a>)
+</li>
+<li class="bug">
+Remove invalid translations in Slovene
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-41756">issue 41756</a>)
+</li>
+<li class="rfe">
+Remoting 3.5: Add option to specify the remoting protocol to use on the client.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-41730">issue 41730</a>)
+</li>
+<li class="bug">
+Use of the remote API to create items in views (<tt>/view/…/createItem</tt>) didn't actually add items to views since Jenkins 2.22.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-41128">issue 41128</a>)
+</li>
+<li class="bug">
+Remoting 3.5: Remoting clients now accept lowercase (HTTP 2) headers sent by reverse proxies.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-40710">issue 40710</a>)
+</li>
+<li class="bug">
+Windows service restart did not retain build queue.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-32820">issue 32820</a>)
+</li>
+
+<!-- ending partial changes.html.haml -->
+</ul>
+<div>
+<strong>
+Notable changes since 2.32.3:
+</strong>
+</div>
+<ul class="image">
+<!-- starting partial changes.html.haml -->
+<li class="rfe">
+Update the <a href="https://github.com/jenkinsci/sshd-module">SSHD module</a> from <code>1.7</code> to <code>1.8</code>. The change disables obsolete Ciphers: AES128CBC, TripleDESCBC, and BlowfishCBC.
+
+</li>
+<li class="rfe">
+Enable the JNLP4 agent protocol by default.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-40886">issue 40886</a><a></a>,&nbsp;<a href="https://github.com/jenkinsci/remoting/blob/master/docs/protocols.md#jnlp4-connect">upgrade notes</a>)
+</li>
+<li class="rfe">
+Allow defining agent ping interval and ping timeout in seconds. It can be done via the <code>hudson.slaves.ChannelPinger.pingIntervalSeconds</code> and <code>hudson.slaves.ChannelPinger.pingTimeoutSeconds</code> system properties.
+
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-28245">issue 28245</a>)
+</li>
+<li class="rfe">
+Print stack traces in logical order, with the most important part on top.
+(<a href="https://github.com/jenkinsci/jenkins/pull/1485">pull 1485</a>)
+</li>
+<li class="rfe">
+Reduce size of Jenkins WAR file by not storing identical copies of <code>remoting.jar</code>/<code>slave.jar</code> there.
+(<a href="https://github.com/jenkinsci/jenkins/pull/2633">pull 2633</a>)
+</li>
+<li class="rfe">
+Do not print warnings about undefined parameters when <code>hudson.model.ParametersAction.keepUndefinedParameters</code> property is set to <code>false</code>.
+(<a href="https://github.com/jenkinsci/jenkins/pull/2687">pull 2687</a>)
+</li>
+<li class="rfe">
+Increase the <code>JENKINS_HOME</code> disk space threshold from <code>1Gb</code> to <code>10Gb</code> left. The warning will be shown only if more than <code>90%</code> of the disk is utilized.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-40749">issue 40749</a>)
+</li>
+<li class="bug">
+Delete obsolete pinning UI.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-34065">issue 34065</a>)
+</li>
+<li class="bug">
+Use project-specific validation URL for SCM Trigger, so <code>H</code> is handled correctly in preview.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-26977">issue 26977</a>)
+</li>
+<li class="bug">
+Failure to serialize a single <code>Action</code> could cause an entire REST export response to fail. Upgraded to Stapler <code>1.250</code> with a fix.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-40088">issue 40088</a>)
+</li>
+<li class="bug">
+Add Usage Statistics section to the global configuration to make it easier to find.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-32938">issue 32938</a>)
+</li>
+<li class="bug">
+Allow <tt>groovy</tt> CLI command via SSH CLI.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-41765">issue 41765</a>)
+</li>
+
+<!-- ending partial changes.html.haml -->
+</ul>
 <h3 id="v2.32.3">
 What's new in 2.32.3 (2017-03-01)
 </h3>
@@ -2434,9 +2561,34 @@ If your SSH Slaves fail to start and you have the plugin install the JRE to run 
 <footer id="footer">
 <div class="container">
 <div class="row">
-<div class="links col-lg-8 col-md-12 col-sm-12">
-<ul class="major-areas">
-<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//changelog-stable.html.haml" title="Edit /changelog-stable.html.haml on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//changelog-stable.html.haml" title="View /changelog-stable.html.haml history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
 <div class="div-mar">
 <h5>Resources</h5>
 <ul class="resources">
@@ -2457,8 +2609,8 @@ Blog
 </li>
 </ul>
 </div>
-</li>
-<li class="area multi col-md-3 col-sm-6 col-xs-6">
+</div>
+<div class="area col-md-3">
 <div class="div-mar">
 <h5>Solutions</h5>
 <ul>
@@ -2509,8 +2661,8 @@ Ruby
 </li>
 </ul>
 </div>
-</li>
-<li class="area multi col-md-3 col-sm-6 col-xs-6">
+</div>
+<div class="area col-md-3">
 <div class="div-mar">
 <h5>Project</h5>
 <ul class="project">
@@ -2536,8 +2688,8 @@ Jenkins on Jenkins
 </li>
 </ul>
 </div>
-</li>
-<li class="area multi col-md-3 col-sm-6 col-xs-6">
+</div>
+<div class="area col-md-3">
 <div class="div-mar">
 <h5>Community</h5>
 <ul class="community">
@@ -2563,29 +2715,7 @@ Reddit
 </li>
 </ul>
 </div>
-</li>
-</ul>
 </div>
-<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
-<p class="box">
-<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//changelog-stable.html.haml" title="Edit /changelog-stable.html.haml on GitHub">
-Improve this page
-</a>
-|
-<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//changelog-stable.html.haml" title="View /changelog-stable.html.haml history on GitHub">
-Page history
-</a>
-</p>
-<div class="license-box">
-<div id="creativecommons">
-<a href="https://creativecommons.org/licenses/by-sa/4.0/">
-<p>
-<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
-</p>
-</a>
-<p>
-The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
-</p>
 </div>
 </div>
 </div>

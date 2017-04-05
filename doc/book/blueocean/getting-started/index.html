@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
-Getting Started with Blue Ocean
+Starting with Blue Ocean
 </title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="Jenkins is an open source automation server" name="description">
@@ -16,22 +16,22 @@ Getting Started with Blue Ocean
 <link href="img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
 <link href="img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
 <link href="img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
-<meta content="Getting Started with Blue Ocean" name="apple-mobile-web-app-title">
+<meta content="Starting with Blue Ocean" name="apple-mobile-web-app-title">
 <!-- Twitter Card data -->
 <meta content="summary_large_image" name="twitter:card">
 <meta content="@JenkinsCI" name="twitter:site">
-<meta content="Getting Started with Blue Ocean" name="twitter:title">
+<meta content="Starting with Blue Ocean" name="twitter:title">
 <meta content="Jenkins – Continuous Delivery for every team" name="twitter:description">
 <meta content="@JenkinsCI" name="twitter:creator">
 <!-- Twitter Summary card images must be at least 120x120px -->
 <meta content="img/blueocean.gif" name="twitter:image">
 <meta content="img/blueocean.gif" name="twitter:image:src">
 <!-- Open Graph data -->
-<meta content="Getting Started with Blue Ocean" property="og:title">
+<meta content="Starting with Blue Ocean" property="og:title">
 <meta content="article" property="og:type">
 <meta content="/doc/book/blueocean/getting-started/index.html" property="og:url">
 <meta content="Jenkins – Continuous Delivery for every team" property="og:description">
-<meta content="Getting Started with Blue Ocean" property="og:site_name">
+<meta content="Starting with Blue Ocean" property="og:site_name">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
 <link href="https://rtyler.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
@@ -339,37 +339,29 @@ Pipeline Editor ⇒
 <div class="row body">
 <div class="section">
 <h1>
-Getting Started with Blue Ocean
+Starting with Blue Ocean
 </h1>
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#prerequisites">Prerequisites</a></li>
-<li><a href="#installing">Installing</a></li>
-<li><a href="#configuring">Configuring</a></li>
-<li><a href="#switch-to-and-from-blue-ocean">Switch to and from Blue Ocean</a></li>
+<li><a href="#installing">Installing</a>
+<ul class="sectlevel2">
+<li><a href="#blueocean-docker">With Docker</a></li>
+</ul>
+</li>
+<li><a href="#starting-blue-ocean">Starting Blue Ocean</a>
+<ul class="sectlevel2">
+<li><a href="#switching-to-the-classic-ui">Switching to the "Classic" UI</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Jenkins Blue Ocean is a suite of plugins which provide a new an awesome way to
-live your life.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>To use Jenkins Blue Ocean, you will need:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Jenkins 2.7.x or later</p>
-</li>
-</ul>
+<p>This section will show how to start using Blue Ocean.
+It will include instructions for installing and configuring the Blue Ocean plugin,
+and how to get switch into and out of the Blue Ocean UI.</p>
 </div>
 </div>
 </div>
@@ -377,9 +369,12 @@ live your life.</p>
 <h2 id="installing"><a class="anchor" href="#installing"></a>Installing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To start using theBlue Ocean plugin
-<sup class="footnote" id="_footnote_blue-ocean">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>
-from an existing Jenkins:</p>
+<p>Blue Ocean can be installed in an existing Jenkins environment or be run
+<a href="#blueocean-docker">with Docker</a>.</p>
+</div>
+<div class="paragraph">
+<p>To start using the <a href="https://plugins.jenkins.io/blue-ocean">Blue Ocean plugin</a> in an existing Jenkins
+environment, it must be running Jenkins 2.7.x or later.:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -387,44 +382,101 @@ from an existing Jenkins:</p>
 <p>Login to your Jenkins server</p>
 </li>
 <li>
-<p>Click <code>Manage Jenkins</code> in the sidebar then <code>Manage Plugins</code></p>
+<p>Click <strong>Manage Jenkins</strong> in the sidebar then <strong>Manage Plugins</strong></p>
 </li>
 <li>
-<p>Choose the <code>Available</code> tab and use the search bar to find <code>Blue Ocean</code></p>
+<p>Choose the <strong>Available</strong> tab and use the search bar to find <strong>Blue Ocean</strong></p>
 </li>
 <li>
 <p>Click the checkbox in the Install column</p>
 </li>
 <li>
-<p>Click either <code>Install without restart</code> or <code>Download now and install after restart</code></p>
+<p>Click either <strong>Install without restart</strong> or <strong>Download now and install after
+restart</strong></p>
+</li>
+</ol>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/blueocean/intro/plugin-install.png" alt="Installing Blue Ocean">
+</div>
+</div>
+<div class="paragraph">
+<p>For in-depth description on how to install and manage plugins,
+refer to the <a href="../managing/plugins/">Managing Plugins</a> section.</p>
+</div>
+<div class="paragraph">
+<p>The majority of Blue Ocean requires no additional configuration after
+installation.  Existing Pipelines and Jobs will continue to work as usual.
+However, the first time a <a href="#creating-pipelines">Pipeline is created</a>, Blue
+Ocean will ask for permissions to access your repositories (either Git or
+GitHub) in order to create pipelines based on those repositories.</p>
+</div>
+<div class="sect2">
+<h3 id="blueocean-docker"><a class="anchor" href="#blueocean-docker"></a>With Docker</h3>
+<div class="paragraph">
+<p>The Jenkins project publishes a Docker container with Blue Ocean built-in every
+time a new release of Blue Ocean is published. The <code>jenkinsci/blueocean</code>
+image is based off of the current <a href="/download">Jenkins Long-Term Support</a>
+(LTS) release and is production ready.</p>
+</div>
+<div class="paragraph">
+<p>To start a new Jenkins with Blue Ocean pre-installed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure Docker is installed.</p>
 </li>
 <li>
-<p>When installation is complete click the <code>Use Blue Ocean</code> button in the classic UI</p>
+<p>Run <code>docker run -p 8888:8080 jenkinsci/blueocean:latest</code></p>
+</li>
+<li>
+<p>Browse to <a href="http://localhost:8888/blue" class="bare">localhost:8888/blue</a></p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>For in-depth description on how to install and manage plugins,
-consult <a href="../../managing/plugins/">Managing Plugins</a>.</p>
+<p>The Blue Ocean container can be configured using all the same
+<a href="https://github.com/jenkinsci/docker#usage">configuration options</a> available
+to the other images published by the Jenkins project.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="configuring"><a class="anchor" href="#configuring"></a>Configuring</h2>
-<div class="sectionbody">
-
 </div>
 </div>
 <div class="sect1">
-<h2 id="switch-to-and-from-blue-ocean"><a class="anchor" href="#switch-to-and-from-blue-ocean"></a>Switch to and from Blue Ocean</h2>
+<h2 id="starting-blue-ocean"><a class="anchor" href="#starting-blue-ocean"></a>Starting Blue Ocean</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Once a Jenkins environment has Blue Ocean installed, users can start using Blue
+Ocean by clicking the <strong>Open Blue Ocean</strong> in the top navigation bar of the
+Jenkins web UI. Alternatively, users can navigate directly to Blue Ocean at the
+<code>/blue</code> URL for their Jenkins environment, for example
+<code>http://JENKINS_URL/blue</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/doc/book/resources/blueocean/intro/switch-blue-ocean.png" alt="Opening Blue Ocean"></span></p>
+</div>
+<div class="sect2">
+<h3 id="switching-to-the-classic-ui"><a class="anchor" href="#switching-to-the-classic-ui"></a>Switching to the "Classic" UI</h3>
+<div class="paragraph">
+<p>Blue Ocean may not support some legacy or administrative functions which are
+necessary to some users. For those wishing to exit the Blue Ocean user
+experience, an "exit" icon is located at the top of most pages in Blue Ocean.
+Clicking the exit icon will navigate to the most relevant page in "classic"
+which parallels the current page in Blue Ocean.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/blueocean/intro/switch-classic.png" alt="Returning to the "classic" web UI">
 </div>
 </div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnote_1">
-<a href="#_footnoteref_1">1</a>. <a href="https://plugins.jenkins.io/workflow-aggregator">Blue Ocean plugin</a>
+<div class="paragraph">
+<p>Some links in Blue Ocean, like <strong>Administration</strong>, will also navigate to the
+classic web UI when there is no Blue Ocean equivalent.  In these cases, Blue
+Ocean will automatically take the user into the classic web UI as necessary.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -470,9 +522,34 @@ Pipeline Editor ⇒
 <footer id="footer">
 <div class="container">
 <div class="row">
-<div class="links col-lg-8 col-md-12 col-sm-12">
-<ul class="major-areas">
-<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/blueocean/getting-started.adoc" title="Edit /doc/book/blueocean/getting-started.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/blueocean/getting-started.adoc" title="View /doc/book/blueocean/getting-started.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
 <div class="div-mar">
 <h5>Resources</h5>
 <ul class="resources">
@@ -493,8 +570,8 @@ Blog
 </li>
 </ul>
 </div>
-</li>
-<li class="area multi col-md-3 col-sm-6 col-xs-6">
+</div>
+<div class="area col-md-3">
 <div class="div-mar">
 <h5>Solutions</h5>
 <ul>
@@ -545,8 +622,8 @@ Ruby
 </li>
 </ul>
 </div>
-</li>
-<li class="area multi col-md-3 col-sm-6 col-xs-6">
+</div>
+<div class="area col-md-3">
 <div class="div-mar">
 <h5>Project</h5>
 <ul class="project">
@@ -572,8 +649,8 @@ Jenkins on Jenkins
 </li>
 </ul>
 </div>
-</li>
-<li class="area multi col-md-3 col-sm-6 col-xs-6">
+</div>
+<div class="area col-md-3">
 <div class="div-mar">
 <h5>Community</h5>
 <ul class="community">
@@ -599,29 +676,7 @@ Reddit
 </li>
 </ul>
 </div>
-</li>
-</ul>
 </div>
-<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
-<p class="box">
-<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/blueocean/getting-started.adoc" title="Edit /doc/book/blueocean/getting-started.adoc on GitHub">
-Improve this page
-</a>
-|
-<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/blueocean/getting-started.adoc" title="View /doc/book/blueocean/getting-started.adoc history on GitHub">
-Page history
-</a>
-</p>
-<div class="license-box">
-<div id="creativecommons">
-<a href="https://creativecommons.org/licenses/by-sa/4.0/">
-<p>
-<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
-</p>
-</a>
-<p>
-The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
-</p>
 </div>
 </div>
 </div>

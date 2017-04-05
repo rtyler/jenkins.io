@@ -3,13 +3,172 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>https://rtyler.github.io/jenkins.io/</id>
 <title>Jenkins Blog</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <link rel="self" type="application/atom+xml" href="https://rtyler.github.io/jenkins.io/rss.xml" />
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/" />
 <entry>
+<id>https://rtyler.github.io/jenkins.io/blog/2017/04/05/say-hello-blueocean-1-0/</id>
+<title>Say hello to Blue Ocean 1.0</title>
+<updated>2017-04-04T21:47:19-07:00</updated>
+<published>2017-04-05T00:00:00+00:00</published>
+<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/04/05/say-hello-blueocean-1-0/" />
+<author>
+<name>i386</name>
+</author>
+<category term="blueocean"></category>
+<category term="ux"></category>
+<category term="pipeline"></category>
+<summary>
+Back in May 2016 we announced our intent
+to rethink the Jenkins User experience with the Blue Ocean project and today
+the Jenkins project are pleased to announce the general
+availability of Blue Ocean 1.0.
+
+
+Blue Ocean is an entirely new, modern and fun way for developers to use Jenkins
+that has been built from the ground up to help teams of any size approach
+Continuous Delivery. Easily installed as a plugin for Jenkins and integrated
+with Jenkins Pipeline, it is available from today for production use.
+
+
+Since the start of the beta at Jenkins World 2016 in September there are now
+over 7400+ installations making use of Blue...
+</summary>
+<content type="html">
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Back in May 2016 &lt;a href=&quot;https://rtyler.github.io/jenkins.io/blog/2016/05/26/introducing-blue-ocean/&quot;&gt;we announced our intent&lt;/a&gt;
+to rethink the Jenkins User experience with the Blue Ocean project and today
+the Jenkins project are pleased to announce the general
+availability of Blue Ocean 1.0.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Blue Ocean is an entirely new, modern and fun way for developers to use Jenkins
+that has been built from the ground up to help teams of any size approach
+Continuous Delivery. Easily installed as a plugin for Jenkins and integrated
+with Jenkins Pipeline, it is available from today for production use.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Since the start of the beta at Jenkins World 2016 in September there are now
+over 7400+ installations making use of Blue Ocean. This wouldn’t be possible
+without the support of the entire Jenkins developer and
+user community - so thank you for your support!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Blue Ocean is available today from the update center and also as a
+Docker image - &lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/blueocean&quot;&gt;why not give it a try?&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;center&gt;
+&lt;iframe width=&quot;853&quot; height=&quot;480&quot; src=&quot;https://www.youtube-nocookie.com/embed/k_fVlU1FwP4?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+&lt;br /&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Visual Pipeline Editing&lt;/strong&gt; - Team members of any skill level can create continuous
+delivery pipelines from start to finish, with just several clicks, using the
+intuitive, visual pipeline editor. Any pipeline created with the visual editor
+can also be edited in your favorite text editor
+bringing all the benefits of Pipeline as Code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/blueocean/press/pipeline-editor.png&quot; alt=&quot;Editor&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Pipeline Visualization&lt;/strong&gt; - Developers can visually represent pipelines in a way
+that anyone on the team can understand - even your boss’s boss - improving
+clarity into the continuous delivery process for the whole organization.
+The visualization helps you focus on what the pipeline does, not how it does it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/blueocean/press/pipeline-visualization.png&quot; alt=&quot;Pipeline visualization&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Pinpoint Troubleshooting&lt;/strong&gt; - Blue Ocean enables developers to locate automation
+problems instantly, without endlessly scanning through logs or navigating
+through many screens, so you can get back to building the next big thing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/blueocean/press/pipeline-diagnosis.png&quot; alt=&quot;Pinpoint Troubleshooting&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;GitHub and Git Integration&lt;/strong&gt; - Pipelines are created for all feature branches
+and pull requests, with their status reported back to GitHub.
+The whole team has visibility into whether changes need work or are good to go.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/blueocean/press/github-status.png&quot; alt=&quot;Github integration&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Personalization&lt;/strong&gt; – Every team member can make Jenkins their own by customizing
+the dashboard so that they only see those pipelines that matter to them.
+Favoriting any pipeline or branch in Blue Ocean will show a favourite card on
+the dashboard so you can see its status at a glance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/blueocean/press/personalization.png&quot; alt=&quot;Personalized dashboard&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Just one more thing – I’d like to pay special thanks to:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The Core team&lt;/strong&gt; – to Keith Zantow, Thorsten Scherler, Tom Fennelly,
+Ivan Meredith, Josh McDonald, Vivek Pandey, Brody Maclean and Cliff Meyers.
+Each of and everyone of you have brought your own passion, expertise and flair
+to the project – and it shows. It’s been crazy fun and I hope working on
+Blue Ocean is something you look back on fondly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Jenkins Developers&lt;/strong&gt; past and present – we recognise that we are standing on
+the shoulders of giants and none of this wouldn’t be possible without your
+hard work and dedication to free &amp;amp; open source software and Jenkins.
+Here’s to the next 10 years 🍻 !&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CloudBees&lt;/strong&gt; – in particular, Sacha Labourey (CEO), Harpreet Singh
+(VP of Product) and Spike Washburn (VP of Engineering) whose dedication to
+Jenkins, Open Source and continued faith in the vision and team made all of
+this possible, and of course Bob Bickel (Advisor) who dared us to dream big.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Michael Neale&lt;/strong&gt; – who drank all the kool-aide and is just as obsessed with
+and dedicated to Blue Ocean as I am. This project would never have shipped
+without his hand steady at the tiller. I couldn’t ask for a better friend
+and partner-in-crime.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Tyler Croy&lt;/strong&gt; – for guiding the project and myself on how to do open source
+The Right Way™. Tyler works tirelessly behind the scenes to to make Jenkins
+awesome and it wouldn’t be possible to keep this show running without
+his help and sage-like advice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Kohsuke Kawaguchi&lt;/strong&gt; – For creating Jenkins, getting Blue Ocean off of
+the ground, his tour of Tokyo and above all, his trust.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Jenkins Users&lt;/strong&gt; – your enthusiasm for better development tools which
+kept our spirits and momentum up when the days grew long and things
+looked tough. We couldn’t ask for a better, more appreciative or
+passionate group of people. Hopefully we’ve done our job and you can get
+back to building your next big thing!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Next stop, some well needed rest &amp;amp; recovery then back to to making
+Jenkins one of the experiences for software developers worldwide!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you’re interested in joining us to make Blue Ocean a great user experience
+for Jenkins, please join the Blue Ocean development
+team on &lt;a href=&quot;https://gitter.im/jenkinsci/blueocean-plugin&quot;&gt;Gitter&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+</content>
+</entry>
+<entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/03/24/jenkins-community-survey/</id>
 <title>The State of Jenkins - 2016 Community Survey</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-03-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/03/24/jenkins-community-survey/" />
 <author>
@@ -135,7 +294,7 @@ hearing more from users at Jenkins World 2017 in San Francisco, we hope to
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/03/21/toulousejam-pipeline-workshop/</id>
 <title>Pipeline Workshop &amp; Hackergarten @ ToulouseJAM Feedback</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-03-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/03/21/toulousejam-pipeline-workshop/" />
 <author>
@@ -423,7 +582,7 @@ For instance, give it 2 to 3 weeks minimum to have answers about sponsoring in g
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/03/20/security-updates/</id>
 <title>Security updates for multiple Jenkins plugins</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-03-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/03/20/security-updates/" />
 <author>
@@ -519,7 +678,7 @@ Subscribe to the jenkinsci-advisories mailing list to receive important notifica
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/03/17/blueocean-devlog-mar3/</id>
 <title>Blue Ocean Dev Log: March Week #3</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-03-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/03/17/blueocean-devlog-mar3/" />
 <author>
@@ -648,7 +807,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/03/16/fosdem-event-report/</id>
 <title>FOSDEM 2017 Wrap-up</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-03-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/03/16/fosdem-event-report/" />
 <author>
@@ -822,7 +981,7 @@ of high-intensity Jenkins discussion, advocacy, and hacking.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/03/10/blueocean-devlog-mar2/</id>
 <title>Blue Ocean Dev Log: March Week #2</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-03-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/03/10/blueocean-devlog-mar2/" />
 <author>
@@ -956,7 +1115,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/03/03/blueocean-devlog-mar1/</id>
 <title>Blue Ocean Dev Log: March Week #1</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-03-03T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/03/03/blueocean-devlog-mar1/" />
 <author>
@@ -1074,7 +1233,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/24/blueocean-devlog-feb4/</id>
 <title>Blue Ocean Dev Log: February Week #4</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/24/blueocean-devlog-feb4/" />
 <author>
@@ -1223,7 +1382,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/23/declarative-saucelabs-xunit/</id>
 <title>Browser testing and conditional logic in Declarative Pipeline</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-23T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/23/declarative-saucelabs-xunit/" />
 <author>
@@ -1766,7 +1925,7 @@ Thanks for reading!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/15/pipeline-editor-preview/</id>
 <title>Say Hello to the Blue Ocean Pipeline Editor</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-15T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/15/pipeline-editor-preview/" />
 <author>
@@ -1869,7 +2028,7 @@ request features &lt;a href=&quot;https://rtyler.github.io/jenkins.io/projects/b
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/15/declarative-notifications/</id>
 <title>Declarative Pipeline: Notifications and Shared Libraries</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-15T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/15/declarative-notifications/" />
 <author>
@@ -2326,7 +2485,7 @@ run Sauce OnDemand with xUnit Reporting in Declarative Pipeline.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/10/declarative-html-publisher/</id>
 <title>Declarative Pipeline: Publishing HTML Reports</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/10/declarative-html-publisher/" />
 <author>
@@ -2762,7 +2921,7 @@ Pipeline to share code and keep Pipelines easy to understand.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/10/blueocean-devlog-feb2/</id>
 <title>Blue Ocean Dev Log: February Week #2</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/10/blueocean-devlog-feb2/" />
 <author>
@@ -2895,7 +3054,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/08/jenkins-datadog-plugin/</id>
 <title>Monitor Jenkins jobs with the Datadog plugin</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-08T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/08/jenkins-datadog-plugin/" />
 <author>
@@ -3115,7 +3274,7 @@ Set alerts...
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/07/gsoc2017-announcement/</id>
 <title>Google Summer Of Code 2017: Call for mentors</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/07/gsoc2017-announcement/" />
 <author>
@@ -3319,7 +3478,7 @@ If your mentor team requires any specific expertise, GSoC org admins will do the
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/07/declarative-maven-project/</id>
 <title>Declarative Pipeline for Maven Projects</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-07T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/07/declarative-maven-project/" />
 <author>
@@ -3821,7 +3980,7 @@ Jenkins Pipeline improvements.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/06/scm-api-2-take2/</id>
 <title>SCM API 2.0 Release Take 2</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-06T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/06/scm-api-2-take2/" />
 <author>
@@ -4164,7 +4323,7 @@ pre-upgrade history chain and the post-upgrade history chain.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/03/declarative-pipeline-ga/</id>
 <title>Declarative Pipeline Syntax 1.0 is now available</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-03T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/03/declarative-pipeline-ga/" />
 <author>
@@ -4409,7 +4568,7 @@ enable all of these great features.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/03/blueocean-devlog-feb/</id>
 <title>Blue Ocean Dev Log: February Week #1</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-03T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/03/blueocean-devlog-feb/" />
 <author>
@@ -4548,7 +4707,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/01/security-updates/</id>
 <title>Security updates for Jenkins core</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/01/security-updates/" />
 <author>
@@ -4579,7 +4738,7 @@ I strongly recommend you read these documents, as there are a few possible side 
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/02/01/pipeline-scalability-best-practice/</id>
 <title>Best Practices for Scalable Pipeline Code</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-02-01T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/02/01/pipeline-scalability-best-practice/" />
 <author>
@@ -5020,7 +5179,7 @@ versions of Jenkins).&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/27/blueocean-dev-log-jan4/</id>
 <title>Blue Ocean Dev Log: January Week #4</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-27T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/27/blueocean-dev-log-jan4/" />
 <author>
@@ -5202,7 +5361,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/20/blueocean-dev-log-jan2/</id>
 <title>Blue Ocean Dev Log: January Week #3</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/20/blueocean-dev-log-jan2/" />
 <author>
@@ -5354,7 +5513,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/19/converting-conditional-to-pipeline/</id>
 <title>Converting Conditional Build Steps to Jenkins Pipeline</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/19/converting-conditional-to-pipeline/" />
 <author>
@@ -6029,7 +6188,7 @@ Look for it soon!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/17/scm-api-2/</id>
 <title>SCM API turns 2.0 and what that means for you</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/17/scm-api-2/" />
 <author>
@@ -6659,7 +6818,7 @@ This new plugin has the advantage of an easy to read pipeline syntax with the ex
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/17/Jenkins-is-upgrading-to-Java-8/</id>
 <title>Jenkins Upgrades To Java 8</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-17T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/17/Jenkins-is-upgrading-to-Java-8/" />
 <author>
@@ -6795,7 +6954,7 @@ Being also a developer community, we want Jenkins to be appealing to contributor
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/</id>
 <title>Blue Ocean Dev Log: January Week #2</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/13/blueocean-dev-log-jan/" />
 <author>
@@ -6938,7 +7097,7 @@ Jenkins, please join the Blue Ocean development team on
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/</id>
 <title>Declarative Pipeline Syntax Beta 2 release</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/" />
 <author>
@@ -7152,7 +7311,7 @@ give them a try!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/11/jenkins-world-2017-cfp/</id>
 <title>Jenkins World 2017 Call for Papers is Open</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/11/jenkins-world-2017-cfp/" />
 <author>
@@ -7212,7 +7371,7 @@ like to hear from you!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/10/security-warnings/</id>
 <title>Security warnings in Jenkins</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/10/security-warnings/" />
 <author>
@@ -7273,7 +7432,7 @@ list of the same name, as well other means.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2017/01/10/jenkins-lifx-notifier-plugin/</id>
 <title>Learning plugin development by improving the LIFX notifier plugin</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2017-01-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2017/01/10/jenkins-lifx-notifier-plugin/" />
 <author>
@@ -7514,7 +7673,7 @@ for more information about the latest releases!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/</id>
 <title>Thank you for an amazing 2016</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-12-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/31/what-a-year/" />
 <author>
@@ -7790,7 +7949,7 @@ in the Jenkins project, so if you didn’t have an opportunity to join in during
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/</id>
 <title>Continuous Delivery with Jenkins and Puppet Enterprise</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-12-20T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/20/jenkins-puppet-enterprise-plugin/" />
 <author>
@@ -8187,7 +8346,7 @@ You’ll be glad you did.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/</id>
 <title>Announcing the beta of Declarative Pipeline Syntax</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-12-19T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/19/declarative-pipeline-beta/" />
 <author>
@@ -8443,7 +8602,7 @@ we expect great things for Jenkins in 2017!&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/</id>
 <title>Monthly JAM Recap - November 2016</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-12-10T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/10/monthly-jam-recap-november/" />
 <author>
@@ -8640,7 +8799,7 @@ with very little provisioning time.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/</id>
 <title>Upcoming December Jenkins Events</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-12-09T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/12/09/december-jenkins-events/" />
 <author>
@@ -8775,7 +8934,7 @@ local activities going in December.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/</id>
 <title>What JVM versions are running Jenkins? 2016 Update!</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-11-22T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" />
 <author>
@@ -8897,7 +9056,7 @@ All numbers shown below are derived from the new &lt;a href=&quot;stats.jenkins.
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/</id>
 <title>Tuning Jenkins GC For Responsiveness and Stability with Large Instances</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-11-21T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/21/gc-tuning/" />
 <author>
@@ -9714,7 +9873,7 @@ another post…​&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/</id>
 <title>Security updates addressing zero day vulnerability</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-11-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/16/security-updates-addressing-zero-day/" />
 <author>
@@ -9793,7 +9952,7 @@ mailing list to receive future Jenkins security notifications.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/</id>
 <title>Upcoming November Jenkins Events</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-11-13T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/13/november-jenkins-events/" />
 <author>
@@ -9941,7 +10100,7 @@ below please stop by to say &quot;Hi&quot; and talk Jenkins over beer.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/</id>
 <title>Addressing recently disclosed vulnerabilities in the Jenkins CLI</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-11-12T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/12/addressing-remote-vulnerabilities-in-cli/" />
 <author>
@@ -10059,7 +10218,7 @@ to follow. You can learn more about this policy and our processes on our
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/</id>
 <title>Monthly JAM Recap - October 2016</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-11-11T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/11/11/monthly-jam-recap-october/" />
 <author>
@@ -10204,7 +10363,7 @@ last meetups.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/</id>
 <title>xUnit and Pipeline</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-10-31T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/31/xunit-reporting/" />
 <author>
@@ -10711,7 +10870,7 @@ also write your own XSL for result formats not on the known/supported list.&lt;/
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/</id>
 <title>Jenkins World 2016 Session Videos</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-10-18T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/18/jenkins-world-2016-videos/" />
 <author>
@@ -10793,7 +10952,7 @@ Technical Evangelist at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/</id>
 <title>Controlling the Flow with Stage, Lock, and Milestone</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-10-16T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/10/16/stage-lock-milestone/" />
 <author>
@@ -11041,7 +11200,7 @@ stage(&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;s
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/</id>
 <title>Jenkins World 2016, That's a Wrap!</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-09-30T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/" />
 <author>
@@ -11187,7 +11346,7 @@ there isn’t, take a look at the
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/</id>
 <title>Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-09-29T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" />
 <author>
@@ -11396,7 +11555,7 @@ on track before, during, and after the conference.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/</id>
 <title>Jenkins World 2016 Wrap-up - Scaling</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-09-27T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/" />
 <author>
@@ -11618,7 +11777,7 @@ the challenges and opportunities they see ahead.&lt;/p&gt;
 <entry>
 <id>https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/</id>
 <title>Jenkins World 2016 Wrap-up - Pipeline</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
+<updated>2017-04-04T21:47:19-07:00</updated>
 <published>2016-09-24T00:00:00+00:00</published>
 <link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/24/jenkins-world-2016-wrap-up-pipeline/" />
 <author>
@@ -11856,118 +12015,6 @@ delivery practices.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;https://vimeo.com/173353537&quot;&gt;&lt;strong&gt;Stream Demo Video&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-</content>
-</entry>
-<entry>
-<id>https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/</id>
-<title>Jenkins World 2016 Wrap-up - Introduction</title>
-<updated>2017-03-31T09:19:43-07:00</updated>
-<published>2016-09-21T00:00:00+00:00</published>
-<link rel="alternate" type="text/html" href="https://rtyler.github.io/jenkins.io/blog/2016/09/21/jenkins-world-2016-wrap-up/" />
-<author>
-<name>lnewman</name>
-</author>
-<category term="event"></category>
-<category term="jenkinsworld"></category>
-<summary>
-This is a guest post by Liam Newman,
-Technical Evangelist at CloudBees.
-
-
-
-
-
-
-
-
-That&#8217;s a Wrap!
-
-Any way you look at it, last week&#8217;s Jenkins World Conference 2016 was a huge success.
-
-
-In 2011, a few hundred users gathered in San Francisco for the first "Jenkins User Conference".
-Over successive years, this grew into several yearly regional Jenkins user conferences.
-This year, over 1,300 people came from around the world to "Jenkins World 2016",
-the first global event for the Jenkins community.
-
-
-
-
-
-This year&#8217;s Jenkins World conference included:
-
-
-
-
-
-
-
-Keynote presentation by Jenkins creator, Kohsuke Kawaguchi, announcing a number of great new Jenkins project features, such as "Blue Ocean".
-
-
-More than 50...
-</summary>
-<content type="html">
-&lt;div class=&quot;admonitionblock note&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-This is a guest post by &lt;a href=&quot;https://github.com/bitwiseman&quot;&gt;Liam Newman&lt;/a&gt;,
-Technical Evangelist at &lt;a href=&quot;http://cloudbees.com&quot;&gt;CloudBees&lt;/a&gt;.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;span class=&quot;image right&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/conferences/Jenkins-World_125x125.png&quot; alt=&quot;Jenkins World 2016&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;that-s-a-wrap&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#that-s-a-wrap&quot;&gt;&lt;/a&gt;That’s a Wrap!&lt;/h3&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Any way you look at it, last week’s Jenkins World Conference 2016 was a huge success.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In 2011, a few hundred users gathered in San Francisco for the first &quot;Jenkins User Conference&quot;.
-Over successive years, this grew into several yearly regional Jenkins user conferences.
-This year, over 1,300 people came from around the world to &quot;Jenkins World 2016&quot;,
-the first global event for the Jenkins community.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;span class=&quot;image center&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-jenkins-world-wrap/kohsuke-keynote.jpg&quot; alt=&quot;Kohsuke Kawaguchi Keynote&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This year’s Jenkins World conference included:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;span class=&quot;image right&quot;&gt;&lt;img src=&quot;https://rtyler.github.io/jenkins.io/images/post-images/2016-jenkins-world-wrap/blue-ocean-sticker.jpg&quot; alt=&quot;Stickers!&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Keynote presentation by Jenkins creator, Kohsuke Kawaguchi, announcing a number of great new Jenkins project features, such as &quot;Blue Ocean&quot;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;More than 50 sessions on everything from the new &quot;Blue Ocean&quot; UI, to &quot;Continuous Security&quot; to &quot;Dockerizing Jenkins&quot;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Jenkins Open-source Hub, with &quot;Ask the Experts&quot; and demos by 20+ Jenkins contributors.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Booths from 30+ sponsors.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Stickers!&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Over the next week, I’ll be posting highlights from the event,
-including slides, videos, and links to other useful resources.  Stay tuned!&lt;/p&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 </content>
 </entry>
