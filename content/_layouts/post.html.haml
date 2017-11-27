@@ -10,7 +10,7 @@ layout: default
     }
   })
 
-- author = site.authors[page.author]
+- author = site.authors[page.author] if page.author
 %div.container.blog-post
   .row.body
     %div#content.col-md-11.col-md-offset-1{:class => 'main-content'}
